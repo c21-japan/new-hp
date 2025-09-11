@@ -37,7 +37,6 @@
       color: var(--black);
       line-height: 1.7;
       background: var(--white);
-      padding-bottom: 80px;
       overflow-x: hidden;
     }
 
@@ -830,7 +829,7 @@
       }
     }
 
-    /* Jobs Diagram */
+    /* Jobs Diagram - スマホ表示修正 */
     .jobs-diagram {
       background: var(--white);
       padding: 60px 0;
@@ -854,6 +853,7 @@
       border-radius: 20px;
       padding: 32px;
       position: relative;
+      overflow: hidden;
     }
 
     @media(max-width: 768px) {
@@ -896,6 +896,7 @@
       font-size: clamp(14px, 3vw, 20px);
       font-weight: 900;
       margin: 8px 0;
+      word-wrap: break-word;
     }
 
     .career-flow {
@@ -905,6 +906,7 @@
       overflow-x: auto;
       padding: 16px 0;
       scrollbar-width: thin;
+      -webkit-overflow-scrolling: touch;
     }
 
     .career-step {
@@ -1436,7 +1438,7 @@
     footer {
       background: var(--black);
       color: var(--white);
-      padding: 48px 0 100px;
+      padding: 48px 0;
     }
 
     .footer-content {
@@ -1480,49 +1482,6 @@
       text-decoration: none;
       font-weight: 600;
       margin-top: 16px;
-    }
-
-    /* Bottom nav with :target */
-    .bottom-nav {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: var(--white);
-      border-top: 1px solid #e0e0e0;
-      display: flex;
-      justify-content: space-around;
-      padding: 8px 0;
-      z-index: 1000;
-      box-shadow: 0 -2px 10px rgba(0,0,0,.1);
-    }
-
-    .bottom-nav-item {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 4px;
-      padding: 8px;
-      color: #666;
-      text-decoration: none;
-      font-size: 10px;
-      font-weight: 600;
-      transition: .3s;
-    }
-
-    .bottom-nav-icon {
-      font-size: 20px;
-    }
-
-    #why:target ~ .bottom-nav a[href="#why"],
-    #stories:target ~ .bottom-nav a[href="#stories"],
-    #jobs:target ~ .bottom-nav a[href="#jobs"],
-    #training:target ~ .bottom-nav a[href="#training"],
-    #schedule:target ~ .bottom-nav a[href="#schedule"],
-    #voices:target ~ .bottom-nav a[href="#voices"],
-    #entry:target ~ .bottom-nav a[href="#entry"] {
-      color: var(--gold);
     }
 
     @media(max-width: 768px) {
@@ -2447,10 +2406,10 @@
 
       <div class="office-slider">
         <div class="office-track">
-          <div class="office-slide"><img src="tempo_live.jpg.jpg" alt="オフィス 1" width="1200" height="675" loading="lazy"></div>
-          <div class="office-slide"><img src="tempo_top.JPG" alt="オフィス 2" width="1200" height="675" loading="lazy"></div>
-          <div class="office-slide"><img src="office_monitor.JPG" alt="オフィス 3" width="1200" height="675" loading="lazy"></div>
-          <div class="office-slide"><img src="tempo_kudara.JPG" alt="オフィス 4" width="1200" height="675" loading="lazy"></div>
+          <div class="office-slide"><img src="office.jpg" alt="オフィス 1" width="1200" height="675" loading="lazy"></div>
+          <div class="office-slide"><img src="tempo1.JPG" alt="オフィス 2" width="1200" height="675" loading="lazy"></div>
+          <div class="office-slide"><img src="tempo2.jpeg" alt="オフィス 3" width="1200" height="675" loading="lazy"></div>
+          <div class="office-slide"><img src="tempo3.jpeg" alt="オフィス 4" width="1200" height="675" loading="lazy"></div>
         </div>
       </div>
 
@@ -2567,7 +2526,7 @@
     <div class="container">
       <div class="footer-content">
         <div class="footer-info">
-          <img src="tempo_live.jpg.jpg" alt="オフィス" style="width:100%;height:auto;margin-bottom:12px;border-radius:8px" loading="lazy">
+          <img src="office.jpg" alt="オフィス" style="width:100%;height:auto;margin-bottom:12px;border-radius:8px" loading="lazy">
           <h3>センチュリー21ホームマート</h3>
           <p>不動産売買・仲介／リフォーム・リノベーション</p>
           <p>〒635-0821 奈良県北葛城郡広陵町笠287-1</p>
@@ -2594,34 +2553,6 @@
       </div>
     </div>
   </footer>
-
-  <!-- Bottom Nav -->
-  <nav class="bottom-nav">
-    <a href="#why" class="bottom-nav-item" aria-label="なぜホームマート">
-      <span class="bottom-nav-icon">🤔</span>
-      <span>なぜ？</span>
-    </a>
-    <a href="#jobs" class="bottom-nav-item" aria-label="募集職種">
-      <span class="bottom-nav-icon">💼</span>
-      <span>募集職種</span>
-    </a>
-    <a href="#training" class="bottom-nav-item" aria-label="研修">
-      <span class="bottom-nav-icon">📚</span>
-      <span>研修</span>
-    </a>
-    <a href="#schedule" class="bottom-nav-item" aria-label="1日の流れ">
-      <span class="bottom-nav-icon">⏰</span>
-      <span>1日の流れ</span>
-    </a>
-    <a href="#voices" class="bottom-nav-item" aria-label="社員の声">
-      <span class="bottom-nav-icon">💬</span>
-      <span>社員の声</span>
-    </a>
-    <a href="#entry" class="bottom-nav-item" aria-label="応募">
-      <span class="bottom-nav-icon">✉️</span>
-      <span>応募</span>
-    </a>
-  </nav>
 
   <!-- JavaScript（月収シミュレーター用） -->
   <script>
