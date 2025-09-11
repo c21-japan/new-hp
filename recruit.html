@@ -3,8 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noindex,nofollow,max-image-preview:none">
-  <meta name="googlebot" content="noindex,nofollow">
   <title>採用情報 | センチュリー21ホームマート - 自分たちで作る、自分たちの会社</title>
   <meta name="description" content="完全週休2日制・センチュリー21×自社施工の強みで、未経験から確実に成長。インセンティブで月収100万円プレイヤーも実現！">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -76,39 +74,6 @@
       font-weight: 700;
       line-height: 1.4;
       margin-bottom: 12px;
-    }
-
-    /* Header */
-    header {
-      background: var(--white);
-      border-bottom: 2px solid var(--gold);
-      padding: 12px 0;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: 0 2px 8px rgba(0,0,0,.08);
-    }
-
-    .header-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      height: 40px;
-      width: auto;
-      object-fit: contain;
-    }
-
-    .header-badge {
-      background: var(--cream);
-      color: var(--gold);
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 12px;
-      font-weight: 700;
-      border: 1px solid var(--gold);
     }
 
     /* Hero */
@@ -1434,56 +1399,6 @@
       color: var(--gold);
     }
 
-    /* Footer */
-    footer {
-      background: var(--black);
-      color: var(--white);
-      padding: 48px 0;
-    }
-
-    .footer-content {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 32px;
-    }
-
-    @media(min-width: 768px) {
-      .footer-content {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-
-    .footer-info h3 {
-      color: var(--gold);
-      margin-bottom: 16px;
-    }
-
-    .map-wrap {
-      width: 100%;
-      aspect-ratio: 16/9;
-      border: 0;
-      border-radius: 12px;
-      overflow: hidden;
-      background: #111;
-    }
-
-    .map-wrap iframe {
-      width: 100%;
-      height: 100%;
-      border: 0;
-    }
-
-    .instagram-link {
-      display: inline-block;
-      background: var(--gold);
-      color: var(--white);
-      padding: 12px 24px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 600;
-      margin-top: 16px;
-    }
-
     @media(max-width: 768px) {
       section {
         padding: 40px 0;
@@ -1492,15 +1407,8 @@
   </style>
 </head>
 <body>
-  <!-- Header -->
-  <header>
-    <div class="container">
-      <div class="header-content">
-        <img src="century21logo_gold.png" alt="センチュリー21ホームマート" class="logo" loading="eager">
-        <span class="header-badge">採用特設サイト</span>
-      </div>
-    </div>
-  </header>
+  <!-- ヘッダーをJSで読み込む -->
+  <div id="site-header"></div>
 
   <!-- Hero -->
   <section class="hero" id="top">
@@ -2521,41 +2429,66 @@
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-info">
-          <img src="office.jpg" alt="オフィス" style="width:100%;height:auto;margin-bottom:12px;border-radius:8px" loading="lazy">
-          <h3>センチュリー21ホームマート</h3>
-          <p>不動産売買・仲介／リフォーム・リノベーション</p>
-          <p>〒635-0821 奈良県北葛城郡広陵町笠287-1</p>
-
-          <div class="map-wrap" style="margin-top:16px">
-            <iframe
-              title="センチュリー21ホームマート Googleマップ"
-              src="https://www.google.com/maps?q=奈良県北葛城郡広陵町笠287-1&output=embed"
-              loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen>
-            </iframe>
-          </div>
-        </div>
-
-        <div>
-          <a href="https://www.instagram.com/century21homemart/" class="instagram-link" aria-label="Instagram">
-            📷 Instagram @century21homemart
-          </a>
-          <p style="margin-top:16px;font-size:14px">最新の職場の様子はInstagramでチェック！</p>
-        </div>
-      </div>
-
-      <div style="text-align:center;margin-top:32px;padding-top:32px;border-top:1px solid #444">
-        <p style="font-size:12px">&copy; 2025 Century21 HomeMart. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
+  <!-- フッターをJSで読み込む -->
+  <div id="site-footer"></div>
 
   <!-- JavaScript（月収シミュレーター用） -->
   <script>
+    // ヘッダーとフッターを読み込む
+    document.addEventListener('DOMContentLoaded', function() {
+      // ヘッダーのHTML
+      const headerHTML = `
+        <header style="background: var(--white); border-bottom: 2px solid var(--gold); padding: 12px 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,.08);">
+          <div class="container">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <img src="century21logo_gold.png" alt="センチュリー21ホームマート" style="height: 40px; width: auto; object-fit: contain;" loading="eager">
+              <span style="background: var(--cream); color: var(--gold); padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; border: 1px solid var(--gold);">採用特設サイト</span>
+            </div>
+          </div>
+        </header>
+      `;
+
+      // フッターのHTML
+      const footerHTML = `
+        <footer style="background: var(--black); color: var(--white); padding: 48px 0;">
+          <div class="container">
+            <div style="display: grid; grid-template-columns: 1fr; gap: 32px;">
+              <div>
+                <img src="office.jpg" alt="オフィス" style="width:100%;height:auto;margin-bottom:12px;border-radius:8px" loading="lazy">
+                <h3 style="color: var(--gold); margin-bottom: 16px;">センチュリー21ホームマート</h3>
+                <p>不動産売買・仲介／リフォーム・リノベーション</p>
+                <p>〒635-0821 奈良県北葛城郡広陵町笠287-1</p>
+
+                <div style="width: 100%; aspect-ratio: 16/9; border: 0; border-radius: 12px; overflow: hidden; background: #111; margin-top:16px">
+                  <iframe
+                    title="センチュリー21ホームマート Googleマップ"
+                    src="https://www.google.com/maps?q=奈良県北葛城郡広陵町笠287-1&output=embed"
+                    style="width: 100%; height: 100%; border: 0;"
+                    loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen>
+                  </iframe>
+                </div>
+              </div>
+
+              <div>
+                <a href="https://www.instagram.com/century21homemart/" style="display: inline-block; background: var(--gold); color: var(--white); padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; margin-top: 16px;" aria-label="Instagram">
+                  📷 Instagram @century21homemart
+                </a>
+                <p style="margin-top:16px;font-size:14px">最新の職場の様子はInstagramでチェック！</p>
+              </div>
+            </div>
+
+            <div style="text-align:center;margin-top:32px;padding-top:32px;border-top:1px solid #444">
+              <p style="font-size:12px">&copy; 2025 Century21 HomeMart. All rights reserved.</p>
+            </div>
+          </div>
+        </footer>
+      `;
+
+      // ヘッダーとフッターを挿入
+      document.getElementById('site-header').innerHTML = headerHTML;
+      document.getElementById('site-footer').innerHTML = footerHTML;
+    });
+
     // シミュレーター機能
     (function() {
       const price = document.getElementById('sim-price');
