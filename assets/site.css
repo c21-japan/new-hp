@@ -73,3 +73,21 @@ footer{background:#111;color:#eee}
 @media(min-width:900px){.foot{grid-template-columns:1.2fr .8fr}}
 .foot h4{margin:0 0 10px;color:var(--gold)}
 .mini{font-size:12px;color:#aaa}
+
+/* Dropdown 小見出し */
+.dropdown-title{
+  font-size:12px;
+  font-weight:700;
+  color:#888;
+  padding:6px 10px 2px;
+  text-transform:none;
+}
+
+/* モバイルドロワー内の区切り見出し */
+#drawer .subhead{
+  margin:10px 0 4px;
+  padding:4px 0;
+  font-size:12px;
+  color:#888;
+  list-style:none;
+}
