@@ -12,9 +12,15 @@ section{padding:40px 0}
 /* Header */
 .site-header{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid #eee}
 .nav{height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px}
-.brand{display:flex;align-items:center;gap:10px;font-weight:900}
-.brand__logo{width:32px;height:32px;border-radius:6px;background:linear-gradient(135deg,var(--gold),var(--gold2));box-shadow:0 2px 8px rgba(0,0,0,.15)}
-.brand__name{letter-spacing:.04em}
+.brand__img {
+  height: 36px;   /* ヘッダー高さに収めるサイズ */
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+@media (min-width: 1024px){
+  .brand__img { height: 40px; }
+}
 
 /* Desktop nav */
 .nav-links{display:flex;align-items:center;gap:18px}
