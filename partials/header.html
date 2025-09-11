@@ -9,15 +9,16 @@
         loading="eager"
       />
     </a>
-    <!-- 以下、既存ナビはそのまま -->
 
     <!-- Desktop navigation -->
     <ul class="nav-links" role="menubar" aria-label="グローバルナビ">
       <li><a href="/index.html">ホーム</a></li>
 
+      <!-- 会社案内 -->
       <li>
         <a href="/company.html" aria-haspopup="true" aria-expanded="false">会社案内 ▾</a>
         <div class="dropdown" role="menu">
+          <div class="dropdown-title">会社案内</div>
           <a href="/company.html">会社概要</a>
           <a href="/greeting.html">代表挨拶</a>
           <a href="/philosophy.html">企業理念</a>
@@ -25,20 +26,30 @@
         </div>
       </li>
 
+      <!-- 不動産売買仲介 -->
       <li>
         <a href="/buy/index.html" aria-haspopup="true" aria-expanded="false">不動産売買仲介 ▾</a>
         <div class="dropdown" role="menu">
+          <div class="dropdown-title">物件一覧</div>
           <a href="/buy/list.html">売買仲介物件一覧</a>
+
+          <div class="dropdown-title">購入希望者向け</div>
           <a href="/search.html">物件検索</a>
           <a href="/buy/flow.html">購入の流れ</a>
-          <a href="/buy/faq.html">購入Q&A</a>
+          <a href="/buy/faq.html">よくある質問</a>
+
+          <div class="dropdown-title">売却希望者向け</div>
           <a href="/sell/flow.html">売却の流れ</a>
           <a href="/assessment.html">査定依頼</a>
           <a href="/sell/cases.html">売却事例</a>
           <a href="/matching.html">購入希望者情報リスト</a>
+
+          <div class="dropdown-title">物件掲載</div>
+          <a href="/listing.html">物件掲載募集</a>
         </div>
       </li>
 
+      <!-- 売買事業 -->
       <li>
         <a href="/business.html" aria-haspopup="true" aria-expanded="false">売買事業 ▾</a>
         <div class="dropdown" role="menu">
@@ -50,6 +61,7 @@
         </div>
       </li>
 
+      <!-- リフォーム事業 -->
       <li>
         <a href="/reform/index.html" aria-haspopup="true" aria-expanded="false">リフォーム事業 ▾</a>
         <div class="dropdown" role="menu">
@@ -60,6 +72,7 @@
         </div>
       </li>
 
+      <!-- 物件情報 -->
       <li>
         <a href="/properties/index.html" aria-haspopup="true" aria-expanded="false">物件情報 ▾</a>
         <div class="dropdown" role="menu">
@@ -68,6 +81,7 @@
         </div>
       </li>
 
+      <!-- お知らせ -->
       <li>
         <a href="/news/index.html" aria-haspopup="true" aria-expanded="false">お知らせ ▾</a>
         <div class="dropdown" role="menu">
@@ -76,8 +90,25 @@
         </div>
       </li>
 
-      <li><a href="/recruit.html">採用情報</a></li>
-      <li><a href="/contact/form.html">お問い合わせ</a></li>
+      <!-- 採用情報 -->
+      <li>
+        <a href="/recruit.html" aria-haspopup="true" aria-expanded="false">採用情報 ▾</a>
+        <div class="dropdown" role="menu">
+          <a href="/recruit.html">採用概要</a>
+          <a href="/recruit/jobs.html">募集職種</a>
+          <a href="/recruit/howto.html">応募方法</a>
+        </div>
+      </li>
+
+      <!-- お問い合わせ -->
+      <li>
+        <a href="/contact/form.html" aria-haspopup="true" aria-expanded="false">お問い合わせ ▾</a>
+        <div class="dropdown" role="menu">
+          <a href="/contact/form.html">お問い合わせフォーム</a>
+          <a href="/contact/info.html">電話・メール</a>
+          <a href="/contact/access.html">アクセス情報</a>
+        </div>
+      </li>
     </ul>
 
     <!-- Mobile hamburger -->
@@ -90,6 +121,7 @@
   <nav id="drawer" class="drawer" aria-hidden="true">
     <div class="container">
       <div class="group"><a href="/index.html">ホーム</a></div>
+
       <details class="group">
         <summary>会社案内</summary>
         <ul>
@@ -99,19 +131,28 @@
           <li><a href="/access.html">アクセスマップ</a></li>
         </ul>
       </details>
+
       <details class="group">
         <summary>不動産売買仲介</summary>
         <ul>
           <li><a href="/buy/list.html">売買仲介物件一覧</a></li>
+
+          <li class="subhead">購入希望者向け</li>
           <li><a href="/search.html">物件検索</a></li>
           <li><a href="/buy/flow.html">購入の流れ</a></li>
-          <li><a href="/buy/faq.html">購入Q&A</a></li>
+          <li><a href="/buy/faq.html">よくある質問</a></li>
+
+          <li class="subhead">売却希望者向け</li>
           <li><a href="/sell/flow.html">売却の流れ</a></li>
           <li><a href="/assessment.html">査定依頼</a></li>
           <li><a href="/sell/cases.html">売却事例</a></li>
           <li><a href="/matching.html">購入希望者情報リスト</a></li>
+
+          <li class="subhead">物件掲載</li>
+          <li><a href="/listing.html">物件掲載募集</a></li>
         </ul>
       </details>
+
       <details class="group">
         <summary>売買事業</summary>
         <ul>
@@ -122,6 +163,7 @@
           <li><a href="/cases.html">事例紹介</a></li>
         </ul>
       </details>
+
       <details class="group">
         <summary>リフォーム事業</summary>
         <ul>
@@ -131,6 +173,7 @@
           <li><a href="/reform/voices.html">お客様の声</a></li>
         </ul>
       </details>
+
       <details class="group">
         <summary>物件情報</summary>
         <ul>
@@ -138,6 +181,7 @@
           <li><a href="/search.html">物件検索</a></li>
         </ul>
       </details>
+
       <details class="group">
         <summary>お知らせ</summary>
         <ul>
@@ -145,7 +189,16 @@
           <li><a href="/campaigns.html">イベント・キャンペーン</a></li>
         </ul>
       </details>
-      <div class="group"><a href="/recruit.html">採用情報</a></div>
+
+      <details class="group">
+        <summary>採用情報</summary>
+        <ul>
+          <li><a href="/recruit.html">採用概要</a></li>
+          <li><a href="/recruit/jobs.html">募集職種</a></li>
+          <li><a href="/recruit/howto.html">応募方法</a></li>
+        </ul>
+      </details>
+
       <details class="group">
         <summary>お問い合わせ</summary>
         <ul>
@@ -154,6 +207,7 @@
           <li><a href="/contact/access.html">アクセス情報</a></li>
         </ul>
       </details>
+
       <div class="group"><a href="/privacy.html">プライバシーポリシー</a></div>
       <div class="group"><a href="/sitemap.html">サイトマップ</a></div>
     </div>
