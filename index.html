@@ -1,20 +1,340 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <title>株式会社ホームマート</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>株式会社ホームマート｜不動産売買仲介・買取再販・リフォーム</title>
+  <meta name="description" content="奈良・大阪エリアの不動産売買仲介／買取再販／リフォームなら株式会社ホームマート。最新物件・売却査定・採用情報までトータルにご案内。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700;900&display=swap" rel="stylesheet"/>
+  <style>
+    :root{
+      --gold:#A19276; --gold2:#B8A082; --black:#383635; --ink:#222; --cream:#F8F6F3; --bg:#fff;
+      --max:1200px; --shadow:0 8px 24px rgba(0,0,0,.08);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;background:var(--bg);color:var(--ink);font-family:'Noto Sans JP',system-ui,-apple-system,Segoe UI,Roboto,'Hiragino Sans','Noto Sans JP','Yu Gothic UI','Yu Gothic',Meiryo,sans-serif}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block;height:auto}
+    .container{max-width:var(--max);margin:0 auto;padding:0 16px}
+
+    /* ======= Global Header (Nav at very top) ======= */
+    .site-header{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid #eee}
+    .nav{height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:900}
+    .brand__logo{width:32px;height:32px;border-radius:6px;background:linear-gradient(135deg,var(--gold),var(--gold2));box-shadow:0 2px 8px rgba(0,0,0,.15)}
+    .brand__name{letter-spacing:.04em}
+
+    /* Desktop links */
+    .nav-links{display:flex;align-items:center;gap:18px}
+    .nav-links > li{list-style:none;position:relative}
+    .nav-links > li > a,.nav-links > li > button{padding:8px 10px;border-radius:8px;font-weight:600}
+    .nav-links > li > a:hover{background:var(--cream)}
+
+    /* Dropdown (desktop) */
+    .dropdown{position:absolute;left:0;top:46px;min-width:240px;background:#fff;border:1px solid #eee;border-radius:12px;box-shadow:var(--shadow);padding:10px;display:none}
+    .nav-links > li:hover .dropdown{display:block}
+    .dropdown a{display:block;padding:10px;border-radius:8px}
+    .dropdown a:hover{background:#f6f6f6}
+
+    /* Hamburger (mobile) */
+    .hamburger{display:none;position:relative;width:44px;height:44px;border:1px solid #e5e5e5;border-radius:10px;background:#fff}
+    .hamburger span{position:absolute;left:10px;right:10px;height:2px;background:#333;border-radius:2px;transition:.25s}
+    .hamburger span:nth-child(1){top:14px}
+    .hamburger span:nth-child(2){top:21px}
+    .hamburger span:nth-child(3){top:28px}
+    .hamburger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .hamburger[aria-expanded="true"] span:nth-child(2){opacity:0}
+    .hamburger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+    /* Mobile drawer */
+    .drawer{position:fixed;inset:64px 0 0 0;transform:translateX(100%);transition:.25s;background:#fff;z-index:40;overflow:auto}
+    .drawer.open{transform:none}
+    .drawer .group{border-top:1px solid #f0f0f0;padding:14px 16px}
+    .drawer summary{list-style:none;font-weight:700;color:var(--gold);cursor:pointer}
+    .drawer summary::-webkit-details-marker{display:none}
+    .drawer ul{margin:10px 0 0 0;padding:0}
+    .drawer li{list-style:none}
+    .drawer a{display:block;padding:10px 8px;border-radius:8px}
+    .drawer a:hover{background:#f6f6f6}
+
+    /* Desktop layout */
+    @media (min-width: 1024px){
+      .hamburger{display:none}
+      .nav-links{display:flex}
+      .drawer{display:none}
+    }
+    /* Mobile layout */
+    @media (max-width: 1023px){
+      .nav-links{display:none}
+      .hamburger{display:inline-block}
+    }
+
+    /* ======= Hero ======= */
+    .hero{background:linear-gradient(135deg,var(--cream),#fff);padding:48px 0 32px}
+    .hero__grid{display:grid;gap:20px;align-items:center}
+    @media(min-width: 900px){.hero__grid{grid-template-columns:1.1fr .9fr}}
+    .kicker{display:inline-block;background:var(--cream);color:var(--gold);border:1px solid var(--gold);padding:4px 10px;border-radius:999px;font-size:12px;font-weight:700}
+    .hero h1{font-size:clamp(28px,4vw,40px);line-height:1.3;margin:.4em 0;font-weight:900}
+    .lead{color:#555}
+    .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border-radius:12px;font-weight:700}
+    .btn--gold{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#fff;box-shadow:0 6px 18px rgba(161,146,118,.35)}
+    .btn--ghost{border:2px solid var(--gold);color:var(--gold);background:#fff}
+
+    .hero-card{background:#fff;border:1px solid #eee;border-radius:14px;padding:16px;box-shadow:var(--shadow)}
+
+    /* ======= Quick sections ======= */
+    section{padding:40px 0}
+    .section-title{text-align:center;margin-bottom:10px}
+    .cards{display:grid;gap:14px}
+    @media(min-width: 800px){.cards{grid-template-columns:repeat(3,1fr)}}
+    .card{background:#fff;border:1px solid #eee;border-radius:14px;padding:18px;box-shadow:var(--shadow)}
+    .card h3{margin:6px 0 8px;font-size:18px}
+    .card p{margin:0;color:#555;font-size:14px}
+
+    /* ======= Footer ======= */
+    footer{background:#111;color:#eee}
+    .foot{display:grid;gap:20px;padding:28px 0}
+    @media(min-width: 900px){.foot{grid-template-columns:1.2fr .8fr}}
+    .foot h4{margin:0 0 10px;color:var(--gold)}
+    .mini{font-size:12px;color:#aaa}
+  </style>
 </head>
 <body>
-  <h1>株式会社ホームマート ホームページ</h1>
-  <nav>
-  <a href="index.html">ホーム</a> |
-  <a href="company.html">会社概要</a> |
-  <a href="recruit.html">求人</a>
-  </nav>
+  <a href="#main" class="sr-only">本文へスキップ</a>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html" aria-label="ホーム">
+        <div class="brand__logo" aria-hidden="true"></div>
+        <div class="brand__name">株式会社ホームマート</div>
+      </a>
 
-  <main>
-    <h2>ようこそ</h2>
-    <p>当社は不動産売買仲介、買取再販、リフォームを手掛けています。</p>
+      <!-- Desktop navigation -->
+      <ul class="nav-links" role="menubar" aria-label="グローバルナビ">
+        <li><a href="index.html">ホーム</a></li>
+
+        <li>
+          <a href="company.html" aria-haspopup="true" aria-expanded="false">会社案内 ▾</a>
+          <div class="dropdown" role="menu">
+            <a href="company.html">会社概要</a>
+            <a href="greeting.html">代表挨拶</a>
+            <a href="philosophy.html">企業理念</a>
+            <a href="access.html">アクセスマップ</a>
+          </div>
+        </li>
+
+        <li>
+          <a href="buy/index.html" aria-haspopup="true" aria-expanded="false">不動産売買仲介 ▾</a>
+          <div class="dropdown" role="menu">
+            <a href="buy/list.html">売買仲介物件一覧</a>
+            <a href="search.html">物件検索</a>
+            <a href="buy/flow.html">購入の流れ</a>
+            <a href="buy/faq.html">購入Q&A</a>
+            <a href="sell/flow.html">売却の流れ</a>
+            <a href="assessment.html">査定依頼</a>
+            <a href="sell/cases.html">売却事例</a>
+            <a href="matching.html">購入希望者情報リスト</a>
+          </div>
+        </li>
+
+        <li>
+          <a href="business.html" aria-haspopup="true" aria-expanded="false">売買事業 ▾</a>
+          <div class="dropdown" role="menu">
+            <a href="business.html">事業内容</a>
+            <a href="area.html">取り扱いエリア</a>
+            <a href="transaction.html">取引の流れ</a>
+            <a href="voices.html">お客様の声</a>
+            <a href="cases.html">事例紹介</a>
+          </div>
+        </li>
+
+        <li>
+          <a href="reform/index.html" aria-haspopup="true" aria-expanded="false">リフォーム事業 ▾</a>
+          <div class="dropdown" role="menu">
+            <a href="reform/services.html">サービス内容</a>
+            <a href="reform/cases.html">リフォーム事例</a>
+            <a href="reform/flow.html">見積もり・施工の流れ</a>
+            <a href="reform/voices.html">お客様の声</a>
+          </div>
+        </li>
+
+        <li>
+          <a href="properties/index.html" aria-haspopup="true" aria-expanded="false">物件情報 ▾</a>
+          <div class="dropdown" role="menu">
+            <a href="properties/new.html">新着物件</a>
+            <a href="search.html">物件検索</a>
+          </div>
+        </li>
+
+        <li>
+          <a href="news/index.html" aria-haspopup="true" aria-expanded="false">お知らせ ▾</a>
+          <div class="dropdown" role="menu">
+            <a href="news/index.html">最新情報</a>
+            <a href="campaigns.html">イベント・キャンペーン</a>
+          </div>
+        </li>
+
+        <li><a href="recruit.html">採用情報</a></li>
+        <li><a href="contact/form.html">お問い合わせ</a></li>
+      </ul>
+
+      <!-- Mobile hamburger -->
+      <button class="hamburger" id="hamburger" aria-expanded="false" aria-controls="drawer" aria-label="メニューを開く">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <!-- Mobile drawer content -->
+    <nav id="drawer" class="drawer" aria-hidden="true">
+      <div class="container">
+        <div class="group"><a href="index.html">ホーム</a></div>
+        <details class="group">
+          <summary>会社案内</summary>
+          <ul>
+            <li><a href="company.html">会社概要</a></li>
+            <li><a href="greeting.html">代表挨拶</a></li>
+            <li><a href="philosophy.html">企業理念</a></li>
+            <li><a href="access.html">アクセスマップ</a></li>
+          </ul>
+        </details>
+        <details class="group">
+          <summary>不動産売買仲介</summary>
+          <ul>
+            <li><a href="buy/list.html">売買仲介物件一覧</a></li>
+            <li><a href="search.html">物件検索</a></li>
+            <li><a href="buy/flow.html">購入の流れ</a></li>
+            <li><a href="buy/faq.html">購入Q&A</a></li>
+            <li><a href="sell/flow.html">売却の流れ</a></li>
+            <li><a href="assessment.html">査定依頼</a></li>
+            <li><a href="sell/cases.html">売却事例</a></li>
+            <li><a href="matching.html">購入希望者情報リスト</a></li>
+          </ul>
+        </details>
+        <details class="group">
+          <summary>売買事業</summary>
+          <ul>
+            <li><a href="business.html">事業内容</a></li>
+            <li><a href="area.html">取り扱いエリア</a></li>
+            <li><a href="transaction.html">取引の流れ</a></li>
+            <li><a href="voices.html">お客様の声</a></li>
+            <li><a href="cases.html">事例紹介</a></li>
+          </ul>
+        </details>
+        <details class="group">
+          <summary>リフォーム事業</summary>
+          <ul>
+            <li><a href="reform/services.html">サービス内容</a></li>
+            <li><a href="reform/cases.html">リフォーム事例</a></li>
+            <li><a href="reform/flow.html">見積もり・施工の流れ</a></li>
+            <li><a href="reform/voices.html">お客様の声</a></li>
+          </ul>
+        </details>
+        <details class="group">
+          <summary>物件情報</summary>
+          <ul>
+            <li><a href="properties/new.html">新着物件</a></li>
+            <li><a href="search.html">物件検索</a></li>
+          </ul>
+        </details>
+        <details class="group">
+          <summary>お知らせ</summary>
+          <ul>
+            <li><a href="news/index.html">最新情報</a></li>
+            <li><a href="campaigns.html">イベント・キャンペーン</a></li>
+          </ul>
+        </details>
+        <div class="group"><a href="recruit.html">採用情報</a></div>
+        <details class="group">
+          <summary>お問い合わせ</summary>
+          <ul>
+            <li><a href="contact/form.html">お問い合わせフォーム</a></li>
+            <li><a href="contact/info.html">電話・メール</a></li>
+            <li><a href="contact/access.html">アクセス情報</a></li>
+          </ul>
+        </details>
+        <div class="group"><a href="privacy.html">プライバシーポリシー</a></div>
+        <div class="group"><a href="sitemap.html">サイトマップ</a></div>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero__grid">
+        <div>
+          <span class="kicker">不動産 × リフォーム × CENTURY 21</span>
+          <h1>売る・買う・直すを、<br/>ワンストップで。</h1>
+          <p class="lead">中古マンションの買取再販、売買仲介、リフォームまで一気通貫。地域に根ざしたスピード対応で、お客様の意思決定を支えます。</p>
+          <div class="cta">
+            <a class="btn btn--gold" href="assessment.html">📩 売却査定を依頼</a>
+            <a class="btn btn--ghost" href="search.html">🏠 物件を探す</a>
+            <a class="btn btn--ghost" href="recruit.html">💼 採用情報</a>
+          </div>
+        </div>
+        <div class="hero-card">
+          <strong>最新情報</strong>
+          <ul style="margin:10px 0 0 18px; color:#555;">
+            <li>新着物件を公開しました（物件情報 → 新着物件）</li>
+            <li>秋のリフォーム相談会を開催（お知らせ → イベント）</li>
+            <li>採用サイトを更新しました（採用情報）</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Links -->
+    <section>
+      <div class="container">
+        <h2 class="section-title">目的から探す</h2>
+        <div class="cards">
+          <a class="card" href="sell/flow.html">
+            <h3>不動産を売りたい</h3>
+            <p>売却の流れ・査定依頼・売却事例をご案内します。</p>
+          </a>
+          <a class="card" href="buy/flow.html">
+            <h3>不動産を買いたい</h3>
+            <p>購入ステップやよくある質問、物件検索はこちら。</p>
+          </a>
+          <a class="card" href="reform/services.html">
+            <h3>リフォームしたい</h3>
+            <p>サービス内容・施工事例・見積もりの流れを確認。</p>
+          </a>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <footer>
+    <div class="container foot">
+      <div>
+        <h4>株式会社ホームマート</h4>
+        <p class="mini">奈良県北葛城郡広陵町笠287-1 ／ 不動産売買仲介・買取再販・リフォーム</p>
+        <p class="mini">お客様専用ダイヤル：0120-43-8639 ／ 代表：050-7117-7107</p>
+      </div>
+      <div>
+        <h4>クイックリンク</h4>
+        <p class="mini"><a href="privacy.html">プライバシーポリシー</a> ／ <a href="sitemap.html">サイトマップ</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const btn = document.getElementById('hamburger');
+    const drawer = document.getElementById('drawer');
+    const body = document.body;
+    function toggleDrawer(force){
+      const open = force ?? !drawer.classList.contains('open');
+      drawer.classList.toggle('open', open);
+      btn.setAttribute('aria-expanded', String(open));
+      drawer.setAttribute('aria-hidden', String(!open));
+      body.style.overflow = open ? 'hidden' : '';
+    }
+    btn.addEventListener('click', ()=> toggleDrawer());
+    window.addEventListener('keydown', (e)=>{ if(e.key==='Escape') toggleDrawer(false); });
+  </script>
 </body>
 </html>
