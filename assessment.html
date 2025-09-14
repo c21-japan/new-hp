@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>不動産売却査定 | センチュリー21ホームマート</title>
+  <meta name="description" content="奈良・大阪の不動産売却査定。センチュリー21ホームマートが最高値での売却をサポート。AI査定で即時概算、訪問査定で正確な価格をご提案。">
+  
+  <!-- 共通スタイル -->
+  <link rel="stylesheet" href="/assets/site.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700;900&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --gold: #A19276;
+      --gold-light: #B8A082;
+      --black: #383635;
+      --cream: #F8F6F3;
+      --white: #fff;
+      --success: #22C55E;
+      --info: #3B82F6;
+      --danger: #EF4444;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      color: var(--black);
+      line-height: 1.7;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    /* ヒーローセクション */
+    .hero {
+      background: linear-gradient(135deg, var(--cream) 0%, var(--white) 100%);
+      padding: 60px 0 40px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(32px, 6vw, 48px);
+      font-weight: 900;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-subtitle {
+      font-size: 18px;
+      color: #666;
+      margin-bottom: 32px;
+      line-height: 1.8;
+    }
+
+    /* バッジ */
+    .badge-container {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+
+    .badge {
+      background: var(--white);
+      padding: 12px 24px;
+      border-radius: 50px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+    }
+
+    .badge-gold {
+      border: 2px solid var(--gold);
+      color: var(--gold);
+    }
+
+    .badge-success {
+      border: 2px solid var(--success);
+      color: var(--success);
+    }
+
+    /* 査定フォーム */
+    .assessment-form {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+      margin: -20px auto 40px;
+      max-width: 900px;
+      position: relative;
+      z-index: 10;
+    }
+
+    @media(max-width: 768px) {
+      .assessment-form {
+        padding: 24px;
+      }
+    }
+
+    .form-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .form-title {
+      font-size: 28px;
+      font-weight: 900;
+      margin-bottom: 12px;
+      color: var(--black);
+    }
+
+    .form-steps {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 32px;
+    }
+
+    .step {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--cream);
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      position: relative;
+      transition: all 0.3s;
+    }
+
+    .step.active {
+      background: var(--gold);
+      color: var(--white);
+      transform: scale(1.1);
+    }
+
+    .step.completed {
+      background: var(--success);
+      color: var(--white);
+    }
+
+    .step-line {
+      position: absolute;
+      top: 50%;
+      left: 100%;
+      width: 40px;
+      height: 2px;
+      background: var(--cream);
+      z-index: -1;
+    }
+
+    /* フォームグループ */
+    .form-group {
+      margin-bottom: 24px;
+    }
+
+    .form-label {
+      display: block;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--black);
+    }
+
+    .required {
+      color: var(--danger);
+      margin-left: 4px;
+    }
+
+    .form-input,
+    .form-select,
+    .form-textarea {
+      width: 100%;
+      padding: 14px 16px;
+      border: 2px solid #e5e5e5;
+      border-radius: 12px;
+      font-size: 16px;
+      transition: all 0.3s;
+      font-family: inherit;
+    }
+
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus {
+      outline: none;
+      border-color: var(--gold);
+      box-shadow: 0 0 0 4px rgba(161,146,118,0.1);
+    }
+
+    .form-textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    /* ラジオボタン・チェックボックス */
+    .radio-group,
+    .checkbox-group {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 12px;
+    }
+
+    .radio-item,
+    .checkbox-item {
+      background: var(--cream);
+      padding: 16px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .radio-item:hover,
+    .checkbox-item:hover {
+      background: var(--gold);
+      color: var(--white);
+    }
+
+    .radio-item input[type="radio"],
+    .checkbox-item input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      accent-color: var(--gold);
+    }
+
+    .radio-item.selected,
+    .checkbox-item.selected {
+      background: var(--gold);
+      color: var(--white);
+    }
+
+    /* AI査定結果 */
+    .ai-result {
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      color: var(--white);
+      padding: 32px;
+      border-radius: 16px;
+      margin: 32px 0;
+      text-align: center;
+      display: none;
+    }
+
+    .ai-result.show {
+      display: block;
+      animation: slideIn 0.5s ease;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .ai-price {
+      font-size: 48px;
+      font-weight: 900;
+      margin: 16px 0;
+    }
+
+    .ai-range {
+      font-size: 20px;
+      opacity: 0.9;
+    }
+
+    /* ボタン */
+    .btn {
+      padding: 16px 32px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      color: var(--white);
+      box-shadow: 0 8px 24px rgba(161,146,118,0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(161,146,118,0.4);
+    }
+
+    .btn-secondary {
+      background: var(--white);
+      color: var(--gold);
+      border: 2px solid var(--gold);
+    }
+
+    .btn-secondary:hover {
+      background: var(--cream);
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 32px;
+    }
+
+    /* プログレスバー */
+    .progress-bar {
+      background: var(--cream);
+      height: 8px;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 32px;
+    }
+
+    .progress-fill {
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+      height: 100%;
+      width: 33%;
+      transition: width 0.5s ease;
+    }
+
+    /* 特徴カード */
+    .feature-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 24px;
+      margin: 40px 0;
+    }
+
+    .feature-card {
+      background: var(--white);
+      padding: 24px;
+      border-radius: 16px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      text-align: center;
+      transition: transform 0.3s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    }
+
+    .feature-icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+
+    .feature-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--black);
+    }
+
+    .feature-desc {
+      font-size: 14px;
+      color: #666;
+      line-height: 1.6;
+    }
+
+    /* FAQ */
+    .faq-section {
+      background: var(--cream);
+      padding: 60px 0;
+      margin-top: 60px;
+    }
+
+    .faq-item {
+      background: var(--white);
+      border-radius: 12px;
+      margin-bottom: 16px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .faq-question {
+      padding: 20px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.3s;
+    }
+
+    .faq-question:hover {
+      background: var(--cream);
+    }
+
+    .faq-answer {
+      padding: 0 20px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s, padding 0.3s;
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 300px;
+      padding: 0 20px 20px;
+    }
+
+    .faq-arrow {
+      transition: transform 0.3s;
+    }
+
+    .faq-item.open .faq-arrow {
+      transform: rotate(180deg);
+    }
+
+    /* ローディング */
+    .loading {
+      display: none;
+      text-align: center;
+      padding: 40px;
+    }
+
+    .loading.show {
+      display: block;
+    }
+
+    .spinner {
+      width: 50px;
+      height: 50px;
+      border: 4px solid var(--cream);
+      border-top: 4px solid var(--gold);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 16px;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* レスポンシブ */
+    @media(max-width: 768px) {
+      .form-steps {
+        transform: scale(0.8);
+      }
+      
+      .ai-price {
+        font-size: 36px;
+      }
+      
+      .feature-cards {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- ヘッダー -->
+  <div id="site-header"></div>
+
+  <!-- ヒーローセクション -->
+  <section class="hero">
+    <div class="container">
+      <h1>不動産売却査定</h1>
+      <p class="hero-subtitle">
+        センチュリー21の全国ネットワークと<br>
+        地域密着の提案力で最高値売却を実現
+      </p>
+      
+      <div class="badge-container">
+        <div class="badge badge-gold">
+          <span>🏆</span>
+          <span>売却実績No.1</span>
+        </div>
+        <div class="badge badge-success">
+          <span>⚡</span>
+          <span>最短60秒査定</span>
+        </div>
+        <div class="badge badge-gold">
+          <span>🔒</span>
+          <span>個人情報保護</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 査定フォーム -->
+  <section>
+    <div class="container">
+      <div class="assessment-form">
+        <div class="form-header">
+          <h2 class="form-title">無料査定フォーム</h2>
+          <p>簡単3ステップで査定額がわかる</p>
+        </div>
+
+        <!-- プログレスバー -->
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressBar"></div>
+        </div>
+
+        <!-- ステップ表示 -->
+        <div class="form-steps">
+          <div class="step active" id="step1">
+            1
+            <div class="step-line"></div>
+          </div>
+          <div class="step" id="step2">
+            2
+            <div class="step-line"></div>
+          </div>
+          <div class="step" id="step3">
+            3
+          </div>
+        </div>
+
+        <form id="assessmentForm">
+          <!-- STEP 1: 物件情報 -->
+          <div class="form-step" id="formStep1">
+            <h3 style="text-align:center;margin-bottom:24px;color:var(--gold)">
+              STEP 1: 物件情報
+            </h3>
+
+            <div class="form-group">
+              <label class="form-label">
+                物件種別<span class="required">*</span>
+              </label>
+              <div class="radio-group">
+                <label class="radio-item">
+                  <input type="radio" name="propertyType" value="house" required>
+                  <span>🏠 一戸建て</span>
+                </label>
+                <label class="radio-item">
+                  <input type="radio" name="propertyType" value="apartment" required>
+                  <span>🏢 マンション</span>
+                </label>
+                <label class="radio-item">
+                  <input type="radio" name="propertyType" value="land" required>
+                  <span>🏞️ 土地</span>
+                </label>
+                <label class="radio-item">
+                  <input type="radio" name="propertyType" value="other" required>
+                  <span>🏗️ その他</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">
+                物件所在地<span class="required">*</span>
+              </label>
+              <div style="display:grid;grid-template-columns:1fr 2fr;gap:12px">
+                <select class="form-select" name="prefecture" required>
+                  <option value="">都道府県</option>
+                  <option value="nara">奈良県</option>
+                  <option value="osaka">大阪府</option>
+                  <option value="kyoto">京都府</option>
+                  <option value="hyogo">兵庫県</option>
+                  <option value="shiga">滋賀県</option>
+                  <option value="wakayama">和歌山県</option>
+                </select>
+                <input type="text" class="form-input" name="address" placeholder="市区町村・番地" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">
+                築年数
+              </label>
+              <select class="form-select" name="buildingAge">
+                <option value="">選択してください</option>
+                <option value="new">新築</option>
+                <option value="1-5">1〜5年</option>
+                <option value="6-10">6〜10年</option>
+                <option value="11-15">11〜15年</option>
+                <option value="16-20">16〜20年</option>
+                <option value="21-25">21〜25年</option>
+                <option value="26-30">26〜30年</option>
+                <option value="31+">31年以上</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">
+                専有面積（㎡）
+              </label>
+              <input type="number" class="form-input" name="area" placeholder="例：85.5">
+            </div>
+
+            <div class="btn-group">
+              <button type="button" class="btn btn-primary" onclick="nextStep(1)">
+                次へ進む →
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 2: 売却情報 -->
+          <div class="form-step" id="formStep2" style="display:none">
+            <h3 style="text-align:center;margin-bottom:24px;color:var(--gold)">
+              STEP 2: 売却情報
+            </h3>
+
+            <div class="form-group">
+              <label class="form-label">
+                売却希望時期<span class="required">*</span>
+              </label>
+              <div class="radio-group">
+                <label class="radio-item">
+                  <input type="radio" name="timing" value="asap" required>
+                  <span>できるだけ早く</span>
+                </label>
+                <label class="radio-item">
+                  <input type="radio" name="timing" value="3months" required>
+                  <span>3ヶ月以内</span>
+                </label>
+                <label class="radio-item">
+                  <input type="radio" name="timing" value="6months" required>
+                  <span>6ヶ月以内</span>
+                </label>
+                <label class="radio-item">
+                  <input type="radio" name="timing" value="1year" required>
+                  <span>1年以内</span>
+                </label>
+                <label class="radio-item">
+                  <input type="radio" name="timing" value="undecided" required>
+                  <span>まだ決めていない</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">
+                売却理由
+              </label>
+              <div class="checkbox-group">
+                <label class="checkbox-item">
+                  <input type="checkbox" name="reason" value="relocation">
+                  <span>住み替え</span>
+                </label>
+                <label class="checkbox-item">
+                  <input type="checkbox" name="reason" value="inheritance">
+                  <span>相続</span>
+                </label>
+                <label class="checkbox-item">
+                  <input type="checkbox" name="reason" value="divorce">
+                  <span>離婚</span>
+                </label>
+                <label class="checkbox-item">
+                  <input type="checkbox" name="reason" value="asset">
+                  <span>資産整理</span>
+                </label>
+                <label class="checkbox-item">
+                  <input type="checkbox" name="reason" value="financial">
+                  <span>資金調達</span>
+                </label>
+                <label class="checkbox-item">
+                  <input type="checkbox" name="reason" value="other">
+                  <span>その他</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">
+                ご要望・ご質問
+              </label>
+              <textarea class="form-textarea" name="message" placeholder="売却に関するご要望やご質問があればご記入ください"></textarea>
+            </div>
+
+            <div class="btn-group">
+              <button type="button" class="btn btn-secondary" onclick="prevStep(2)">
+                ← 戻る
+              </button>
+              <button type="button" class="btn btn-primary" onclick="nextStep(2)">
+                次へ進む →
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 3: お客様情報 -->
+          <div class="form-step" id="formStep3" style="display:none">
+            <h3 style="text-align:center;margin-bottom:24px;color:var(--gold)">
+              STEP 3: お客様情報
+            </h3>
+
+            <div class="form-group">
+              <label class="form-label">
+                お名前<span class="required">*</span>
+              </label>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+                <input type="text" class="form-input" name="lastName" placeholder="姓" required>
+                <input type="text" class="form-input" name="firstName" placeholder="名" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">
+                フリガナ<span class="required">*</span>
+              </label>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+                <input type="text" class="form-input" name="lastNameKana" placeholder="セイ" required>
+                <input type="text" class="form-input" name="firstNameKana" placeholder="メイ" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">
+                電話番号<span class="required">*</span>
+              </label>
+              <input type="tel" class="form-input" name="phone" placeholder="090-1234-5678" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">
+                メールアドレス<span class="required">*</span>
+              </label>
+              <input type="email" class="form-input" name="email" placeholder="example@email.com" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">
+                希望連絡方法
+              </label>
+              <div class="checkbox-group">
+                <label class="checkbox-item">
+                  <input type="checkbox" name="contact" value="phone" checked>
+                  <span>📞 電話</span>
+                </label>
+                <label class="checkbox-item">
+                  <input type="checkbox" name="contact" value="email">
+                  <span>📧 メール</span>
+                </label>
+                <label class="checkbox-item">
+                  <input type="checkbox" name="contact" value="line">
+                  <span>💬 LINE</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="btn-group">
+              <button type="button" class="btn btn-secondary" onclick="prevStep(3)">
+                ← 戻る
+              </button>
+              <button type="submit" class="btn btn-primary" style="background:linear-gradient(135deg,#22C55E,#16A34A)">
+                <span>🚀</span>
+                <span>無料査定を申し込む</span>
+              </button>
+            </div>
+          </div>
+        </form>
+
+        <!-- ローディング -->
+        <div class="loading" id="loading">
+          <div class="spinner"></div>
+          <p>AI査定中...</p>
+        </div>
+
+        <!-- AI査定結果 -->
+        <div class="ai-result" id="aiResult">
+          <h3 style="font-size:24px;margin-bottom:16px">AI査定結果</h3>
+          <div class="ai-price">3,280万円</div>
+          <div class="ai-range">（2,950万円 〜 3,610万円）</div>
+          <p style="margin-top:24px;font-size:14px">
+            ※これは概算査定額です。正確な査定額は訪問査定でご提案します。
+          </p>
+          <div class="btn-group">
+            <button class="btn btn-secondary" style="background:var(--white);color:var(--gold)">
+              詳細査定を依頼
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 特徴 -->
+      <div class="feature-cards">
+        <div class="feature-card">
+          <div class="feature-icon">🏆</div>
+          <h3 class="feature-title">売却実績No.1</h3>
+          <p class="feature-desc">センチュリー21の全国ネットワークで最適な買主を見つけます</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">💰</div>
+          <h3 class="feature-title">最高値売却</h3>
+          <p class="feature-desc">独自の販売戦略と価格交渉力で相場以上の売却を実現</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔧</div>
+          <h3 class="feature-title">リフォーム提案</h3>
+          <p class="feature-desc">自社施工でリフォーム後の売却もサポート</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📞</div>
+          <h3 class="feature-title">安心サポート</h3>
+          <p class="feature-desc">専任担当者が売却完了まで徹底サポート</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section">
+    <div class="container">
+      <h2 style="text-align:center;font-size:32px;margin-bottom:40px">よくある質問</h2>
+      
+      <div class="faq-item">
+        <div class="faq-question">
+          査定は本当に無料ですか？
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p>はい、査定は完全無料です。机上査定・訪問査定ともに費用は一切かかりません。売却が成立した場合のみ、法定の仲介手数料をいただきます。</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          査定後は必ず売却しなければいけませんか？
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p>いいえ、査定を受けたからといって売却の義務はありません。査定額や市場動向を参考に、じっくりご検討ください。</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          他社で査定を受けていても大丈夫ですか？
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p>もちろん大丈夫です。複数社の査定を比較検討されることをおすすめします。センチュリー21の強みを活かした最適なご提案をさせていただきます。</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          住宅ローンが残っていても売却できますか？
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p>はい、可能です。売却代金でローンを完済できる場合は問題ありません。残債が売却価格を上回る場合も、任意売却などの方法をご提案します。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- フッター -->
+  <div id="site-footer"></div>
+
+  <!-- JavaScript -->
+  <script src="/assets/js/layout.js"></script>
+  <script>
+    // フォームステップ管理
+    let currentStep = 1;
+
+    function updateProgress() {
+      const progressBar = document.getElementById('progressBar');
+      const progress = (currentStep / 3) * 100;
+      progressBar.style.width = progress + '%';
+
+      // ステップインジケーター更新
+      for(let i = 1; i <= 3; i++) {
+        const step = document.getElementById('step' + i);
+        if(i < currentStep) {
+          step.classList.add('completed');
+          step.classList.remove('active');
+        } else if(i === currentStep) {
+          step.classList.add('active');
+          step.classList.remove('completed');
+        } else {
+          step.classList.remove('active', 'completed');
+        }
+      }
+    }
+
+    function nextStep(step) {
+      // バリデーション
+      const currentForm = document.getElementById('formStep' + step);
+      const requiredFields = currentForm.querySelectorAll('[required]');
+      let isValid = true;
+
+      requiredFields.forEach(field => {
+        if(!field.value && field.type !== 'radio') {
+          isValid = false;
+          field.style.borderColor = 'var(--danger)';
+        } else if(field.type === 'radio') {
+          const radioGroup = currentForm.querySelectorAll(`[name="${field.name}"]`);
+          const isChecked = Array.from(radioGroup).some(radio => radio.checked);
+          if(!isChecked) {
+            isValid = false;
+          }
+        }
+      });
+
+      if(!isValid) {
+        alert('必須項目を入力してください');
+        return;
+      }
+
+      // 次のステップへ
+      document.getElementById('formStep' + step).style.display = 'none';
+      document.getElementById('formStep' + (step + 1)).style.display = 'block';
+      currentStep = step + 1;
+      updateProgress();
+      
+      // スクロール
+      document.querySelector('.assessment-form').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function prevStep(step) {
+      document.getElementById('formStep' + step).style.display = 'none';
+      document.getElementById('formStep' + (step - 1)).style.display = 'block';
+      currentStep = step - 1;
+      updateProgress();
+    }
+
+    // ラジオボタン・チェックボックスのスタイル管理
+    document.querySelectorAll('.radio-item').forEach(item => {
+      item.addEventListener('click', function() {
+        const radio = this.querySelector('input[type="radio"]');
+        const name = radio.name;
+        document.querySelectorAll(`input[name="${name}"]`).forEach(r => {
+          r.closest('.radio-item').classList.remove('selected');
+        });
+        this.classList.add('selected');
+        radio.checked = true;
+      });
+    });
+
+    document.querySelectorAll('.checkbox-item').forEach(item => {
+      item.addEventListener('click', function() {
+        const checkbox = this.querySelector('input[type="checkbox"]');
+        checkbox.checked = !checkbox.checked;
+        this.classList.toggle('selected');
+      });
+    });
+
+    // FAQ開閉
+    document.querySelectorAll('.faq-question').forEach(question => {
+      question.addEventListener('click', function() {
+        this.parentElement.classList.toggle('open');
+      });
+    });
+
+    // フォーム送信
+    document.getElementById('assessmentForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // ローディング表示
+      document.getElementById('formStep3').style.display = 'none';
+      document.getElementById('loading').classList.add('show');
+      
+      // AI査定シミュレーション
+      setTimeout(() => {
+        document.getElementById('loading').classList.remove('show');
+        document.getElementById('aiResult').classList.add('show');
+        
+        // フォームデータ送信（実際の実装時）
+        // const formData = new FormData(this);
+        // fetch('/api/assessment', { method: 'POST', body: formData })
+      }, 2000);
+    });
+
+    // エラー時のボーダー色リセット
+    document.querySelectorAll('.form-input, .form-select').forEach(field => {
+      field.addEventListener('input', function() {
+        if(this.value) {
+          this.style.borderColor = '#e5e5e5';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
