@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>任意売却相談 | センチュリー21ホームマート</title>
+  <meta name="description" content="住宅ローン返済でお困りの方へ。センチュリー21ホームマートが任意売却で新しいスタートをサポート。相談無料・秘密厳守。">
+  
+  <!-- 共通スタイル -->
+  <link rel="stylesheet" href="/assets/site.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700;900&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --gold: #A19276;
+      --gold2: #B8A082;
+      --black: #383635;
+      --ink: #222;
+      --cream: #F8F6F3;
+      --bg: #fff;
+      --success: #22C55E;
+      --info: #3B82F6;
+      --danger: #EF4444;
+      --max: 1200px;
+      --shadow: 0 8px 24px rgba(0,0,0,.08);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.7;
+    }
+
+    .container {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    /* ヒーローセクション */
+    .hero {
+      background: linear-gradient(135deg, var(--cream) 0%, var(--bg) 100%);
+      padding: 80px 0 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(161,146,118,0.05), transparent);
+      animation: rotate 30s linear infinite;
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    @media(min-width: 900px) {
+      .hero-content {
+        grid-template-columns: 1.2fr 1fr;
+      }
+    }
+
+    .hero h1 {
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 900;
+      margin-bottom: 24px;
+      line-height: 1.3;
+    }
+
+    .gold-text {
+      background: linear-gradient(135deg, var(--gold), var(--gold2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-subtitle {
+      font-size: 18px;
+      color: #666;
+      margin-bottom: 32px;
+      line-height: 1.8;
+    }
+
+    /* バッジ */
+    .badge {
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 700;
+      margin-right: 8px;
+      margin-bottom: 8px;
+    }
+
+    .badge-success {
+      background: #DCFCE7;
+      color: var(--success);
+      border: 1px solid var(--success);
+    }
+
+    .badge-gold {
+      background: var(--cream);
+      color: var(--gold);
+      border: 1px solid var(--gold);
+    }
+
+    /* ボタン */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 16px 32px;
+      border-radius: 12px;
+      font-weight: 700;
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(0,0,0,.15);
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, var(--gold), var(--gold2));
+      color: #fff;
+      box-shadow: 0 6px 18px rgba(161,146,118,.35);
+    }
+
+    .btn-ghost {
+      border: 2px solid var(--gold);
+      color: var(--gold);
+      background: #fff;
+    }
+
+    .btn-ghost:hover {
+      background: var(--cream);
+    }
+
+    .btn-success {
+      background: linear-gradient(135deg, var(--success), #16A34A);
+      color: #fff;
+      box-shadow: 0 6px 18px rgba(34,197,94,.35);
+    }
+
+    /* カード */
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,.12);
+    }
+
+    .card-icon {
+      width: 64px;
+      height: 64px;
+      background: linear-gradient(135deg, var(--gold), var(--gold2));
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    /* セクション */
+    section {
+      padding: 60px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 900;
+      margin-bottom: 16px;
+      color: var(--black);
+    }
+
+    .section-title p {
+      font-size: 18px;
+      color: #666;
+    }
+
+    /* スタッフセクション */
+    .staff-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 32px;
+      margin-bottom: 48px;
+    }
+
+    .staff-card {
+      text-align: center;
+    }
+
+    .staff-image {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin: 0 auto 16px;
+      object-fit: cover;
+      border: 4px solid var(--cream);
+      box-shadow: 0 8px 24px rgba(0,0,0,.1);
+    }
+
+    /* 解決策グリッド */
+    .solution-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .solution-card {
+      background: var(--cream);
+      padding: 24px;
+      border-radius: 12px;
+      border-left: 4px solid var(--gold);
+    }
+
+    .solution-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--black);
+    }
+
+    /* プロセス */
+    .process-timeline {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .process-item {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 40px;
+      position: relative;
+    }
+
+    .process-item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: 31px;
+      top: 64px;
+      width: 2px;
+      height: calc(100% + 20px);
+      background: var(--cream);
+    }
+
+    .process-number {
+      width: 64px;
+      height: 64px;
+      background: var(--gold);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .process-content {
+      flex: 1;
+      background: #fff;
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+    }
+
+    .process-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--black);
+    }
+
+    /* お客様の声 */
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 32px;
+    }
+
+    .testimonial-card {
+      background: var(--cream);
+      padding: 32px;
+      border-radius: 16px;
+      position: relative;
+    }
+
+    .testimonial-card::before {
+      content: '"';
+      position: absolute;
+      top: 16px;
+      left: 24px;
+      font-size: 48px;
+      color: var(--gold);
+      opacity: 0.3;
+      font-weight: 900;
+    }
+
+    .testimonial-content {
+      position: relative;
+      z-index: 1;
+      margin-bottom: 20px;
+      padding-top: 20px;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(161,146,118,0.2);
+    }
+
+    .testimonial-avatar {
+      width: 48px;
+      height: 48px;
+      background: var(--gold);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+
+    /* FAQ */
+    .faq-list {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      background: #fff;
+      border-radius: 12px;
+      margin-bottom: 16px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .faq-question {
+      padding: 24px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.3s;
+    }
+
+    .faq-question:hover {
+      background: var(--cream);
+    }
+
+    .faq-question-text {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .faq-q {
+      width: 32px;
+      height: 32px;
+      background: var(--gold);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .faq-arrow {
+      transition: transform 0.3s;
+      color: var(--gold);
+    }
+
+    .faq-item.open .faq-arrow {
+      transform: rotate(180deg);
+    }
+
+    .faq-answer {
+      padding: 0 24px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s, padding 0.3s;
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 500px;
+      padding: 0 24px 24px;
+    }
+
+    /* CTA セクション */
+    .cta-section {
+      background: linear-gradient(135deg, var(--gold), var(--gold2));
+      color: #fff;
+      padding: 80px 0;
+      text-align: center;
+    }
+
+    .cta-title {
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 900;
+      margin-bottom: 24px;
+    }
+
+    .cta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 32px;
+      max-width: 900px;
+      margin: 48px auto;
+    }
+
+    .cta-card {
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+      padding: 32px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .cta-icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+
+    .cta-number {
+      font-size: 28px;
+      font-weight: 900;
+      margin: 16px 0;
+    }
+
+    /* 統計 */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+      margin: 40px 0;
+    }
+
+    .stat-card {
+      text-align: center;
+      padding: 24px;
+      background: var(--cream);
+      border-radius: 12px;
+    }
+
+    .stat-number {
+      font-size: 36px;
+      font-weight: 900;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      font-size: 14px;
+      color: #666;
+    }
+
+    /* レスポンシブ */
+    @media(max-width: 768px) {
+      .hero-content {
+        grid-template-columns: 1fr;
+      }
+      
+      .staff-grid,
+      .solution-grid,
+      .testimonial-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .process-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      
+      .process-item:not(:last-child)::after {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- ヘッダー -->
+  <div id="site-header"></div>
+
+  <!-- ヒーローセクション -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div>
+          <div class="badge badge-success">
+            <span>🛡️</span>
+            <span>安心の無料相談・秘密厳守</span>
+          </div>
+          
+          <h1>
+            住宅ローンのお悩み、<br>
+            <span class="gold-text">一緒に解決しましょう</span>
+          </h1>
+          
+          <p class="hero-subtitle">
+            センチュリー21の全国ネットワークと<br>
+            地域密着の温かいサポートで<br>
+            あなたの新しいスタートを応援します
+          </p>
+          
+          <div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:32px">
+            <a href="tel:0120438639" class="btn btn-gold">
+              <span>📞</span>
+              <span>今すぐ無料相談</span>
+            </a>
+            <a href="https://line.me/ti/p/0_Cxj91mML" class="btn btn-ghost">
+              <span>💬</span>
+              <span>LINE相談</span>
+            </a>
+          </div>
+          
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-number">100%</div>
+              <div class="stat-label">相談料無料</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">24h</div>
+              <div class="stat-label">LINE対応</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">秘密</div>
+              <div class="stat-label">厳守</div>
+            </div>
+          </div>
+        </div>
+        
+        <div>
+          <img src="https://raw.githubusercontent.com/c21-japan/century21-homemart-lp/main/19_family改.jpg" 
+               alt="家族の安心" 
+               style="width:100%;border-radius:16px;box-shadow:var(--shadow)">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- スタッフ紹介 -->
+  <section style="background:var(--cream)">
+    <div class="container">
+      <div class="section-title">
+        <h2>私たちが<span class="gold-text">全力サポート</span>します</h2>
+        <p>経験豊富なスタッフが親身になってご相談をお受けします</p>
+      </div>
+      
+      <div class="staff-grid">
+        <div class="card staff-card">
+          <img src="https://raw.githubusercontent.com/c21-japan/century21-homemart-lp/main/01_shinchan.jpg" 
+               alt="代表 乾" 
+               class="staff-image">
+          <h3 style="font-size:20px;font-weight:700;margin-bottom:8px">代表 乾 佑企</h3>
+          <p style="color:#666;margin-bottom:16px">
+            お客様の人生の転機を<br>
+            全力でサポートいたします
+          </p>
+          <div class="badge badge-gold">
+            <span>🏆</span>
+            <span>10年以上の実績</span>
+          </div>
+        </div>
+        
+        <div class="card staff-card">
+          <img src="https://raw.githubusercontent.com/c21-japan/century21-homemart-lp/main/14_shiro.jpg" 
+               alt="専門スタッフ" 
+               class="staff-image">
+          <h3 style="font-size:20px;font-weight:700;margin-bottom:8px">専門相談員</h3>
+          <p style="color:#666;margin-bottom:16px">
+            任意売却の専門知識で<br>
+            最適な解決策をご提案
+          </p>
+          <div class="badge badge-gold">
+            <span>📜</span>
+            <span>有資格者在籍</span>
+          </div>
+        </div>
+        
+        <div class="card staff-card">
+          <img src="https://raw.githubusercontent.com/c21-japan/century21-homemart-lp/main/18_shiro.jpg" 
+               alt="サポートスタッフ" 
+               class="staff-image">
+          <h3 style="font-size:20px;font-weight:700;margin-bottom:8px">サポートチーム</h3>
+          <p style="color:#666;margin-bottom:16px">
+            売却後の生活まで<br>
+            しっかりサポート
+          </p>
+          <div class="badge badge-gold">
+            <span>❤️</span>
+            <span>親身な対応</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 解決方法 -->
+  <section>
+    <div class="container">
+      <div class="section-title">
+        <h2>あなたに最適な<span class="gold-text">解決方法</span>をご提案</h2>
+        <p>お客様の状況に応じて、様々な解決策をご用意しています</p>
+      </div>
+      
+      <div class="solution-grid">
+        <div class="solution-card">
+          <h3 class="solution-title">🏠 任意売却</h3>
+          <p style="color:#666">
+            競売より高値で売却し、残債を最小限に抑えます。
+            債権者との交渉も全てお任せください。
+          </p>
+        </div>
+        
+        <div class="solution-card">
+          <h3 class="solution-title">🔄 リースバック</h3>
+          <p style="color:#666">
+            売却後も同じ家に住み続けられる方法です。
+            お子様の学校も変わらず安心です。
+          </p>
+        </div>
+        
+        <div class="solution-card">
+          <h3 class="solution-title">💰 返済条件変更</h3>
+          <p style="color:#666">
+            金融機関との交渉で月々の返済額を軽減。
+            無理のない返済計画を立てます。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- プロセス -->
+  <section style="background:var(--cream)">
+    <div class="container">
+      <div class="section-title">
+        <h2><span class="gold-text">簡単3ステップ</span>で解決へ</h2>
+        <p>お問い合わせから解決まで、スムーズにサポートします</p>
+      </div>
+      
+      <div class="process-timeline">
+        <div class="process-item">
+          <div class="process-number">1</div>
+          <div class="process-content">
+            <h3 class="process-title">まずは無料相談</h3>
+            <p style="color:#666;margin-bottom:16px">
+              お電話・LINE・メールで、現在の状況をお聞かせください。
+              相談は完全無料、秘密厳守でお受けします。
+            </p>
+            <div style="display:flex;gap:8px;flex-wrap:wrap">
+              <span class="badge badge-success">📞 電話相談</span>
+              <span class="badge badge-success">💬 LINE相談</span>
+              <span class="badge badge-success">📧 メール相談</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="process-item">
+          <div class="process-number">2</div>
+          <div class="process-content">
+            <h3 class="process-title">最適プランのご提案</h3>
+            <p style="color:#666">
+              物件査定と債権者調査を行い、お客様に最適な解決プランをご提案します。
+              複数の選択肢から選べるので安心です。
+            </p>
+          </div>
+        </div>
+        
+        <div class="process-item">
+          <div class="process-number">3</div>
+          <div class="process-content">
+            <h3 class="process-title">実行とアフターフォロー</h3>
+            <p style="color:#666">
+              債権者との交渉から売却手続きまで全てお任せください。
+              売却後の新生活のサポートも行います。
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- お客様の声 -->
+  <section>
+    <div class="container">
+      <div class="section-title">
+        <h2>解決事例と<span class="gold-text">お客様の声</span></h2>
+        <p>多くの方が新しい人生をスタートされています</p>
+      </div>
+      
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <p>
+              コロナの影響で収入が激減し、途方に暮れていました。
+              センチュリー21さんに相談したところ、親身になって話を聞いてくださり、
+              任意売却で無事解決。新しい生活を始めることができました。
+            </p>
+          </div>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">40代</div>
+            <div>
+              <div style="font-weight:700">40代 男性</div>
+              <div style="font-size:14px;color:#666">奈良市在住</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <p>
+              離婚後、一人では住宅ローンが払えなくなりました。
+              リースバックという方法を提案していただき、
+              子供の学校も変わらず、同じ家に住み続けられて本当に助かりました。
+            </p>
+          </div>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">50代</div>
+            <div>
+              <div style="font-weight:700">50代 女性</div>
+              <div style="font-size:14px;color:#666">香芝市在住</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section style="background:var(--cream)">
+    <div class="container">
+      <div class="section-title">
+        <h2>よくある<span class="gold-text">ご質問</span></h2>
+      </div>
+      
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-question">
+            <div class="faq-question-text">
+              <span class="faq-q">Q</span>
+              <span>本当に相談は無料ですか？</span>
+            </div>
+            <span class="faq-arrow">▼</span>
+          </div>
+          <div class="faq-answer">
+            <p style="color:#666">
+              はい、完全無料です。相談・査定・プラン提案まで一切費用はかかりません。
+              売却が成立した場合のみ、法定の仲介手数料をいただきます。
+            </p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">
+            <div class="faq-question-text">
+              <span class="faq-q">Q</span>
+              <span>家族や近所に知られませんか？</span>
+            </div>
+            <span class="faq-arrow">▼</span>
+          </div>
+          <div class="faq-answer">
+            <p style="color:#666">
+              秘密厳守で対応いたします。通常の不動産売却と同じ方法で進めるため、
+              任意売却であることが周囲に知られることはありません。
+            </p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">
+            <div class="faq-question-text">
+              <span class="faq-q">Q</span>
+              <span>どのくらいの期間で解決できますか？</span>
+            </div>
+            <span class="faq-arrow">▼</span>
+          </div>
+          <div class="faq-answer">
+            <p style="color:#666">
+              通常3〜6ヶ月程度です。ただし、競売開始前であることが条件となりますので、
+              お早めのご相談をおすすめします。
+            </p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">
+            <div class="faq-question-text">
+              <span class="faq-q">Q</span>
+              <span>残債が残った場合はどうなりますか？</span>
+            </div>
+            <span class="faq-arrow">▼</span>
+          </div>
+          <div class="faq-answer">
+            <p style="color:#666">
+              債権者との交渉により、無理のない範囲での分割返済が可能です。
+              生活に支障のない返済計画を立てるお手伝いをいたします。
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <h2 class="cta-title">今すぐ無料相談を</h2>
+      <p style="font-size:20px;margin-bottom:48px">
+        一人で悩まないでください。<br>
+        私たちが全力であなたをサポートします。
+      </p>
+      
+      <div class="cta-grid">
+        <div class="cta-card">
+          <div class="cta-icon">📞</div>
+          <h3 style="font-size:20px;margin-bottom:8px">お電話での相談</h3>
+          <p style="margin-bottom:16px">9:00〜18:00（年中無休）</p>
+          <div class="cta-number">0120-43-8639</div>
+          <a href="tel:0120438639" class="btn" style="background:white;color:var(--gold);margin-top:16px">
+            今すぐ電話する
+          </a>
+        </div>
+        
+        <div class="cta-card">
+          <div class="cta-icon">💬</div>
+          <h3 style="font-size:20px;margin-bottom:8px">LINEでの相談</h3>
+          <p style="margin-bottom:16px">24時間365日対応</p>
+          <p style="font-size:18px;margin-bottom:16px">お気軽にメッセージを</p>
+          <a href="https://line.me/ti/p/0_Cxj91mML" class="btn" style="background:white;color:var(--gold);margin-top:16px">
+            LINE相談する
+          </a>
+        </div>
+        
+        <div class="cta-card">
+          <div class="cta-icon">📧</div>
+          <h3 style="font-size:20px;margin-bottom:8px">メールでの相談</h3>
+          <p style="margin-bottom:16px">24時間受付中</p>
+          <p style="font-size:18px;margin-bottom:16px">詳しい資料もお送りします</p>
+          <a href="https://form.run/@century21top" class="btn" style="background:white;color:var(--gold);margin-top:16px">
+            メール相談する
+          </a>
+        </div>
+      </div>
+      
+      <div style="margin-top:48px;padding:24px;background:rgba(255,255,255,0.1);border-radius:16px;backdrop-filter:blur(10px)">
+        <div class="badge" style="background:white;color:var(--success);border:2px solid var(--success);margin-bottom:16px">
+          <span>🛡️</span>
+          <span>安心の秘密厳守</span>
+        </div>
+        <p style="font-size:18px">
+          お客様のプライバシーを最優先に考え、<br>
+          相談内容は完全に秘密厳守いたします。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- フッター -->
+  <div id="site-footer"></div>
+
+  <!-- JavaScript -->
+  <script src="/assets/js/layout.js"></script>
+  <script>
+    // FAQ開閉
+    document.querySelectorAll('.faq-question').forEach(question => {
+      question.addEventListener('click', function() {
+        this.parentElement.classList.toggle('open');
+      });
+    });
+  </script>
+</body>
+</html>
