@@ -1,0 +1,1350 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>分譲マンション売却 | センチュリー21ホームマート</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --main-bg: #F5F5DC;
+            --accent-blue: #4A90E2;
+            --accent-pink: #FFB6C1;
+            --accent-purple: #9B59B6;
+            --accent-orange: #FFA500;
+            --accent-green: #90EE90;
+            --accent-red: #FF6B6B;
+            --text-dark: #333333;
+            --text-gray: #666666;
+            --bg-light: #F8F8F8;
+            --white: #FFFFFF;
+            --shadow: 0 2px 10px rgba(0,0,0,0.1);
+            --shadow-hover: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ヘッダー */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-blue);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: var(--accent-blue);
+        }
+
+        /* メインビジュアル */
+        .hero-section {
+            background: linear-gradient(135deg, var(--main-bg) 0%, #FFFFFF 100%);
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        /* 検索セクション */
+        .search-section {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            margin: -2rem auto 3rem;
+            position: relative;
+        }
+
+        .search-box {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 1rem;
+            border: 2px solid #E0E0E0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+        }
+
+        .search-button {
+            padding: 1rem 2rem;
+            background-color: var(--accent-blue);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .search-button:hover {
+            background-color: #3A7BC8;
+        }
+
+        /* クイックアクセスボタン */
+        .quick-access {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .quick-button {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            color: white;
+        }
+
+        .quick-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .quick-button.pink { background-color: var(--accent-pink); }
+        .quick-button.blue { background-color: var(--accent-blue); }
+        .quick-button.orange { background-color: var(--accent-orange); }
+        .quick-button.green { background-color: var(--accent-green); }
+        .quick-button.red { background-color: var(--accent-red); }
+
+        /* 特徴セクション */
+        .features-section {
+            padding: 3rem 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .feature-description {
+            color: var(--text-gray);
+            line-height: 1.6;
+        }
+
+        /* マンション一覧セクション */
+        .mansions-section {
+            padding: 3rem 0;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--text-dark);
+        }
+
+        .filter-controls {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-select {
+            padding: 0.75rem 1rem;
+            border: 2px solid #E0E0E0;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            background-color: white;
+            cursor: pointer;
+            transition: border-color 0.3s;
+        }
+
+        .filter-select:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+        }
+
+        .mansions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .mansion-card {
+            background-color: var(--white);
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .mansion-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .mansion-header {
+            background: linear-gradient(135deg, var(--main-bg) 0%, #FFFFFF 100%);
+            padding: 1.5rem;
+        }
+
+        .mansion-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .mansion-address {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-gray);
+            font-size: 0.95rem;
+        }
+
+        .mansion-body {
+            padding: 1.5rem;
+        }
+
+        .mansion-details {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .detail-item {
+            text-align: center;
+        }
+
+        .detail-label {
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            margin-bottom: 0.25rem;
+        }
+
+        .detail-value {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .hopefuls-badge {
+            background-color: var(--accent-pink);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .price-range {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--accent-blue);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .view-button {
+            width: 100%;
+            padding: 1rem;
+            background-color: var(--accent-blue);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .view-button:hover {
+            background-color: #3A7BC8;
+        }
+
+        /* モーダル */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            border-radius: 20px;
+            max-width: 800px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--main-bg) 0%, #FFFFFF 100%);
+            border-radius: 20px 20px 0 0;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--text-gray);
+            transition: color 0.3s;
+        }
+
+        .close-button:hover {
+            color: var(--text-dark);
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .buyer-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .buyer-card {
+            background-color: var(--bg-light);
+            border-radius: 15px;
+            padding: 1.5rem;
+            border: 2px solid transparent;
+            transition: border-color 0.3s;
+        }
+
+        .buyer-card:hover {
+            border-color: var(--accent-blue);
+        }
+
+        .buyer-price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent-blue);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .buyer-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .buyer-detail {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .buyer-detail-icon {
+            font-size: 1.2rem;
+        }
+
+        .buyer-detail-text {
+            font-size: 0.95rem;
+            color: var(--text-gray);
+        }
+
+        .contact-button {
+            width: 100%;
+            padding: 1rem;
+            background-color: var(--accent-green);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .contact-button:hover {
+            background-color: #7DD87D;
+        }
+
+        /* レスポンシブ */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 1.8rem;
+            }
+
+            .search-box {
+                flex-direction: column;
+            }
+
+            .quick-access {
+                justify-content: stretch;
+            }
+
+            .quick-button {
+                flex: 1;
+                min-width: 120px;
+            }
+
+            .mansions-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+
+            .modal-content {
+                width: 95%;
+                margin: 1rem;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1199px) {
+            .mansions-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* ローディング */
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-gray);
+        }
+
+        .loading::after {
+            content: '...';
+            animation: dots 1.5s steps(3, end) infinite;
+        }
+
+        @keyframes dots {
+            0%, 20% { content: '.'; }
+            40% { content: '..'; }
+            60%, 100% { content: '...'; }
+        }
+
+        /* エリア別セクション */
+        .area-section {
+            margin-bottom: 3rem;
+        }
+
+        .area-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--main-bg);
+        }
+
+        .area-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .area-count {
+            background-color: var(--accent-pink);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .more-button {
+            padding: 0.75rem 1.5rem;
+            background-color: transparent;
+            color: var(--accent-blue);
+            border: 2px solid var(--accent-blue);
+            border-radius: 10px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .more-button:hover {
+            background-color: var(--accent-blue);
+            color: white;
+        }
+
+        /* 差別化説明セクション */
+        .comparison-section {
+            padding: 3rem 0;
+            background-color: var(--white);
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .comparison-card {
+            padding: 2rem;
+            border-radius: 15px;
+        }
+
+        .comparison-card.problem {
+            background-color: #FFE5E5;
+            border: 2px solid #FF6B6B;
+        }
+
+        .comparison-card.solution {
+            background-color: #E5F5E5;
+            border: 2px solid #90EE90;
+        }
+
+        .comparison-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .comparison-list {
+            list-style: none;
+        }
+
+        .comparison-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .comparison-list li::before {
+            position: absolute;
+            left: 0;
+        }
+
+        .problem .comparison-list li::before {
+            content: '❌';
+        }
+
+        .solution .comparison-list li::before {
+            content: '✅';
+        }
+
+        /* フッター */
+        footer {
+            background-color: var(--text-dark);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: #CCC;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .copyright {
+            padding-top: 2rem;
+            border-top: 1px solid #555;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+    <!-- ヘッダー -->
+    <header>
+        <nav class="container">
+            <div class="logo">センチュリー21ホームマート</div>
+            <ul class="nav-menu">
+                <li><a href="#search">検索</a></li>
+                <li><a href="#service">サービス</a></li>
+                <li><a href="#areas">対応エリア</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- メインビジュアル -->
+    <section class="hero-section">
+        <div class="container">
+            <h1 class="hero-title">関西のマンション売却なら<br>購入希望者と直接マッチング</h1>
+            <p class="hero-subtitle">
+                一括査定サイトとは違う新しいアプローチ。<br>
+                関西全域246市区町村であなたのマンションを探している購入希望者が見つかります。
+            </p>
+        </div>
+    </section>
+
+    <!-- 検索セクション -->
+    <section id="search" class="container">
+        <div class="search-section">
+            <div class="search-box">
+                <input type="text" class="search-input" id="searchInput" placeholder="マンション名、地域名、駅名を入力...">
+                <button class="search-button" onclick="searchMansions()">検索する</button>
+            </div>
+            <div class="quick-access">
+                <button class="quick-button pink" onclick="filterByArea('大阪市')">大阪市</button>
+                <button class="quick-button blue" onclick="filterByArea('京都市')">京都市</button>
+                <button class="quick-button orange" onclick="filterByArea('神戸市')">神戸市</button>
+                <button class="quick-button green" onclick="filterByArea('奈良市')">奈良市</button>
+                <button class="quick-button red" onclick="filterByArea('大津市')">大津市</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 特徴セクション -->
+    <section class="features-section container">
+        <h2 class="section-title">センチュリー21ホームマートが選ばれる理由</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">👥</div>
+                <h3 class="feature-title">直接マッチング</h3>
+                <p class="feature-description">
+                    購入希望者の詳細条件を事前に確認。営業電話なしでスムーズな取引が可能です。
+                </p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💰</div>
+                <h3 class="feature-title">希望価格明示</h3>
+                <p class="feature-description">
+                    購入希望者の予算が事前に分かるため、効率的な価格交渉が実現できます。
+                </p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🏢</div>
+                <h3 class="feature-title">関西全域対応</h3>
+                <p class="feature-description">
+                    大阪、京都、兵庫、奈良、滋賀、和歌山の全246市区町村で対応中です。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- フィルターコントロール -->
+    <section class="container">
+        <div class="filter-controls">
+            <select class="filter-select" id="priceFilter" onchange="applyFilters()">
+                <option value="">価格帯を選択</option>
+                <option value="0-3000">〜3,000万円</option>
+                <option value="3000-5000">3,000〜5,000万円</option>
+                <option value="5000-7000">5,000〜7,000万円</option>
+                <option value="7000-10000">7,000万円〜1億円</option>
+                <option value="10000-">1億円以上</option>
+            </select>
+            <select class="filter-select" id="layoutFilter" onchange="applyFilters()">
+                <option value="">間取りを選択</option>
+                <option value="1R">1R</option>
+                <option value="1K">1K</option>
+                <option value="1DK">1DK</option>
+                <option value="1LDK">1LDK</option>
+                <option value="2DK">2DK</option>
+                <option value="2LDK">2LDK</option>
+                <option value="3DK">3DK</option>
+                <option value="3LDK">3LDK</option>
+                <option value="4LDK">4LDK以上</option>
+            </select>
+        </div>
+    </section>
+
+    <!-- マンション一覧セクション -->
+    <section id="mansions" class="mansions-section container">
+        <h2 class="section-title">購入希望者がいるマンション</h2>
+        <div id="mansionsList"></div>
+    </section>
+
+    <!-- 差別化説明セクション -->
+    <section class="comparison-section">
+        <div class="container">
+            <h2 class="section-title">一括査定サイトとの違い</h2>
+            <div class="comparison-grid">
+                <div class="comparison-card problem">
+                    <h3 class="comparison-title">従来の一括査定サイト</h3>
+                    <ul class="comparison-list">
+                        <li>営業電話が大量にかかってくる</li>
+                        <li>実際の購入希望者が不明</li>
+                        <li>査定額と売却額に差がある</li>
+                        <li>時間がかかる</li>
+                    </ul>
+                </div>
+                <div class="comparison-card solution">
+                    <h3 class="comparison-title">当社のサービス</h3>
+                    <ul class="comparison-list">
+                        <li>購入希望者情報を事前確認</li>
+                        <li>希望価格が明確</li>
+                        <li>直接マッチングで早い</li>
+                        <li>営業電話なし</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- モーダル -->
+    <div id="buyerModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close-button" onclick="closeModal()">&times;</button>
+                <h2 class="modal-title" id="modalTitle">マンション名</h2>
+                <p id="modalAddress">住所</p>
+            </div>
+            <div class="modal-body">
+                <div id="buyerCards" class="buyer-cards"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- フッター -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>サービス</h3>
+                    <ul>
+                        <li><a href="#">マンション売却</a></li>
+                        <li><a href="#">購入希望者検索</a></li>
+                        <li><a href="#">価格相談</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>対応エリア</h3>
+                    <ul>
+                        <li><a href="#">大阪府</a></li>
+                        <li><a href="#">京都府</a></li>
+                        <li><a href="#">兵庫県</a></li>
+                        <li><a href="#">奈良県</a></li>
+                        <li><a href="#">滋賀県</a></li>
+                        <li><a href="#">和歌山県</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>お問い合わせ</h3>
+                    <ul>
+                        <li>📞 0120-XXX-XXX</li>
+                        <li>📧 info@century21-homemart.jp</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 センチュリー21ホームマート. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // モックデータ
+        const mansionsData = [
+            {
+                id: 1,
+                name: "ザ・パークハウス中之島タワー",
+                address: "大阪市北区中之島",
+                layout: "3LDK",
+                area: 85.5,
+                hopefuls_count: 8,
+                price_range: "8,800万円〜",
+                area_category: "大阪市",
+                buyers: [
+                    {
+                        id: 1,
+                        price: "9,200万円",
+                        reason: "投資目的",
+                        family: "カップル",
+                        timing: "即時購入可",
+                        method: "現金一括",
+                        occupation: "経営者"
+                    },
+                    {
+                        id: 2,
+                        price: "8,950万円",
+                        reason: "住み替え",
+                        family: "夫婦+子ども1人",
+                        timing: "3ヶ月後",
+                        method: "住宅ローン",
+                        occupation: "会社員"
+                    },
+                    {
+                        id: 3,
+                        price: "8,800万円",
+                        reason: "資産運用",
+                        family: "単身",
+                        timing: "6ヶ月以内",
+                        method: "現金一括",
+                        occupation: "医師"
+                    }
+                ]
+            },
+            {
+                id: 2,
+                name: "プラウドタワー大阪本町",
+                address: "大阪市中央区本町",
+                layout: "2LDK",
+                area: 65.8,
+                hopefuls_count: 12,
+                price_range: "6,200万円〜",
+                area_category: "大阪市",
+                buyers: [
+                    {
+                        id: 4,
+                        price: "6,500万円",
+                        reason: "新婚生活",
+                        family: "夫婦",
+                        timing: "6ヶ月後",
+                        method: "住宅ローン",
+                        occupation: "公務員"
+                    },
+                    {
+                        id: 5,
+                        price: "6,300万円",
+                        reason: "通勤改善",
+                        family: "単身",
+                        timing: "即時購入可",
+                        method: "住宅ローン",
+                        occupation: "IT企業勤務"
+                    }
+                ]
+            },
+            {
+                id: 3,
+                name: "ブランズタワー大阪本町",
+                address: "大阪市中央区本町",
+                layout: "3LDK",
+                area: 78.9,
+                hopefuls_count: 6,
+                price_range: "7,500万円〜",
+                area_category: "大阪市",
+                buyers: [
+                    {
+                        id: 6,
+                        price: "7,800万円",
+                        reason: "子育て環境",
+                        family: "夫婦+子ども2人",
+                        timing: "1年以内",
+                        method: "住宅ローン",
+                        occupation: "大手企業勤務"
+                    }
+                ]
+            },
+            {
+                id: 4,
+                name: "ザ・京都レジデンス御所西",
+                address: "京都市上京区",
+                layout: "3LDK",
+                area: 92.3,
+                hopefuls_count: 5,
+                price_range: "9,500万円〜",
+                area_category: "京都市",
+                buyers: [
+                    {
+                        id: 7,
+                        price: "9,800万円",
+                        reason: "セカンドハウス",
+                        family: "夫婦",
+                        timing: "3ヶ月以内",
+                        method: "現金一括",
+                        occupation: "企業役員"
+                    },
+                    {
+                        id: 8,
+                        price: "9,500万円",
+                        reason: "相続対策",
+                        family: "家族4人",
+                        timing: "即時購入可",
+                        method: "現金一括",
+                        occupation: "資産家"
+                    }
+                ]
+            },
+            {
+                id: 5,
+                name: "ジオタワー京都東山",
+                address: "京都市東山区",
+                layout: "2LDK",
+                area: 70.5,
+                hopefuls_count: 9,
+                price_range: "5,800万円〜",
+                area_category: "京都市",
+                buyers: [
+                    {
+                        id: 9,
+                        price: "6,000万円",
+                        reason: "観光事業",
+                        family: "単身",
+                        timing: "6ヶ月以内",
+                        method: "事業ローン",
+                        occupation: "観光業経営"
+                    }
+                ]
+            },
+            {
+                id: 6,
+                name: "ザ・パークハウス神戸タワー",
+                address: "神戸市中央区",
+                layout: "3LDK",
+                area: 88.2,
+                hopefuls_count: 7,
+                price_range: "7,200万円〜",
+                area_category: "神戸市",
+                buyers: [
+                    {
+                        id: 10,
+                        price: "7,500万円",
+                        reason: "海外赴任帰国",
+                        family: "夫婦+子ども1人",
+                        timing: "3ヶ月後",
+                        method: "住宅ローン",
+                        occupation: "商社勤務"
+                    },
+                    {
+                        id: 11,
+                        price: "7,300万円",
+                        reason: "住み替え",
+                        family: "夫婦",
+                        timing: "半年以内",
+                        method: "売却資金+ローン",
+                        occupation: "医療従事者"
+                    }
+                ]
+            },
+            {
+                id: 7,
+                name: "シティタワー神戸三宮",
+                address: "神戸市中央区三宮",
+                layout: "2LDK",
+                area: 68.5,
+                hopefuls_count: 10,
+                price_range: "5,500万円〜",
+                area_category: "神戸市",
+                buyers: [
+                    {
+                        id: 12,
+                        price: "5,800万円",
+                        reason: "投資運用",
+                        family: "単身",
+                        timing: "即時購入可",
+                        method: "現金一括",
+                        occupation: "投資家"
+                    }
+                ]
+            },
+            {
+                id: 8,
+                name: "ローレルタワー奈良",
+                address: "奈良市大宮町",
+                layout: "3LDK",
+                area: 82.1,
+                hopefuls_count: 4,
+                price_range: "4,800万円〜",
+                area_category: "奈良市",
+                buyers: [
+                    {
+                        id: 13,
+                        price: "5,000万円",
+                        reason: "実家近居",
+                        family: "夫婦+子ども2人",
+                        timing: "1年以内",
+                        method: "住宅ローン",
+                        occupation: "教育関係"
+                    }
+                ]
+            },
+            {
+                id: 9,
+                name: "プラウドシティ大津京",
+                address: "大津市御陵町",
+                layout: "3LDK",
+                area: 75.8,
+                hopefuls_count: 3,
+                price_range: "3,800万円〜",
+                area_category: "大津市",
+                buyers: [
+                    {
+                        id: 14,
+                        price: "4,000万円",
+                        reason: "琵琶湖ビュー",
+                        family: "夫婦",
+                        timing: "半年以内",
+                        method: "住宅ローン",
+                        occupation: "公務員"
+                    }
+                ]
+            }
+        ];
+
+        let currentFilter = '';
+        let filteredMansions = [...mansionsData];
+
+        // マンション一覧を表示
+        function displayMansions(mansions) {
+            const container = document.getElementById('mansionsList');
+            
+            if (mansions.length === 0) {
+                container.innerHTML = '<div class="loading">該当するマンションが見つかりませんでした</div>';
+                return;
+            }
+
+            // エリアごとにグループ化
+            const groupedMansions = {};
+            mansions.forEach(mansion => {
+                if (!groupedMansions[mansion.area_category]) {
+                    groupedMansions[mansion.area_category] = [];
+                }
+                groupedMansions[mansion.area_category].push(mansion);
+            });
+
+            let html = '';
+            for (const [area, areaМansions] of Object.entries(groupedMansions)) {
+                html += `
+                    <div class="area-section">
+                        <div class="area-header">
+                            <h3 class="area-title">${area}</h3>
+                            <span class="area-count">${areaМansions.length}件</span>
+                        </div>
+                        <div class="mansions-grid">
+                `;
+
+                areaМansions.forEach(mansion => {
+                    html += createMansionCard(mansion);
+                });
+
+                html += `
+                        </div>
+                        <div style="text-align: center; margin-top: 2rem;">
+                            <button class="more-button" onclick="loadMoreMansions('${area}')">${area}の物件をもっと見る</button>
+                        </div>
+                    </div>
+                `;
+            }
+
+            container.innerHTML = html;
+        }
+
+        // マンションカードを作成
+        function createMansionCard(mansion) {
+            return `
+                <div class="mansion-card">
+                    <div class="mansion-header">
+                        <h3 class="mansion-name">${mansion.name}</h3>
+                        <div class="mansion-address">
+                            <span>📍</span>
+                            <span>${mansion.address}</span>
+                        </div>
+                    </div>
+                    <div class="mansion-body">
+                        <div class="mansion-details">
+                            <div class="detail-item">
+                                <div class="detail-label">間取り</div>
+                                <div class="detail-value">${mansion.layout}</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">専有面積</div>
+                                <div class="detail-value">${mansion.area}㎡</div>
+                            </div>
+                        </div>
+                        <div class="hopefuls-badge">
+                            購入希望者 ${mansion.hopefuls_count}名
+                        </div>
+                        <div class="price-range">
+                            ${mansion.price_range}
+                        </div>
+                        <button class="view-button" onclick="showBuyers(${mansion.id})">
+                            購入希望者を見る
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        // 購入希望者モーダルを表示
+        function showBuyers(mansionId) {
+            const mansion = mansionsData.find(m => m.id === mansionId);
+            if (!mansion) return;
+
+            document.getElementById('modalTitle').textContent = mansion.name;
+            document.getElementById('modalAddress').textContent = mansion.address;
+
+            const buyerCardsContainer = document.getElementById('buyerCards');
+            
+            if (mansion.buyers.length === 0) {
+                buyerCardsContainer.innerHTML = '<div class="loading">購入希望者の詳細情報を取得中...</div>';
+            } else {
+                let buyerCardsHTML = '';
+                mansion.buyers.forEach(buyer => {
+                    buyerCardsHTML += `
+                        <div class="buyer-card">
+                            <div class="buyer-price">${buyer.price}</div>
+                            <div class="buyer-details">
+                                <div class="buyer-detail">
+                                    <span class="buyer-detail-icon">🎯</span>
+                                    <span class="buyer-detail-text">${buyer.reason}</span>
+                                </div>
+                                <div class="buyer-detail">
+                                    <span class="buyer-detail-icon">👨‍👩‍👧</span>
+                                    <span class="buyer-detail-text">${buyer.family}</span>
+                                </div>
+                                <div class="buyer-detail">
+                                    <span class="buyer-detail-icon">📅</span>
+                                    <span class="buyer-detail-text">${buyer.timing}</span>
+                                </div>
+                                <div class="buyer-detail">
+                                    <span class="buyer-detail-icon">💳</span>
+                                    <span class="buyer-detail-text">${buyer.method}</span>
+                                </div>
+                                <div class="buyer-detail">
+                                    <span class="buyer-detail-icon">💼</span>
+                                    <span class="buyer-detail-text">${buyer.occupation}</span>
+                                </div>
+                            </div>
+                            <button class="contact-button" onclick="contactBuyer(${buyer.id})">
+                                この希望者に連絡する
+                            </button>
+                        </div>
+                    `;
+                });
+                buyerCardsContainer.innerHTML = buyerCardsHTML;
+            }
+
+            document.getElementById('buyerModal').classList.add('active');
+        }
+
+        // モーダルを閉じる
+        function closeModal() {
+            document.getElementById('buyerModal').classList.remove('active');
+        }
+
+        // 購入希望者に連絡
+        function contactBuyer(buyerId) {
+            alert(`購入希望者ID: ${buyerId} への連絡フォームを開きます`);
+            // 実際の実装では連絡フォームへ遷移
+        }
+
+        // 検索機能
+        function searchMansions() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            
+            if (searchTerm === '') {
+                filteredMansions = [...mansionsData];
+            } else {
+                filteredMansions = mansionsData.filter(mansion => 
+                    mansion.name.toLowerCase().includes(searchTerm) ||
+                    mansion.address.toLowerCase().includes(searchTerm) ||
+                    mansion.area_category.toLowerCase().includes(searchTerm)
+                );
+            }
+            
+            displayMansions(filteredMansions);
+        }
+
+        // エリアでフィルター
+        function filterByArea(area) {
+            currentFilter = area;
+            filteredMansions = mansionsData.filter(mansion => 
+                mansion.area_category === area
+            );
+            displayMansions(filteredMansions);
+            
+            // スクロール
+            document.getElementById('mansions').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // フィルター適用
+        function applyFilters() {
+            const priceFilter = document.getElementById('priceFilter').value;
+            const layoutFilter = document.getElementById('layoutFilter').value;
+            
+            filteredMansions = mansionsData.filter(mansion => {
+                let matchPrice = true;
+                let matchLayout = true;
+                
+                if (priceFilter) {
+                    const priceNum = parseInt(mansion.price_range.replace(/[^0-9]/g, ''));
+                    const [min, max] = priceFilter.split('-').map(p => p ? parseInt(p) : null);
+                    
+                    if (min && max) {
+                        matchPrice = priceNum >= min && priceNum <= max;
+                    } else if (min) {
+                        matchPrice = priceNum >= min;
+                    }
+                }
+                
+                if (layoutFilter) {
+                    matchLayout = mansion.layout === layoutFilter;
+                }
+                
+                return matchPrice && matchLayout;
+            });
+            
+            displayMansions(filteredMansions);
+        }
+
+        // もっと見る
+        function loadMoreMansions(area) {
+            alert(`${area}の追加物件を読み込みます`);
+            // 実際の実装では追加データを取得
+        }
+
+        // モーダル外クリックで閉じる
+        window.onclick = function(event) {
+            const modal = document.getElementById('buyerModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
+        // Escapeキーで閉じる
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // 初期表示
+        displayMansions(mansionsData);
+    </script>
+</body>
+</html>
