@@ -1278,7 +1278,7 @@
       background: var(--gold-light);
     }
 
-    /* Office */
+    /* Office - 無限ループスライダー用のスタイル */
     .office-slider {
       width: 100%;
       aspect-ratio: 16/9;
@@ -1292,19 +1292,21 @@
     .office-track {
       display: flex;
       height: 100%;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      scrollbar-width: none;
+      animation: officeSlide 8s linear infinite;
     }
 
-    .office-track::-webkit-scrollbar {
-      display: none;
+    @keyframes officeSlide {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
     }
 
     .office-slide {
       flex: 0 0 100%;
       height: 100%;
-      scroll-snap-align: start;
     }
 
     .office-slide img {
@@ -2314,7 +2316,13 @@
 
       <div class="office-slider">
         <div class="office-track">
-          <div class="office-slide"><img src="tempo_live.jpg.jpg" alt="オフィス 1" width="1200" height="675" loading="lazy"></div>
+          <!-- オリジナルの画像 -->
+          <div class="office-slide"><img src="tempo_live.jpg" alt="オフィス 1" width="1200" height="675" loading="lazy"></div>
+          <div class="office-slide"><img src="tempo_top.JPG" alt="オフィス 2" width="1200" height="675" loading="lazy"></div>
+          <div class="office-slide"><img src="tempo_kudara.JPG" alt="オフィス 3" width="1200" height="675" loading="lazy"></div>
+          <div class="office-slide"><img src="office_monitor.JPG" alt="オフィス 4" width="1200" height="675" loading="lazy"></div>
+          <!-- 無限ループ用の複製 -->
+          <div class="office-slide"><img src="tempo_live.jpg" alt="オフィス 1" width="1200" height="675" loading="lazy"></div>
           <div class="office-slide"><img src="tempo_top.JPG" alt="オフィス 2" width="1200" height="675" loading="lazy"></div>
           <div class="office-slide"><img src="tempo_kudara.JPG" alt="オフィス 3" width="1200" height="675" loading="lazy"></div>
           <div class="office-slide"><img src="office_monitor.JPG" alt="オフィス 4" width="1200" height="675" loading="lazy"></div>
