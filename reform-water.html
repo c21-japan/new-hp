@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>水回り4点リフォーム | センチュリー21ホームマート</title>
+    <meta name="description" content="奈良県専門の水回り4点リフォーム。キッチン・浴室・洗面所・トイレをまとめて改修。地域密着で安心のサポート。">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #A19276;
+            --gold2: #B8A082;
+            --black: #383635;
+            --cream: #F8F6F3;
+            --white: #FFFFFF;
+            --gray: #F8F8F8;
+            --text-gray: #666666;
+            --shadow: 0 8px 24px rgba(0,0,0,0.08);
+            --shadow-hover: 0 12px 32px rgba(0,0,0,0.12);
+            --max-width: 1200px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.6;
+            color: var(--black);
+            background: var(--white);
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        /* ヘッダー */
+        header {
+            background: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 2px solid var(--gold);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: var(--black);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: var(--gold);
+        }
+
+        /* ヒーローセクション */
+        .hero {
+            background: linear-gradient(135deg, var(--cream) 0%, var(--white) 100%);
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(161,146,118,0.05), transparent);
+            animation: rotate 30s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--white);
+            padding: 6px 16px;
+            border-radius: 999px;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .hero h1 {
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 900;
+            margin: 16px 0;
+            line-height: 1.3;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            color: var(--text-gray);
+            margin-bottom: 32px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+
+        .hero-features {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .hero-feature {
+            background: var(--white);
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            box-shadow: var(--shadow);
+        }
+
+        /* CTA ボタン */
+        .cta-primary {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold), var(--gold2));
+            color: var(--white);
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 6px 18px rgba(161,146,118,0.35);
+            transition: all 0.3s;
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(161,146,118,0.45);
+        }
+
+        .cta-secondary {
+            display: inline-block;
+            background: var(--white);
+            color: var(--gold);
+            padding: 16px 40px;
+            border: 2px solid var(--gold);
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s;
+            margin-left: 16px;
+        }
+
+        .cta-secondary:hover {
+            background: var(--cream);
+        }
+
+        /* セクション共通 */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(28px, 4vw, 40px);
+            font-weight: 900;
+            margin-bottom: 16px;
+            color: var(--black);
+        }
+
+        .section-title span {
+            color: var(--gold);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 16px;
+            color: var(--text-gray);
+            margin-bottom: 48px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* カードグリッド */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 14px;
+            padding: 24px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+            border: 1px solid #eee;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--cream);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            font-size: 28px;
+            color: var(--gold);
+        }
+
+        .card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--black);
+        }
+
+        .card p {
+            color: var(--text-gray);
+            line-height: 1.8;
+            font-size: 14px;
+        }
+
+        /* ビフォーアフター */
+        .before-after {
+            background: var(--gray);
+        }
+
+        .ba-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 32px;
+        }
+
+        .ba-item {
+            background: var(--white);
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+        }
+
+        .ba-item:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .ba-header {
+            background: linear-gradient(135deg, var(--gold), var(--gold2));
+            color: var(--white);
+            padding: 16px 24px;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .ba-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2px;
+            background: var(--black);
+        }
+
+        .ba-image {
+            position: relative;
+            aspect-ratio: 4/3;
+            overflow: hidden;
+        }
+
+        .ba-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .ba-label {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(0,0,0,0.7);
+            color: var(--white);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .ba-details {
+            padding: 24px;
+        }
+
+        .ba-price {
+            background: var(--cream);
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .ba-price strong {
+            color: var(--gold);
+            font-size: 24px;
+        }
+
+        .ba-list {
+            list-style: none;
+        }
+
+        .ba-list li {
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+            color: var(--black);
+            font-size: 14px;
+        }
+
+        .ba-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        /* 特徴セクション */
+        .features {
+            background: var(--white);
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 32px 24px;
+            background: linear-gradient(135deg, var(--cream), var(--white));
+            border-radius: 14px;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .feature-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* お客様の声 */
+        .testimonials {
+            background: var(--gray);
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            padding: 32px;
+            border-radius: 14px;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        .testimonial-quote {
+            font-size: 48px;
+            color: var(--cream);
+            line-height: 1;
+            margin-bottom: 16px;
+        }
+
+        .testimonial-text {
+            margin-bottom: 24px;
+            line-height: 1.8;
+            color: var(--black);
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding-top: 24px;
+            border-top: 1px solid #eee;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold), var(--gold2));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 700;
+        }
+
+        /* 価格プラン */
+        .pricing {
+            background: var(--white);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+            margin-top: 48px;
+        }
+
+        .pricing-card {
+            background: var(--white);
+            border: 2px solid #eee;
+            border-radius: 14px;
+            padding: 40px 32px;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .pricing-card.featured {
+            border-color: var(--gold);
+            transform: scale(1.05);
+            box-shadow: 0 16px 40px rgba(161,146,118,0.2);
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gold);
+            color: var(--white);
+            padding: 4px 20px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .pricing-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--black);
+        }
+
+        .pricing-price {
+            font-size: 40px;
+            font-weight: 900;
+            color: var(--gold);
+            margin-bottom: 32px;
+        }
+
+        .pricing-price span {
+            font-size: 16px;
+            font-weight: 400;
+            color: var(--text-gray);
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 32px;
+            text-align: left;
+        }
+
+        .pricing-features li {
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            padding-left: 28px;
+            font-size: 14px;
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        /* 施工の流れ */
+        .process {
+            background: var(--gray);
+        }
+
+        .process-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+
+        .process-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--gold);
+            transform: translateX(-50%);
+        }
+
+        .process-item {
+            position: relative;
+            padding: 20px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .process-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .process-content {
+            background: var(--white);
+            padding: 24px;
+            border-radius: 14px;
+            box-shadow: var(--shadow);
+            width: calc(50% - 40px);
+        }
+
+        .process-number {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 40px;
+            background: var(--gold);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            z-index: 1;
+        }
+
+        /* 最終CTA */
+        .final-cta {
+            background: linear-gradient(135deg, var(--gold), var(--gold2));
+            color: var(--white);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .final-cta h2 {
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 900;
+            margin-bottom: 24px;
+        }
+
+        .final-cta-subtitle {
+            font-size: 20px;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+
+        .contact-methods {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .contact-button {
+            background: var(--white);
+            color: var(--gold);
+            padding: 20px 32px;
+            border-radius: 14px;
+            text-decoration: none;
+            font-weight: 700;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+            box-shadow: var(--shadow);
+            min-width: 180px;
+        }
+
+        .contact-button:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .contact-icon {
+            font-size: 32px;
+        }
+
+        /* フッター */
+        footer {
+            background: var(--black);
+            color: var(--white);
+            padding: 48px 0 24px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 32px;
+            margin-bottom: 32px;
+        }
+
+        .footer-section h3 {
+            color: var(--gold);
+            margin-bottom: 16px;
+            font-size: 18px;
+        }
+
+        .footer-section p,
+        .footer-section li {
+            margin-bottom: 8px;
+            color: #ccc;
+            font-size: 14px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 24px;
+            border-top: 1px solid #444;
+            color: #999;
+            font-size: 14px;
+        }
+
+        /* フローティングボタン */
+        .floating-buttons {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 99;
+        }
+
+        .floating-btn {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+            font-size: 24px;
+        }
+
+        .floating-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+        }
+
+        .floating-btn.phone {
+            background: linear-gradient(135deg, var(--gold), var(--gold2));
+            color: var(--white);
+        }
+
+        .floating-btn.line {
+            background: #00C300;
+            color: var(--white);
+        }
+
+        /* レスポンシブ */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .hero-features {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .ba-grid,
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-card.featured {
+                transform: none;
+            }
+
+            .process-timeline::before {
+                left: 20px;
+            }
+
+            .process-item,
+            .process-item:nth-child(even) {
+                flex-direction: column;
+                align-items: flex-start;
+                padding-left: 60px;
+            }
+
+            .process-content {
+                width: 100%;
+            }
+
+            .process-number {
+                left: 20px;
+            }
+
+            .contact-methods {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-secondary {
+                margin-left: 0;
+                margin-top: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ヘッダー -->
+    <header>
+        <nav class="container">
+            <div class="logo">センチュリー21ホームマート</div>
+            <ul class="nav-menu">
+                <li><a href="/">ホーム</a></li>
+                <li><a href="#features">特徴</a></li>
+                <li><a href="#works">施工事例</a></li>
+                <li><a href="#pricing">料金プラン</a></li>
+                <li><a href="#contact">お問い合わせ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ヒーローセクション -->
+    <section class="hero">
+        <div class="container hero-content">
+            <span class="hero-badge">🎉 奈良県限定キャンペーン実施中</span>
+            <h1>水回り4点まるごとリフォームで<br><span style="color: var(--gold);">新築のような快適空間へ</span></h1>
+            <p class="hero-subtitle">
+                キッチン・浴室・洗面所・トイレを一新<br>
+                地域密着10年以上、奈良県全域対応の安心施工<br>
+                センチュリー21の信頼と技術でお応えします
+            </p>
+            <div class="hero-features">
+                <div class="hero-feature">📍 奈良県内施工実績1,000件以上</div>
+                <div class="hero-feature">⭐ お客様満足度98%</div>
+                <div class="hero-feature">🎁 今なら工事費20%OFF</div>
+                <div class="hero-feature">📅 最短2週間で完了</div>
+            </div>
+            <div>
+                <a href="#contact" class="cta-primary">無料見積もりを申し込む</a>
+                <a href="tel:0120438639" class="cta-secondary">📞 今すぐ電話相談</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ビフォーアフター -->
+    <section class="before-after" id="works">
+        <div class="container">
+            <h2 class="section-title">驚きの<span>ビフォーアフター</span></h2>
+            <p class="section-subtitle">実際の奈良県内での施工事例をご覧ください</p>
+            
+            <div class="ba-grid">
+                <div class="ba-item">
+                    <div class="ba-header">🍳 システムキッチン（奈良市・築25年）</div>
+                    <div class="ba-images">
+                        <div class="ba-image">
+                            <img src="kitchen_before.jpg" alt="キッチンビフォー">
+                            <span class="ba-label">Before</span>
+                        </div>
+                        <div class="ba-image">
+                            <img src="kitchen_after.jpg" alt="キッチンアフター">
+                            <span class="ba-label">After</span>
+                        </div>
+                    </div>
+                    <div class="ba-details">
+                        <div class="ba-price">
+                            <strong>年間約3万円</strong>の光熱費削減！
+                        </div>
+                        <ul class="ba-list">
+                            <li>収納力3倍のシステムキッチン導入</li>
+                            <li>食洗機で毎日30分の時短実現</li>
+                            <li>IHクッキングヒーターで安全性向上</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="ba-item">
+                    <div class="ba-header">🛁 ユニットバス（生駒市・築30年）</div>
+                    <div class="ba-images">
+                        <div class="ba-image">
+                            <img src="bathroom_before.jpg" alt="浴室ビフォー">
+                            <span class="ba-label">Before</span>
+                        </div>
+                        <div class="ba-image">
+                            <img src="bathroom_after.jpg" alt="浴室アフター">
+                            <span class="ba-label">After</span>
+                        </div>
+                    </div>
+                    <div class="ba-details">
+                        <div class="ba-price">
+                            <strong>掃除時間が1/3</strong>に短縮！
+                        </div>
+                        <ul class="ba-list">
+                            <li>浴室暖房で冬も快適</li>
+                            <li>高断熱浴槽で光熱費削減</li>
+                            <li>カビが生えにくい素材を採用</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="ba-item">
+                    <div class="ba-header">🚿 洗面台（橿原市・築20年）</div>
+                    <div class="ba-images">
+                        <div class="ba-image">
+                            <img src="washroom_before.jpg" alt="洗面台ビフォー">
+                            <span class="ba-label">Before</span>
+                        </div>
+                        <div class="ba-image">
+                            <img src="washroom_after.jpg" alt="洗面台アフター">
+                            <span class="ba-label">After</span>
+                        </div>
+                    </div>
+                    <div class="ba-details">
+                        <div class="ba-price">
+                            <strong>収納力2倍</strong>にアップ！
+                        </div>
+                        <ul class="ba-list">
+                            <li>三面鏡で身支度が快適に</li>
+                            <li>大容量収納で整理整頓</li>
+                            <li>節水型水栓で水道代削減</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="ba-item">
+                    <div class="ba-header">🚽 トイレ（広陵町・築15年）</div>
+                    <div class="ba-images">
+                        <div class="ba-image">
+                            <img src="toilet_before.jpg" alt="トイレビフォー">
+                            <span class="ba-label">Before</span>
+                        </div>
+                        <div class="ba-image">
+                            <img src="toilet_after.jpg" alt="トイレアフター">
+                            <span class="ba-label">After</span>
+                        </div>
+                    </div>
+                    <div class="ba-details">
+                        <div class="ba-price">
+                            <strong>年間約1.5万円</strong>の節水効果！
+                        </div>
+                        <ul class="ba-list">
+                            <li>最新の節水型トイレに交換</li>
+                            <li>温水洗浄便座で快適性向上</li>
+                            <li>お手入れ簡単な防汚コーティング</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 特徴セクション -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">選ばれる<span>6つの理由</span></h2>
+            <p class="section-subtitle">センチュリー21ホームマートが奈良県民に支持される理由</p>
+            
+            <div class="cards-grid">
+                <div class="feature-card">
+                    <div class="card-icon">📍</div>
+                    <h3>地域密着10年以上</h3>
+                    <p>北葛城郡広陵町を拠点に、奈良県全域で1,000件以上の施工実績。地元の気候や住環境を熟知したご提案。</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="card-icon">🏆</div>
+                    <h3>センチュリー21の信頼</h3>
+                    <p>全国店舗数No.1のセンチュリー21加盟店。大手の安心感と地域密着のきめ細かなサービスを両立。</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="card-icon">👷</div>
+                    <h3>自社施工で安心</h3>
+                    <p>下請けに丸投げせず、経験豊富な自社職人が責任施工。品質管理から アフターフォローまで一貫対応。</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="card-icon">🚗</div>
+                    <h3>奈良県全域即日対応</h3>
+                    <p>広陵町から県内全域へ迅速対応。緊急のトラブルにも即日駆けつけ可能な機動力。</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="card-icon">💰</div>
+                    <h3>明朗会計</h3>
+                    <p>事前見積もりから追加費用なし。分かりやすい料金体系で、安心してご依頼いただけます。</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="card-icon">🛡️</div>
+                    <h3>10年保証付き</h3>
+                    <p>施工後も安心の10年保証。定期点検とアフターサポートで、長く快適にお使いいただけます。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- お客様の声 -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">お客様の<span>喜びの声</span></h2>
+            <p class="section-subtitle">実際にリフォームされた奈良県民の方々の体験談</p>
+            
+            <div class="cards-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">"</div>
+                    <p class="testimonial-text">
+                        築25年のマンションでしたが、水回り4点セットでリフォームしていただき、まるで新築のようになりました。特に浴室暖房は冬の寒さ対策に最高です。地元の会社なので、何かあってもすぐ対応してくれる安心感があります。
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">60代</div>
+                        <div>
+                            <strong>広陵町在住 H様（60代・ご夫婦）</strong>
+                            <div style="font-size: 12px; color: var(--text-gray);">築25年マンション・2024年8月施工</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">"</div>
+                    <p class="testimonial-text">
+                        子どもが3人いるので、キッチンと洗面所の収納不足に悩んでいました。リフォーム後は収納力が格段にアップし、家事効率が大幅に改善。食洗機のおかげで家族との時間も増えました。
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">40代</div>
+                        <div>
+                            <strong>奈良市在住 I様（40代・5人家族）</strong>
+                            <div style="font-size: 12px; color: var(--text-gray);">築15年戸建て・2024年6月施工</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">"</div>
+                    <p class="testimonial-text">
+                        高齢の両親のために、バリアフリーリフォームをお願いしました。手すりの設置や段差の解消で、両親も安心してお風呂に入れるようになりました。職人さんの技術も素晴らしく、細かい配慮が行き届いていました。
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">50代</div>
+                        <div>
+                            <strong>橿原市在住 J様（50代・二世帯住宅）</strong>
+                            <div style="font-size: 12px; color: var(--text-gray);">築35年戸建て・2024年9月施工</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 料金プラン -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2 class="section-title">料金<span>プラン</span></h2>
+            <p class="section-subtitle">分割払いにも対応！月々1.5万円から始められます</p>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-title">単品プラン</div>
+                    <div class="pricing-price">
+                        5万円〜
+                        <span>/箇所</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>キッチン、浴室、トイレ、洗面所から選択</li>
+                        <li>標準工事費込み</li>
+                        <li>5年保証付き</li>
+                        <li>現地調査・見積もり無料</li>
+                        <li>部分的なリフォームに最適</li>
+                    </ul>
+                    <a href="#contact" class="cta-primary" style="width: 100%;">見積もりを依頼</a>
+                </div>
+                
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">人気No.1</div>
+                    <div class="pricing-title">水回り4点セット</div>
+                    <div class="pricing-price">
+                        118万円〜
+                        <span>/セット</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>キッチン＋浴室＋トイレ＋洗面所</li>
+                        <li>標準工事費込み</li>
+                        <li>10年保証付き</li>
+                        <li>今なら工事費20%OFF</li>
+                        <li>分割払い対応（月々1.8万円〜）</li>
+                        <li>奈良県限定特別価格</li>
+                    </ul>
+                    <a href="#contact" class="cta-primary" style="width: 100%;">見積もりを依頼</a>
+                </div>
+                
+                <div class="pricing-card">
+                    <div class="pricing-title">プレミアムプラン</div>
+                    <div class="pricing-price">
+                        186万円〜
+                        <span>/セット</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>高級メーカー設備を選択可能</li>
+                        <li>オーダーメイド対応</li>
+                        <li>15年保証付き</li>
+                        <li>インテリアコーディネート付き</li>
+                        <li>最上級の設備で贅沢な空間を実現</li>
+                    </ul>
+                    <a href="#contact" class="cta-primary" style="width: 100%;">見積もりを依頼</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 施工の流れ -->
+    <section class="process">
+        <div class="container">
+            <h2 class="section-title">施工の<span>流れ</span></h2>
+            <p class="section-subtitle">お問い合わせから完成まで、安心のステップ</p>
+            
+            <div class="process-timeline">
+                <div class="process-item">
+                    <div class="process-content">
+                        <h3>お問い合わせ・相談</h3>
+                        <p>お電話・メール・LINEでお気軽にご相談ください。</p>
+                    </div>
+                    <div class="process-number">1</div>
+                </div>
+                
+                <div class="process-item">
+                    <div class="process-content">
+                        <h3>現地調査・お見積もり</h3>
+                        <p>無料で現地調査を実施。詳細なお見積もりをご提示します。</p>
+                    </div>
+                    <div class="process-number">2</div>
+                </div>
+                
+                <div class="process-item">
+                    <div class="process-content">
+                        <h3>ご契約・打ち合わせ</h3>
+                        <p>設備の選定や工事日程など、詳細を決定します。</p>
+                    </div>
+                    <div class="process-number">3</div>
+                </div>
+                
+                <div class="process-item">
+                    <div class="process-content">
+                        <h3>施工開始</h3>
+                        <p>経験豊富な職人が丁寧に施工。近隣への配慮も万全です。</p>
+                    </div>
+                    <div class="process-number">4</div>
+                </div>
+                
+                <div class="process-item">
+                    <div class="process-content">
+                        <h3>完成・お引き渡し</h3>
+                        <p>最終確認後、使い方のご説明と保証書をお渡しします。</p>
+                    </div>
+                    <div class="process-number">5</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 最終CTA -->
+    <section class="final-cta" id="contact">
+        <div class="container">
+            <h2>今こそ水回りリフォームの時</h2>
+            <p class="final-cta-subtitle">
+                奈良県限定キャンペーン実施中！<br>
+                工事費20%OFF + LINE登録で即見積もり
+            </p>
+            
+            <div class="contact-methods">
+                <a href="tel:0120438639" class="contact-button">
+                    <div class="contact-icon">📞</div>
+                    <strong>今すぐ電話相談</strong>
+                    <small>0120-43-8639</small>
+                    <small>受付時間 9:00〜18:00</small>
+                </a>
+                
+                <a href="https://form.run/@century21-reform" class="contact-button">
+                    <div class="contact-icon">📝</div>
+                    <strong>Web見積もり</strong>
+                    <small>24時間受付中</small>
+                    <small>60秒で入力完了</small>
+                </a>
+                
+                <a href="https://line.me/ti/p/xxxxx" class="contact-button" style="background: #00C300; color: white;">
+                    <div class="contact-icon">💬</div>
+                    <strong>LINE相談</strong>
+                    <small>写真を送るだけ</small>
+                    <small>概算見積もり即回答</small>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>会社情報</h3>
+                    <p><strong>センチュリー21ホームマート</strong></p>
+                    <p>〒635-0821<br>奈良県北葛城郡広陵町笠287-1</p>
+                    <p>TEL: 0120-43-8639</p>
+                    <p>営業時間: 9:00〜18:00</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>対応エリア</h3>
+                    <ul>
+                        <li>奈良市・生駒市・橿原市</li>
+                        <li>大和高田市・大和郡山市</li>
+                        <li>天理市・香芝市・桜井市</li>
+                        <li>広陵町・王寺町・その他奈良県全域</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>サービス内容</h3>
+                    <ul>
+                        <li><a href="#pricing">水回り4点リフォーム</a></li>
+                        <li><a href="#works">キッチンリフォーム</a></li>
+                        <li><a href="#works">バスルームリフォーム</a></li>
+                        <li><a href="#works">トイレリフォーム</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>お問い合わせ</h3>
+                    <p>電話: <a href="tel:0120438639">0120-43-8639</a></p>
+                    <p>メール: info@century21-homemart.jp</p>
+                    <p style="margin-top: 16px;">
+                        <a href="https://line.me/ti/p/xxxxx" style="display: inline-block; background: #00C300; color: white; padding: 8px 16px; border-radius: 20px; text-decoration: none;">
+                            LINE相談はこちら
+                        </a>
+                    </p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 センチュリー21ホームマート. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- フローティングボタン -->
+    <div class="floating-buttons">
+        <a href="tel:0120438639" class="floating-btn phone" title="電話で相談">
+            📞
+        </a>
+        <a href="https://line.me/ti/p/xxxxx" class="floating-btn line" title="LINEで相談">
+            💬
+        </a>
+    </div>
+
+    <script>
+        // スムーススクロール
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // スクロールアニメーション
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // アニメーション対象要素
+        document.querySelectorAll('.card, .ba-item, .testimonial-card, .pricing-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
