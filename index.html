@@ -17,6 +17,7 @@
       --max:1200px; --shadow:0 8px 24px rgba(0,0,0,.08);
       --accent-pink: #FFB6C1;
       --accent-blue: #4A90E2;
+      --accent-green: #90EE90;
     }
     *{box-sizing:border-box}
     html,body{margin:0;background:var(--bg);color:var(--ink);font-family:'Noto Sans JP',system-ui,-apple-system,Segoe UI,Roboto,'Hiragino Sans','Noto Sans JP','Yu Gothic UI','Yu Gothic',Meiryo,sans-serif}
@@ -37,7 +38,134 @@
     .btn--gold{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#fff;box-shadow:0 6px 18px rgba(161,146,118,.35)}
     .btn--ghost{border:2px solid var(--gold);color:var(--gold);background:#fff}
     .btn--pink{background:linear-gradient(135deg,var(--accent-pink),#FFD0E1);color:#fff;box-shadow:0 6px 18px rgba(255,182,193,.35)}
+    .btn--green{background:linear-gradient(135deg,var(--accent-green),#98FB98);color:#333;box-shadow:0 6px 18px rgba(144,238,144,.35)}
     .hero-card{background:#fff;border:1px solid #eee;border-radius:14px;padding:16px;box-shadow:var(--shadow)}
+
+    /* リフォーム特別セクション */
+    .reform-section{
+      background:linear-gradient(135deg,#F0FFF0,#F5FFFA);
+      padding:60px 0;
+      margin:40px 0;
+      position:relative;
+      overflow:hidden;
+    }
+    .reform-section::before{
+      content:'';
+      position:absolute;
+      top:-50%;
+      left:-50%;
+      width:200%;
+      height:200%;
+      background:radial-gradient(circle,rgba(144,238,144,0.1),transparent);
+      animation:rotate-reverse 25s linear infinite;
+    }
+    @keyframes rotate-reverse{
+      from{transform:rotate(360deg)}
+      to{transform:rotate(0deg)}
+    }
+    .reform-container{
+      position:relative;
+      z-index:1;
+      text-align:center;
+    }
+    .reform-badge{
+      display:inline-block;
+      background:var(--accent-green);
+      color:#333;
+      padding:6px 16px;
+      border-radius:999px;
+      font-size:14px;
+      font-weight:700;
+      margin-bottom:16px;
+      animation:pulse 2s infinite;
+    }
+    .reform-title{
+      font-size:clamp(32px,5vw,48px);
+      font-weight:900;
+      margin:16px 0;
+      background:linear-gradient(135deg,var(--accent-green),var(--gold));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+    }
+    .reform-subtitle{
+      font-size:18px;
+      color:#666;
+      margin-bottom:24px;
+      line-height:1.8;
+    }
+    .reform-features{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+      gap:24px;
+      max-width:1000px;
+      margin:40px auto;
+    }
+    .reform-feature{
+      background:#fff;
+      padding:24px;
+      border-radius:16px;
+      box-shadow:0 8px 24px rgba(144,238,144,.2);
+      transition:transform 0.3s;
+    }
+    .reform-feature:hover{
+      transform:translateY(-5px);
+      box-shadow:0 12px 32px rgba(144,238,144,.3);
+    }
+    .reform-feature-icon{
+      font-size:32px;
+      margin-bottom:12px;
+    }
+    .reform-feature-title{
+      font-size:18px;
+      font-weight:700;
+      margin-bottom:8px;
+      color:var(--ink);
+    }
+    .reform-feature-desc{
+      font-size:14px;
+      color:#666;
+      line-height:1.6;
+    }
+    .reform-cta{
+      margin-top:32px;
+      display:flex;
+      gap:16px;
+      justify-content:center;
+      flex-wrap:wrap;
+    }
+    .btn--reform{
+      background:linear-gradient(135deg,var(--accent-green),#7FFF7F);
+      color:#333;
+      padding:16px 32px;
+      font-size:18px;
+      box-shadow:0 8px 24px rgba(144,238,144,.4);
+      display:inline-flex;
+      align-items:center;
+      gap:12px;
+    }
+    .btn--reform:hover{
+      transform:translateY(-3px);
+      box-shadow:0 12px 32px rgba(144,238,144,.5);
+    }
+    .btn--reform-sub{
+      background:#fff;
+      color:var(--accent-green);
+      border:2px solid var(--accent-green);
+      padding:14px 28px;
+      font-size:16px;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      border-radius:12px;
+      font-weight:700;
+      transition:all 0.3s;
+    }
+    .btn--reform-sub:hover{
+      background:var(--accent-green);
+      color:#333;
+      transform:translateY(-2px);
+    }
 
     /* URICO特別セクション */
     .urico-section{
@@ -171,6 +299,23 @@
       font-size:11px;
       font-weight:700;
     }
+    .card--highlight-green{
+      border:2px solid var(--accent-green);
+      background:linear-gradient(135deg,#FFF,#F0FFF0);
+      position:relative;
+    }
+    .card--highlight-green::before{
+      content:'人気';
+      position:absolute;
+      top:-10px;
+      right:16px;
+      background:var(--accent-green);
+      color:#333;
+      padding:4px 12px;
+      border-radius:999px;
+      font-size:11px;
+      font-weight:700;
+    }
 
     footer{background:#111;color:#eee}
     .foot{display:grid;gap:20px;padding:28px 0}
@@ -196,6 +341,7 @@
           <div class="cta">
             <a class="btn btn--gold" href="assessment.html">📩 売却査定を依頼</a>
             <a class="btn btn--ghost" href="search.html">🏠 物件を探す</a>
+            <a class="btn btn--green" href="reform-water.html">🚿 リフォーム相談</a>
             <a class="btn btn--pink" href="urico.html">🏢 マンション売却</a>
             <a class="btn btn--ghost" href="recruit.html">💼 採用情報</a>
           </div>
@@ -203,11 +349,57 @@
         <div class="hero-card">
           <strong>最新情報</strong>
           <ul style="margin:10px 0 0 18px; color:#555;">
+            <li><span style="color:var(--accent-green);font-weight:600;">【人気】</span> 水回り4点リフォームキャンペーン実施中</li>
             <li><span style="color:var(--accent-pink);font-weight:600;">【NEW】</span> マンション売却専用サービス「URICO」開始</li>
             <li>新着物件を公開しました（物件情報 → 新着物件）</li>
-            <li>秋のリフォーム相談会を開催（お知らせ → イベント）</li>
             <li>採用サイトを更新しました（採用情報）</li>
           </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- リフォーム特別セクション -->
+    <section class="reform-section">
+      <div class="container reform-container">
+        <span class="reform-badge">🔧 奈良県限定キャンペーン</span>
+        <h2 class="reform-title">水回り4点まるごとリフォーム</h2>
+        <p class="reform-subtitle">
+          キッチン・浴室・洗面所・トイレを一新<br>
+          今なら工事費20%OFF実施中
+        </p>
+        
+        <div class="reform-features">
+          <div class="reform-feature">
+            <div class="reform-feature-icon">🍳</div>
+            <h3 class="reform-feature-title">キッチン</h3>
+            <p class="reform-feature-desc">最新システムキッチンで料理が楽しく</p>
+          </div>
+          <div class="reform-feature">
+            <div class="reform-feature-icon">🛁</div>
+            <h3 class="reform-feature-title">浴室</h3>
+            <p class="reform-feature-desc">浴室暖房付きで冬も快適バスタイム</p>
+          </div>
+          <div class="reform-feature">
+            <div class="reform-feature-icon">🚿</div>
+            <h3 class="reform-feature-title">洗面所</h3>
+            <p class="reform-feature-desc">収納力2倍で朝の身支度もスムーズ</p>
+          </div>
+          <div class="reform-feature">
+            <div class="reform-feature-icon">🚽</div>
+            <h3 class="reform-feature-title">トイレ</h3>
+            <p class="reform-feature-desc">節水型で年間1.5万円の節約効果</p>
+          </div>
+        </div>
+        
+        <div class="reform-cta">
+          <a class="btn btn--reform" href="reform-water.html">
+            <span>🚿</span>
+            <span>水回りリフォーム詳細を見る</span>
+          </a>
+          <a class="btn btn--reform-sub" href="reform/services.html">
+            <span>🏠</span>
+            <span>その他のリフォーム</span>
+          </a>
         </div>
       </div>
     </section>
@@ -254,6 +446,10 @@
       <div class="container">
         <h2 class="section-title">目的から探す</h2>
         <div class="cards">
+          <a class="card card--highlight-green" href="reform-water.html">
+            <h3>🚿 水回りリフォーム</h3>
+            <p>キッチン・浴室・洗面所・トイレを一新。今なら工事費20%OFF。</p>
+          </a>
           <a class="card card--highlight" href="urico.html">
             <h3>🏢 マンションを売りたい</h3>
             <p>購入希望者と直接マッチング。営業電話なしの新しい売却方法。</p>
@@ -267,8 +463,12 @@
             <p>購入ステップやよくある質問、物件検索はこちら。</p>
           </a>
           <a class="card" href="reform/services.html">
-            <h3>リフォームしたい</h3>
-            <p>サービス内容・施工事例・見積もりの流れを確認。</p>
+            <h3>リフォーム全般</h3>
+            <p>外壁塗装・屋根工事・内装リフォームなど幅広く対応。</p>
+          </a>
+          <a class="card" href="recruit.html">
+            <h3>採用情報</h3>
+            <p>一緒に働く仲間を募集中。未経験者も大歓迎です。</p>
           </a>
         </div>
       </div>
