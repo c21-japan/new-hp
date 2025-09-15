@@ -3,657 +3,1186 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>株式会社ホームマート｜不動産売買仲介・買取再販・リフォーム</title>
-  <meta name="description" content="奈良・大阪エリアの不動産売買仲介／買取再販／リフォームなら株式会社ホームマート。最新物件・売却査定・採用情報までトータルにご案内。" />
+  <title>センチュリー21ホームマート｜奈良・大阪の不動産売買・リフォーム</title>
+  <meta name="description" content="センチュリー21ホームマート。奈良・大阪エリアの不動産売買仲介、買取再販、リフォームまでワンストップサービス。店舗数日本一のネットワークで安心の不動産取引を。" />
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700;900&display=swap" rel="stylesheet"/>
-  <!-- 共通スタイル（ヘッダー/フッターを含む） -->
-  <link rel="stylesheet" href="/assets/site.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;900&family=Roboto:wght@700;900&display=swap" rel="stylesheet"/>
+  
   <style>
-    /* ==== ページ固有（ヒーロー/カード周り） ==== */
-    :root{
-      --gold:#A19276; --gold2:#B8A082; --black:#383635; --ink:#222; --cream:#F8F6F3; --bg:#fff;
-      --max:1200px; --shadow:0 8px 24px rgba(0,0,0,.08);
-      --accent-pink: #FFB6C1;
-      --accent-blue: #4A90E2;
-      --accent-green: #90EE90;
+    /* ==== センチュリー21ブランドカラー ==== */
+    :root {
+      --c21-gold: #B8A265;
+      --c21-gold-dark: #9B8A57;
+      --c21-gold-light: #D4C299;
+      --c21-black: #1A1A1A;
+      --c21-gray: #4A4A4A;
+      --c21-gray-light: #F5F5F5;
+      --c21-white: #FFFFFF;
+      --c21-red: #DC143C;
+      --c21-green: #22C55E;
+      --c21-blue: #0066CC;
+      
+      --max-width: 1280px;
+      --header-height: 80px;
+      --mobile-header: 60px;
+      --shadow-sm: 0 2px 4px rgba(0,0,0,0.08);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.12);
+      --shadow-lg: 0 8px 24px rgba(0,0,0,0.16);
+      --shadow-xl: 0 16px 48px rgba(0,0,0,0.20);
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    *{box-sizing:border-box}
-    html,body{margin:0;background:var(--bg);color:var(--ink);font-family:'Noto Sans JP',system-ui,-apple-system,Segoe UI,Roboto,'Hiragino Sans','Noto Sans JP','Yu Gothic UI','Yu Gothic',Meiryo,sans-serif}
-    a{color:inherit;text-decoration:none}
-    img{max-width:100%;display:block;height:auto}
-    .container{max-width:var(--max);margin:0 auto;padding:0 16px}
-
-    section{padding:40px 0}
-    .hero{background:linear-gradient(135deg,var(--cream),#fff);padding:48px 0 32px}
-    .hero__grid{display:grid;gap:20px;align-items:center}
-    @media(min-width: 900px){.hero__grid{grid-template-columns:1.1fr .9fr}}
-    .kicker{display:inline-block;background:var(--cream);color:var(--gold);border:1px solid var(--gold);padding:4px 10px;border-radius:999px;font-size:12px;font-weight:700}
-    .hero h1{font-size:clamp(28px,4vw,40px);line-height:1.3;margin:.4em 0;font-weight:900}
-    .lead{color:#555}
-    .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
-    .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border-radius:12px;font-weight:700;transition:transform 0.3s, box-shadow 0.3s}
-    .btn:hover{transform:translateY(-2px);box-shadow:0 10px 25px rgba(0,0,0,.15)}
-    .btn--gold{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#fff;box-shadow:0 6px 18px rgba(161,146,118,.35)}
-    .btn--ghost{border:2px solid var(--gold);color:var(--gold);background:#fff}
-    .btn--pink{background:linear-gradient(135deg,var(--accent-pink),#FFD0E1);color:#fff;box-shadow:0 6px 18px rgba(255,182,193,.35)}
-    .btn--green{background:linear-gradient(135deg,var(--accent-green),#98FB98);color:#333;box-shadow:0 6px 18px rgba(144,238,144,.35)}
-    .hero-card{background:#fff;border:1px solid #eee;border-radius:14px;padding:16px;box-shadow:var(--shadow)}
-
-    /* リフォーム特別セクション */
-    .reform-section{
-      background:linear-gradient(135deg,#F0FFF0,#F5FFFA);
-      padding:60px 0;
-      margin:40px 0;
-      position:relative;
-      overflow:hidden;
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-    .reform-section::before{
-      content:'';
-      position:absolute;
-      top:-50%;
-      left:-50%;
-      width:200%;
-      height:200%;
-      background:radial-gradient(circle,rgba(144,238,144,0.1),transparent);
-      animation:rotate-reverse 25s linear infinite;
+    
+    html {
+      scroll-behavior: smooth;
     }
-    @keyframes rotate-reverse{
-      from{transform:rotate(360deg)}
-      to{transform:rotate(0deg)}
+    
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--c21-gray);
+      background: var(--c21-white);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
-    .reform-container{
-      position:relative;
-      z-index:1;
-      text-align:center;
+    
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: var(--transition);
     }
-    .reform-badge{
-      display:inline-block;
-      background:var(--accent-green);
-      color:#333;
-      padding:6px 16px;
-      border-radius:999px;
-      font-size:14px;
-      font-weight:700;
-      margin-bottom:16px;
-      animation:pulse 2s infinite;
+    
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
     }
-    .reform-title{
-      font-size:clamp(32px,5vw,48px);
-      font-weight:900;
-      margin:16px 0;
-      background:linear-gradient(135deg,var(--accent-green),var(--gold));
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-      background-clip:text;
+    
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 20px;
     }
-    .reform-subtitle{
-      font-size:18px;
-      color:#666;
-      margin-bottom:24px;
-      line-height:1.8;
+    
+    /* ==== ヘッダー ==== */
+    .header {
+      background: var(--c21-white);
+      box-shadow: var(--shadow-sm);
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      transition: var(--transition);
     }
-    .reform-features{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-      gap:24px;
-      max-width:1000px;
-      margin:40px auto;
+    
+    .header-top {
+      background: var(--c21-black);
+      color: var(--c21-white);
+      font-size: 13px;
+      padding: 8px 0;
     }
-    .reform-feature{
-      background:#fff;
-      padding:24px;
-      border-radius:16px;
-      box-shadow:0 8px 24px rgba(144,238,144,.2);
-      transition:transform 0.3s;
+    
+    .header-top-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
-    .reform-feature:hover{
-      transform:translateY(-5px);
-      box-shadow:0 12px 32px rgba(144,238,144,.3);
+    
+    .header-info {
+      display: flex;
+      gap: 24px;
+      align-items: center;
     }
-    .reform-feature-icon{
-      font-size:32px;
-      margin-bottom:12px;
+    
+    .header-info span {
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
-    .reform-feature-title{
-      font-size:18px;
-      font-weight:700;
-      margin-bottom:8px;
-      color:var(--ink);
+    
+    .header-main {
+      background: var(--c21-white);
+      height: var(--header-height);
+      display: flex;
+      align-items: center;
     }
-    .reform-feature-desc{
-      font-size:14px;
-      color:#666;
-      line-height:1.6;
+    
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
     }
-    .reform-cta{
-      margin-top:32px;
-      display:flex;
-      gap:16px;
-      justify-content:center;
-      flex-wrap:wrap;
+    
+    /* ロゴ */
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
     }
-    .btn--reform{
-      background:linear-gradient(135deg,var(--accent-green),#7FFF7F);
-      color:#333;
-      padding:16px 32px;
-      font-size:18px;
-      box-shadow:0 8px 24px rgba(144,238,144,.4);
-      display:inline-flex;
-      align-items:center;
-      gap:12px;
+    
+    .logo-mark {
+      background: var(--c21-gold);
+      color: var(--c21-white);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 20px;
+      font-family: 'Roboto', sans-serif;
     }
-    .btn--reform:hover{
-      transform:translateY(-3px);
-      box-shadow:0 12px 32px rgba(144,238,144,.5);
+    
+    .logo-text {
+      display: flex;
+      flex-direction: column;
     }
-    .btn--reform-sub{
-      background:#fff;
-      color:var(--accent-green);
-      border:2px solid var(--accent-green);
-      padding:14px 28px;
-      font-size:16px;
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      border-radius:12px;
-      font-weight:700;
-      transition:all 0.3s;
+    
+    .logo-century {
+      font-size: 11px;
+      color: var(--c21-gold);
+      font-weight: 600;
+      letter-spacing: 0.5px;
     }
-    .btn--reform-sub:hover{
-      background:var(--accent-green);
-      color:#333;
-      transform:translateY(-2px);
+    
+    .logo-name {
+      font-size: 18px;
+      color: var(--c21-black);
+      font-weight: 700;
+      letter-spacing: 0.5px;
     }
-
-    /* URICO特別セクション */
-    .urico-section{
-      background:linear-gradient(135deg,#FFF5F8,#FFF0F5);
-      padding:60px 0;
-      margin:40px 0;
-      position:relative;
-      overflow:hidden;
+    
+    /* ナビゲーション */
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 40px;
     }
-    .urico-section::before{
-      content:'';
-      position:absolute;
-      top:-50%;
-      right:-50%;
-      width:200%;
-      height:200%;
-      background:radial-gradient(circle,rgba(255,182,193,0.1),transparent);
-      animation:rotate 30s linear infinite;
+    
+    .nav-menu {
+      display: flex;
+      gap: 32px;
+      list-style: none;
     }
-    @keyframes rotate{
-      from{transform:rotate(0deg)}
-      to{transform:rotate(360deg)}
+    
+    .nav-item {
+      position: relative;
     }
-    .urico-container{
-      position:relative;
-      z-index:1;
-      text-align:center;
+    
+    .nav-link {
+      color: var(--c21-gray);
+      font-weight: 500;
+      font-size: 15px;
+      padding: 8px 0;
+      position: relative;
+      transition: var(--transition);
     }
-    .urico-badge{
-      display:inline-block;
-      background:var(--accent-pink);
-      color:#fff;
-      padding:6px 16px;
-      border-radius:999px;
-      font-size:14px;
-      font-weight:700;
-      margin-bottom:16px;
-      animation:pulse 2s infinite;
+    
+    .nav-link:hover {
+      color: var(--c21-gold);
     }
-    @keyframes pulse{
-      0%,100%{transform:scale(1)}
-      50%{transform:scale(1.05)}
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--c21-gold);
+      transition: width 0.3s;
     }
-    .urico-title{
-      font-size:clamp(32px,5vw,48px);
-      font-weight:900;
-      margin:16px 0;
-      background:linear-gradient(135deg,var(--accent-pink),var(--accent-blue));
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-      background-clip:text;
+    
+    .nav-link:hover::after {
+      width: 100%;
     }
-    .urico-subtitle{
-      font-size:18px;
-      color:#666;
-      margin-bottom:24px;
-      line-height:1.8;
+    
+    /* ドロップダウン */
+    .nav-dropdown {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: var(--c21-white);
+      box-shadow: var(--shadow-lg);
+      border-radius: 8px;
+      min-width: 240px;
+      padding: 8px 0;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: var(--transition);
+      margin-top: 8px;
     }
-    .urico-features{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-      gap:24px;
-      max-width:900px;
-      margin:40px auto;
+    
+    .nav-item:hover .nav-dropdown {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
     }
-    .urico-feature{
-      background:#fff;
-      padding:24px;
-      border-radius:16px;
-      box-shadow:0 8px 24px rgba(255,182,193,.2);
-      transition:transform 0.3s;
+    
+    .dropdown-link {
+      display: block;
+      padding: 10px 20px;
+      color: var(--c21-gray);
+      font-size: 14px;
+      transition: var(--transition);
     }
-    .urico-feature:hover{
-      transform:translateY(-5px);
-      box-shadow:0 12px 32px rgba(255,182,193,.3);
+    
+    .dropdown-link:hover {
+      background: var(--c21-gray-light);
+      color: var(--c21-gold);
+      padding-left: 24px;
     }
-    .urico-feature-icon{
-      font-size:32px;
-      margin-bottom:12px;
+    
+    /* ヘッダーCTA */
+    .header-cta {
+      display: flex;
+      gap: 16px;
+      align-items: center;
     }
-    .urico-feature-title{
-      font-size:18px;
-      font-weight:700;
-      margin-bottom:8px;
-      color:var(--ink);
+    
+    .btn-tel {
+      background: var(--c21-gold);
+      color: var(--c21-white);
+      padding: 12px 24px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 15px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transition);
+      box-shadow: var(--shadow-md);
     }
-    .urico-feature-desc{
-      font-size:14px;
-      color:#666;
-      line-height:1.6;
+    
+    .btn-tel:hover {
+      background: var(--c21-gold-dark);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
     }
-    .urico-cta{
-      margin-top:32px;
+    
+    .btn-contact {
+      background: var(--c21-white);
+      color: var(--c21-gold);
+      border: 2px solid var(--c21-gold);
+      padding: 10px 20px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 14px;
+      transition: var(--transition);
     }
-    .btn--urico{
-      background:linear-gradient(135deg,var(--accent-pink),#FF69B4);
-      color:#fff;
-      padding:16px 32px;
-      font-size:18px;
-      box-shadow:0 8px 24px rgba(255,182,193,.4);
-      display:inline-flex;
-      align-items:center;
-      gap:12px;
+    
+    .btn-contact:hover {
+      background: var(--c21-gold);
+      color: var(--c21-white);
     }
-    .btn--urico:hover{
-      transform:translateY(-3px);
-      box-shadow:0 12px 32px rgba(255,182,193,.5);
+    
+    /* モバイルメニュー */
+    .mobile-menu-btn {
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      padding: 8px;
+      cursor: pointer;
     }
-
-    /* カテゴリセクション */
-    .category-section{
-      background:linear-gradient(135deg,#F8F6F3,#FFF);
-      padding:60px 0;
+    
+    .mobile-menu-btn span {
+      width: 24px;
+      height: 2px;
+      background: var(--c21-black);
+      transition: var(--transition);
     }
-    .category-grid{
-      display:grid;
-      gap:32px;
-      margin-top:40px;
+    
+    /* ==== ヒーローセクション ==== */
+    main {
+      margin-top: calc(var(--header-height) + 36px);
     }
-    @media(min-width: 900px){
-      .category-grid{grid-template-columns:repeat(2,1fr)}
+    
+    .hero {
+      background: linear-gradient(135deg, #FDFBF7 0%, #FFF 100%);
+      padding: 80px 0;
+      position: relative;
+      overflow: hidden;
     }
-    .category-block{
-      background:#fff;
-      border-radius:16px;
-      padding:32px;
-      box-shadow:0 8px 24px rgba(0,0,0,.08);
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 60%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(184,162,101,0.05) 0%, transparent 70%);
+      animation: float 20s ease-in-out infinite;
     }
-    .category-block h3{
-      font-size:24px;
-      margin:0 0 20px;
-      color:var(--gold);
-      display:flex;
-      align-items:center;
-      gap:12px;
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(10deg); }
     }
-    .category-links{
-      display:grid;
-      gap:12px;
+    
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 48px;
+      align-items: center;
     }
-    .category-link{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      padding:12px 16px;
-      background:#F8F6F3;
-      border-radius:8px;
-      transition:all 0.3s;
-      font-size:14px;
+    
+    @media (min-width: 768px) {
+      .hero-content {
+        grid-template-columns: 1.2fr 1fr;
+      }
     }
-    .category-link:hover{
-      background:var(--gold);
-      color:#fff;
-      transform:translateX(8px);
+    
+    .hero-text {
+      max-width: 600px;
     }
-    .category-link-new{
-      position:relative;
+    
+    .hero-badge {
+      display: inline-block;
+      background: var(--c21-gold);
+      color: var(--c21-white);
+      padding: 6px 16px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      animation: pulse 2s infinite;
     }
-    .category-link-new::after{
-      content:'NEW';
-      position:absolute;
-      right:16px;
-      background:var(--accent-pink);
-      color:#fff;
-      padding:2px 8px;
-      border-radius:999px;
-      font-size:10px;
-      font-weight:700;
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
     }
-
-    .section-title{text-align:center;margin-bottom:10px}
-    .cards{display:grid;gap:14px}
-    @media(min-width: 800px){.cards{grid-template-columns:repeat(3,1fr)}}
-    .card{background:#fff;border:1px solid #eee;border-radius:14px;padding:18px;box-shadow:var(--shadow);transition:transform 0.3s, box-shadow 0.3s}
-    .card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.12)}
-    .card h3{margin:6px 0 8px;font-size:18px}
-    .card p{margin:0;color:#555;font-size:14px}
-    .card--highlight{
-      border:2px solid var(--accent-pink);
-      background:linear-gradient(135deg,#FFF,#FFF5F8);
-      position:relative;
+    
+    .hero h1 {
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 900;
+      color: var(--c21-black);
+      line-height: 1.2;
+      margin-bottom: 24px;
     }
-    .card--highlight::before{
-      content:'NEW';
-      position:absolute;
-      top:-10px;
-      right:16px;
-      background:var(--accent-pink);
-      color:#fff;
-      padding:4px 12px;
-      border-radius:999px;
-      font-size:11px;
-      font-weight:700;
+    
+    .hero h1 .gold {
+      background: linear-gradient(135deg, var(--c21-gold) 0%, var(--c21-gold-dark) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
-    .card--highlight-green{
-      border:2px solid var(--accent-green);
-      background:linear-gradient(135deg,#FFF,#F0FFF0);
-      position:relative;
+    
+    .hero-lead {
+      font-size: 18px;
+      color: var(--c21-gray);
+      margin-bottom: 32px;
+      line-height: 1.8;
     }
-    .card--highlight-green::before{
-      content:'人気';
-      position:absolute;
-      top:-10px;
-      right:16px;
-      background:var(--accent-green);
-      color:#333;
-      padding:4px 12px;
-      border-radius:999px;
-      font-size:11px;
-      font-weight:700;
+    
+    .hero-cta {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
     }
-
-    footer{background:#111;color:#eee}
-    .foot{display:grid;gap:20px;padding:28px 0}
-    @media(min-width: 900px){.foot{grid-template-columns:1.2fr .8fr}}
-    .foot h4{margin:0 0 10px;color:var(--gold)}
-    .mini{font-size:12px;color:#aaa}
+    
+    .btn-primary {
+      background: linear-gradient(135deg, var(--c21-gold) 0%, var(--c21-gold-dark) 100%);
+      color: var(--c21-white);
+      padding: 16px 32px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 16px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transition);
+      box-shadow: var(--shadow-md);
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-xl);
+    }
+    
+    .btn-secondary {
+      background: var(--c21-white);
+      color: var(--c21-gold);
+      border: 2px solid var(--c21-gold);
+      padding: 14px 30px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 16px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transition);
+    }
+    
+    .btn-secondary:hover {
+      background: var(--c21-gold);
+      color: var(--c21-white);
+      transform: translateY(-2px);
+    }
+    
+    /* ヒーローカード */
+    .hero-card {
+      background: var(--c21-white);
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+    }
+    
+    .hero-card::before {
+      content: 'NEWS';
+      position: absolute;
+      top: -12px;
+      left: 32px;
+      background: var(--c21-red);
+      color: var(--c21-white);
+      padding: 4px 16px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    
+    .hero-card h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--c21-black);
+      margin-bottom: 20px;
+    }
+    
+    .news-list {
+      list-style: none;
+    }
+    
+    .news-item {
+      padding: 12px 0;
+      border-bottom: 1px solid #E5E5E5;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    
+    .news-item:last-child {
+      border-bottom: none;
+    }
+    
+    .news-badge {
+      background: var(--c21-gold);
+      color: var(--c21-white);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      white-space: nowrap;
+      margin-top: 2px;
+    }
+    
+    .news-badge.new {
+      background: var(--c21-red);
+    }
+    
+    .news-badge.hot {
+      background: var(--c21-green);
+    }
+    
+    .news-text {
+      flex: 1;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    
+    .news-link {
+      color: var(--c21-blue);
+      text-decoration: underline;
+    }
+    
+    .news-link:hover {
+      color: var(--c21-gold);
+    }
+    
+    /* ==== 特徴セクション ==== */
+    .features {
+      padding: 80px 0;
+      background: var(--c21-white);
+    }
+    
+    .section-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+    
+    .section-title {
+      font-size: clamp(28px, 4vw, 36px);
+      font-weight: 900;
+      color: var(--c21-black);
+      margin-bottom: 16px;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: var(--c21-gold);
+    }
+    
+    .section-subtitle {
+      font-size: 16px;
+      color: var(--c21-gray);
+      margin-top: 20px;
+    }
+    
+    .features-grid {
+      display: grid;
+      gap: 32px;
+    }
+    
+    @media (min-width: 768px) {
+      .features-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    
+    .feature-card {
+      background: var(--c21-white);
+      border: 1px solid #E5E5E5;
+      border-radius: 12px;
+      padding: 32px;
+      text-align: center;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--c21-gold) 0%, var(--c21-gold-light) 100%);
+      transform: scaleX(0);
+      transition: transform 0.3s;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-xl);
+      border-color: var(--c21-gold);
+    }
+    
+    .feature-card:hover::before {
+      transform: scaleX(1);
+    }
+    
+    .feature-icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 24px;
+      background: linear-gradient(135deg, var(--c21-gold-light) 0%, var(--c21-gold) 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+    }
+    
+    .feature-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--c21-black);
+      margin-bottom: 12px;
+    }
+    
+    .feature-desc {
+      font-size: 14px;
+      color: var(--c21-gray);
+      line-height: 1.8;
+    }
+    
+    /* ==== サービスグリッド ==== */
+    .services {
+      padding: 80px 0;
+      background: var(--c21-gray-light);
+    }
+    
+    .services-grid {
+      display: grid;
+      gap: 24px;
+    }
+    
+    @media (min-width: 768px) {
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (min-width: 1024px) {
+      .services-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+    
+    .service-card {
+      background: var(--c21-white);
+      border-radius: 12px;
+      padding: 24px;
+      transition: var(--transition);
+      cursor: pointer;
+      border: 2px solid transparent;
+    }
+    
+    .service-card:hover {
+      border-color: var(--c21-gold);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .service-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--c21-gold);
+      color: var(--c21-white);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+    
+    .service-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--c21-black);
+    }
+    
+    .service-desc {
+      font-size: 13px;
+      color: var(--c21-gray);
+      line-height: 1.6;
+    }
+    
+    .service-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      color: var(--c21-gold);
+      font-size: 13px;
+      font-weight: 600;
+      margin-top: 12px;
+    }
+    
+    .service-link:hover {
+      gap: 8px;
+    }
+    
+    /* ==== フッター ==== */
+    .footer {
+      background: var(--c21-black);
+      color: var(--c21-white);
+      padding: 60px 0 20px;
+    }
+    
+    .footer-content {
+      display: grid;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+    
+    @media (min-width: 768px) {
+      .footer-content {
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 32px;
+      }
+    }
+    
+    .footer-brand {
+      max-width: 320px;
+    }
+    
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    
+    .footer-logo .logo-mark {
+      background: var(--c21-white);
+      color: var(--c21-gold);
+    }
+    
+    .footer-logo .logo-text {
+      color: var(--c21-white);
+    }
+    
+    .footer-desc {
+      font-size: 14px;
+      line-height: 1.8;
+      color: #999;
+      margin-bottom: 20px;
+    }
+    
+    .footer-contact {
+      font-size: 14px;
+      line-height: 1.8;
+    }
+    
+    .footer-section h4 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: var(--c21-gold);
+    }
+    
+    .footer-links {
+      list-style: none;
+    }
+    
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+    
+    .footer-links a {
+      color: #999;
+      font-size: 14px;
+      transition: var(--transition);
+    }
+    
+    .footer-links a:hover {
+      color: var(--c21-gold);
+      padding-left: 8px;
+    }
+    
+    .footer-bottom {
+      border-top: 1px solid #333;
+      padding-top: 20px;
+      text-align: center;
+      font-size: 13px;
+      color: #666;
+    }
+    
+    /* ==== レスポンシブ ==== */
+    @media (max-width: 768px) {
+      .header-top {
+        display: none;
+      }
+      
+      .header-main {
+        height: var(--mobile-header);
+      }
+      
+      .nav {
+        display: none;
+      }
+      
+      .mobile-menu-btn {
+        display: flex;
+      }
+      
+      main {
+        margin-top: var(--mobile-header);
+      }
+      
+      .hero {
+        padding: 40px 0;
+      }
+      
+      .hero-content {
+        grid-template-columns: 1fr;
+      }
+      
+      .hero-cta {
+        flex-direction: column;
+      }
+      
+      .btn-primary,
+      .btn-secondary {
+        width: 100%;
+        justify-content: center;
+      }
+    }
   </style>
 </head>
 <body>
-  <a href="#main" class="sr-only">本文へスキップ</a>
-
-  <!-- ここに共通ヘッダーが差し込まれます -->
-  <div id="site-header"></div>
-
-  <main id="main">
-    <!-- Hero -->
+  <!-- ヘッダー -->
+  <header class="header">
+    <div class="header-top">
+      <div class="container">
+        <div class="header-top-content">
+          <div class="header-info">
+            <span>📍 奈良県北葛城郡広陵町笠287-1</span>
+            <span>⏰ 営業時間: 9:00-19:00（水曜定休）</span>
+          </div>
+          <div class="header-info">
+            <span>✉️ info@homemart-c21.jp</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="header-main">
+      <div class="container">
+        <div class="header-content">
+          <a href="/" class="logo">
+            <div class="logo-mark">C21</div>
+            <div class="logo-text">
+              <span class="logo-century">CENTURY 21</span>
+              <span class="logo-name">ホームマート</span>
+            </div>
+          </a>
+          
+          <nav class="nav">
+            <ul class="nav-menu">
+              <li class="nav-item">
+                <a href="#" class="nav-link">会社案内</a>
+                <div class="nav-dropdown">
+                  <a href="/company/about.html" class="dropdown-link">会社概要</a>
+                  <a href="/company/message.html" class="dropdown-link">代表挨拶</a>
+                  <a href="/company/philosophy.html" class="dropdown-link">企業理念</a>
+                  <a href="/company/staff.html" class="dropdown-link">スタッフ紹介</a>
+                  <a href="/company/access.html" class="dropdown-link">アクセス</a>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">売買物件</a>
+                <div class="nav-dropdown">
+                  <a href="/properties/search.html" class="dropdown-link">物件を探す</a>
+                  <a href="/properties/new.html" class="dropdown-link">新着物件</a>
+                  <a href="/buy/flow.html" class="dropdown-link">購入の流れ</a>
+                  <a href="/buy/loan-simulation.html" class="dropdown-link">ローンシミュレーション</a>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">売却相談</a>
+                <div class="nav-dropdown">
+                  <a href="/assessment.html" class="dropdown-link">無料査定</a>
+                  <a href="/sell/flow.html" class="dropdown-link">売却の流れ</a>
+                  <a href="/urico.html" class="dropdown-link">URICO（マンション売却）</a>
+                  <a href="/voluntary-sale.html" class="dropdown-link">任意売却</a>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">リフォーム</a>
+                <div class="nav-dropdown">
+                  <a href="/reform-water.html" class="dropdown-link">水回り4点リフォーム</a>
+                  <a href="/reform/services.html" class="dropdown-link">サービス一覧</a>
+                  <a href="/reform/cases.html" class="dropdown-link">施工事例</a>
+                  <a href="/reform/flow.html" class="dropdown-link">施工の流れ</a>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a href="/recruit.html" class="nav-link">採用情報</a>
+              </li>
+            </ul>
+            
+            <div class="header-cta">
+              <a href="/contact/form.html" class="btn-contact">お問い合わせ</a>
+              <a href="tel:0120438639" class="btn-tel">
+                📞 0120-43-8639
+              </a>
+            </div>
+          </nav>
+          
+          <button class="mobile-menu-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+  
+  <!-- メインコンテンツ -->
+  <main>
+    <!-- ヒーローセクション -->
     <section class="hero">
-      <div class="container hero__grid">
-        <div>
-          <span class="kicker">不動産 × リフォーム × CENTURY 21</span>
-          <h1>売る・買う・直すを、<br/>ワンストップで。</h1>
-          <p class="lead">中古マンションの買取再販、売買仲介、リフォームまで一気通貫。地域に根ざしたスピード対応で、お客様の意思決定を支えます。</p>
-          <div class="cta">
-            <a class="btn btn--gold" href="assessment.html">📩 売却査定を依頼</a>
-            <a class="btn btn--ghost" href="properties/search.html">🏠 物件を探す</a>
-            <a class="btn btn--green" href="reform-water.html">🚿 リフォーム相談</a>
-            <a class="btn btn--pink" href="urico.html">🏢 マンション売却</a>
-            <a class="btn btn--ghost" href="recruit.html">💼 採用情報</a>
-          </div>
-        </div>
-        <div class="hero-card">
-          <strong>最新情報</strong>
-          <ul style="margin:10px 0 0 18px; color:#555;">
-            <li><span style="color:var(--accent-green);font-weight:600;">【人気】</span> 水回り4点リフォームキャンペーン実施中</li>
-            <li><span style="color:var(--accent-pink);font-weight:600;">【NEW】</span> マンション売却専用サービス「URICO」開始</li>
-            <li>新着物件を公開しました（<a href="properties/new.html" style="color:var(--gold);text-decoration:underline;">物件情報 → 新着物件</a>）</li>
-            <li>採用サイトを更新しました（<a href="recruit.html" style="color:var(--gold);text-decoration:underline;">採用情報</a>）</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- リフォーム特別セクション -->
-    <section class="reform-section">
-      <div class="container reform-container">
-        <span class="reform-badge">🔧 奈良県限定キャンペーン</span>
-        <h2 class="reform-title">水回り4点まるごとリフォーム</h2>
-        <p class="reform-subtitle">
-          キッチン・浴室・洗面所・トイレを一新<br>
-          今なら工事費20%OFF実施中
-        </p>
-        
-        <div class="reform-features">
-          <div class="reform-feature">
-            <div class="reform-feature-icon">🍳</div>
-            <h3 class="reform-feature-title">キッチン</h3>
-            <p class="reform-feature-desc">最新システムキッチンで料理が楽しく</p>
-          </div>
-          <div class="reform-feature">
-            <div class="reform-feature-icon">🛁</div>
-            <h3 class="reform-feature-title">浴室</h3>
-            <p class="reform-feature-desc">浴室暖房付きで冬も快適バスタイム</p>
-          </div>
-          <div class="reform-feature">
-            <div class="reform-feature-icon">🚿</div>
-            <h3 class="reform-feature-title">洗面所</h3>
-            <p class="reform-feature-desc">収納力2倍で朝の身支度もスムーズ</p>
-          </div>
-          <div class="reform-feature">
-            <div class="reform-feature-icon">🚽</div>
-            <h3 class="reform-feature-title">トイレ</h3>
-            <p class="reform-feature-desc">節水型で年間1.5万円の節約効果</p>
-          </div>
-        </div>
-        
-        <div class="reform-cta">
-          <a class="btn btn--reform" href="reform-water.html">
-            <span>🚿</span>
-            <span>水回りリフォーム詳細を見る</span>
-          </a>
-          <a class="btn btn--reform-sub" href="reform/services.html">
-            <span>🏠</span>
-            <span>その他のリフォーム</span>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- URICO特別セクション -->
-    <section class="urico-section">
-      <div class="container urico-container">
-        <span class="urico-badge">🎉 新サービス開始</span>
-        <h2 class="urico-title">マンション売却の新しいカタチ</h2>
-        <p class="urico-subtitle">
-          関西全域246市区町村対応<br>
-          購入希望者と直接マッチング
-        </p>
-        
-        <div class="urico-features">
-          <div class="urico-feature">
-            <div class="urico-feature-icon">👥</div>
-            <h3 class="urico-feature-title">直接マッチング</h3>
-            <p class="urico-feature-desc">購入希望者の詳細条件を事前に確認できます</p>
-          </div>
-          <div class="urico-feature">
-            <div class="urico-feature-icon">💰</div>
-            <h3 class="urico-feature-title">希望価格明示</h3>
-            <p class="urico-feature-desc">購入希望者の予算が事前に分かります</p>
-          </div>
-          <div class="urico-feature">
-            <div class="urico-feature-icon">🏢</div>
-            <h3 class="urico-feature-title">関西全域対応</h3>
-            <p class="urico-feature-desc">大阪・京都・兵庫・奈良・滋賀・和歌山に対応</p>
-          </div>
-        </div>
-        
-        <div class="urico-cta">
-          <a class="btn btn--urico" href="urico.html">
-            <span>🏢</span>
-            <span>マンション売却サービスを見る</span>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- カテゴリ別ページリンク -->
-    <section class="category-section">
       <div class="container">
-        <h2 class="section-title">サービス・情報一覧</h2>
-        
-        <div class="category-grid">
-          <!-- 会社案内 -->
-          <div class="category-block">
-            <h3><span>🏢</span>会社案内</h3>
-            <div class="category-links">
-              <a class="category-link" href="company/about.html">
-                <span>📋</span>会社概要
+        <div class="hero-content">
+          <div class="hero-text">
+            <span class="hero-badge">🏆 センチュリー21加盟店</span>
+            <h1>
+              奈良・大阪の不動産なら<br>
+              <span class="gold">センチュリー21ホームマート</span>
+            </h1>
+            <p class="hero-lead">
+              売買仲介から買取再販、リフォームまでワンストップで対応。<br>
+              日本最大級のネットワークと地域密着のきめ細やかなサービスで、<br>
+              お客様の大切な不動産取引を全力サポートいたします。
+            </p>
+            <div class="hero-cta">
+              <a href="/assessment.html" class="btn-primary">
+                <span>📊</span>
+                <span>無料査定を申し込む</span>
               </a>
-              <a class="category-link" href="company/message.html">
-                <span>💬</span>代表挨拶
-              </a>
-              <a class="category-link category-link-new" href="company/philosophy.html">
-                <span>🎯</span>企業理念
-              </a>
-              <a class="category-link category-link-new" href="company/staff.html">
-                <span>👥</span>スタッフ紹介
-              </a>
-              <a class="category-link" href="company/access.html">
-                <span>📍</span>アクセスマップ
-              </a>
-            </div>
-          </div>
-
-          <!-- 不動産売買仲介 -->
-          <div class="category-block">
-            <h3><span>🏠</span>不動産売買仲介</h3>
-            <div class="category-links">
-              <a class="category-link" href="properties/list.html">
-                <span>📋</span>売買仲介物件一覧
-              </a>
-              <a class="category-link" href="buy/flow.html">
-                <span>🛒</span>購入の流れ
-              </a>
-              <a class="category-link category-link-new" href="buy/loan-simulation.html">
-                <span>💰</span>ローンシミュレーション
-              </a>
-              <a class="category-link" href="sell/flow.html">
-                <span>🏷️</span>売却の流れ
-              </a>
-              <a class="category-link" href="assessment.html">
-                <span>📊</span>査定依頼
-              </a>
-              <a class="category-link" href="voluntary-sale.html">
-                <span>🤝</span>任意売却相談
+              <a href="/properties/search.html" class="btn-secondary">
+                <span>🏠</span>
+                <span>物件を探す</span>
               </a>
             </div>
           </div>
-
-          <!-- リフォーム事業 -->
-          <div class="category-block">
-            <h3><span>🔧</span>リフォーム事業</h3>
-            <div class="category-links">
-              <a class="category-link" href="reform-water.html">
-                <span>🚿</span>水回り4点リフォーム
-              </a>
-              <a class="category-link" href="reform/services.html">
-                <span>🏗️</span>サービス内容
-              </a>
-              <a class="category-link" href="reform/cases.html">
-                <span>📸</span>リフォーム事例
-              </a>
-              <a class="category-link" href="reform/flow.html">
-                <span>📝</span>見積もり・施工の流れ
-              </a>
-              <a class="category-link" href="reform/voices.html">
-                <span>💭</span>お客様の声
-              </a>
-              <a class="category-link category-link-new" href="reform/column.html">
-                <span>📰</span>リフォームコラム
-              </a>
-            </div>
-          </div>
-
-          <!-- その他情報 -->
-          <div class="category-block">
-            <h3><span>📢</span>その他情報</h3>
-            <div class="category-links">
-              <a class="category-link" href="properties/new.html">
-                <span>🆕</span>新着物件
-              </a>
-              <a class="category-link" href="news/latest.html">
-                <span>📰</span>最新情報
-              </a>
-              <a class="category-link" href="news/events.html">
-                <span>🎉</span>イベント・キャンペーン
-              </a>
-              <a class="category-link" href="recruit.html">
-                <span>💼</span>採用情報
-              </a>
-              <a class="category-link" href="contact/form.html">
-                <span>✉️</span>お問い合わせ
-              </a>
-              <a class="category-link" href="sitemap.html">
-                <span>🗺️</span>サイトマップ
-              </a>
-            </div>
+          
+          <div class="hero-card">
+            <h3>📢 最新のお知らせ</h3>
+            <ul class="news-list">
+              <li class="news-item">
+                <span class="news-badge hot">HOT</span>
+                <span class="news-text">
+                  水回り4点リフォームキャンペーン実施中！工事費20%OFF
+                  <a href="/reform-water.html" class="news-link">詳細はこちら</a>
+                </span>
+              </li>
+              <li class="news-item">
+                <span class="news-badge new">NEW</span>
+                <span class="news-text">
+                  マンション売却サービス「URICO」がスタートしました
+                  <a href="/urico.html" class="news-link">詳細はこちら</a>
+                </span>
+              </li>
+              <li class="news-item">
+                <span class="news-badge">更新</span>
+                <span class="news-text">
+                  2025年3月 センチュリー21広陵店オープン予定
+                </span>
+              </li>
+              <li class="news-item">
+                <span class="news-badge">採用</span>
+                <span class="news-text">
+                  営業スタッフ・リフォーム職人募集中
+                  <a href="/recruit.html" class="news-link">詳細はこちら</a>
+                </span>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
     </section>
-
-    <!-- Quick Links -->
-    <section>
+    
+    <!-- 特徴セクション -->
+    <section class="features">
       <div class="container">
-        <h2 class="section-title">目的から探す</h2>
-        <div class="cards">
-          <a class="card card--highlight-green" href="reform-water.html">
-            <h3>🚿 水回りリフォーム</h3>
-            <p>キッチン・浴室・洗面所・トイレを一新。今なら工事費20%OFF。</p>
+        <div class="section-header">
+          <h2 class="section-title">選ばれる3つの理由</h2>
+          <p class="section-subtitle">センチュリー21ホームマートが多くのお客様に選ばれる理由</p>
+        </div>
+        
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">🏆</div>
+            <h3 class="feature-title">日本最大級のネットワーク</h3>
+            <p class="feature-desc">
+              センチュリー21は店舗数日本一。全国988店舗のネットワークで、お客様の物件を幅広く訴求します。
+            </p>
+          </div>
+          
+          <div class="feature-card">
+            <div class="feature-icon">🔧</div>
+            <h3 class="feature-title">自社施工でコスト削減</h3>
+            <p class="feature-desc">
+              リフォーム工事は全て自社職人が施工。中間マージンゼロで、高品質な工事を適正価格でご提供します。
+            </p>
+          </div>
+          
+          <div class="feature-card">
+            <div class="feature-icon">💰</div>
+            <h3 class="feature-title">独自の高額買取システム</h3>
+            <p class="feature-desc">
+              買取再販制度により、純利益の80%をお客様に還元。相場以上の売却益を実現する革新的なシステムです。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- サービス一覧 -->
+    <section class="services">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">サービス一覧</h2>
+          <p class="section-subtitle">お客様のニーズに合わせた幅広いサービスをご提供</p>
+        </div>
+        
+        <div class="services-grid">
+          <a href="/properties/search.html" class="service-card">
+            <div class="service-header">
+              <div class="service-icon">🏠</div>
+              <h3 class="service-title">物件購入</h3>
+            </div>
+            <p class="service-desc">
+              マンション・一戸建て・土地など、豊富な物件情報から理想の住まいをお探しします。
+            </p>
+            <span class="service-link">詳しく見る →</span>
           </a>
-          <a class="card card--highlight" href="urico.html">
-            <h3>🏢 マンションを売りたい</h3>
-            <p>購入希望者と直接マッチング。営業電話なしの新しい売却方法。</p>
+          
+          <a href="/assessment.html" class="service-card">
+            <div class="service-header">
+              <div class="service-icon">📊</div>
+              <h3 class="service-title">売却査定</h3>
+            </div>
+            <p class="service-desc">
+              無料査定で適正価格をご提示。最短48時間でスピード査定いたします。
+            </p>
+            <span class="service-link">詳しく見る →</span>
           </a>
-          <a class="card" href="sell/flow.html">
-            <h3>不動産を売りたい</h3>
-            <p>売却の流れ・査定依頼・売却事例をご案内します。</p>
+          
+          <a href="/reform-water.html" class="service-card">
+            <div class="service-header">
+              <div class="service-icon">🚿</div>
+              <h3 class="service-title">リフォーム</h3>
+            </div>
+            <p class="service-desc">
+              水回り4点リフォームが特別価格。キッチン・浴室・洗面・トイレを一新。
+            </p>
+            <span class="service-link">詳しく見る →</span>
           </a>
-          <a class="card" href="buy/flow.html">
-            <h3>不動産を買いたい</h3>
-            <p>購入ステップやよくある質問、物件検索はこちら。</p>
+          
+          <a href="/urico.html" class="service-card">
+            <div class="service-header">
+              <div class="service-icon">🏢</div>
+              <h3 class="service-title">URICO</h3>
+            </div>
+            <p class="service-desc">
+              マンション売却の新サービス。購入希望者と直接マッチング。
+            </p>
+            <span class="service-link">詳しく見る →</span>
           </a>
-          <a class="card" href="reform/services.html">
-            <h3>リフォーム全般</h3>
-            <p>外壁塗装・屋根工事・内装リフォームなど幅広く対応。</p>
+          
+          <a href="/voluntary-sale.html" class="service-card">
+            <div class="service-header">
+              <div class="service-icon">🤝</div>
+              <h3 class="service-title">任意売却</h3>
+            </div>
+            <p class="service-desc">
+              住宅ローンでお困りの方へ。秘密厳守で最適な解決策をご提案。
+            </p>
+            <span class="service-link">詳しく見る →</span>
           </a>
-          <a class="card" href="recruit.html">
-            <h3>採用情報</h3>
-            <p>一緒に働く仲間を募集中。未経験者も大歓迎です。</p>
+          
+          <a href="/business/overview.html" class="service-card">
+            <div class="service-header">
+              <div class="service-icon">💼</div>
+              <h3 class="service-title">買取再販</h3>
+            </div>
+            <p class="service-desc">
+              独自の買取再販制度で、売却益の80%を還元。高額売却を実現。
+            </p>
+            <span class="service-link">詳しく見る →</span>
           </a>
-          <a class="card" href="voluntary-sale.html">
-            <h3>🏠 任意売却相談</h3>
-            <p>住宅ローンでお困りの方へ。秘密厳守で無料相談。</p>
+          
+          <a href="/company/about.html" class="service-card">
+            <div class="service-header">
+              <div class="service-icon">🏆</div>
+              <h3 class="service-title">会社案内</h3>
+            </div>
+            <p class="service-desc">
+              センチュリー21ホームマートの理念、スタッフ、アクセス情報など。
+            </p>
+            <span class="service-link">詳しく見る →</span>
           </a>
-          <a class="card" href="business/overview.html">
-            <h3>📊 売買事業</h3>
-            <p>買取再販・URICO制度など当社独自の事業内容をご紹介。</p>
+          
+          <a href="/recruit.html" class="service-card">
+            <div class="service-header">
+              <div class="service-icon">👥</div>
+              <h3 class="service-title">採用情報</h3>
+            </div>
+            <p class="service-desc">
+              一緒に働く仲間を募集中。未経験者も大歓迎です。
+            </p>
+            <span class="service-link">詳しく見る →</span>
           </a>
         </div>
       </div>
     </section>
   </main>
-
-  <!-- ここに共通フッターが差し込まれます -->
-  <div id="site-footer"></div>
-
-  <!-- 共通レイアウトJS（ヘッダー/フッター読込＋メニュー制御＋現在地ハイライト） -->
-  <script defer src="/assets/js/layout.js"></script>
+  
+  <!-- フッター -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <div class="logo-mark">C21</div>
+            <div class="logo-text">
+              <span class="logo-century">CENTURY 21</span>
+              <span class="logo-name">ホームマート</span>
+            </div>
+          </div>
+          <p class="footer-desc">
+            センチュリー21ホームマートは、奈良・大阪エリアの不動産売買仲介、買取再販、リフォームまでワンストップでサービスを提供しています。
+          </p>
+          <div class="footer-contact">
+            📍 〒635-0821 奈良県北葛城郡広陵町笠287-1<br>
+            📞 0120-43-8639<br>
+            📠 050-3183-9576<br>
+            ✉️ info@homemart-c21.jp
+          </div>
+        </div>
+        
+        <div class="footer-section">
+          <h4>物件情報</h4>
+          <ul class="footer-links">
+            <li><a href="/properties/search.html">物件を探す</a></li>
+            <li><a href="/properties/new.html">新着物件</a></li>
+            <li><a href="/buy/flow.html">購入の流れ</a></li>
+            <li><a href="/buy/loan-simulation.html">ローンシミュレーション</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h4>売却サービス</h4>
+          <ul class="footer-links">
+            <li><a href="/assessment.html">無料査定</a></li>
+            <li><a href="/sell/flow.html">売却の流れ</a></li>
+            <li><a href="/urico.html">URICO</a></li>
+            <li><a href="/voluntary-sale.html">任意売却</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h4>会社情報</h4>
+          <ul class="footer-links">
+            <li><a href="/company/about.html">会社概要</a></li>
+            <li><a href="/company/message.html">代表挨拶</a></li>
+            <li><a href="/company/staff.html">スタッフ紹介</a></li>
+            <li><a href="/company/access.html">アクセス</a></li>
+            <li><a href="/privacy.html">プライバシーポリシー</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>© 2025 Century21 HomeMart. All Rights Reserved. | センチュリー21・ジャパン加盟店</p>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
