@@ -1,0 +1,640 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>代表挨拶｜センチュリー21ホームマート</title>
+  <meta name="description" content="株式会社ホームマート代表取締役・乾佑企からのご挨拶。20歳で創業し、お客様の人生の転機を支える存在として、不動産売買仲介・リフォーム事業を展開。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700;900&display=swap" rel="stylesheet"/>
+  
+  <style>
+    :root{
+      --gold:#A19276; 
+      --gold2:#B8A082; 
+      --black:#383635; 
+      --ink:#222; 
+      --cream:#F8F6F3; 
+      --bg:#fff;
+      --max:1200px; 
+      --shadow:0 8px 24px rgba(0,0,0,.08);
+    }
+    
+    *{box-sizing:border-box}
+    html,body{margin:0;background:var(--bg);color:var(--ink);font-family:'Noto Sans JP',sans-serif;line-height:1.6}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block;height:auto}
+    .container{max-width:var(--max);margin:0 auto;padding:0 16px}
+    section{padding:60px 0}
+    
+    /* ヘッダー */
+    .site-header{
+      background:#fff;
+      border-bottom:2px solid var(--gold);
+      padding:16px 0;
+      position:sticky;
+      top:0;
+      z-index:100;
+      box-shadow:0 2px 8px rgba(0,0,0,.08);
+    }
+    .header-content{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      flex-wrap:wrap;
+      gap:16px;
+    }
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+    .logo img{
+      height:40px;
+    }
+    .nav-menu{
+      display:flex;
+      gap:24px;
+      align-items:center;
+    }
+    .nav-menu a{
+      font-weight:600;
+      transition:color 0.3s;
+    }
+    .nav-menu a:hover{
+      color:var(--gold);
+    }
+    .tel-btn{
+      background:linear-gradient(135deg,var(--gold),var(--gold2));
+      color:#fff;
+      padding:8px 16px;
+      border-radius:8px;
+      font-weight:700;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+    }
+    
+    /* ページヘッダー */
+    .page-header{
+      background:linear-gradient(135deg,var(--cream),#fff);
+      padding:80px 0 60px;
+      text-align:center;
+      position:relative;
+      overflow:hidden;
+    }
+    .page-header::before{
+      content:'';
+      position:absolute;
+      top:-50%;
+      right:-50%;
+      width:200%;
+      height:200%;
+      background:radial-gradient(circle,rgba(161,146,118,0.05),transparent);
+      animation:rotate 30s linear infinite;
+    }
+    @keyframes rotate{
+      from{transform:rotate(0deg)}
+      to{transform:rotate(360deg)}
+    }
+    .page-title{
+      font-size:clamp(32px,5vw,48px);
+      font-weight:900;
+      margin-bottom:16px;
+      position:relative;
+      z-index:1;
+    }
+    .gold-accent{
+      background:linear-gradient(135deg,var(--gold),var(--gold2));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+    }
+    .page-subtitle{
+      color:#666;
+      font-size:18px;
+      position:relative;
+      z-index:1;
+    }
+    
+    /* 代表メッセージセクション */
+    .message-hero{
+      padding:80px 0;
+      background:#fff;
+    }
+    .message-container{
+      max-width:1000px;
+      margin:0 auto;
+      display:grid;
+      gap:48px;
+      align-items:start;
+    }
+    @media(min-width:768px){
+      .message-container{
+        grid-template-columns:350px 1fr;
+      }
+    }
+    
+    /* 代表プロフィール */
+    .president-profile{
+      background:#fff;
+      border-radius:16px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      position:sticky;
+      top:100px;
+    }
+    .president-image{
+      width:100%;
+      height:400px;
+      background:linear-gradient(135deg,var(--cream),#f0f0f0);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      position:relative;
+    }
+    .president-image img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+    .president-info{
+      padding:32px;
+      background:var(--cream);
+    }
+    .president-role{
+      color:var(--gold);
+      font-weight:700;
+      font-size:14px;
+      margin-bottom:8px;
+    }
+    .president-name{
+      font-size:24px;
+      font-weight:900;
+      margin-bottom:4px;
+    }
+    .president-name-kana{
+      font-size:14px;
+      color:#666;
+      margin-bottom:16px;
+    }
+    .president-motto{
+      background:#fff;
+      padding:16px;
+      border-radius:8px;
+      border-left:4px solid var(--gold);
+      margin-top:20px;
+    }
+    .motto-label{
+      font-size:12px;
+      color:var(--gold);
+      font-weight:700;
+      margin-bottom:8px;
+    }
+    .motto-text{
+      font-size:16px;
+      font-weight:700;
+      line-height:1.6;
+    }
+    
+    /* メッセージ本文 */
+    .message-content{
+      background:#fff;
+    }
+    .message-section{
+      margin-bottom:48px;
+    }
+    .message-title{
+      font-size:24px;
+      font-weight:900;
+      color:var(--gold);
+      margin-bottom:24px;
+      padding-bottom:12px;
+      border-bottom:2px solid var(--cream);
+    }
+    .message-text{
+      font-size:16px;
+      line-height:2;
+      color:#333;
+      margin-bottom:20px;
+    }
+    .highlight-box{
+      background:var(--cream);
+      padding:24px;
+      border-radius:12px;
+      margin:32px 0;
+      border-left:4px solid var(--gold);
+    }
+    .highlight-title{
+      font-size:18px;
+      font-weight:700;
+      color:var(--gold);
+      margin-bottom:12px;
+    }
+    
+    /* タイムライン風の経歴 */
+    .career-timeline{
+      margin:40px 0;
+      padding:32px;
+      background:linear-gradient(135deg,#fff,var(--cream));
+      border-radius:16px;
+    }
+    .career-title{
+      font-size:20px;
+      font-weight:900;
+      margin-bottom:24px;
+      text-align:center;
+      color:var(--gold);
+    }
+    .career-item{
+      display:flex;
+      gap:20px;
+      margin-bottom:20px;
+      padding-bottom:20px;
+      border-bottom:1px dashed #ddd;
+    }
+    .career-item:last-child{
+      border-bottom:none;
+    }
+    .career-year{
+      font-weight:700;
+      color:var(--gold);
+      min-width:80px;
+    }
+    .career-desc{
+      flex:1;
+      line-height:1.8;
+    }
+    
+    /* ビジョンカード */
+    .vision-cards{
+      display:grid;
+      gap:24px;
+      margin:40px 0;
+    }
+    @media(min-width:768px){
+      .vision-cards{
+        grid-template-columns:repeat(2,1fr);
+      }
+    }
+    .vision-card{
+      background:#fff;
+      padding:24px;
+      border-radius:12px;
+      box-shadow:var(--shadow);
+      border-top:4px solid var(--gold);
+    }
+    .vision-card-title{
+      font-size:18px;
+      font-weight:700;
+      color:var(--gold);
+      margin-bottom:12px;
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+    .vision-card-icon{
+      font-size:24px;
+    }
+    .vision-card-text{
+      line-height:1.8;
+      color:#333;
+    }
+    
+    /* 署名 */
+    .signature-section{
+      text-align:right;
+      margin-top:48px;
+      padding-top:32px;
+      border-top:1px solid #ddd;
+    }
+    .signature-date{
+      font-size:14px;
+      color:#666;
+      margin-bottom:8px;
+    }
+    .signature-company{
+      font-size:16px;
+      margin-bottom:4px;
+    }
+    .signature-name{
+      font-size:20px;
+      font-weight:700;
+    }
+    
+    /* フッター */
+    .site-footer{
+      background:#111;
+      color:#eee;
+      padding:48px 0 24px;
+    }
+    .footer-content{
+      display:grid;
+      gap:32px;
+      margin-bottom:32px;
+    }
+    @media(min-width:768px){
+      .footer-content{grid-template-columns:repeat(3,1fr)}
+    }
+    .footer-section h4{
+      color:var(--gold);
+      margin-bottom:16px;
+      font-size:18px;
+    }
+    .footer-section ul{
+      list-style:none;
+      padding:0;
+    }
+    .footer-section li{
+      margin-bottom:8px;
+    }
+    .footer-section a{
+      color:#eee;
+      transition:color 0.3s;
+    }
+    .footer-section a:hover{
+      color:var(--gold);
+    }
+    .footer-bottom{
+      text-align:center;
+      padding-top:24px;
+      border-top:1px solid #333;
+      font-size:14px;
+      color:#999;
+    }
+    
+    /* レスポンシブ */
+    @media(max-width:768px){
+      .nav-menu{
+        display:none;
+      }
+      .president-profile{
+        position:static;
+      }
+      .message-container{
+        padding:0 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- ヘッダー -->
+  <header class="site-header">
+    <div class="container">
+      <div class="header-content">
+        <a href="/" class="logo">
+          <img src="/images/century21logo_gold.png" alt="CENTURY21">
+          <span style="font-weight:700;font-size:18px">ホームマート</span>
+        </a>
+        <nav class="nav-menu">
+          <a href="/search.html">物件検索</a>
+          <a href="/assessment.html">売却査定</a>
+          <a href="/reform-water.html">リフォーム</a>
+          <a href="/company/about.html">会社案内</a>
+          <a href="tel:0120438639" class="tel-btn">
+            📞 0120-43-8639
+          </a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ページヘッダー -->
+    <section class="page-header">
+      <div class="container">
+        <h1 class="page-title">代表<span class="gold-accent">挨拶</span></h1>
+        <p class="page-subtitle">なかったものを自分たちで作る</p>
+      </div>
+    </section>
+    
+    <!-- メッセージセクション -->
+    <section class="message-hero">
+      <div class="container">
+        <div class="message-container">
+          <!-- 左側：代表プロフィール -->
+          <div class="president-profile">
+            <div class="president-image">
+              <img src="/images/president.jpg" alt="代表取締役 乾佑企" onerror="this.style.display='none'">
+            </div>
+            <div class="president-info">
+              <div class="president-role">代表取締役</div>
+              <div class="president-name">乾 佑企</div>
+              <div class="president-name-kana">いぬい ゆうき</div>
+              
+              <div class="president-motto">
+                <div class="motto-label">僕がよく伝える言葉</div>
+                <div class="motto-text">
+                  なかったものを<br>
+                  自分たちで作る
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 右側：メッセージ本文 -->
+          <div class="message-content">
+            <!-- 冒頭の挨拶 -->
+            <div class="message-section">
+              <h2 class="message-title">お客様の人生の転機を支える存在として</h2>
+              <p class="message-text">
+                ホームページをご覧いただき、誠にありがとうございます。<br>
+                株式会社ホームマート代表取締役の乾佑企です。
+              </p>
+              <p class="message-text">
+                私は20歳という若さで不動産業界に飛び込み、2013年9月に個人事業として創業しました。
+                それから12年、地域の皆様に支えられながら、2024年5月に株式会社ホームマートを設立し、
+                2025年3月にはセンチュリー21グループのリフォーム施工店として新たなスタートを切りました。
+              </p>
+            </div>
+            
+            <!-- 経営理念 -->
+            <div class="highlight-box">
+              <div class="highlight-title">私たちの理念</div>
+              <p style="line-height:2;margin:0">
+                「お客様の悩みや不安を解決し、人生の転機を支える存在でありたい」<br><br>
+                不動産の売買は、多くの方にとって人生で最も大きな決断の一つです。
+                その大切な瞬間に寄り添い、最適な選択ができるよう全力でサポートすることが私たちの使命です。
+              </p>
+            </div>
+            
+            <!-- 事業への想い -->
+            <div class="message-section">
+              <h2 class="message-title">4つの事業で総合的にサポート</h2>
+              <p class="message-text">
+                創業当初は不動産売買仲介からスタートしましたが、お客様のニーズに応えるため、
+                リフォーム事業、不動産売買事業、戸建住宅事業へと事業を拡大してきました。
+              </p>
+              
+              <div class="vision-cards">
+                <div class="vision-card">
+                  <div class="vision-card-title">
+                    <span class="vision-card-icon">🏠</span>
+                    <span>不動産売買仲介</span>
+                  </div>
+                  <div class="vision-card-text">
+                    センチュリー21の全国ネットワークを活かし、
+                    お客様に最適な物件をご提案します。
+                  </div>
+                </div>
+                
+                <div class="vision-card">
+                  <div class="vision-card-title">
+                    <span class="vision-card-icon">🔨</span>
+                    <span>リフォーム事業</span>
+                  </div>
+                  <div class="vision-card-text">
+                    自社施工により、高品質なリフォームを
+                    適正価格でご提供します。
+                  </div>
+                </div>
+                
+                <div class="vision-card">
+                  <div class="vision-card-title">
+                    <span class="vision-card-icon">💡</span>
+                    <span>買取再販制度</span>
+                  </div>
+                  <div class="vision-card-text">
+                    自社でリフォーム施工ができる強みを活かし、高額買取で、
+                    売主様に大きな手元資金を残せる革新的な仕組みです。
+                  </div>
+                </div>
+                
+                <div class="vision-card">
+                  <div class="vision-card-title">
+                    <span class="vision-card-icon">🏗️</span>
+                    <span>戸建住宅事業</span>
+                  </div>
+                  <div class="vision-card-text">
+                    土地探しから新築まで、
+                    理想の住まいづくりをトータルサポートします。
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- 経歴 -->
+            <div class="career-timeline">
+              <h3 class="career-title">これまでの歩み</h3>
+              <div class="career-item">
+                <div class="career-year">1993年</div>
+                <div class="career-desc">奈良県北葛城郡広陵町に生まれる</div>
+              </div>
+              <div class="career-item">
+                <div class="career-year">2011年</div>
+                <div class="career-desc">桜井高校卒業</div>
+              </div>
+              <div class="career-item">
+                <div class="career-year">2013年</div>
+                <div class="career-desc">20歳で個人事業として不動産業を創業</div>
+              </div>
+              <div class="career-item">
+                <div class="career-year">2014年</div>
+                <div class="career-desc">リフォーム事業を開始、自社施工体制を構築（その道、60年以上の町の水道職人や電気職人等の口はよく動くが体が動かないおっちゃん達に現場で教えてもらいながら叩き上げで全て覚えました）</div>
+              </div>
+              <div class="career-item">
+                <div class="career-year">2017年</div>
+                <div class="career-desc">国土交通大臣免許で、大阪府堺市、滋賀県草津市、京都市伏見区、大阪府高槻市、大阪府枚方市、広島県呉市に店舗展開</div>
+              </div>
+              <div class="career-item">
+                <div class="career-year">2024年</div>
+                <div class="career-desc">株式会社ホームマートに法人成り</div>
+              </div>
+              <div class="career-item">
+                <div class="career-year">2025年</div>
+                <div class="career-desc">センチュリー21グループへ、新店舗オープン</div>
+              </div>
+              <div class="career-item">
+                <div class="career-year">現在</div>
+                <div class="career-desc">不動産のプロであり、大工や内装、設備（キッチン組立や風呂組立等のメーカー施工士）、ガス有資格者で、趣味としてITエンジニアもしております。2017年から7年間は大阪市梅田にてSUUMOの元エンジニアを3名雇用し、1名のウェブデザイナーを雇用しておりました。妻は第二種電気工事士の有資格者で、水道工事も責任者として出来ます。</div>
+              </div>
+            </div>
+            
+            <!-- 今後のビジョン -->
+            <div class="message-section">
+              <h2 class="message-title">未来への挑戦</h2>
+              <p class="message-text">
+                私たちは2030年までに年商100億円を目指しています。
+                これは単なる数字の目標ではなく、それだけ多くのお客様の人生の転機に寄り添い、
+                幸せな住まいづくりのお手伝いをさせていただくという決意の表れです。
+              </p>
+              <p class="message-text">
+                「なかったものを自分たちで作る」「自分たちで決める、自分たちで作る」<br>
+                この精神を大切に、既存の枠にとらわれない新しいサービスを生み出し続けます。
+              </p>
+              <p class="message-text">
+                そして何より「いつも正直に素直な心で人を思いやる」ことを忘れず、
+                お客様、社員、地域の皆様と共に成長していきたいと考えています。
+              </p>
+            </div>
+            
+            <!-- 締めの言葉 -->
+            <div class="highlight-box">
+              <div class="highlight-title">最後に</div>
+              <p style="line-height:2;margin:0">
+                不動産のことなら、売買からリフォーム、建築まで、
+                どんなことでもお気軽にご相談ください。<br><br>
+                私たちセンチュリー21ホームマートは、
+                お客様の「住まい」と「暮らし」に関するすべてのご要望に
+                真摯に向き合い、最高のサービスをご提供することをお約束します。
+              </p>
+            </div>
+            
+            <!-- 署名 -->
+            <div class="signature-section">
+              <div class="signature-date">2025年3月</div>
+              <div class="signature-company">株式会社ホームマート</div>
+              <div class="signature-name">代表取締役　乾 佑企</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <!-- フッター -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>センチュリー21ホームマート</h4>
+          <p style="font-size:14px;line-height:1.8;color:#999">
+            〒635-0821<br>
+            奈良県北葛城郡広陵町笠287-1<br>
+            TEL: 0120-43-8639<br>
+            FAX: 050-3183-9576
+          </p>
+        </div>
+        
+        <div class="footer-section">
+          <h4>サービス</h4>
+          <ul>
+            <li><a href="/search.html">物件検索</a></li>
+            <li><a href="/assessment.html">売却査定</a></li>
+            <li><a href="/voluntary-sale.html">任意売却相談</a></li>
+            <li><a href="/reform-water.html">リフォーム</a></li>
+            <li><a href="/recruit.html">採用情報</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h4>会社情報</h4>
+          <ul>
+            <li><a href="/company/about.html">会社概要</a></li>
+            <li><a href="/company/message.html">代表挨拶</a></li>
+            <li><a href="/company/philosophy.html">企業理念</a></li>
+            <li><a href="/company/access.html">アクセス</a></li>
+            <li><a href="/privacy.html">プライバシーポリシー</a></li>
+            <li><a href="/sitemap.html">サイトマップ</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>© 2025 Century21 HomeMart. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
