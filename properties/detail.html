@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>物件詳細 | センチュリー21ホームマート</title>
+    <meta name="description" content="奈良県・南大阪の不動産物件詳細情報。写真、間取り、周辺環境など詳しい情報をご覧いただけます。">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #A19276;
+            --gold2: #B8A082;
+            --black: #383635;
+            --cream: #F8F6F3;
+            --white: #FFFFFF;
+            --gray: #F8F8F8;
+            --text-gray: #666666;
+            --shadow: 0 8px 24px rgba(0,0,0,0.08);
+            --shadow-hover: 0 12px 32px rgba(0,0,0,0.12);
+            --max-width: 1200px;
+            --success: #22c55e;
+            --danger: #ef4444;
+            --blue: #3b82f6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.6;
+            color: var(--black);
+            background: var(--white);
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        /* ヘッダー */
+        header {
+            background: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 2px solid var(--gold);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: var(--black);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: var(--gold);
+        }
+
+        /* パンくずリスト */
+        .breadcrumb {
+            padding: 20px 0;
+            font-size: 14px;
+        }
+
+        .breadcrumb a {
+            color: var(--text-gray);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--gold);
+        }
+
+        .breadcrumb span {
+            margin: 0 8px;
+            color: var(--text-gray);
+        }
+
+        /* 物件ヘッダー */
+        .property-header {
+            background: linear-gradient(135deg, var(--cream), var(--white));
+            padding: 40px 0;
+            margin-bottom: 40px;
+        }
+
+        .property-title-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            gap: 32px;
+            flex-wrap: wrap;
+        }
+
+        .property-main-info {
+            flex: 1;
+        }
+
+        .property-status-badges {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .status-badge {
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            display: inline-block;
+        }
+
+        .badge-new {
+            background: var(--danger);
+            color: var(--white);
+        }
+
+        .badge-type {
+            background: var(--gold);
+            color: var(--white);
+        }
+
+        .property-title {
+            font-size: 32px;
+            font-weight: 900;
+            margin-bottom: 16px;
+            color: var(--black);
+        }
+
+        .property-address {
+            font-size: 16px;
+            color: var(--text-gray);
+            margin-bottom: 24px;
+        }
+
+        .property-price-section {
+            background: var(--white);
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            min-width: 300px;
+        }
+
+        .price-label {
+            font-size: 14px;
+            color: var(--text-gray);
+            margin-bottom: 8px;
+        }
+
+        .price-main {
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--gold);
+            margin-bottom: 16px;
+        }
+
+        .price-details {
+            font-size: 14px;
+            color: var(--text-gray);
+            line-height: 1.8;
+        }
+
+        /* 画像ギャラリー */
+        .gallery-section {
+            margin-bottom: 40px;
+        }
+
+        .main-image {
+            width: 100%;
+            height: 500px;
+            background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .main-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .image-counter {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+
+        .thumbnail-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 12px;
+        }
+
+        .thumbnail {
+            aspect-ratio: 4/3;
+            background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 3px solid transparent;
+        }
+
+        .thumbnail:hover {
+            border-color: var(--gold);
+        }
+
+        .thumbnail.active {
+            border-color: var(--gold);
+        }
+
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* 物件情報テーブル */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            margin-bottom: 40px;
+        }
+
+        .info-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: var(--shadow);
+        }
+
+        .info-card-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--gold);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .info-table {
+            width: 100%;
+        }
+
+        .info-row {
+            display: flex;
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            width: 120px;
+            color: var(--text-gray);
+            font-size: 14px;
+        }
+
+        .info-value {
+            flex: 1;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        /* 物件説明 */
+        .description-section {
+            background: var(--gray);
+            padding: 40px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+        }
+
+        .description-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--gold);
+        }
+
+        .description-text {
+            line-height: 2;
+            color: var(--black);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px;
+            background: var(--white);
+            border-radius: 8px;
+        }
+
+        .feature-icon {
+            font-size: 20px;
+        }
+
+        /* 地図・周辺環境 */
+        .map-section {
+            margin-bottom: 40px;
+        }
+
+        .map-container {
+            height: 400px;
+            background: #e0e0e0;
+            border-radius: 12px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-gray);
+        }
+
+        .nearby-facilities {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .facility-category {
+            background: var(--white);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        .facility-title {
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--gold);
+        }
+
+        .facility-list {
+            list-style: none;
+        }
+
+        .facility-list li {
+            padding: 8px 0;
+            font-size: 14px;
+            color: var(--text-gray);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* お問い合わせフローティング */
+        .floating-contact {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+            padding: 20px;
+            z-index: 90;
+        }
+
+        .floating-content {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .floating-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .floating-price {
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--gold);
+        }
+
+        .floating-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .contact-btn {
+            padding: 12px 32px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .contact-btn.primary {
+            background: linear-gradient(135deg, var(--gold), var(--gold2));
+            color: var(--white);
+        }
+
+        .contact-btn.secondary {
+            background: var(--white);
+            color: var(--gold);
+            border: 2px solid var(--gold);
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+        }
+
+        /* 類似物件 */
+        .similar-properties {
+            padding: 60px 0;
+            background: var(--gray);
+        }
+
+        .similar-title {
+            font-size: 28px;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .similar-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .similar-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .similar-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .similar-image {
+            height: 200px;
+            background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
+            position: relative;
+        }
+
+        .similar-content {
+            padding: 20px;
+        }
+
+        .similar-price {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 8px;
+        }
+
+        .similar-info {
+            font-size: 14px;
+            color: var(--text-gray);
+        }
+
+        /* レスポンシブ */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .property-title-section {
+                flex-direction: column;
+            }
+
+            .property-price-section {
+                width: 100%;
+            }
+
+            .main-image {
+                height: 300px;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .floating-content {
+                flex-direction: column;
+            }
+
+            .floating-actions {
+                width: 100%;
+            }
+
+            .contact-btn {
+                flex: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ヘッダー -->
+    <header>
+        <nav class="container">
+            <div class="logo">センチュリー21ホームマート</div>
+            <ul class="nav-menu">
+                <li><a href="/">ホーム</a></li>
+                <li><a href="/properties/list.html">物件一覧</a></li>
+                <li><a href="/company/about.html">会社案内</a></li>
+                <li><a href="/contact/form.html">お問い合わせ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- パンくずリスト -->
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="/">ホーム</a>
+            <span>›</span>
+            <a href="/properties/list.html">物件一覧</a>
+            <span>›</span>
+            <span id="propertyName">物件詳細</span>
+        </div>
+    </div>
+
+    <!-- 物件ヘッダー -->
+    <section class="property-header">
+        <div class="container">
+            <div class="property-title-section">
+                <div class="property-main-info">
+                    <div class="property-status-badges">
+                        <span class="status-badge badge-new">NEW</span>
+                        <span class="status-badge badge-type" id="propertyType">マンション</span>
+                    </div>
+                    <h1 class="property-title" id="propertyTitle">奈良市西大寺 3LDKマンション</h1>
+                    <p class="property-address" id="propertyAddress">奈良県奈良市西大寺町1-2-3</p>
+                </div>
+                <div class="property-price-section">
+                    <div class="price-label">販売価格</div>
+                    <div class="price-main" id="propertyPrice">2,480万円</div>
+                    <div class="price-details">
+                        <div>管理費：12,000円/月</div>
+                        <div>修繕積立金：8,000円/月</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- メインコンテンツ -->
+    <main class="container">
+        <!-- 画像ギャラリー -->
+        <section class="gallery-section">
+            <div class="main-image" id="mainImage">
+                <img src="" alt="物件画像" id="mainImageSrc" style="display: none;">
+                <div id="placeholderImage" style="text-align: center;">
+                    <img src="urico_milk.jpg" style="width: 150px; height: 150px; opacity: 0.5;">
+                    <p style="margin-top: 20px; color: var(--text-gray);">物件画像</p>
+                </div>
+                <div class="image-counter">
+                    <span id="currentImage">1</span> / <span id="totalImages">8</span>
+                </div>
+            </div>
+            <div class="thumbnail-list" id="thumbnailList">
+                <!-- サムネイルが動的に生成されます -->
+            </div>
+        </section>
+
+        <!-- 物件情報 -->
+        <div class="info-grid">
+            <div class="info-card">
+                <h3 class="info-card-title">
+                    <span>🏠</span> 物件概要
+                </h3>
+                <div class="info-table">
+                    <div class="info-row">
+                        <div class="info-label">物件種別</div>
+                        <div class="info-value" id="infoType">中古マンション</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">間取り</div>
+                        <div class="info-value" id="infoLayout">3LDK</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">専有面積</div>
+                        <div class="info-value" id="infoArea">75.23㎡</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">バルコニー</div>
+                        <div class="info-value" id="infoBalcony">12.5㎡ 南向き</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">築年月</div>
+                        <div class="info-value" id="infoAge">2015年3月（築9年）</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">階数</div>
+                        <div class="info-value" id="infoFloor">5階 / 10階建</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h3 class="info-card-title">
+                    <span>🚉</span> アクセス・立地
+                </h3>
+                <div class="info-table">
+                    <div class="info-row">
+                        <div class="info-label">最寄り駅</div>
+                        <div class="info-value" id="infoStation">近鉄大和西大寺駅 徒歩8分</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">その他交通</div>
+                        <div class="info-value">JR奈良駅 バス15分</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">所在地</div>
+                        <div class="info-value" id="infoAddress">奈良県奈良市西大寺町1-2-3</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">都市計画</div>
+                        <div class="info-value">市街化区域</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">用途地域</div>
+                        <div class="info-value">第一種住居地域</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">建ぺい率/容積率</div>
+                        <div class="info-value">60% / 200%</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h3 class="info-card-title">
+                    <span>💰</span> 費用・条件
+                </h3>
+                <div class="info-table">
+                    <div class="info-row">
+                        <div class="info-label">管理費</div>
+                        <div class="info-value">12,000円/月</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">修繕積立金</div>
+                        <div class="info-value">8,000円/月</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">駐車場</div>
+                        <div class="info-value">空有（10,000円/月）</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">引渡し時期</div>
+                        <div class="info-value">即入居可</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">現況</div>
+                        <div class="info-value">空室</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">取引態様</div>
+                        <div class="info-value">仲介</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 物件説明 -->
+        <section class="description-section">
+            <h2 class="description-title">物件の特徴・セールスポイント</h2>
+            <div class="description-text" id="propertyDescription">
+                <p>近鉄大和西大寺駅から徒歩8分の好立地マンション。南向きバルコニーで日当たり良好です。</p>
+                <p>2015年築の築浅物件で、室内は大変きれいな状態です。3LDKの使いやすい間取りで、ファミリーにおすすめです。</p>
+                <p>周辺には商業施設や学校、公園が充実しており、生活環境も良好です。</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <span class="feature-icon">☀️</span>
+                    <span>南向きバルコニー</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">🚗</span>
+                    <span>駐車場あり</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">🏫</span>
+                    <span>小学校徒歩5分</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">🛒</span>
+                    <span>スーパー徒歩3分</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">🌳</span>
+                    <span>公園隣接</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">🔧</span>
+                    <span>リフォーム済</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 地図・周辺環境 -->
+        <section class="map-section">
+            <h2 style="font-size: 24px; font-weight: 700; margin-bottom: 24px;">周辺環境・アクセス</h2>
+            <div class="map-container">
+                <p>地図を表示</p>
+            </div>
+            <div class="nearby-facilities">
+                <div class="facility-category">
+                    <h3 class="facility-title">🚉 交通</h3>
+                    <ul class="facility-list">
+                        <li>
+                            <span>近鉄大和西大寺駅</span>
+                            <span>徒歩8分</span>
+                        </li>
+                        <li>
+                            <span>JR奈良駅</span>
+                            <span>バス15分</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="facility-category">
+                    <h3 class="facility-title">🛒 買い物</h3>
+                    <ul class="facility-list">
+                        <li>
+                            <span>イオンモール</span>
+                            <span>徒歩3分</span>
+                        </li>
+                        <li>
+                            <span>コンビニ</span>
+                            <span>徒歩1分</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="facility-category">
+                    <h3 class="facility-title">🏫 教育施設</h3>
+                    <ul class="facility-list">
+                        <li>
+                            <span>西大寺小学校</span>
+                            <span>徒歩5分</span>
+                        </li>
+                        <li>
+                            <span>西大寺中学校</span>
+                            <span>徒歩10分</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="facility-category">
+                    <h3 class="facility-title">🏥 医療・その他</h3>
+                    <ul class="facility-list">
+                        <li>
+                            <span>総合病院</span>
+                            <span>徒歩12分</span>
+                        </li>
+                        <li>
+                            <span>市役所出張所</span>
+                            <span>徒歩8分</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 類似物件 -->
+    <section class="similar-properties">
+        <div class="container">
+            <h2 class="similar-title">この物件に<span style="color: var(--gold);">似た物件</span></h2>
+            <div class="similar-grid" id="similarProperties">
+                <!-- 類似物件が動的に生成されます -->
+            </div>
+        </div>
+    </section>
+
+    <!-- お問い合わせフローティング -->
+    <div class="floating-contact">
+        <div class="floating-content">
+            <div class="floating-info">
+                <div class="floating-price" id="floatingPrice">2,480万円</div>
+                <div style="font-size: 14px; color: var(--text-gray);">奈良市西大寺 3LDK</div>
+            </div>
+            <div class="floating-actions">
+                <a href="tel:0120438639" class="contact-btn secondary">
+                    📞 電話で問い合わせ
+                </a>
+                <a href="#" class="contact-btn primary" onclick="openInquiryForm()">
+                    📧 メールで問い合わせ
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // URLパラメータから物件IDを取得
+        const urlParams = new URLSearchParams(window.location.search);
+        const propertyId = urlParams.get('id') || '1';
+
+        // ローカルストレージから物件データを取得
+        function getPropertyData() {
+            const savedProperties = localStorage.getItem('properties');
+            if (savedProperties) {
+                const properties = JSON.parse(savedProperties);
+                return properties.find(p => p.id === propertyId);
+            }
+            
+            // デモデータ
+            return {
+                id: propertyId,
+                type: 'マンション',
+                title: '奈良市西大寺 3LDKマンション',
+                address: '奈良県奈良市西大寺町1-2-3',
+                price: '2,480万円',
+                layout: '3LDK',
+                area: '75.23㎡',
+                age: '2015年3月（築9年）',
+                floor: '5階 / 10階建',
+                station: '近鉄大和西大寺駅 徒歩8分',
+                description: '近鉄大和西大寺駅から徒歩8分の好立地マンション。南向きバルコニーで日当たり良好です。',
+                images: [],
+                features: ['南向きバルコニー', '駐車場あり', '小学校徒歩5分', 'スーパー徒歩3分']
+            };
+        }
+
+        // 物件データを表示
+        function displayPropertyDetails() {
+            const property = getPropertyData();
+            
+            // 基本情報を更新
+            document.getElementById('propertyType').textContent = property.type;
+            document.getElementById('propertyTitle').textContent = property.title;
+            document.getElementById('propertyAddress').textContent = property.address;
+            document.getElementById('propertyPrice').textContent = property.price;
+            document.getElementById('floatingPrice').textContent = property.price;
+            
+            // 詳細情報を更新
+            document.getElementById('infoType').textContent = property.type;
+            document.getElementById('infoLayout').textContent = property.layout;
+            document.getElementById('infoArea').textContent = property.area;
+            document.getElementById('infoAge').textContent = property.age;
+            document.getElementById('infoFloor').textContent = property.floor;
+            document.getElementById('infoStation').textContent = property.station;
+            document.getElementById('infoAddress').textContent = property.address;
+            
+            // 説明文を更新
+            if (property.description) {
+                document.getElementById('propertyDescription').innerHTML = `<p>${property.description}</p>`;
+            }
+            
+            // 画像ギャラリーを更新
+            displayImages(property.images);
+            
+            // パンくずリストを更新
+            document.getElementById('propertyName').textContent = property.title;
+        }
+
+        // 画像ギャラリー表示
+        function displayImages(images) {
+            const thumbnailList = document.getElementById('thumbnailList');
+            
+            if (images && images.length > 0) {
+                // 実際の画像がある場合
+                document.getElementById('mainImageSrc').src = images[0];
+                document.getElementById('mainImageSrc').style.display = 'block';
+                document.getElementById('placeholderImage').style.display = 'none';
+                document.getElementById('totalImages').textContent = images.length;
+                
+                thumbnailList.innerHTML = images.map((img, index) => `
+                    <div class="thumbnail ${index === 0 ? 'active' : ''}" onclick="changeImage(${index})">
+                        <img src="${img}" alt="物件画像${index + 1}">
+                    </div>
+                `).join('');
+            } else {
+                // デモ用のプレースホルダー画像
+                document.getElementById('totalImages').textContent = '8';
+                
+                thumbnailList.innerHTML = Array(8).fill(0).map((_, index) => `
+                    <div class="thumbnail ${index === 0 ? 'active' : ''}" onclick="changeImage(${index})">
+                        <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #f0f0f0, #e0e0e0);">
+                            <img src="urico_milk.jpg" style="width: 40px; height: 40px; opacity: 0.3;">
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        // 画像切り替え
+        function changeImage(index) {
+            const property = getPropertyData();
+            const thumbnails = document.querySelectorAll('.thumbnail');
+            
+            thumbnails.forEach(t => t.classList.remove('active'));
+            thumbnails[index].classList.add('active');
+            
+            if (property.images && property.images.length > 0) {
+                document.getElementById('mainImageSrc').src = property.images[index];
+            }
+            
+            document.getElementById('currentImage').textContent = index + 1;
+        }
+
+        // 類似物件表示
+        function displaySimilarProperties() {
+            const similarGrid = document.getElementById('similarProperties');
+            
+            // デモ用の類似物件
+            const similarProperties = [
+                { id: '2', title: '奈良市学園前 2LDK', price: '2,280万円', area: '65㎡' },
+                { id: '3', title: '生駒市 3LDK戸建て', price: '2,680万円', area: '95㎡' },
+                { id: '4', title: '香芝市 4LDKマンション', price: '2,380万円', area: '82㎡' }
+            ];
+            
+            similarGrid.innerHTML = similarProperties.map(property => `
+                <div class="similar-card" onclick="window.location.href='/property/detail.html?id=${property.id}'">
+                    <div class="similar-image">
+                        <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
+                            <img src="urico_milk.jpg" style="width: 80px; height: 80px; opacity: 0.3;">
+                        </div>
+                    </div>
+                    <div class="similar-content">
+                        <div class="similar-price">${property.price}</div>
+                        <div class="similar-info">${property.title}</div>
+                        <div class="similar-info">${property.area}</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 問い合わせフォームを開く
+        function openInquiryForm() {
+            const property = getPropertyData();
+            window.location.href = `/contact/form.html?property=${property.id}&title=${encodeURIComponent(property.title)}`;
+        }
+
+        // 初期化
+        document.addEventListener('DOMContentLoaded', function() {
+            displayPropertyDetails();
+            displaySimilarProperties();
+        });
+    </script>
+</body>
+</html>
