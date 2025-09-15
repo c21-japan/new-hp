@@ -1,0 +1,864 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>アクセスマップ｜センチュリー21ホームマート</title>
+  <meta name="description" content="センチュリー21ホームマート（奈良県北葛城郡広陵町）へのアクセス方法。近鉄高田駅・JR高田駅から車で約10分。駐車場完備。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700;900&display=swap" rel="stylesheet"/>
+  
+  <style>
+    :root{
+      --gold:#A19276; 
+      --gold2:#B8A082; 
+      --black:#383635; 
+      --ink:#222; 
+      --cream:#F8F6F3; 
+      --bg:#fff;
+      --max:1200px; 
+      --shadow:0 8px 24px rgba(0,0,0,.08);
+    }
+    
+    *{box-sizing:border-box}
+    html,body{margin:0;background:var(--bg);color:var(--ink);font-family:'Noto Sans JP',sans-serif;line-height:1.6}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block;height:auto}
+    .container{max-width:var(--max);margin:0 auto;padding:0 16px}
+    section{padding:60px 0}
+    
+    /* ヘッダー */
+    .site-header{
+      background:#fff;
+      border-bottom:2px solid var(--gold);
+      padding:16px 0;
+      position:sticky;
+      top:0;
+      z-index:100;
+      box-shadow:0 2px 8px rgba(0,0,0,.08);
+    }
+    .header-content{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      flex-wrap:wrap;
+      gap:16px;
+    }
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+    .logo img{
+      height:40px;
+    }
+    .nav-menu{
+      display:flex;
+      gap:24px;
+      align-items:center;
+    }
+    .nav-menu a{
+      font-weight:600;
+      transition:color 0.3s;
+    }
+    .nav-menu a:hover{
+      color:var(--gold);
+    }
+    .tel-btn{
+      background:linear-gradient(135deg,var(--gold),var(--gold2));
+      color:#fff;
+      padding:8px 16px;
+      border-radius:8px;
+      font-weight:700;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+    }
+    
+    /* ページヘッダー */
+    .page-header{
+      background:linear-gradient(135deg,var(--cream),#fff);
+      padding:80px 0 60px;
+      text-align:center;
+      position:relative;
+      overflow:hidden;
+    }
+    .page-header::before{
+      content:'';
+      position:absolute;
+      top:-50%;
+      right:-50%;
+      width:200%;
+      height:200%;
+      background:radial-gradient(circle,rgba(161,146,118,0.05),transparent);
+      animation:rotate 30s linear infinite;
+    }
+    @keyframes rotate{
+      from{transform:rotate(0deg)}
+      to{transform:rotate(360deg)}
+    }
+    .page-title{
+      font-size:clamp(32px,5vw,48px);
+      font-weight:900;
+      margin-bottom:16px;
+      position:relative;
+      z-index:1;
+    }
+    .gold-accent{
+      background:linear-gradient(135deg,var(--gold),var(--gold2));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+    }
+    .page-subtitle{
+      color:#666;
+      font-size:18px;
+      position:relative;
+      z-index:1;
+    }
+    
+    /* マップセクション */
+    .map-section{
+      padding:0;
+      background:#f5f5f5;
+    }
+    .map-container{
+      width:100%;
+      height:500px;
+      background:linear-gradient(135deg,var(--cream),#f0f0f0);
+      position:relative;
+      overflow:hidden;
+    }
+    .map-placeholder{
+      width:100%;
+      height:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex-direction:column;
+      gap:20px;
+    }
+    .map-icon{
+      font-size:64px;
+      color:var(--gold);
+      animation:pulse 2s infinite;
+    }
+    @keyframes pulse{
+      0%,100%{transform:scale(1)}
+      50%{transform:scale(1.1)}
+    }
+    .map-text{
+      font-size:18px;
+      color:#666;
+      font-weight:600;
+    }
+    .map-iframe{
+      width:100%;
+      height:100%;
+      border:0;
+    }
+    
+    /* アクセス情報 */
+    .access-info{
+      padding:80px 0;
+      background:#fff;
+    }
+    .info-grid{
+      display:grid;
+      gap:40px;
+      max-width:1000px;
+      margin:0 auto;
+    }
+    @media(min-width:768px){
+      .info-grid{
+        grid-template-columns:1fr 1fr;
+      }
+    }
+    
+    /* 店舗情報カード */
+    .store-card{
+      background:#fff;
+      border-radius:16px;
+      padding:40px;
+      box-shadow:var(--shadow);
+    }
+    .store-title{
+      font-size:24px;
+      font-weight:900;
+      margin-bottom:32px;
+      padding-bottom:16px;
+      border-bottom:3px solid var(--gold);
+    }
+    .info-list{
+      list-style:none;
+      padding:0;
+      margin:0;
+    }
+    .info-item{
+      display:flex;
+      align-items:flex-start;
+      gap:16px;
+      margin-bottom:24px;
+      padding-bottom:24px;
+      border-bottom:1px dashed #ddd;
+    }
+    .info-item:last-child{
+      border-bottom:none;
+      margin-bottom:0;
+      padding-bottom:0;
+    }
+    .info-icon{
+      width:40px;
+      height:40px;
+      background:linear-gradient(135deg,var(--gold),var(--gold2));
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:20px;
+      flex-shrink:0;
+    }
+    .info-content{
+      flex:1;
+    }
+    .info-label{
+      font-size:14px;
+      font-weight:700;
+      color:var(--gold);
+      margin-bottom:4px;
+    }
+    .info-text{
+      font-size:16px;
+      line-height:1.8;
+      color:#333;
+    }
+    .info-link{
+      color:var(--gold);
+      text-decoration:underline;
+      transition:opacity 0.3s;
+    }
+    .info-link:hover{
+      opacity:0.7;
+    }
+    
+    /* 交通アクセスカード */
+    .access-card{
+      background:var(--cream);
+      border-radius:16px;
+      padding:40px;
+    }
+    .access-title{
+      font-size:24px;
+      font-weight:900;
+      margin-bottom:32px;
+      padding-bottom:16px;
+      border-bottom:3px solid var(--gold);
+    }
+    .route-list{
+      list-style:none;
+      padding:0;
+      margin:0;
+    }
+    .route-item{
+      background:#fff;
+      border-radius:12px;
+      padding:20px;
+      margin-bottom:16px;
+      transition:transform 0.3s;
+    }
+    .route-item:hover{
+      transform:translateX(8px);
+    }
+    .route-header{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-bottom:12px;
+    }
+    .route-icon{
+      width:32px;
+      height:32px;
+      background:var(--gold);
+      color:#fff;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:16px;
+    }
+    .route-from{
+      font-size:18px;
+      font-weight:700;
+      color:var(--black);
+    }
+    .route-detail{
+      padding-left:44px;
+      color:#666;
+      line-height:1.8;
+    }
+    .route-time{
+      display:inline-block;
+      background:var(--gold);
+      color:#fff;
+      padding:2px 8px;
+      border-radius:4px;
+      font-weight:700;
+      font-size:14px;
+      margin-left:4px;
+    }
+    
+    /* 営業時間セクション */
+    .hours-section{
+      padding:80px 0;
+      background:linear-gradient(135deg,#fff,var(--cream));
+    }
+    .hours-container{
+      max-width:800px;
+      margin:0 auto;
+      text-align:center;
+    }
+    .section-title{
+      font-size:clamp(28px,4vw,40px);
+      font-weight:900;
+      margin-bottom:48px;
+    }
+    .hours-grid{
+      display:grid;
+      gap:24px;
+      margin-bottom:40px;
+    }
+    @media(min-width:768px){
+      .hours-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+    }
+    .hours-card{
+      background:#fff;
+      border-radius:16px;
+      padding:32px;
+      box-shadow:0 8px 24px rgba(0,0,0,.06);
+      transition:transform 0.3s;
+    }
+    .hours-card:hover{
+      transform:translateY(-5px);
+    }
+    .hours-label{
+      font-size:16px;
+      font-weight:700;
+      color:var(--gold);
+      margin-bottom:12px;
+    }
+    .hours-time{
+      font-size:28px;
+      font-weight:900;
+      color:var(--black);
+      margin-bottom:8px;
+    }
+    .hours-note{
+      font-size:14px;
+      color:#666;
+      line-height:1.6;
+    }
+    .hours-highlight{
+      background:linear-gradient(135deg,var(--gold),var(--gold2));
+      color:#fff;
+      padding:4px 12px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:700;
+      display:inline-block;
+      margin-top:8px;
+    }
+    
+    /* 駐車場情報 */
+    .parking-info{
+      background:linear-gradient(135deg,var(--gold),var(--gold2));
+      color:#fff;
+      border-radius:20px;
+      padding:40px;
+      text-align:center;
+      max-width:600px;
+      margin:0 auto;
+    }
+    .parking-title{
+      font-size:24px;
+      font-weight:900;
+      margin-bottom:20px;
+    }
+    .parking-capacity{
+      font-size:48px;
+      font-weight:900;
+      margin-bottom:12px;
+    }
+    .parking-text{
+      font-size:16px;
+      line-height:1.8;
+      opacity:0.95;
+    }
+    
+    /* 近隣施設 */
+    .nearby-section{
+      padding:80px 0;
+      background:#fff;
+    }
+    .nearby-grid{
+      display:grid;
+      gap:20px;
+      max-width:1000px;
+      margin:0 auto;
+    }
+    @media(min-width:768px){
+      .nearby-grid{
+        grid-template-columns:repeat(3,1fr);
+      }
+    }
+    .nearby-card{
+      background:var(--cream);
+      border-radius:12px;
+      padding:24px;
+      text-align:center;
+      transition:transform 0.3s;
+    }
+    .nearby-card:hover{
+      transform:scale(1.05);
+    }
+    .nearby-icon{
+      width:60px;
+      height:60px;
+      margin:0 auto 16px;
+      background:#fff;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:28px;
+    }
+    .nearby-name{
+      font-size:16px;
+      font-weight:700;
+      margin-bottom:8px;
+      color:var(--black);
+    }
+    .nearby-distance{
+      font-size:14px;
+      color:#666;
+    }
+    
+    /* お問い合わせCTA */
+    .contact-cta{
+      padding:80px 0;
+      background:var(--cream);
+      text-align:center;
+    }
+    .cta-title{
+      font-size:clamp(28px,4vw,40px);
+      font-weight:900;
+      margin-bottom:24px;
+    }
+    .cta-text{
+      font-size:18px;
+      line-height:2;
+      color:#666;
+      margin-bottom:40px;
+      max-width:600px;
+      margin-left:auto;
+      margin-right:auto;
+    }
+    .cta-buttons{
+      display:flex;
+      gap:20px;
+      justify-content:center;
+      flex-wrap:wrap;
+    }
+    .cta-btn{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:16px 32px;
+      border-radius:999px;
+      font-weight:700;
+      font-size:18px;
+      transition:transform 0.3s, box-shadow 0.3s;
+    }
+    .cta-btn-primary{
+      background:linear-gradient(135deg,var(--gold),var(--gold2));
+      color:#fff;
+    }
+    .cta-btn-secondary{
+      background:#fff;
+      color:var(--gold);
+      border:2px solid var(--gold);
+    }
+    .cta-btn:hover{
+      transform:translateY(-3px);
+      box-shadow:0 10px 30px rgba(0,0,0,.15);
+    }
+    
+    /* フッター */
+    .site-footer{
+      background:#111;
+      color:#eee;
+      padding:48px 0 24px;
+    }
+    .footer-content{
+      display:grid;
+      gap:32px;
+      margin-bottom:32px;
+    }
+    @media(min-width:768px){
+      .footer-content{grid-template-columns:repeat(3,1fr)}
+    }
+    .footer-section h4{
+      color:var(--gold);
+      margin-bottom:16px;
+      font-size:18px;
+    }
+    .footer-section ul{
+      list-style:none;
+      padding:0;
+    }
+    .footer-section li{
+      margin-bottom:8px;
+    }
+    .footer-section a{
+      color:#eee;
+      transition:color 0.3s;
+    }
+    .footer-section a:hover{
+      color:var(--gold);
+    }
+    .footer-bottom{
+      text-align:center;
+      padding-top:24px;
+      border-top:1px solid #333;
+      font-size:14px;
+      color:#999;
+    }
+    
+    /* レスポンシブ */
+    @media(max-width:768px){
+      .nav-menu{
+        display:none;
+      }
+      .info-grid{
+        grid-template-columns:1fr;
+      }
+      .cta-buttons{
+        flex-direction:column;
+        align-items:center;
+      }
+      .cta-btn{
+        width:100%;
+        max-width:300px;
+        justify-content:center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- ヘッダー -->
+  <header class="site-header">
+    <div class="container">
+      <div class="header-content">
+        <a href="/" class="logo">
+          <img src="/images/century21logo_gold.png" alt="CENTURY21">
+          <span style="font-weight:700;font-size:18px">ホームマート</span>
+        </a>
+        <nav class="nav-menu">
+          <a href="/search.html">物件検索</a>
+          <a href="/assessment.html">売却査定</a>
+          <a href="/reform-water.html">リフォーム</a>
+          <a href="/company/about.html">会社案内</a>
+          <a href="tel:0120438639" class="tel-btn">
+            📞 0120-43-8639
+          </a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ページヘッダー -->
+    <section class="page-header">
+      <div class="container">
+        <h1 class="page-title">アクセス<span class="gold-accent">マップ</span></h1>
+        <p class="page-subtitle">お気軽にご来店ください。駐車場10台完備</p>
+      </div>
+    </section>
+    
+    <!-- マップ -->
+    <section class="map-section">
+      <div class="map-container">
+        <!-- Google Maps埋め込み用 -->
+        <iframe 
+          class="map-iframe"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3282.123456789!2d135.7234567!3d34.5678901!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2s%E5%A5%88%E8%89%AF%E7%9C%8C%E5%8C%97%E8%91%9B%E5%9F%8E%E9%83%A1%E5%BA%83%E9%99%B5%E7%94%BA%E7%AC%A0287-1!5e0!3m2!1sja!2sjp!4v1234567890"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          onerror="this.style.display='none'">
+        </iframe>
+        <!-- マップ読み込みエラー時の代替表示 -->
+        <div class="map-placeholder" style="display:none">
+          <div class="map-icon">📍</div>
+          <div class="map-text">奈良県北葛城郡広陵町笠287-1</div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- アクセス情報 -->
+    <section class="access-info">
+      <div class="container">
+        <div class="info-grid">
+          <!-- 店舗情報 -->
+          <div class="store-card">
+            <h2 class="store-title">店舗情報</h2>
+            <ul class="info-list">
+              <li class="info-item">
+                <div class="info-icon">🏢</div>
+                <div class="info-content">
+                  <div class="info-label">店舗名</div>
+                  <div class="info-text">
+                    センチュリー21ホームマート<br>
+                    （株式会社ホームマート）
+                  </div>
+                </div>
+              </li>
+              
+              <li class="info-item">
+                <div class="info-icon">📍</div>
+                <div class="info-content">
+                  <div class="info-label">所在地</div>
+                  <div class="info-text">
+                    〒635-0821<br>
+                    奈良県北葛城郡広陵町笠287-1
+                  </div>
+                </div>
+              </li>
+              
+              <li class="info-item">
+                <div class="info-icon">📞</div>
+                <div class="info-content">
+                  <div class="info-label">電話番号</div>
+                  <div class="info-text">
+                    <a href="tel:0120438639" class="info-link">0120-43-8639</a><br>
+                    <span style="font-size:14px;color:#666">（フリーダイヤル）</span>
+                  </div>
+                </div>
+              </li>
+              
+              <li class="info-item">
+                <div class="info-icon">📠</div>
+                <div class="info-content">
+                  <div class="info-label">FAX番号</div>
+                  <div class="info-text">050-3183-9576</div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          
+          <!-- 交通アクセス -->
+          <div class="access-card">
+            <h2 class="access-title">交通アクセス</h2>
+            <ul class="route-list">
+              <li class="route-item">
+                <div class="route-header">
+                  <div class="route-icon">🚃</div>
+                  <div class="route-from">近鉄高田駅から</div>
+                </div>
+                <div class="route-detail">
+                  車で<span class="route-time">約8分</span><br>
+                  バス「広陵町役場前」下車 徒歩5分
+                </div>
+              </li>
+              
+              <li class="route-item">
+                <div class="route-header">
+                  <div class="route-icon">🚉</div>
+                  <div class="route-from">JR高田駅から</div>
+                </div>
+                <div class="route-detail">
+                  車で<span class="route-time">約12分</span><br>
+                </div>
+              </li>
+              
+              <li class="route-item">
+                <div class="route-header">
+                  <div class="route-icon">🚗</div>
+                  <div class="route-from">お車でお越しの方</div>
+                </div>
+                <div class="route-detail">
+                  西名阪自動車道「法隆寺IC」から<span class="route-time">約15分</span><br>
+                  国道165号線沿い、広陵町役場近く
+                </div>
+              </li>
+              
+              <li class="route-item">
+                <div class="route-header">
+                  <div class="route-icon">🚴</div>
+                  <div class="route-from">自転車・徒歩の方</div>
+                </div>
+                <div class="route-detail">
+                  広陵町役場から徒歩<span class="route-time">約5分</span><br>
+                  駐輪場完備
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- 営業時間 -->
+    <section class="hours-section">
+      <div class="container">
+        <div class="hours-container">
+          <h2 class="section-title">営業<span class="gold-accent">時間</span></h2>
+          
+          <div class="hours-grid">
+            <div class="hours-card">
+              <div class="hours-label">平日・土曜日</div>
+              <div class="hours-time">9:00 - 22:00</div>
+              <div class="hours-note">
+                最終受付 21:30<br>
+                <span class="hours-highlight">土曜も営業</span>
+              </div>
+            </div>
+            
+            <div class="hours-card">
+              <div class="hours-label">日曜・祝日</div>
+              <div class="hours-time">9:00 - 22:00</div>
+              <div class="hours-note">
+                最終受付 21:30<br>
+                <span class="hours-highlight">予約優先</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="parking-info">
+            <div class="parking-title">🚗 駐車場情報</div>
+            <div class="parking-capacity">10台</div>
+            <div class="parking-text">
+              店舗前に無料駐車場完備<br>
+              大型車も駐車可能です
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- 近隣施設 -->
+    <section class="nearby-section">
+      <div class="container">
+        <h2 class="section-title">近隣<span class="gold-accent">施設</span></h2>
+        
+        <div class="nearby-grid">
+          <div class="nearby-card">
+            <div class="nearby-icon">🏛️</div>
+            <div class="nearby-name">広陵町役場</div>
+            <div class="nearby-distance">徒歩5分</div>
+          </div>
+          
+          <div class="nearby-card">
+            <div class="nearby-icon">🏪</div>
+            <div class="nearby-name">コンビニ</div>
+            <div class="nearby-distance">徒歩3分</div>
+          </div>
+          
+          <div class="nearby-card">
+            <div class="nearby-icon">🏦</div>
+            <div class="nearby-name">南都銀行</div>
+            <div class="nearby-distance">徒歩7分</div>
+          </div>
+          
+          <div class="nearby-card">
+            <div class="nearby-icon">🍜</div>
+            <div class="nearby-name">飲食店多数</div>
+            <div class="nearby-distance">徒歩圏内</div>
+          </div>
+          
+          <div class="nearby-card">
+            <div class="nearby-icon">🛒</div>
+            <div class="nearby-name">イオンモール橿原</div>
+            <div class="nearby-distance">車で10分</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- お問い合わせCTA -->
+    <section class="contact-cta">
+      <div class="container">
+        <h2 class="cta-title">ご来店<span class="gold-accent">お待ちしております</span></h2>
+        <p class="cta-text">
+          不動産のご相談、リフォームのお見積もりなど<br>
+          お気軽にご来店・お問い合わせください。<br>
+          経験豊富なスタッフが親身に対応いたします。
+        </p>
+        
+        <div class="cta-buttons">
+          <a href="tel:0120438639" class="cta-btn cta-btn-primary">
+            📞 今すぐ電話する
+          </a>
+          <a href="/contact/form.html" class="cta-btn cta-btn-secondary">
+            ✉️ お問い合わせフォーム
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <!-- フッター -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>センチュリー21ホームマート</h4>
+          <p style="font-size:14px;line-height:1.8;color:#999">
+            〒635-0821<br>
+            奈良県北葛城郡広陵町笠287-1<br>
+            TEL: 0120-43-8639<br>
+            FAX: 050-3183-9576
+          </p>
+        </div>
+        
+        <div class="footer-section">
+          <h4>サービス</h4>
+          <ul>
+            <li><a href="/search.html">物件検索</a></li>
+            <li><a href="/assessment.html">売却査定</a></li>
+            <li><a href="/voluntary-sale.html">任意売却相談</a></li>
+            <li><a href="/reform-water.html">リフォーム</a></li>
+            <li><a href="/recruit.html">採用情報</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h4>会社情報</h4>
+          <ul>
+            <li><a href="/company/about.html">会社概要</a></li>
+            <li><a href="/company/message.html">代表挨拶</a></li>
+            <li><a href="/company/philosophy.html">企業理念</a></li>
+            <li><a href="/company/access.html">アクセス</a></li>
+            <li><a href="/privacy.html">プライバシーポリシー</a></li>
+            <li><a href="/sitemap.html">サイトマップ</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>© 2025 Century21 HomeMart. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+  
+  <script>
+    // マップのエラーハンドリング
+    document.querySelector('.map-iframe').onerror = function() {
+      this.style.display = 'none';
+      document.querySelector('.map-placeholder').style.display = 'flex';
+    };
+  </script>
+</body>
+</html>
