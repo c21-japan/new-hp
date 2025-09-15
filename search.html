@@ -1,0 +1,1354 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>物件検索｜センチュリー21ホームマート</title>
+  <meta name="description" content="奈良・大阪エリアの不動産物件を詳細検索。一戸建て・マンション・土地など豊富な物件情報から理想の住まいを見つけよう。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700;900&display=swap" rel="stylesheet"/>
+  
+  <style>
+    :root{
+      --gold:#A19276; 
+      --gold2:#B8A082; 
+      --black:#383635; 
+      --ink:#222; 
+      --cream:#F8F6F3; 
+      --bg:#fff;
+      --max:1200px; 
+      --shadow:0 8px 24px rgba(0,0,0,.08);
+      --accent-pink: #FFB6C1;
+      --accent-blue: #4A90E2;
+      --accent-green: #90EE90;
+    }
+    
+    *{box-sizing:border-box}
+    html,body{margin:0;background:var(--bg);color:var(--ink);font-family:'Noto Sans JP',sans-serif;line-height:1.6}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block;height:auto}
+    .container{max-width:var(--max);margin:0 auto;padding:0 16px}
+    
+    /* ヘッダー */
+    .site-header{
+      background:#fff;
+      border-bottom:2px solid var(--gold);
+      padding:16px 0;
+      position:sticky;
+      top:0;
+      z-index:100;
+      box-shadow:0 2px 8px rgba(0,0,0,.08);
+    }
+    .header-content{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      flex-wrap:wrap;
+      gap:16px;
+    }
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+    .logo img{
+      height:40px;
+    }
+    .nav-menu{
+      display:flex;
+      gap:24px;
+      align-items:center;
+    }
+    .nav-menu a{
+      font-weight:600;
+      transition:color 0.3s;
+    }
+    .nav-menu a:hover{
+      color:var(--gold);
+    }
+    .tel-btn{
+      background:linear-gradient(135deg,var(--gold),var(--gold2));
+      color:#fff;
+      padding:8px 16px;
+      border-radius:8px;
+      font-weight:700;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+    }
+    
+    /* 検索ヒーロー */
+    .search-hero{
+      background:linear-gradient(135deg,var(--cream),#fff);
+      padding:60px 0 40px;
+      text-align:center;
+    }
+    .search-title{
+      font-size:clamp(32px,5vw,48px);
+      font-weight:900;
+      margin-bottom:16px;
+    }
+    .gold-accent{
+      background:linear-gradient(135deg,var(--gold),var(--gold2));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+    }
+    
+    /* クイック検索 */
+    .quick-search{
+      background:#fff;
+      padding:24px;
+      border-radius:16px;
+      box-shadow:var(--shadow);
+      margin:-40px auto 40px;
+      max-width:1000px;
+      position:relative;
+      z-index:10;
+    }
+    .quick-search-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+      gap:12px;
+    }
+    .quick-btn{
+      background:linear-gradient(135deg,#f8f8f8,#fff);
+      border:2px solid #e5e5e5;
+      padding:12px 16px;
+      border-radius:8px;
+      font-weight:600;
+      cursor:pointer;
+      transition:all 0.3s;
+      text-align:center;
+    }
+    .quick-btn:hover{
+      background:var(--gold);
+      color:#fff;
+      border-color:var(--gold);
+      transform:translateY(-2px);
+    }
+    
+    /* 検索フォーム */
+    .search-container{
+      max-width:1400px;
+      margin:0 auto;
+      padding:0 16px;
+      display:grid;
+      gap:24px;
+    }
+    @media(min-width:1024px){
+      .search-container{
+        grid-template-columns:320px 1fr;
+      }
+    }
+    
+    .search-sidebar{
+      background:#fff;
+      border-radius:16px;
+      padding:24px;
+      box-shadow:var(--shadow);
+      height:fit-content;
+      position:sticky;
+      top:80px;
+    }
+    
+    .search-section{
+      margin-bottom:32px;
+      padding-bottom:32px;
+      border-bottom:1px solid #eee;
+    }
+    .search-section:last-child{
+      border-bottom:none;
+      margin-bottom:0;
+      padding-bottom:0;
+    }
+    
+    .search-section-title{
+      font-size:16px;
+      font-weight:700;
+      color:var(--gold);
+      margin-bottom:16px;
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+    
+    /* フォーム要素 */
+    .form-group{
+      margin-bottom:16px;
+    }
+    .form-label{
+      display:block;
+      font-size:14px;
+      font-weight:600;
+      margin-bottom:8px;
+      color:var(--black);
+    }
+    .form-select,
+    .form-input{
+      width:100%;
+      padding:10px 12px;
+      border:2px solid #e5e5e5;
+      border-radius:8px;
+      font-size:14px;
+      transition:all 0.3s;
+    }
+    .form-select:focus,
+    .form-input:focus{
+      outline:none;
+      border-color:var(--gold);
+      box-shadow:0 0 0 3px rgba(161,146,118,0.1);
+    }
+    
+    /* チェックボックス・ラジオボタン */
+    .checkbox-group,
+    .radio-group{
+      display:grid;
+      gap:8px;
+    }
+    .checkbox-item,
+    .radio-item{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 12px;
+      background:var(--cream);
+      border-radius:8px;
+      cursor:pointer;
+      transition:all 0.3s;
+    }
+    .checkbox-item:hover,
+    .radio-item:hover{
+      background:var(--gold);
+      color:#fff;
+    }
+    .checkbox-item input,
+    .radio-item input{
+      cursor:pointer;
+    }
+    
+    /* 価格レンジ */
+    .price-range{
+      display:grid;
+      grid-template-columns:1fr auto 1fr;
+      gap:8px;
+      align-items:center;
+    }
+    .price-input{
+      padding:8px;
+      border:2px solid #e5e5e5;
+      border-radius:6px;
+      font-size:14px;
+    }
+    
+    /* 検索ボタン */
+    .search-btn{
+      background:linear-gradient(135deg,var(--gold),var(--gold2));
+      color:#fff;
+      padding:14px 24px;
+      border:none;
+      border-radius:12px;
+      font-weight:700;
+      font-size:16px;
+      cursor:pointer;
+      width:100%;
+      transition:all 0.3s;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+    }
+    .search-btn:hover{
+      transform:translateY(-2px);
+      box-shadow:0 8px 20px rgba(161,146,118,0.3);
+    }
+    
+    .clear-btn{
+      background:#fff;
+      color:var(--gold);
+      border:2px solid var(--gold);
+      padding:10px 20px;
+      border-radius:8px;
+      font-weight:600;
+      font-size:14px;
+      cursor:pointer;
+      width:100%;
+      margin-top:8px;
+      transition:all 0.3s;
+    }
+    .clear-btn:hover{
+      background:var(--cream);
+    }
+    
+    /* 検索結果 */
+    .search-results{
+      background:#f8f8f8;
+      border-radius:16px;
+      padding:24px;
+    }
+    
+    .results-header{
+      background:#fff;
+      padding:20px;
+      border-radius:12px;
+      margin-bottom:24px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      flex-wrap:wrap;
+      gap:16px;
+    }
+    
+    .results-count{
+      font-size:18px;
+      font-weight:700;
+    }
+    .results-count span{
+      color:var(--gold);
+      font-size:24px;
+    }
+    
+    .results-controls{
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+    
+    .sort-select,
+    .view-select{
+      padding:8px 12px;
+      border:2px solid #e5e5e5;
+      border-radius:8px;
+      font-size:14px;
+      font-weight:600;
+    }
+    
+    /* 物件グリッド */
+    .property-grid{
+      display:grid;
+      gap:20px;
+    }
+    @media(min-width:768px){
+      .property-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+    }
+    @media(min-width:1200px){
+      .property-grid.grid-3{
+        grid-template-columns:repeat(3,1fr);
+      }
+    }
+    
+    .property-card{
+      background:#fff;
+      border-radius:12px;
+      overflow:hidden;
+      box-shadow:0 4px 12px rgba(0,0,0,0.08);
+      transition:all 0.3s;
+      cursor:pointer;
+    }
+    .property-card:hover{
+      transform:translateY(-4px);
+      box-shadow:0 8px 24px rgba(0,0,0,0.12);
+    }
+    
+    .property-image{
+      position:relative;
+      height:200px;
+      background:#f0f0f0;
+      overflow:hidden;
+    }
+    .property-image img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+    
+    .property-badge{
+      position:absolute;
+      top:12px;
+      left:12px;
+      background:var(--gold);
+      color:#fff;
+      padding:4px 12px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:700;
+    }
+    
+    .property-new{
+      position:absolute;
+      top:12px;
+      right:12px;
+      background:var(--accent-pink);
+      color:#fff;
+      padding:4px 12px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:700;
+    }
+    
+    .property-content{
+      padding:20px;
+    }
+    
+    .property-price{
+      font-size:24px;
+      font-weight:900;
+      color:var(--gold);
+      margin-bottom:12px;
+    }
+    
+    .property-title{
+      font-size:16px;
+      font-weight:700;
+      margin-bottom:12px;
+      color:var(--black);
+    }
+    
+    .property-specs{
+      display:flex;
+      gap:16px;
+      margin-bottom:12px;
+      font-size:14px;
+      color:#666;
+    }
+    
+    .property-address{
+      font-size:14px;
+      color:#666;
+      display:flex;
+      align-items:center;
+      gap:4px;
+    }
+    
+    .property-station{
+      margin-top:8px;
+      font-size:13px;
+      color:#999;
+      display:flex;
+      align-items:center;
+      gap:4px;
+    }
+    
+    /* ページネーション */
+    .pagination{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:8px;
+      margin-top:40px;
+    }
+    
+    .page-btn{
+      padding:8px 16px;
+      border:1px solid var(--gold);
+      border-radius:8px;
+      background:#fff;
+      color:var(--gold);
+      font-weight:600;
+      cursor:pointer;
+      transition:all 0.3s;
+    }
+    .page-btn:hover,
+    .page-btn.active{
+      background:var(--gold);
+      color:#fff;
+    }
+    .page-btn:disabled{
+      opacity:0.5;
+      cursor:not-allowed;
+    }
+    
+    /* お気に入りボタン */
+    .favorite-btn{
+      position:absolute;
+      top:12px;
+      right:12px;
+      background:rgba(255,255,255,0.9);
+      width:36px;
+      height:36px;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      transition:all 0.3s;
+      border:none;
+    }
+    .favorite-btn:hover{
+      background:#fff;
+      transform:scale(1.1);
+    }
+    .favorite-btn.active{
+      color:var(--accent-pink);
+    }
+    
+    /* タブ切り替え */
+    .view-tabs{
+      display:flex;
+      gap:8px;
+    }
+    .view-tab{
+      padding:8px 16px;
+      background:#fff;
+      border:2px solid #e5e5e5;
+      border-radius:8px;
+      cursor:pointer;
+      transition:all 0.3s;
+      font-weight:600;
+      font-size:14px;
+    }
+    .view-tab.active{
+      background:var(--gold);
+      color:#fff;
+      border-color:var(--gold);
+    }
+    
+    /* モバイル用フィルターボタン */
+    .mobile-filter-btn{
+      display:none;
+      position:fixed;
+      bottom:20px;
+      right:20px;
+      background:var(--gold);
+      color:#fff;
+      width:60px;
+      height:60px;
+      border-radius:50%;
+      align-items:center;
+      justify-content:center;
+      box-shadow:0 4px 12px rgba(0,0,0,0.2);
+      cursor:pointer;
+      z-index:90;
+    }
+    
+    @media(max-width:1023px){
+      .mobile-filter-btn{
+        display:flex;
+      }
+      .search-sidebar{
+        position:fixed;
+        left:-100%;
+        top:0;
+        height:100vh;
+        width:320px;
+        z-index:95;
+        transition:left 0.3s;
+        overflow-y:auto;
+      }
+      .search-sidebar.open{
+        left:0;
+      }
+      .sidebar-overlay{
+        display:none;
+        position:fixed;
+        top:0;
+        left:0;
+        right:0;
+        bottom:0;
+        background:rgba(0,0,0,0.5);
+        z-index:94;
+      }
+      .sidebar-overlay.open{
+        display:block;
+      }
+    }
+    
+    /* フッター */
+    .site-footer{
+      background:#111;
+      color:#eee;
+      padding:48px 0 24px;
+      margin-top:80px;
+    }
+    .footer-content{
+      display:grid;
+      gap:32px;
+      margin-bottom:32px;
+    }
+    @media(min-width:768px){
+      .footer-content{grid-template-columns:repeat(3,1fr)}
+    }
+    .footer-section h4{
+      color:var(--gold);
+      margin-bottom:16px;
+      font-size:18px;
+    }
+    .footer-section ul{
+      list-style:none;
+      padding:0;
+    }
+    .footer-section li{
+      margin-bottom:8px;
+    }
+    .footer-section a{
+      color:#eee;
+      transition:color 0.3s;
+    }
+    .footer-section a:hover{
+      color:var(--gold);
+    }
+    .footer-bottom{
+      text-align:center;
+      padding-top:24px;
+      border-top:1px solid #333;
+      font-size:14px;
+      color:#999;
+    }
+  </style>
+</head>
+<body>
+  <!-- ヘッダー -->
+  <header class="site-header">
+    <div class="container">
+      <div class="header-content">
+        <a href="/" class="logo">
+          <img src="/images/century21logo_gold.png" alt="CENTURY21">
+          <span style="font-weight:700;font-size:18px">ホームマート</span>
+        </a>
+        <nav class="nav-menu">
+          <a href="/search.html">物件検索</a>
+          <a href="/assessment.html">売却査定</a>
+          <a href="/reform-water.html">リフォーム</a>
+          <a href="/company/about.html">会社案内</a>
+          <a href="tel:0120438639" class="tel-btn">
+            📞 0120-43-8639
+          </a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- 検索ヒーロー -->
+    <section class="search-hero">
+      <div class="container">
+        <h1 class="search-title">物件<span class="gold-accent">検索</span></h1>
+        <p style="color:#666">奈良・大阪・京都・兵庫・滋賀の豊富な物件情報から理想の住まいを見つけよう</p>
+      </div>
+    </section>
+    
+    <!-- クイック検索 -->
+    <div class="container">
+      <div class="quick-search">
+        <h3 style="text-align:center;margin-bottom:20px;font-size:18px;color:var(--gold)">🔍 クイック検索</h3>
+        <div class="quick-search-grid">
+          <button class="quick-btn" onclick="quickSearch('新築一戸建て')">🏠 新築一戸建て</button>
+          <button class="quick-btn" onclick="quickSearch('中古一戸建て')">🏡 中古一戸建て</button>
+          <button class="quick-btn" onclick="quickSearch('マンション')">🏢 マンション</button>
+          <button class="quick-btn" onclick="quickSearch('土地')">🏞️ 土地</button>
+          <button class="quick-btn" onclick="quickSearch('2000万円以下')">💰 2000万円以下</button>
+          <button class="quick-btn" onclick="quickSearch('3LDK以上')">🏘️ 3LDK以上</button>
+          <button class="quick-btn" onclick="quickSearch('駅徒歩10分')">🚃 駅徒歩10分以内</button>
+          <button class="quick-btn" onclick="quickSearch('リフォーム済')">✨ リフォーム済</button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 検索メイン -->
+    <section style="padding:40px 0">
+      <div class="search-container">
+        <!-- サイドバー（検索条件） -->
+        <aside class="search-sidebar" id="searchSidebar">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px">
+            <h2 style="font-size:20px;font-weight:700">検索条件</h2>
+            <button class="clear-btn" style="width:auto;padding:6px 16px;margin:0">クリア</button>
+          </div>
+          
+          <!-- エリア選択 -->
+          <div class="search-section">
+            <h3 class="search-section-title">
+              📍 エリア
+            </h3>
+            <div class="form-group">
+              <label class="form-label">都道府県</label>
+              <select class="form-select" id="prefectureSelect">
+                <option value="">選択してください</option>
+                <option value="nara">奈良県</option>
+                <option value="osaka">大阪府</option>
+                <option value="kyoto">京都府</option>
+                <option value="hyogo">兵庫県</option>
+                <option value="shiga">滋賀県</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">市区町村</label>
+              <select class="form-select" id="citySelect" disabled>
+                <option value="">都道府県を選択してください</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">フリーワード</label>
+              <input type="text" class="form-input" placeholder="駅名・地名・学校名など">
+            </div>
+          </div>
+          
+          <!-- 物件種別 -->
+          <div class="search-section">
+            <h3 class="search-section-title">
+              🏠 物件種別
+            </h3>
+            <div class="checkbox-group">
+              <label class="checkbox-item">
+                <input type="checkbox" name="type" value="new-house">
+                <span>新築一戸建て</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" name="type" value="used-house">
+                <span>中古一戸建て</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" name="type" value="mansion">
+                <span>マンション</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" name="type" value="land">
+                <span>土地</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" name="type" value="investment">
+                <span>投資物件</span>
+              </label>
+            </div>
+          </div>
+          
+          <!-- 価格 -->
+          <div class="search-section">
+            <h3 class="search-section-title">
+              💰 価格
+            </h3>
+            <div class="price-range">
+              <input type="number" class="price-input" placeholder="下限なし">
+              <span>〜</span>
+              <input type="number" class="price-input" placeholder="上限なし">
+            </div>
+            <div style="margin-top:12px">
+              <select class="form-select">
+                <option value="">価格帯から選択</option>
+                <option value="500">〜500万円</option>
+                <option value="1000">500〜1,000万円</option>
+                <option value="1500">1,000〜1,500万円</option>
+                <option value="2000">1,500〜2,000万円</option>
+                <option value="2500">2,000〜2,500万円</option>
+                <option value="3000">2,500〜3,000万円</option>
+                <option value="3500">3,000〜3,500万円</option>
+                <option value="4000">3,500〜4,000万円</option>
+                <option value="5000">4,000〜5,000万円</option>
+                <option value="6000">5,000〜6,000万円</option>
+                <option value="7000">6,000〜7,000万円</option>
+                <option value="8000">7,000〜8,000万円</option>
+                <option value="9000">8,000〜9,000万円</option>
+                <option value="10000">9,000万〜1億円</option>
+                <option value="10000+">1億円以上</option>
+              </select>
+            </div>
+          </div>
+          
+          <!-- 間取り -->
+          <div class="search-section">
+            <h3 class="search-section-title">
+              🏘️ 間取り
+            </h3>
+            <div class="checkbox-group">
+              <label class="checkbox-item">
+                <input type="checkbox" name="layout" value="1">
+                <span>ワンルーム・1K・1DK</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" name="layout" value="1ldk">
+                <span>1LDK・2K・2DK</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" name="layout" value="2ldk">
+                <span>2LDK・3K・3DK</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" name="layout" value="3ldk">
+                <span>3LDK・4K・4DK</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" name="layout" value="4ldk">
+                <span>4LDK・5K・5DK</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" name="layout" value="5ldk">
+                <span>5LDK以上</span>
+              </label>
+            </div>
+          </div>
+          
+          <!-- 面積 -->
+          <div class="search-section">
+            <h3 class="search-section-title">
+              📐 面積
+            </h3>
+            <div class="form-group">
+              <label class="form-label">建物面積（㎡）</label>
+              <div class="price-range">
+                <input type="number" class="price-input" placeholder="下限なし">
+                <span>〜</span>
+                <input type="number" class="price-input" placeholder="上限なし">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">土地面積（㎡）</label>
+              <div class="price-range">
+                <input type="number" class="price-input" placeholder="下限なし">
+                <span>〜</span>
+                <input type="number" class="price-input" placeholder="上限なし">
+              </div>
+            </div>
+          </div>
+          
+          <!-- 築年数 -->
+          <div class="search-section">
+            <h3 class="search-section-title">
+              🏗️ 築年数
+            </h3>
+            <div class="radio-group">
+              <label class="radio-item">
+                <input type="radio" name="age" value="new">
+                <span>新築</span>
+              </label>
+              <label class="radio-item">
+                <input type="radio" name="age" value="5">
+                <span>5年以内</span>
+              </label>
+              <label class="radio-item">
+                <input type="radio" name="age" value="10">
+                <span>10年以内</span>
+              </label>
+              <label class="radio-item">
+                <input type="radio" name="age" value="15">
+                <span>15年以内</span>
+              </label>
+              <label class="radio-item">
+                <input type="radio" name="age" value="20">
+                <span>20年以内</span>
+              </label>
+              <label class="radio-item">
+                <input type="radio" name="age" value="25">
+                <span>25年以内</span>
+              </label>
+              <label class="radio-item">
+                <input type="radio" name="age" value="30">
+                <span>30年以内</span>
+              </label>
+              <label class="radio-item">
+                <input type="radio" name="age" value="all">
+                <span>指定なし</span>
+              </label>
+            </div>
+          </div>
+          
+          <!-- 駅徒歩 -->
+          <div class="search-section">
+            <h3 class="search-section-title">
+              🚃 駅徒歩
+            </h3>
+            <div class="radio-group">
+              <label class="radio-item">
+                <input type="radio" name="station" value="5">
+                <span>5分以内</span>
+              </label>
+              <label class="radio-item">
+                <input type="radio" name="station" value="10">
+                <span>10分以内</span>
+              </label>
+              <label class="radio-item">
+                <input type="radio" name="station" value="15">
+                <span>15分以内</span>
+              </label>
+              <label class="radio-item">
+                <input type="radio" name="station" value="20">
+                <span>20分以内</span>
+              </label>
+              <label class="radio-item">
+                <input type="radio" name="station" value="25">
+                <span>25分以内</span>
+              </label>
+              <label class="radio-item">
+                <input type="radio" name="station" value="all">
+                <span>指定なし</span>
+              </label>
+            </div>
+          </div>
+          
+          <!-- こだわり条件 -->
+          <div class="search-section">
+            <h3 class="search-section-title">
+              ✨ こだわり条件
+            </h3>
+            <div class="checkbox-group">
+              <label class="checkbox-item">
+                <input type="checkbox" name="feature" value="parking">
+                <span>駐車場あり</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" name="feature" value="south">
+                <span>南向き</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" name="feature" value="corner">
+                <span>角地</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" name="feature" value="renovation">
+                <span>リフォーム済</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" name="feature" value="pet">
+                <span>ペット可</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" name="feature" value="barrier-free">
+                <span>バリアフリー</span>
+              </label>
+            </div>
+          </div>
+          
+          <!-- 検索ボタン -->
+          <button class="search-btn">
+            🔍 この条件で検索
+          </button>
+          <button class="clear-btn">条件をクリア</button>
+        </aside>
+        
+        <!-- 検索結果 -->
+        <div class="search-results">
+          <!-- 結果ヘッダー -->
+          <div class="results-header">
+            <div class="results-count">
+              新着物件：<span>248</span>件
+            </div>
+            <div class="results-controls">
+              <div class="view-tabs">
+                <button class="view-tab active" onclick="switchView('grid')">
+                  グリッド表示
+                </button>
+                <button class="view-tab" onclick="switchView('list')">
+                  リスト表示
+                </button>
+              </div>
+              <select class="sort-select">
+                <option value="new">新着順</option>
+                <option value="price-low">価格が安い順</option>
+                <option value="price-high">価格が高い順</option>
+                <option value="area-large">面積が広い順</option>
+                <option value="age-new">築年数が新しい順</option>
+                <option value="station">駅近順</option>
+              </select>
+              <select class="view-select">
+                <option value="20">20件</option>
+                <option value="40">40件</option>
+                <option value="60">60件</option>
+                <option value="80">80件</option>
+                <option value="100">100件</option>
+              </select>
+            </div>
+          </div>
+          
+          <!-- 物件グリッド -->
+          <div class="property-grid grid-3" id="propertyGrid">
+            <!-- 物件カード1 - 広陵町新着 -->
+            <div class="property-card">
+              <div class="property-image">
+                <img src="/images/property1.jpg" alt="物件画像">
+                <span class="property-badge">一戸建て</span>
+                <span class="property-new">NEW</span>
+                <button class="favorite-btn">❤️</button>
+              </div>
+              <div class="property-content">
+                <div class="property-price">2,980万円</div>
+                <div class="property-title">広陵町 新築一戸建て 4LDK</div>
+                <div class="property-specs">
+                  <span>🏠 4LDK</span>
+                  <span>📐 土地120㎡</span>
+                  <span>🏗️ 建物98㎡</span>
+                </div>
+                <div class="property-address">
+                  📍 奈良県北葛城郡広陵町笠
+                </div>
+                <div class="property-station">
+                  🚃 近鉄田原本線「箸尾」駅 徒歩15分
+                </div>
+              </div>
+            </div>
+            
+            <!-- 物件カード2 - 香芝市人気 -->
+            <div class="property-card">
+              <div class="property-image">
+                <img src="/images/property2.jpg" alt="物件画像">
+                <span class="property-badge">マンション</span>
+                <span class="property-new">NEW</span>
+                <button class="favorite-btn">❤️</button>
+              </div>
+              <div class="property-content">
+                <div class="property-price">2,480万円</div>
+                <div class="property-title">香芝市 中古マンション 3LDK</div>
+                <div class="property-specs">
+                  <span>🏢 3LDK</span>
+                  <span>📐 専有75㎡</span>
+                  <span>🏗️ 築8年</span>
+                </div>
+                <div class="property-address">
+                  📍 奈良県香芝市瓦口
+                </div>
+                <div class="property-station">
+                  🚃 JR和歌山線「JR五位堂」駅 徒歩5分
+                </div>
+              </div>
+            </div>
+            
+            <!-- 物件カード3 - 大和高田市土地 -->
+            <div class="property-card">
+              <div class="property-image">
+                <img src="/images/property3.jpg" alt="物件画像">
+                <span class="property-badge">土地</span>
+                <button class="favorite-btn">❤️</button>
+              </div>
+              <div class="property-content">
+                <div class="property-price">1,580万円</div>
+                <div class="property-title">大和高田市 売地 150㎡</div>
+                <div class="property-specs">
+                  <span>🏞️ 土地</span>
+                  <span>📐 150㎡</span>
+                  <span>🏗️ 建築条件なし</span>
+                </div>
+                <div class="property-address">
+                  📍 奈良県大和高田市大中
+                </div>
+                <div class="property-station">
+                  🚃 近鉄大阪線「大和高田」駅 徒歩10分
+                </div>
+              </div>
+            </div>
+            
+            <!-- 物件カード4 - 生駒市高級住宅 -->
+            <div class="property-card">
+              <div class="property-image">
+                <img src="/images/property4.jpg" alt="物件画像">
+                <span class="property-badge">一戸建て</span>
+                <span class="property-new">NEW</span>
+                <button class="favorite-btn active">❤️</button>
+              </div>
+              <div class="property-content">
+                <div class="property-price">3,580万円</div>
+                <div class="property-title">生駒市 中古一戸建て 5LDK</div>
+                <div class="property-specs">
+                  <span>🏠 5LDK</span>
+                  <span>📐 土地180㎡</span>
+                  <span>🏗️ 建物120㎡</span>
+                </div>
+                <div class="property-address">
+                  📍 奈良県生駒市東生駒
+                </div>
+                <div class="property-station">
+                  🚃 近鉄奈良線「東生駒」駅 徒歩8分
+                </div>
+              </div>
+            </div>
+            
+            <!-- 物件カード5 - 奈良市マンション -->
+            <div class="property-card">
+              <div class="property-image">
+                <img src="/images/property5.jpg" alt="物件画像">
+                <span class="property-badge">マンション</span>
+                <button class="favorite-btn">❤️</button>
+              </div>
+              <div class="property-content">
+                <div class="property-price">1,980万円</div>
+                <div class="property-title">奈良市 中古マンション 2LDK</div>
+                <div class="property-specs">
+                  <span>🏢 2LDK</span>
+                  <span>📐 専有65㎡</span>
+                  <span>🏗️ 築15年</span>
+                </div>
+                <div class="property-address">
+                  📍 奈良県奈良市富雄北
+                </div>
+                <div class="property-station">
+                  🚃 近鉄奈良線「富雄」駅 徒歩7分
+                </div>
+              </div>
+            </div>
+            
+            <!-- 物件カード6 - 橿原市新築 -->
+            <div class="property-card">
+              <div class="property-image">
+                <img src="/images/property6.jpg" alt="物件画像">
+                <span class="property-badge">一戸建て</span>
+                <button class="favorite-btn">❤️</button>
+              </div>
+              <div class="property-content">
+                <div class="property-price">4,280万円</div>
+                <div class="property-title">橿原市 新築一戸建て 4LDK</div>
+                <div class="property-specs">
+                  <span>🏠 4LDK</span>
+                  <span>📐 土地140㎡</span>
+                  <span>🏗️ 建物105㎡</span>
+                </div>
+                <div class="property-address">
+                  📍 奈良県橿原市八木町
+                </div>
+                <div class="property-station">
+                  🚃 近鉄大阪線「大和八木」駅 徒歩12分
+                </div>
+              </div>
+            </div>
+            
+            <!-- 物件カード7 - 大阪市内マンション -->
+            <div class="property-card">
+              <div class="property-image">
+                <img src="/images/property7.jpg" alt="物件画像">
+                <span class="property-badge">マンション</span>
+                <span class="property-new">NEW</span>
+                <button class="favorite-btn">❤️</button>
+              </div>
+              <div class="property-content">
+                <div class="property-price">3,280万円</div>
+                <div class="property-title">大阪市天王寺区 中古マンション 3LDK</div>
+                <div class="property-specs">
+                  <span>🏢 3LDK</span>
+                  <span>📐 専有70㎡</span>
+                  <span>🏗️ 築10年</span>
+                </div>
+                <div class="property-address">
+                  📍 大阪府大阪市天王寺区上本町
+                </div>
+                <div class="property-station">
+                  🚃 大阪メトロ「谷町九丁目」駅 徒歩3分
+                </div>
+              </div>
+            </div>
+            
+            <!-- 物件カード8 - 堺市一戸建て -->
+            <div class="property-card">
+              <div class="property-image">
+                <img src="/images/property8.jpg" alt="物件画像">
+                <span class="property-badge">一戸建て</span>
+                <button class="favorite-btn">❤️</button>
+              </div>
+              <div class="property-content">
+                <div class="property-price">2,680万円</div>
+                <div class="property-title">堺市北区 中古一戸建て 4LDK</div>
+                <div class="property-specs">
+                  <span>🏠 4LDK</span>
+                  <span>📐 土地110㎡</span>
+                  <span>🏗️ 建物95㎡</span>
+                </div>
+                <div class="property-address">
+                  📍 大阪府堺市北区新金岡町
+                </div>
+                <div class="property-station">
+                  🚃 大阪メトロ「新金岡」駅 徒歩10分
+                </div>
+              </div>
+            </div>
+            
+            <!-- 物件カード9 - 京都市マンション -->
+            <div class="property-card">
+              <div class="property-image">
+                <img src="/images/property9.jpg" alt="物件画像">
+                <span class="property-badge">マンション</span>
+                <span class="property-new">NEW</span>
+                <button class="favorite-btn">❤️</button>
+              </div>
+              <div class="property-content">
+                <div class="property-price">4,580万円</div>
+                <div class="property-title">京都市中京区 新築マンション 2LDK</div>
+                <div class="property-specs">
+                  <span>🏢 2LDK</span>
+                  <span>📐 専有68㎡</span>
+                  <span>🏗️ 新築</span>
+                </div>
+                <div class="property-address">
+                  📍 京都府京都市中京区烏丸通
+                </div>
+                <div class="property-station">
+                  🚃 地下鉄「烏丸御池」駅 徒歩5分
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- ページネーション -->
+          <div class="pagination">
+            <button class="page-btn" disabled>←</button>
+            <button class="page-btn active">1</button>
+            <button class="page-btn">2</button>
+            <button class="page-btn">3</button>
+            <button class="page-btn">4</button>
+            <button class="page-btn">5</button>
+            <span style="padding:0 8px">...</span>
+            <button class="page-btn">28</button>
+            <button class="page-btn">→</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- モバイル用フィルターボタン -->
+    <button class="mobile-filter-btn" onclick="toggleSidebar()">
+      🔍
+    </button>
+    
+    <!-- サイドバーオーバーレイ -->
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+  </main>
+  
+  <!-- フッター -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>センチュリー21ホームマート</h4>
+          <p style="font-size:14px;line-height:1.8;color:#999">
+            〒635-0821<br>
+            奈良県北葛城郡広陵町笠287-1<br>
+            TEL: 0120-43-8639<br>
+            FAX: 050-3183-9576
+          </p>
+        </div>
+        
+        <div class="footer-section">
+          <h4>サービス</h4>
+          <ul>
+            <li><a href="/search.html">物件検索</a></li>
+            <li><a href="/assessment.html">売却査定</a></li>
+            <li><a href="/voluntary-sale.html">任意売却相談</a></li>
+            <li><a href="/reform-water.html">リフォーム</a></li>
+            <li><a href="/recruit.html">採用情報</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h4>会社情報</h4>
+          <ul>
+            <li><a href="/company/about.html">会社概要</a></li>
+            <li><a href="/company/message.html">代表挨拶</a></li>
+            <li><a href="/company/philosophy.html">企業理念</a></li>
+            <li><a href="/company/access.html">アクセス</a></li>
+            <li><a href="/privacy.html">プライバシーポリシー</a></li>
+            <li><a href="/sitemap.html">サイトマップ</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>© 2025 Century21 HomeMart. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+  
+  <script>
+    // 市区町村データ
+    const cityData = {
+      nara: [
+        '奈良市', '大和高田市', '大和郡山市', '天理市', '橿原市', '桜井市', '五條市', '御所市', '生駒市', '香芝市', '葛城市', '宇陀市',
+        '山添村', '平群町', '三郷町', '斑鳩町', '安堵町', '川西町', '三宅町', '田原本町', '曽爾村', '御杖村', '高取町', '明日香村', '上牧町', '王寺町', '広陵町', '河合町', '吉野町', '大淀町', '下市町', '黒滝村', '天川村', '野迫川村', '十津川村', '下北山村', '上北山村', '川上村', '東吉野村'
+      ],
+      osaka: [
+        // 大阪市の区
+        '大阪市北区', '大阪市都島区', '大阪市福島区', '大阪市此花区', '大阪市西区', '大阪市港区', '大阪市大正区', '大阪市天王寺区', '大阪市浪速区', '大阪市西淀川区', '大阪市東淀川区', '大阪市東成区', '大阪市生野区', '大阪市旭区', '大阪市城東区', '大阪市阿倍野区', '大阪市住吉区', '大阪市東住吉区', '大阪市西成区', '大阪市淀川区', '大阪市鶴見区', '大阪市住之江区', '大阪市平野区', '大阪市中央区',
+        // 堺市の区
+        '堺市堺区', '堺市中区', '堺市東区', '堺市西区', '堺市南区', '堺市北区', '堺市美原区',
+        // その他の市町村
+        '岸和田市', '豊中市', '池田市', '吹田市', '泉大津市', '高槻市', '貝塚市', '守口市', '枚方市', '茨木市', '八尾市', '泉佐野市', '富田林市', '寝屋川市', '河内長野市', '松原市', '大東市', '和泉市', '箕面市', '柏原市', '羽曳野市', '門真市', '摂津市', '高石市', '藤井寺市', '東大阪市', '泉南市', '四條畷市', '交野市', '大阪狭山市', '阪南市',
+        '島本町', '豊能町', '能勢町', '忠岡町', '熊取町', '田尻町', '岬町', '太子町', '河南町', '千早赤阪村'
+      ],
+      kyoto: [
+        // 京都市の区
+        '京都市北区', '京都市上京区', '京都市左京区', '京都市中京区', '京都市東山区', '京都市下京区', '京都市南区', '京都市右京区', '京都市伏見区', '京都市山科区', '京都市西京区',
+        // その他の市町村
+        '福知山市', '舞鶴市', '綾部市', '宇治市', '宮津市', '亀岡市', '城陽市', '向日市', '長岡京市', '八幡市', '京田辺市', '京丹後市', '南丹市', '木津川市',
+        '大山崎町', '久御山町', '井手町', '宇治田原町', '笠置町', '和束町', '精華町', '南山城村', '京丹波町', '伊根町', '与謝野町'
+      ],
+      hyogo: [
+        // 神戸市の区
+        '神戸市東灘区', '神戸市灘区', '神戸市兵庫区', '神戸市長田区', '神戸市須磨区', '神戸市垂水区', '神戸市北区', '神戸市中央区', '神戸市西区',
+        // その他の市町村
+        '姫路市', '尼崎市', '明石市', '西宮市', '洲本市', '芦屋市', '伊丹市', '相生市', '豊岡市', '加古川市', '赤穂市', '西脇市', '宝塚市', '三木市', '高砂市', '川西市', '小野市', '三田市', '加西市', '丹波篠山市', '養父市', '丹波市', '南あわじ市', '朝来市', '淡路市', '宍粟市', '加東市', 'たつの市',
+        '猪名川町', '多可町', '稲美町', '播磨町', '市川町', '福崎町', '神河町', '太子町', '上郡町', '佐用町', '香美町', '新温泉町'
+      ],
+      shiga: [
+        '大津市', '彦根市', '長浜市', '近江八幡市', '草津市', '守山市', '栗東市', '甲賀市', '野洲市', '湖南市', '高島市', '東近江市', '米原市',
+        '日野町', '竜王町', '愛荘町', '豊郷町', '甲良町', '多賀町'
+      ]
+    };
+
+    // 都道府県選択時の処理
+    document.getElementById('prefectureSelect').addEventListener('change', function() {
+      const citySelect = document.getElementById('citySelect');
+      const selectedPref = this.value;
+      
+      // リセット
+      citySelect.innerHTML = '';
+      
+      if (selectedPref && cityData[selectedPref]) {
+        citySelect.disabled = false;
+        citySelect.innerHTML = '<option value="">選択してください</option>';
+        
+        // 市区町村を追加
+        cityData[selectedPref].forEach(city => {
+          const option = document.createElement('option');
+          option.value = city;
+          option.textContent = city;
+          citySelect.appendChild(option);
+        });
+      } else {
+        citySelect.disabled = true;
+        citySelect.innerHTML = '<option value="">都道府県を選択してください</option>';
+      }
+    });
+    
+    // サイドバー開閉
+    function toggleSidebar() {
+      const sidebar = document.getElementById('searchSidebar');
+      const overlay = document.getElementById('sidebarOverlay');
+      sidebar.classList.toggle('open');
+      overlay.classList.toggle('open');
+    }
+    
+    // 表示切り替え
+    function switchView(view) {
+      const tabs = document.querySelectorAll('.view-tab');
+      tabs.forEach(tab => tab.classList.remove('active'));
+      event.target.classList.add('active');
+      
+      const grid = document.getElementById('propertyGrid');
+      if(view === 'list') {
+        grid.classList.remove('property-grid');
+        grid.classList.add('property-list');
+      } else {
+        grid.classList.add('property-grid');
+        grid.classList.remove('property-list');
+      }
+    }
+    
+    // お気に入りトグル
+    document.querySelectorAll('.favorite-btn').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        this.classList.toggle('active');
+      });
+    });
+    
+    // 物件カードクリック
+    document.querySelectorAll('.property-card').forEach(card => {
+      card.addEventListener('click', function() {
+        window.location.href = '/property/detail.html';
+      });
+    });
+    
+    // クイック検索
+    function quickSearch(type) {
+      console.log('クイック検索:', type);
+      // 検索条件を自動設定する処理
+      alert(`「${type}」で検索を実行します`);
+    }
+  </script>
+</body>
+</html>
