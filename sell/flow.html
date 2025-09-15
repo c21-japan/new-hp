@@ -1,11 +1,1475 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <title>不動産売却の流れ | センチュリー21ホームマート</title>
-  <!-- 省略 -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>売却の流れ - 最高値売却を実現｜センチュリー21ホームマート</title>
+  <meta name="description" content="不動産売却の流れを分かりやすく解説。買取再販制度・自社買取・仲介の3つの売却方法で最高値を実現。査定から引渡しまでワンストップ対応・LINE相談可・最短48時間で査定結果。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700;900&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --gold: #A19276;
+      --gold2: #B8A082;
+      --black: #383635;
+      --ink: #222;
+      --cream: #F8F6F3;
+      --bg: #fff;
+      --max: 1200px;
+      --shadow: 0 8px 24px rgba(0,0,0,.08);
+      --success: #22c55e;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+    }
+    
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { 
+      font-family: 'Noto Sans JP', sans-serif; 
+      line-height: 1.6; 
+      color: var(--ink);
+      background: var(--bg);
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; height: auto; display: block; }
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 16px; }
+    
+    /* Header */
+    .site-header {
+      background: #fff;
+      border-bottom: 2px solid var(--gold);
+      padding: 16px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,.08);
+    }
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 18px;
+    }
+    .nav-menu {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+    .nav-menu a {
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+    .nav-menu a:hover { color: var(--gold); }
+    .tel-btn {
+      background: linear-gradient(135deg, var(--gold), var(--gold2));
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, var(--cream), #fff);
+      padding: 60px 0 40px;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 900;
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+    .hero-subtitle {
+      font-size: 18px;
+      color: #666;
+      margin-bottom: 32px;
+    }
+    .gold-accent {
+      background: linear-gradient(135deg, var(--gold), var(--gold2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    /* USP Badges */
+    .usp-badges {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+    .usp-badge {
+      background: #fff;
+      border: 2px solid var(--gold);
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    /* CTA Buttons */
+    .cta-group {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+    .cta-primary {
+      background: linear-gradient(135deg, var(--gold), var(--gold2));
+      color: #fff;
+      padding: 14px 28px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 16px;
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: none;
+      cursor: pointer;
+    }
+    .cta-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(161,146,118,0.3);
+    }
+    
+    /* Comparison Section */
+    .comparison-section {
+      padding: 80px 0;
+      background: #fff;
+    }
+    .section-title {
+      text-align: center;
+      font-size: clamp(28px, 4vw, 36px);
+      font-weight: 900;
+      margin-bottom: 16px;
+    }
+    .section-subtitle {
+      text-align: center;
+      color: #666;
+      margin-bottom: 48px;
+    }
+    
+    /* Visual Comparison */
+    .visual-comparison {
+      max-width: 1200px;
+      margin: 0 auto 60px;
+      display: grid;
+      gap: 48px;
+    }
+    @media(min-width: 768px) {
+      .visual-comparison { grid-template-columns: 1fr 1fr; }
+    }
+    
+    .comparison-card {
+      background: #f8f8f8;
+      border-radius: 16px;
+      padding: 32px;
+      position: relative;
+    }
+    .comparison-card.highlight {
+      background: linear-gradient(135deg, var(--cream), #fff);
+      border: 3px solid var(--gold);
+    }
+    .comparison-card.highlight::before {
+      content: '当社の強み';
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--gold);
+      color: #fff;
+      padding: 4px 20px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+    
+    .comparison-title {
+      font-size: 24px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 32px;
+      color: var(--black);
+    }
+    
+    /* Flow Diagram */
+    .flow-diagram {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .flow-item {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .flow-icon {
+      font-size: 32px;
+      flex-shrink: 0;
+    }
+    .flow-content {
+      flex: 1;
+    }
+    .flow-label {
+      font-weight: 700;
+      margin-bottom: 4px;
+      color: var(--gold);
+    }
+    .flow-desc {
+      font-size: 14px;
+      color: #666;
+    }
+    .flow-cost {
+      text-align: right;
+      font-weight: 700;
+      color: var(--danger);
+      white-space: nowrap;
+    }
+    .flow-arrow {
+      text-align: center;
+      font-size: 24px;
+      color: var(--gold);
+      margin: 8px 0;
+    }
+    
+    /* Cost Breakdown */
+    .cost-summary {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 24px;
+      border: 2px solid var(--gold);
+    }
+    .cost-summary-title {
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--gold);
+    }
+    .cost-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid #e5e5e5;
+    }
+    .cost-row:last-child {
+      border-bottom: none;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--gold);
+      margin-top: 8px;
+      padding-top: 16px;
+      border-top: 2px solid var(--gold);
+    }
+    
+    /* Selling Methods */
+    .methods-section {
+      padding: 60px 0;
+      background: #f8f8f8;
+    }
+    .methods-grid {
+      display: grid;
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+    @media(min-width: 768px) {
+      .methods-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    .method-card {
+      background: #fff;
+      border: 2px solid #e5e5e5;
+      border-radius: 16px;
+      padding: 32px;
+      text-align: center;
+      position: relative;
+      transition: all 0.3s;
+    }
+    .method-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+    .method-card.recommended {
+      border-color: var(--gold);
+      background: linear-gradient(135deg, #fffbf5, #fff);
+    }
+    .method-card.recommended::before {
+      content: '人気No.1';
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--gold);
+      color: #fff;
+      padding: 4px 16px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .method-icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+    .method-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+    .method-subtitle {
+      font-size: 14px;
+      color: #999;
+      margin-bottom: 16px;
+    }
+    .method-description {
+      color: #666;
+      font-size: 14px;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+    .method-features {
+      text-align: left;
+      margin-bottom: 20px;
+    }
+    .method-feature {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 0;
+      font-size: 14px;
+    }
+    .method-feature-icon {
+      color: var(--success);
+      flex-shrink: 0;
+    }
+    .method-cta {
+      background: var(--gold);
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 999px;
+      font-weight: 600;
+      display: inline-block;
+      transition: all 0.3s;
+    }
+    .method-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(161,146,118,0.3);
+    }
+    
+    /* Work Details */
+    .work-details {
+      background: linear-gradient(135deg, #f0f8ff, #fff);
+      border-radius: 16px;
+      padding: 32px;
+      margin: 48px 0;
+    }
+    .work-details-title {
+      font-size: 24px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 32px;
+      color: var(--gold);
+    }
+    .work-grid {
+      display: grid;
+      gap: 16px;
+    }
+    @media(min-width: 768px) {
+      .work-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    .work-item {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .work-item-icon {
+      font-size: 36px;
+      margin-bottom: 12px;
+    }
+    .work-item-title {
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--gold);
+    }
+    .work-item-list {
+      font-size: 13px;
+      color: #666;
+      text-align: left;
+      list-style: none;
+      padding: 0;
+    }
+    .work-item-list li {
+      padding: 4px 0;
+      padding-left: 16px;
+      position: relative;
+    }
+    .work-item-list li::before {
+      content: '・';
+      position: absolute;
+      left: 0;
+    }
+    
+    /* Flow Timeline */
+    .flow-section {
+      padding: 60px 0;
+      background: #fff;
+    }
+    .flow-tabs {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin-bottom: 48px;
+      flex-wrap: wrap;
+    }
+    .flow-tab {
+      background: #fff;
+      border: 2px solid #e5e5e5;
+      padding: 12px 24px;
+      border-radius: 999px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .flow-tab.active {
+      background: var(--gold);
+      color: #fff;
+      border-color: var(--gold);
+    }
+    .flow-content {
+      display: none;
+    }
+    .flow-content.active {
+      display: block;
+    }
+    .flow-timeline {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .timeline-line {
+      position: absolute;
+      left: 30px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--gold);
+    }
+    @media(min-width: 768px) {
+      .timeline-line { left: 50%; }
+    }
+    .flow-step {
+      position: relative;
+      margin-bottom: 48px;
+      display: flex;
+      align-items: flex-start;
+    }
+    @media(min-width: 768px) {
+      .flow-step:nth-child(even) {
+        flex-direction: row-reverse;
+      }
+    }
+    .step-marker {
+      position: absolute;
+      left: 20px;
+      width: 20px;
+      height: 20px;
+      background: var(--gold);
+      border: 4px solid #fff;
+      border-radius: 50%;
+      box-shadow: 0 0 0 2px var(--gold);
+    }
+    @media(min-width: 768px) {
+      .step-marker {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+    .step-content {
+      background: #fff;
+      border-radius: 12px;
+      padding: 24px;
+      margin-left: 60px;
+      width: calc(100% - 60px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    }
+    @media(min-width: 768px) {
+      .step-content {
+        width: calc(50% - 40px);
+        margin-left: 0;
+      }
+      .flow-step:nth-child(odd) .step-content {
+        margin-right: auto;
+      }
+      .flow-step:nth-child(even) .step-content {
+        margin-left: auto;
+      }
+    }
+    .step-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .step-number {
+      background: var(--gold);
+      color: #fff;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+    .step-title {
+      font-size: 18px;
+      font-weight: 700;
+    }
+    .step-period {
+      display: inline-block;
+      background: #e3f2fd;
+      color: #1976d2;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    .step-description {
+      color: #666;
+      font-size: 14px;
+      line-height: 1.8;
+      margin-bottom: 12px;
+    }
+    .step-point {
+      background: linear-gradient(135deg, #fff5f5, #ffeeee);
+      border-left: 3px solid var(--danger);
+      padding: 8px 12px;
+      font-size: 13px;
+      color: var(--danger);
+      font-weight: 600;
+    }
+    
+    /* FAQ */
+    .faq-section {
+      padding: 60px 0;
+      background: var(--cream);
+    }
+    .faq-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .faq-item {
+      background: #fff;
+      border-radius: 12px;
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
+    .faq-question {
+      padding: 20px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.3s;
+    }
+    .faq-question:hover { background: var(--cream); }
+    .faq-toggle {
+      font-size: 24px;
+      color: var(--gold);
+      transition: transform 0.3s;
+    }
+    .faq-item.open .faq-toggle { transform: rotate(45deg); }
+    .faq-answer {
+      padding: 0 20px;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s;
+    }
+    .faq-item.open .faq-answer {
+      padding: 0 20px 20px;
+      max-height: 500px;
+    }
+    
+    /* Final CTA */
+    .final-cta {
+      padding: 60px 0;
+      background: linear-gradient(135deg, var(--gold), var(--gold2));
+      text-align: center;
+      color: #fff;
+    }
+    .final-cta h2 {
+      font-size: clamp(28px, 4vw, 36px);
+      font-weight: 900;
+      margin-bottom: 16px;
+    }
+    .final-cta p {
+      font-size: 18px;
+      margin-bottom: 32px;
+      opacity: 0.95;
+    }
+    
+    /* Sticky Footer CTA (Mobile) */
+    .sticky-cta {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #fff;
+      box-shadow: 0 -4px 12px rgba(0,0,0,0.1);
+      padding: 8px;
+      z-index: 90;
+    }
+    @media(max-width: 768px) {
+      .sticky-cta { display: block; }
+      .nav-menu { display: none; }
+    }
+    .sticky-cta-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+    .sticky-btn {
+      background: linear-gradient(135deg, var(--gold), var(--gold2));
+      color: #fff;
+      padding: 12px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 14px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+    
+    /* Footer */
+    .site-footer {
+      background: #111;
+      color: #eee;
+      padding: 48px 0 24px;
+    }
+    .footer-content {
+      display: grid;
+      gap: 32px;
+      margin-bottom: 32px;
+    }
+    @media(min-width: 768px) {
+      .footer-content { grid-template-columns: repeat(3, 1fr); }
+    }
+    .footer-section h4 {
+      color: var(--gold);
+      margin-bottom: 16px;
+      font-size: 18px;
+    }
+    .footer-section ul {
+      list-style: none;
+    }
+    .footer-section li {
+      margin-bottom: 8px;
+    }
+    .footer-section a {
+      color: #eee;
+      transition: color 0.3s;
+    }
+    .footer-section a:hover { color: var(--gold); }
+    .footer-bottom {
+      text-align: center;
+      padding-top: 24px;
+      border-top: 1px solid #333;
+      font-size: 14px;
+      color: #999;
+    }
+  </style>
 </head>
 <body>
-  <!-- 売却フロー詳細ページ -->
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container">
+      <div class="header-content">
+        <a href="/" class="logo">
+          <span>CENTURY21</span>
+          <span>ホームマート</span>
+        </a>
+        <nav class="nav-menu">
+          <a href="/search.html">物件検索</a>
+          <a href="/assessment.html">売却査定</a>
+          <a href="/reform-water.html">リフォーム</a>
+          <a href="/company/about.html">会社案内</a>
+          <a href="tel:0120438639" class="tel-btn" data-analytics="cta:call-header">
+            📞 0120-43-8639
+          </a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <h1>売却の流れ ― <span class="gold-accent">最高値売却</span>を実現</h1>
+        <p class="hero-subtitle">3つの売却方法から最適プランをご提案。査定から引渡しまでワンストップ対応</p>
+        
+        <div class="usp-badges">
+          <div class="usp-badge">🏆 買取再販制度で純利益80%還元</div>
+          <div class="usp-badge">⚡ 最短48時間で査定結果</div>
+          <div class="usp-badge">💬 LINEで24時間相談可</div>
+        </div>
+        
+        <div class="cta-group">
+          <a href="/assessment.html" class="cta-primary" data-analytics="cta:assessment-hero">
+            📊 無料査定を申込む
+          </a>
+          <a href="tel:0120438639" class="cta-primary" data-analytics="cta:call-hero">
+            📞 電話で相談
+          </a>
+          <a href="#" class="cta-primary" data-analytics="cta:line-hero">
+            💬 LINEで相談
+          </a>
+        </div>
+        
+        <p style="font-size:14px;color:#666;margin-top:16px">
+          相談無料・秘密厳守｜営業時間：9:00〜19:00（水曜定休）
+        </p>
+      </div>
+    </section>
+    
+    <!-- Visual Comparison Section -->
+    <section class="comparison-section">
+      <div class="container">
+        <h2 class="section-title">なぜホームマートは<span class="gold-accent">高く買取れる</span>のか？</h2>
+        <p class="section-subtitle">自社施工による圧倒的なコスト削減で、買取価格に還元します</p>
+        
+        <div class="visual-comparison">
+          <!-- 他社の場合 -->
+          <div class="comparison-card">
+            <h3 class="comparison-title">❌ 一般的な不動産会社</h3>
+            
+            <div class="flow-diagram">
+              <div class="flow-item">
+                <div class="flow-icon">🏢</div>
+                <div class="flow-content">
+                  <div class="flow-label">不動産会社が買取</div>
+                  <div class="flow-desc">物件を安く買取る必要がある</div>
+                </div>
+                <div class="flow-cost">買取価格<br>70%</div>
+              </div>
+              
+              <div class="flow-arrow">↓</div>
+              
+              <div class="flow-item">
+                <div class="flow-icon">🔨</div>
+                <div class="flow-content">
+                  <div class="flow-label">工務店に外注</div>
+                  <div class="flow-desc">リフォーム工事を外部発注</div>
+                </div>
+                <div class="flow-cost">外注費<br>-30%</div>
+              </div>
+              
+              <div class="flow-arrow">↓</div>
+              
+              <div class="flow-item">
+                <div class="flow-icon">💸</div>
+                <div class="flow-content">
+                  <div class="flow-label">中間マージン発生</div>
+                  <div class="flow-desc">工務店の利益が上乗せ</div>
+                </div>
+                <div class="flow-cost">マージン<br>-20%</div>
+              </div>
+              
+              <div class="flow-arrow">↓</div>
+              
+              <div class="flow-item">
+                <div class="flow-icon">📈</div>
+                <div class="flow-content">
+                  <div class="flow-label">高値で再販売</div>
+                  <div class="flow-desc">コスト分を価格に転嫁</div>
+                </div>
+                <div class="flow-cost">利益確保<br>+15%</div>
+              </div>
+            </div>
+            
+            <div class="cost-summary">
+              <div class="cost-summary-title">💔 売主様のデメリット</div>
+              <div class="cost-row">
+                <span>相場価格</span>
+                <span>100%</span>
+              </div>
+              <div class="cost-row">
+                <span>買取価格</span>
+                <span style="color:var(--danger)">70%</span>
+              </div>
+              <div class="cost-row">
+                <span>売主の手取り</span>
+                <span>相場の70%程度</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 当社の場合 -->
+          <div class="comparison-card highlight">
+            <h3 class="comparison-title">✅ ホームマート</h3>
+            
+            <div class="flow-diagram">
+              <div class="flow-item">
+                <div class="flow-icon">🏆</div>
+                <div class="flow-content">
+                  <div class="flow-label">高価買取</div>
+                  <div class="flow-desc">自社施工前提で高く買える</div>
+                </div>
+                <div class="flow-cost" style="color:var(--success)">買取価格<br>85%</div>
+              </div>
+              
+              <div class="flow-arrow">↓</div>
+              
+              <div class="flow-item">
+                <div class="flow-icon">👷</div>
+                <div class="flow-content">
+                  <div class="flow-label">自社職人が施工</div>
+                  <div class="flow-desc">全工程を社員が直接施工</div>
+                </div>
+                <div class="flow-cost" style="color:var(--success)">原価のみ<br>-15%</div>
+              </div>
+              
+              <div class="flow-arrow">↓</div>
+              
+              <div class="flow-item">
+                <div class="flow-icon">✨</div>
+                <div class="flow-content">
+                  <div class="flow-label">中間マージンゼロ</div>
+                  <div class="flow-desc">外注費・管理費が不要</div>
+                </div>
+                <div class="flow-cost" style="color:var(--success)">削減<br>0%</div>
+              </div>
+              
+              <div class="flow-arrow">↓</div>
+              
+              <div class="flow-item">
+                <div class="flow-icon">💰</div>
+                <div class="flow-content">
+                  <div class="flow-label">利益の80%還元</div>
+                  <div class="flow-desc">売却益を売主様に還元</div>
+                </div>
+                <div class="flow-cost" style="color:var(--success)">追加還元<br>+20%</div>
+              </div>
+            </div>
+            
+            <div class="cost-summary">
+              <div class="cost-summary-title">💎 売主様のメリット</div>
+              <div class="cost-row">
+                <span>相場価格</span>
+                <span>100%</span>
+              </div>
+              <div class="cost-row">
+                <span>初回買取価格</span>
+                <span style="color:var(--success)">85%</span>
+              </div>
+              <div class="cost-row">
+                <span>利益還元後</span>
+                <span style="color:var(--success)">+20%</span>
+              </div>
+              <div class="cost-row">
+                <span>最終手取り</span>
+                <span>相場の105%以上も可能</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 自社施工の詳細 -->
+        <div class="work-details">
+          <h3 class="work-details-title">自社職人による完全内製化リフォーム</h3>
+          <div class="work-grid">
+            <div class="work-item">
+              <div class="work-item-icon">🚿</div>
+              <h4 class="work-item-title">水回り工事</h4>
+              <ul class="work-item-list">
+                <li>キッチン交換・配管工事</li>
+                <li>浴室ユニット設置</li>
+                <li>トイレ・洗面台交換</li>
+                <li>給排水管更新</li>
+                <li>防水処理</li>
+              </ul>
+            </div>
+            
+            <div class="work-item">
+              <div class="work-item-icon">🏠</div>
+              <h4 class="work-item-title">内装工事</h4>
+              <ul class="work-item-list">
+                <li>クロス張替え</li>
+                <li>フローリング施工</li>
+                <li>建具交換・調整</li>
+                <li>畳表替え・襖張替え</li>
+                <li>塗装工事</li>
+              </ul>
+            </div>
+            
+            <div class="work-item">
+              <div class="work-item-icon">⚡</div>
+              <h4 class="work-item-title">設備・外装工事</h4>
+              <ul class="work-item-list">
+                <li>電気配線・照明交換</li>
+                <li>エアコン設置・交換</li>
+                <li>外壁塗装・補修</li>
+                <li>屋根防水工事</li>
+                <li>エクステリア工事</li>
+              </ul>
+            </div>
+          </div>
+          <p style="text-align:center;margin-top:24px;font-weight:700;color:var(--gold)">
+            すべて自社職人が施工 = 中間マージン0円 = 高価買取を実現
+          </p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Selling Methods Section -->
+    <section class="methods-section">
+      <div class="container">
+        <h2 class="section-title">選べる<span class="gold-accent">3つの売却方法</span></h2>
+        <p class="section-subtitle">お客様の状況に合わせて最適な売却プランをご提案します</p>
+        
+        <div class="methods-grid">
+          <!-- 買取再販制度 -->
+          <div class="method-card recommended">
+            <div class="method-icon">🏆</div>
+            <h3 class="method-title">買取再販制度</h3>
+            <p class="method-subtitle">独自の高額売却システム</p>
+            <p class="method-description">
+              当社が一旦買取り、自社施工でリフォーム後に高値売却。<br>
+              純利益の80%をお客様に還元する革新的制度
+            </p>
+            <div class="method-features">
+              <div class="method-feature">
+                <span class="method-feature-icon">✓</span>
+                <span>相場より高く売れる可能性大</span>
+              </div>
+              <div class="method-feature">
+                <span class="method-feature-icon">✓</span>
+                <span>即現金化＋追加利益</span>
+              </div>
+              <div class="method-feature">
+                <span class="method-feature-icon">✓</span>
+                <span>リフォーム費用負担なし</span>
+              </div>
+            </div>
+            <a href="#flow-buyback" class="method-cta" data-analytics="cta:buyback-method">
+              詳しく見る
+            </a>
+          </div>
+          
+          <!-- 仲介 -->
+          <div class="method-card">
+            <div class="method-icon">🤝</div>
+            <h3 class="method-title">仲介売却</h3>
+            <p class="method-subtitle">市場価格での売却</p>
+            <p class="method-description">
+              センチュリー21のネットワークを活用し、<br>
+              幅広い購入希望者から最適な買主を見つけます
+            </p>
+            <div class="method-features">
+              <div class="method-feature">
+                <span class="method-feature-icon">✓</span>
+                <span>市場価格での売却可能</span>
+              </div>
+              <div class="method-feature">
+                <span class="method-feature-icon">✓</span>
+                <span>全国ネットワーク活用</span>
+              </div>
+              <div class="method-feature">
+                <span class="method-feature-icon">✓</span>
+                <span>購入希望者と直接交渉</span>
+              </div>
+            </div>
+            <a href="#flow-mediation" class="method-cta" data-analytics="cta:mediation-method">
+              詳しく見る
+            </a>
+          </div>
+          
+          <!-- 買取 -->
+          <div class="method-card">
+            <div class="method-icon">⚡</div>
+            <h3 class="method-title">即時買取</h3>
+            <p class="method-subtitle">最短1週間で現金化</p>
+            <p class="method-description">
+              当社が直接買取り。スピード重視の方や<br>
+              確実に売却したい方に最適なプラン
+            </p>
+            <div class="method-features">
+              <div class="method-feature">
+                <span class="method-feature-icon">✓</span>
+                <span>最短1週間で現金化</span>
+              </div>
+              <div class="method-feature">
+                <span class="method-feature-icon">✓</span>
+                <span>仲介手数料不要</span>
+              </div>
+              <div class="method-feature">
+                <span class="method-feature-icon">✓</span>
+                <span>確実に売却完了</span>
+              </div>
+            </div>
+            <a href="#flow-purchase" class="method-cta" data-analytics="cta:purchase-method">
+              詳しく見る
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Flow Section -->
+    <section class="flow-section" id="flow-section">
+      <div class="container">
+        <h2 class="section-title">売却方法別の<span class="gold-accent">詳細フロー</span></h2>
+        
+        <div class="flow-tabs">
+          <button class="flow-tab active" onclick="switchFlow('buyback')">買取再販制度</button>
+          <button class="flow-tab" onclick="switchFlow('mediation')">仲介売却</button>
+          <button class="flow-tab" onclick="switchFlow('purchase')">即時買取</button>
+        </div>
+        
+        <!-- 買取再販制度 Flow -->
+        <div class="flow-content active" id="flow-buyback">
+          <div class="flow-timeline">
+            <div class="timeline-line"></div>
+            
+            <div class="flow-step">
+              <div class="step-marker"></div>
+              <div class="step-content">
+                <div class="step-header">
+                  <div class="step-number">1</div>
+                  <div class="step-title">無料査定・ご相談</div>
+                </div>
+                <div class="step-period">期間：即日〜3日</div>
+                <p class="step-description">
+                  物件情報をもとに、通常売却価格と買取再販制度利用時の予想利益をご提示
+                </p>
+                <div class="step-point">
+                  💡 LINEで写真を送るだけで概算査定可能
+                </div>
+              </div>
+            </div>
+            
+            <div class="flow-step">
+              <div class="step-marker"></div>
+              <div class="step-content">
+                <div class="step-header">
+                  <div class="step-number">2</div>
+                  <div class="step-title">買取価格の決定</div>
+                </div>
+                <div class="step-period">期間：1週間以内</div>
+                <p class="step-description">
+                  現地調査後、買取価格とリフォーム後の販売予想価格、還元予想額をご提示
+                </p>
+              </div>
+            </div>
+            
+            <div class="flow-step">
+              <div class="step-marker"></div>
+              <div class="step-content">
+                <div class="step-header">
+                  <div class="step-number">3</div>
+                  <div class="step-title">売買契約・決済</div>
+                </div>
+                <div class="step-period">期間：最短1週間</div>
+                <p class="step-description">
+                  契約締結後、速やかに買取代金をお支払い。この時点で一旦現金化完了
+                </p>
+              </div>
+            </div>
+            
+            <div class="flow-step">
+              <div class="step-marker"></div>
+              <div class="step-content">
+                <div class="step-header">
+                  <div class="step-number">4</div>
+                  <div class="step-title">自社施工リフォーム</div>
+                </div>
+                <div class="step-period">期間：1〜2ヶ月</div>
+                <p class="step-description">
+                  自社職人による高品質・低コストリフォーム。進捗は随時ご報告
+                </p>
+                <div class="step-point">
+                  🔧 水回り・内装・設備すべて自社施工
+                </div>
+              </div>
+            </div>
+            
+            <div class="flow-step">
+              <div class="step-marker"></div>
+              <div class="step-content">
+                <div class="step-header">
+                  <div class="step-number">5</div>
+                  <div class="step-title">再販売・利益還元</div>
+                </div>
+                <div class="step-period">期間：1〜3ヶ月</div>
+                <p class="step-description">
+                  リフォーム後に高値で売却。純利益の80%を追加でお支払い
+                </p>
+                <div class="step-point">
+                  💰 トータルで相場以上の売却益を実現
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Mediation Flow -->
+        <div class="flow-content" id="flow-mediation">
+          <div class="flow-timeline">
+            <div class="timeline-line"></div>
+            
+            <div class="flow-step">
+              <div class="step-marker"></div>
+              <div class="step-content">
+                <div class="step-header">
+                  <div class="step-number">1</div>
+                  <div class="step-title">査定・媒介契約</div>
+                </div>
+                <div class="step-period">期間：3〜7日</div>
+                <p class="step-description">
+                  物件査定後、媒介契約を締結。販売戦略をご提案します
+                </p>
+              </div>
+            </div>
+            
+            <div class="flow-step">
+              <div class="step-marker"></div>
+              <div class="step-content">
+                <div class="step-header">
+                  <div class="step-number">2</div>
+                  <div class="step-title">販売活動開始</div>
+                </div>
+                <div class="step-period">期間：継続</div>
+                <p class="step-description">
+                  SUUMO・HOME'S・レインズ掲載、チラシ配布、オープンハウス開催
+                </p>
+              </div>
+            </div>
+            
+            <div class="flow-step">
+              <div class="step-marker"></div>
+              <div class="step-content">
+                <div class="step-header">
+                  <div class="step-number">3</div>
+                  <div class="step-title">購入申込・交渉</div>
+                </div>
+                <div class="step-period">期間：1〜2週間</div>
+                <p class="step-description">
+                  購入希望者との価格・条件交渉。最適な条件での成約を目指します
+                </p>
+              </div>
+            </div>
+            
+            <div class="flow-step">
+              <div class="step-marker"></div>
+              <div class="step-content">
+                <div class="step-header">
+                  <div class="step-number">4</div>
+                  <div class="step-title">売買契約</div>
+                </div>
+                <div class="step-period">期間：1日</div>
+                <p class="step-description">
+                  重要事項説明・契約締結。手付金の受領
+                </p>
+              </div>
+            </div>
+            
+            <div class="flow-step">
+              <div class="step-marker"></div>
+              <div class="step-content">
+                <div class="step-header">
+                  <div class="step-number">5</div>
+                  <div class="step-title">決済・引渡し</div>
+                </div>
+                <div class="step-period">期間：契約から1〜2ヶ月</div>
+                <p class="step-description">
+                  残代金受領・物件引渡し・所有権移転登記
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Purchase Flow -->
+        <div class="flow-content" id="flow-purchase">
+          <div class="flow-timeline">
+            <div class="timeline-line"></div>
+            
+            <div class="flow-step">
+              <div class="step-marker"></div>
+              <div class="step-content">
+                <div class="step-header">
+                  <div class="step-number">1</div>
+                  <div class="step-title">買取査定</div>
+                </div>
+                <div class="step-period">期間：即日〜3日</div>
+                <p class="step-description">
+                  物件調査・査定を実施。最短即日で買取価格をご提示
+                </p>
+                <div class="step-point">
+                  ⚡ 最速査定・現金化重視の方に最適
+                </div>
+              </div>
+            </div>
+            
+            <div class="flow-step">
+              <div class="step-marker"></div>
+              <div class="step-content">
+                <div class="step-header">
+                  <div class="step-number">2</div>
+                  <div class="step-title">買取価格の合意</div>
+                </div>
+                <div class="step-period">期間：即日</div>
+                <p class="step-description">
+                  提示価格にご納得いただければ、即座に契約準備開始
+                </p>
+              </div>
+            </div>
+            
+            <div class="flow-step">
+              <div class="step-marker"></div>
+              <div class="step-content">
+                <div class="step-header">
+                  <div class="step-number">3</div>
+                  <div class="step-title">売買契約・決済</div>
+                </div>
+                <div class="step-period">期間：最短3日</div>
+                <p class="step-description">
+                  契約と同時に全額お支払い。仲介手数料は不要です
+                </p>
+                <div class="step-point">
+                  💰 諸費用を抑えてスピード現金化
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- FAQ Section -->
+    <section class="faq-section">
+      <div class="container">
+        <h2 class="section-title">よくある<span class="gold-accent">ご質問</span></h2>
+        
+        <div class="faq-container">
+          <div class="faq-item">
+            <div class="faq-question">
+              買取再販制度のリスクはありますか？
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              買取時点で現金化されるため、売れ残りリスクはありません。追加利益は成功報酬のため、万が一想定価格で売却できなくても、お客様に追加負担は発生しません。自社施工により確実にコストを抑えられるため、高い確率で追加利益をお渡しできます。
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <div class="faq-question">
+              なぜ他社より高く買取れるのですか？
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              当社は水回り工事、内装工事、設備工事まですべて自社職人が施工します。一般的な不動産会社は工務店に外注するため30〜40%の中間マージンが発生しますが、当社は原価のみでリフォームできるため、その分を買取価格に還元できます。
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <div class="faq-question">
+              住宅ローンが残っていても売却できますか？
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              はい、可能です。売却代金でローンを完済し、抵当権を抹消して引き渡します。売却価格がローン残債を下回る場合も、任意売却などの方法をご提案します。
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <div class="faq-question">
+              査定は本当に無料ですか？
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              はい、査定は完全無料です。査定後に売却を見送られても、費用は一切いただきません。LINEでの簡易査定から訪問査定まで、すべて無料で対応いたします。
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <div class="faq-question">
+              相続物件や空き家でも売却できますか？
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              はい、対応可能です。相続登記のサポートから、空き家の片付け、残置物処分まで、ワンストップでお手伝いします。遠方の物件でもLINEやビデオ通話で対応可能です。
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Final CTA -->
+    <section class="final-cta">
+      <div class="container">
+        <h2>今すぐ無料査定を始めましょう</h2>
+        <p>最短48時間で査定結果をお届け。まずは気軽にご相談ください</p>
+        
+        <div class="cta-group">
+          <a href="/assessment.html" class="cta-primary" style="background:#fff;color:var(--gold)" data-analytics="cta:assessment-final">
+            📊 無料査定申込
+          </a>
+          <a href="tel:0120438639" class="cta-primary" style="background:#fff;color:var(--gold)" data-analytics="cta:call-final">
+            📞 0120-43-8639
+          </a>
+          <a href="#" class="cta-primary" style="background:#fff;color:var(--gold)" data-analytics="cta:line-final">
+            💬 LINEで相談
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <!-- Sticky CTA (Mobile) -->
+  <div class="sticky-cta">
+    <div class="sticky-cta-grid">
+      <a href="/assessment.html" class="sticky-btn" data-analytics="cta:assessment-sticky">
+        <span>📊</span>
+        <span>査定</span>
+      </a>
+      <a href="tel:0120438639" class="sticky-btn" data-analytics="cta:call-sticky">
+        <span>📞</span>
+        <span>電話</span>
+      </a>
+      <a href="#" class="sticky-btn" data-analytics="cta:line-sticky">
+        <span>💬</span>
+        <span>LINE</span>
+      </a>
+    </div>
+  </div>
+  
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>センチュリー21ホームマート</h4>
+          <p style="font-size:14px;line-height:1.8;color:#999">
+            〒635-0821<br>
+            奈良県北葛城郡広陵町笠287-1<br>
+            TEL: 0120-43-8639<br>
+            FAX: 050-3183-9576
+          </p>
+        </div>
+        
+        <div class="footer-section">
+          <h4>サービス</h4>
+          <ul>
+            <li><a href="/search.html">物件検索</a></li>
+            <li><a href="/assessment.html">売却査定</a></li>
+            <li><a href="/voluntary-sale.html">任意売却相談</a></li>
+            <li><a href="/reform-water.html">リフォーム</a></li>
+            <li><a href="/recruit.html">採用情報</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h4>会社情報</h4>
+          <ul>
+            <li><a href="/company/about.html">会社概要</a></li>
+            <li><a href="/company/message.html">代表挨拶</a></li>
+            <li><a href="/company/philosophy.html">企業理念</a></li>
+            <li><a href="/company/access.html">アクセス</a></li>
+            <li><a href="/privacy.html">プライバシーポリシー</a></li>
+            <li><a href="/sitemap.html">サイトマップ</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>© 2025 Century21 HomeMart. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- JavaScript -->
+  <script>
+    // Flow Tab Switching
+    function switchFlow(method) {
+      document.querySelectorAll('.flow-tab').forEach(tab => tab.classList.remove('active'));
+      document.querySelectorAll('.flow-content').forEach(content => content.classList.remove('active'));
+      
+      event.target.classList.add('active');
+      document.getElementById('flow-' + method).classList.add('active');
+    }
+    
+    // FAQ Toggle
+    document.querySelectorAll('.faq-question').forEach(question => {
+      question.addEventListener('click', function() {
+        const item = this.parentElement;
+        item.classList.toggle('open');
+      });
+    });
+  </script>
+  
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "買取再販制度のリスクはありますか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "買取時点で現金化されるため、売れ残りリスクはありません。追加利益は成功報酬のため、万が一想定価格で売却できなくても、お客様に追加負担は発生しません。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "なぜ他社より高く買取れるのですか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "当社は水回り工事、内装工事、設備工事まですべて自社職人が施工します。一般的な不動産会社は工務店に外注するため30〜40%の中間マージンが発生しますが、当社は原価のみでリフォームできるため、その分を買取価格に還元できます。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "住宅ローンが残っていても売却できますか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "はい、可能です。売却代金でローンを完済し、抵当権を抹消して引き渡します。"
+        }
+      }
+    ]
+  }
+  </script>
 </body>
 </html>
