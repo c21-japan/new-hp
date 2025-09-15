@@ -1,0 +1,963 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>スタッフ紹介｜センチュリー21ホームマート</title>
+  <meta name="description" content="センチュリー21ホームマートのスタッフ紹介。不動産売買・リフォームのプロフェッショナルが、お客様の住まい探しを全力サポートします。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700;900&display=swap" rel="stylesheet"/>
+  
+  <style>
+    :root{
+      --gold:#A19276; 
+      --gold2:#B8A082; 
+      --black:#383635; 
+      --ink:#222; 
+      --cream:#F8F6F3; 
+      --bg:#fff;
+      --max:1200px; 
+      --shadow:0 8px 24px rgba(0,0,0,.08);
+    }
+    
+    *{box-sizing:border-box}
+    html,body{margin:0;background:var(--bg);color:var(--ink);font-family:'Noto Sans JP',sans-serif;line-height:1.6}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block;height:auto}
+    .container{max-width:var(--max);margin:0 auto;padding:0 16px}
+    section{padding:60px 0}
+    
+    /* ヘッダー */
+    .site-header{
+      background:#fff;
+      border-bottom:2px solid var(--gold);
+      padding:16px 0;
+      position:sticky;
+      top:0;
+      z-index:100;
+      box-shadow:0 2px 8px rgba(0,0,0,.08);
+    }
+    .header-content{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      flex-wrap:wrap;
+      gap:16px;
+    }
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+    .logo img{
+      height:40px;
+    }
+    .nav-menu{
+      display:flex;
+      gap:24px;
+      align-items:center;
+    }
+    .nav-menu a{
+      font-weight:600;
+      transition:color 0.3s;
+    }
+    .nav-menu a:hover{
+      color:var(--gold);
+    }
+    .tel-btn{
+      background:linear-gradient(135deg,var(--gold),var(--gold2));
+      color:#fff;
+      padding:8px 16px;
+      border-radius:8px;
+      font-weight:700;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+    }
+    
+    /* ページヘッダー */
+    .page-header{
+      background:linear-gradient(135deg,var(--cream),#fff);
+      padding:80px 0 60px;
+      text-align:center;
+      position:relative;
+      overflow:hidden;
+    }
+    .page-header::before{
+      content:'';
+      position:absolute;
+      top:-50%;
+      right:-50%;
+      width:200%;
+      height:200%;
+      background:radial-gradient(circle,rgba(161,146,118,0.05),transparent);
+      animation:rotate 30s linear infinite;
+    }
+    @keyframes rotate{
+      from{transform:rotate(0deg)}
+      to{transform:rotate(360deg)}
+    }
+    .page-title{
+      font-size:clamp(32px,5vw,48px);
+      font-weight:900;
+      margin-bottom:16px;
+      position:relative;
+      z-index:1;
+    }
+    .gold-accent{
+      background:linear-gradient(135deg,var(--gold),var(--gold2));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+    }
+    .page-subtitle{
+      color:#666;
+      font-size:18px;
+      position:relative;
+      z-index:1;
+    }
+    
+    /* チームメッセージ */
+    .team-message{
+      padding:80px 0;
+      background:#fff;
+    }
+    .message-box{
+      max-width:800px;
+      margin:0 auto;
+      text-align:center;
+      padding:48px;
+      background:linear-gradient(135deg,var(--cream),#fff);
+      border-radius:24px;
+      box-shadow:var(--shadow);
+    }
+    .message-title{
+      font-size:clamp(24px,4vw,32px);
+      font-weight:900;
+      margin-bottom:24px;
+      color:var(--black);
+    }
+    .message-text{
+      font-size:17px;
+      line-height:2;
+      color:#555;
+    }
+    
+    /* 代表紹介 */
+    .president-section{
+      padding:80px 0;
+      background:var(--cream);
+    }
+    .president-container{
+      max-width:1000px;
+      margin:0 auto;
+      display:grid;
+      gap:48px;
+      align-items:center;
+    }
+    @media(min-width:768px){
+      .president-container{
+        grid-template-columns:400px 1fr;
+      }
+    }
+    .president-image-wrapper{
+      position:relative;
+      border-radius:20px;
+      overflow:hidden;
+      box-shadow:0 20px 60px rgba(0,0,0,.15);
+    }
+    .president-image{
+      width:100%;
+      height:500px;
+      object-fit:cover;
+      background:linear-gradient(135deg,var(--gold),var(--gold2));
+    }
+    .president-badge{
+      position:absolute;
+      top:20px;
+      left:20px;
+      background:var(--gold);
+      color:#fff;
+      padding:8px 16px;
+      border-radius:999px;
+      font-weight:700;
+      font-size:14px;
+    }
+    .president-content{
+      padding:20px;
+    }
+    .president-role{
+      color:var(--gold);
+      font-weight:700;
+      font-size:16px;
+      margin-bottom:8px;
+    }
+    .president-name{
+      font-size:32px;
+      font-weight:900;
+      margin-bottom:8px;
+    }
+    .president-kana{
+      font-size:14px;
+      color:#666;
+      margin-bottom:24px;
+    }
+    .president-bio{
+      line-height:2;
+      color:#444;
+      margin-bottom:24px;
+    }
+    .president-skills{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-bottom:24px;
+    }
+    .skill-tag{
+      background:#fff;
+      padding:8px 16px;
+      border-radius:999px;
+      font-size:14px;
+      font-weight:600;
+      border:2px solid var(--gold);
+      color:var(--gold);
+    }
+    .president-message{
+      background:#fff;
+      padding:24px;
+      border-radius:12px;
+      border-left:4px solid var(--gold);
+    }
+    .quote-icon{
+      font-size:24px;
+      color:var(--gold);
+      margin-bottom:12px;
+    }
+    .president-quote{
+      font-size:16px;
+      line-height:1.8;
+      color:#333;
+      font-style:italic;
+    }
+    
+    /* スタッフグリッド */
+    .staff-section{
+      padding:80px 0;
+      background:#fff;
+    }
+    .section-title{
+      text-align:center;
+      font-size:clamp(28px,4vw,40px);
+      font-weight:900;
+      margin-bottom:48px;
+    }
+    .staff-grid{
+      display:grid;
+      gap:32px;
+      max-width:1200px;
+      margin:0 auto;
+    }
+    @media(min-width:768px){
+      .staff-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+    }
+    @media(min-width:1024px){
+      .staff-grid{
+        grid-template-columns:repeat(3,1fr);
+      }
+    }
+    
+    .staff-card{
+      background:#fff;
+      border-radius:16px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      transition:transform 0.3s, box-shadow 0.3s;
+      position:relative;
+    }
+    .staff-card:hover{
+      transform:translateY(-8px);
+      box-shadow:0 16px 40px rgba(0,0,0,.12);
+    }
+    .staff-image-wrapper{
+      position:relative;
+      height:320px;
+      background:linear-gradient(135deg,var(--cream),#f0f0f0);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .staff-image{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+    .staff-department{
+      position:absolute;
+      top:16px;
+      right:16px;
+      background:var(--gold);
+      color:#fff;
+      padding:6px 12px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:700;
+    }
+    .staff-content{
+      padding:28px;
+    }
+    .staff-name{
+      font-size:22px;
+      font-weight:900;
+      margin-bottom:4px;
+    }
+    .staff-name-kana{
+      font-size:13px;
+      color:#999;
+      margin-bottom:12px;
+    }
+    .staff-role{
+      font-size:14px;
+      font-weight:700;
+      color:var(--gold);
+      margin-bottom:16px;
+    }
+    .staff-bio{
+      font-size:14px;
+      line-height:1.8;
+      color:#666;
+      margin-bottom:20px;
+      min-height:80px;
+    }
+    .staff-info{
+      border-top:1px solid #eee;
+      padding-top:16px;
+    }
+    .info-item{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      margin-bottom:8px;
+      font-size:13px;
+      color:#555;
+    }
+    .info-icon{
+      color:var(--gold);
+      font-size:16px;
+    }
+    .staff-tags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:16px;
+    }
+    .staff-tag{
+      background:var(--cream);
+      padding:4px 10px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:600;
+      color:#666;
+    }
+    
+    /* 特別メンバー（犬） */
+    .special-member{
+      padding:80px 0;
+      background:linear-gradient(135deg,var(--cream),#fff);
+    }
+    .special-card{
+      max-width:800px;
+      margin:0 auto;
+      background:#fff;
+      border-radius:24px;
+      overflow:hidden;
+      box-shadow:0 20px 60px rgba(0,0,0,.1);
+      display:grid;
+      align-items:center;
+    }
+    @media(min-width:768px){
+      .special-card{
+        grid-template-columns:350px 1fr;
+      }
+    }
+    .special-image{
+      width:100%;
+      height:400px;
+      object-fit:cover;
+      background:linear-gradient(135deg,#FFB6C1,#FFE4E1);
+    }
+    .special-content{
+      padding:40px;
+    }
+    .special-badge{
+      background:linear-gradient(135deg,#FFB6C1,#FF69B4);
+      color:#fff;
+      padding:6px 16px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:700;
+      display:inline-block;
+      margin-bottom:16px;
+    }
+    .special-name{
+      font-size:28px;
+      font-weight:900;
+      margin-bottom:16px;
+    }
+    .special-role{
+      font-size:16px;
+      font-weight:700;
+      color:#FF69B4;
+      margin-bottom:20px;
+    }
+    .special-desc{
+      line-height:1.8;
+      color:#555;
+      margin-bottom:24px;
+    }
+    .special-skills{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+    }
+    .special-skill{
+      display:flex;
+      align-items:center;
+      gap:6px;
+      background:#FFE4E1;
+      padding:8px 14px;
+      border-radius:999px;
+      font-size:14px;
+      font-weight:600;
+      color:#D1436B;
+    }
+    
+    /* チーム文化 */
+    .culture-section{
+      padding:80px 0;
+      background:#fff;
+    }
+    .culture-grid{
+      display:grid;
+      gap:32px;
+      max-width:1000px;
+      margin:0 auto;
+    }
+    @media(min-width:768px){
+      .culture-grid{
+        grid-template-columns:repeat(3,1fr);
+      }
+    }
+    .culture-card{
+      text-align:center;
+      padding:32px 24px;
+      background:var(--cream);
+      border-radius:16px;
+      transition:transform 0.3s;
+    }
+    .culture-card:hover{
+      transform:scale(1.05);
+    }
+    .culture-icon{
+      width:80px;
+      height:80px;
+      margin:0 auto 20px;
+      background:linear-gradient(135deg,var(--gold),var(--gold2));
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:36px;
+    }
+    .culture-title{
+      font-size:20px;
+      font-weight:900;
+      margin-bottom:12px;
+      color:var(--black);
+    }
+    .culture-desc{
+      font-size:14px;
+      line-height:1.8;
+      color:#666;
+    }
+    
+    /* 募集セクション */
+    .recruit-cta{
+      padding:80px 0;
+      background:linear-gradient(135deg,var(--gold),var(--gold2));
+      color:#fff;
+      text-align:center;
+    }
+    .recruit-title{
+      font-size:clamp(28px,4vw,40px);
+      font-weight:900;
+      margin-bottom:24px;
+    }
+    .recruit-text{
+      font-size:18px;
+      line-height:2;
+      margin-bottom:32px;
+      max-width:600px;
+      margin-left:auto;
+      margin-right:auto;
+    }
+    .recruit-btn{
+      display:inline-block;
+      background:#fff;
+      color:var(--gold);
+      padding:16px 48px;
+      border-radius:999px;
+      font-weight:700;
+      font-size:18px;
+      transition:transform 0.3s, box-shadow 0.3s;
+    }
+    .recruit-btn:hover{
+      transform:translateY(-3px);
+      box-shadow:0 10px 30px rgba(0,0,0,.2);
+    }
+    
+    /* フッター */
+    .site-footer{
+      background:#111;
+      color:#eee;
+      padding:48px 0 24px;
+    }
+    .footer-content{
+      display:grid;
+      gap:32px;
+      margin-bottom:32px;
+    }
+    @media(min-width:768px){
+      .footer-content{grid-template-columns:repeat(3,1fr)}
+    }
+    .footer-section h4{
+      color:var(--gold);
+      margin-bottom:16px;
+      font-size:18px;
+    }
+    .footer-section ul{
+      list-style:none;
+      padding:0;
+    }
+    .footer-section li{
+      margin-bottom:8px;
+    }
+    .footer-section a{
+      color:#eee;
+      transition:color 0.3s;
+    }
+    .footer-section a:hover{
+      color:var(--gold);
+    }
+    .footer-bottom{
+      text-align:center;
+      padding-top:24px;
+      border-top:1px solid #333;
+      font-size:14px;
+      color:#999;
+    }
+    
+    /* レスポンシブ */
+    @media(max-width:768px){
+      .nav-menu{
+        display:none;
+      }
+      .president-container{
+        text-align:center;
+      }
+      .special-card{
+        text-align:center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- ヘッダー -->
+  <header class="site-header">
+    <div class="container">
+      <div class="header-content">
+        <a href="/" class="logo">
+          <img src="/images/century21logo_gold.png" alt="CENTURY21">
+          <span style="font-weight:700;font-size:18px">ホームマート</span>
+        </a>
+        <nav class="nav-menu">
+          <a href="/search.html">物件検索</a>
+          <a href="/assessment.html">売却査定</a>
+          <a href="/reform-water.html">リフォーム</a>
+          <a href="/company/about.html">会社案内</a>
+          <a href="tel:0120438639" class="tel-btn">
+            📞 0120-43-8639
+          </a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ページヘッダー -->
+    <section class="page-header">
+      <div class="container">
+        <h1 class="page-title">スタッフ<span class="gold-accent">紹介</span></h1>
+        <p class="page-subtitle">プロフェッショナルが、あなたの住まい探しをサポート</p>
+      </div>
+    </section>
+    
+    <!-- チームメッセージ -->
+    <section class="team-message">
+      <div class="container">
+        <div class="message-box">
+          <h2 class="message-title">私たちが全力でサポートします</h2>
+          <p class="message-text">
+            センチュリー21ホームマートには、不動産売買のプロフェッショナル、<br>
+            リフォームの職人、そして温かいサポートスタッフが揃っています。<br>
+            お客様一人ひとりに寄り添い、最適な住まいをご提案。<br>
+            どんな小さなご相談でも、お気軽にお声がけください。
+          </p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- 代表紹介 -->
+    <section class="president-section">
+      <div class="container">
+        <h2 class="section-title">代表<span class="gold-accent">取締役</span></h2>
+        
+        <div class="president-container">
+          <div class="president-image-wrapper">
+            <img src="inui.jpeg" alt="代表取締役 乾佑企" class="president-image" onerror="this.style.display='none'">
+            <span class="president-badge">PRESIDENT</span>
+          </div>
+          
+          <div class="president-content">
+            <div class="president-role">代表取締役</div>
+            <h3 class="president-name">乾 佑企</h3>
+            <p class="president-kana">いぬい ゆうき</p>
+            
+            <p class="president-bio">
+              1993年生まれ、奈良県北葛城郡広陵町出身。<br>
+              20歳で不動産業界に飛び込み、2013年に個人事業として創業。<br>
+              2024年に株式会社ホームマートを設立し、2025年センチュリー21グループのリフォーム施工店へ。<br>
+              「不動産のプロ×多能工職人（大工・内装・設備・水道・ガス）×ITエンジニア」の天才型。<br>
+              不動産売買からリフォームや3DCADの設計まで、ワンストップサービスを展開。
+              自宅やオフィスは、掃除もエアコンも風呂も照明も自動化を実現しており、スマートホーム化。
+              そんな私も32歳で、初のパパとして、初めての育児にチャレンジ中。
+              子どもには、知識も経験も何も通じないので、覚悟して頑張ります。
+            </p>
+            
+            <div class="president-skills">
+              <span class="skill-tag">宅地建物取引士</span>
+              <span class="skill-tag">ITエンジニア</span>
+              <span class="skill-tag">LIXILメーカー施工士</span>
+              <span class="skill-tag">多能工職人</span>
+            </div>
+            
+            <div class="president-message">
+              <div class="quote-icon">💬</div>
+              <p class="president-quote">
+                「なかったものを自分たちで作る」<br>
+                この精神で、既存の不動産業界の常識を打ち破り、<br>
+                お客様にとって本当に価値のあるサービスを創造し続けます。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- スタッフ紹介 -->
+    <section class="staff-section">
+      <div class="container">
+        <h2 class="section-title">頼れる<span class="gold-accent">メンバー</span></h2>
+        
+        <div class="staff-grid">
+          <!-- 安田 -->
+          <div class="staff-card">
+            <div class="staff-image-wrapper">
+              <img src="mika.jpeg" alt="安田" class="staff-image" onerror="this.style.display='none'">
+              <span class="staff-department">管理部門</span>
+            </div>
+            <div class="staff-content">
+              <h3 class="staff-name">安田</h3>
+              <p class="staff-name-kana">やすだ</p>
+              <p class="staff-role">管理部門責任者</p>
+              <p class="staff-bio">
+                全社管理・経理・人事を統括。<br>
+                会社の基盤を支える重要な存在として、<br>
+                スムーズな業務運営を実現。
+              </p>
+              <div class="staff-info">
+                <div class="info-item">
+                  <span class="info-icon">📅</span>
+                  <span>入社：2018年</span>
+                </div>
+                <div class="info-item">
+                  <span class="info-icon">💪</span>
+                  <span>得意分野：経理・労務管理</span>
+                </div>
+              </div>
+              <div class="staff-tags">
+                <span class="staff-tag">経理のプロ</span>
+                <span class="staff-tag">細やかな気配り</span>
+                <span class="staff-tag">チームの要</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 豊田 -->
+          <div class="staff-card">
+            <div class="staff-image-wrapper">
+              <img src="takuma.jpeg" alt="豊田" class="staff-image" onerror="this.style.display='none'">
+              <span class="staff-department">リフォーム部門</span>
+            </div>
+            <div class="staff-content">
+              <h3 class="staff-name">豊田</h3>
+              <p class="staff-name-kana">とよだ</p>
+              <p class="staff-role">リフォーム現場責任者</p>
+              <p class="staff-bio">
+                水回りから内装まで幅広く対応。<br>
+                確かな技術力と丁寧な仕事で、<br>
+                お客様の理想の住まいを実現。
+              </p>
+                <div class="info-item">
+                  <span class="info-icon">💪</span>
+                  <span>得意分野：水回り工事</span>
+                </div>
+              </div>
+              <div class="staff-tags">
+                <span class="staff-tag">職人気質</span>
+                <span class="staff-tag">技術力No.1</span>
+                <span class="staff-tag">穏やかで優しい</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 今津 -->
+          <div class="staff-card">
+            <div class="staff-image-wrapper">
+              <img src="imadu.JPG" alt="今津" class="staff-image" onerror="this.style.display='none'">
+              <span class="staff-department">広報部門</span>
+            </div>
+            <div class="staff-content">
+              <h3 class="staff-name">今津</h3>
+              <p class="staff-name-kana">いまづ</p>
+              <p class="staff-role">広報・マーケティング</p>
+              <p class="staff-bio">
+                広告戦略を担当。<br>
+                地域への情報発信を通じて、<br>
+                多くのお客様との出会いを創出。
+              </p>
+              <div class="staff-info">
+                <div class="info-item">
+                  <span class="info-icon">📅</span>
+                  <span>入社：2024年</span>
+                </div>
+                <div class="info-item">
+                  <span class="info-icon">💪</span>
+                  <span>得意分野：地域密着PR</span>
+                </div>
+              </div>
+              <div class="staff-tags">
+                <span class="staff-tag">フットワーク軽快</span>
+                <span class="staff-tag">会社の基礎</span>
+                <span class="staff-tag">コツコツ丁寧さが自慢</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 大黒 -->
+          <div class="staff-card">
+            <div class="staff-image-wrapper">
+              <img src="daikoku.JPG" alt="大黒" class="staff-image" onerror="this.style.display='none'">
+              <span class="staff-department">リフォーム部門</span>
+            </div>
+            <div class="staff-content">
+              <h3 class="staff-name">大黒</h3>
+              <p class="staff-name-kana">だいこく</p>
+              <p class="staff-role">リフォームアドバイザー</p>
+              <p class="staff-bio">
+                お客様のライフスタイルに合わせた<br>
+                最適なリフォームプランを提案。<br>
+                豊富な知識で理想を形に。
+              </p>
+              <div class="staff-info">
+                <div class="info-item">
+                  <span class="info-icon">📅</span>
+                  <span>経験：10年以上</span>
+                </div>
+                <div class="info-item">
+                  <span class="info-icon">💪</span>
+                  <span>得意分野：プランニング</span>
+                </div>
+              </div>
+              <div class="staff-tags">
+                <span class="staff-tag">提案力</span>
+                <span class="staff-tag">親身な対応</span>
+                <span class="staff-tag">頼もしい４人の母</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 山尾 -->
+          <div class="staff-card">
+            <div class="staff-image-wrapper">
+              <img src="hina.jpeg" alt="山尾" class="staff-image" onerror="this.style.display='none'">
+              <span class="staff-department">サポート部門</span>
+            </div>
+            <div class="staff-content">
+              <h3 class="staff-name">山尾</h3>
+              <p class="staff-name-kana">やまお</p>
+              <p class="staff-role">事務・広報サポート</p>
+              <p class="staff-bio">
+                パンフレット印刷から現場清掃まで幅広くサポート。<br>
+                明るい笑顔と細やかな気配りで、<br>
+                快適な環境づくりに貢献。
+              </p>
+              <div class="staff-info">
+                <div class="info-item">
+                  <span class="info-icon">📅</span>
+                  <span>入社：2024年</span>
+                </div>
+                <div class="info-item">
+                  <span class="info-icon">💪</span>
+                  <span>得意分野：マルチタスク</span>
+                </div>
+              </div>
+              <div class="staff-tags">
+                <span class="staff-tag">会社のリーダー</span>
+                <span class="staff-tag">縁の下の力持ち</span>
+                <span class="staff-tag">笑顔が素敵</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- 特別メンバー -->
+    <section class="special-member">
+      <div class="container">
+        <h2 class="section-title">特別<span class="gold-accent">メンバー</span></h2>
+        
+        <div class="special-card">
+          <img src="IMG_9624.jpeg" alt="看板犬" class="special-image" onerror="this.style.display='none'">
+          
+          <div class="special-content">
+            <span class="special-badge">🐕 SPECIAL MEMBER</span>
+            <h3 class="special-name">看板犬</h3>
+            <p class="special-role">イメージキャラクター</p>
+            <p class="special-desc">
+              ホームマートの癒し担当！<br>
+              お客様をいつも温かくお出迎え。<br>
+              SNSやチラシでも大活躍中。<br>
+              みんなに愛される存在です。
+            </p>
+            <div class="special-skills">
+              <span class="special-skill">🐾 お出迎え</span>
+              <span class="special-skill">📸 写真撮影OK</span>
+              <span class="special-skill">💝 癒し効果抜群</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- チーム文化 -->
+    <section class="culture-section">
+      <div class="container">
+        <h2 class="section-title">私たちの<span class="gold-accent">チーム文化</span></h2>
+        
+        <div class="culture-grid">
+          <div class="culture-card">
+            <div class="culture-icon">🤝</div>
+            <h3 class="culture-title">チームワーク</h3>
+            <p class="culture-desc">
+              各部門の専門性を活かし、<br>
+              全員で協力してお客様の<br>
+              ご要望にお応えします。
+            </p>
+          </div>
+          
+          <div class="culture-card">
+            <div class="culture-icon">📚</div>
+            <h3 class="culture-title">成長意欲</h3>
+            <p class="culture-desc">
+              常に新しい知識を学び、<br>
+              スキルアップを目指す。<br>
+              成長が止まらないチーム。
+            </p>
+          </div>
+          
+          <div class="culture-card">
+            <div class="culture-icon">😊</div>
+            <h3 class="culture-title">笑顔の職場</h3>
+            <p class="culture-desc">
+              明るく楽しい職場環境。<br>
+              笑顔があふれる職場から<br>
+              最高のサービスが生まれます。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- 採用CTA -->
+    <section class="recruit-cta">
+      <div class="container">
+        <h2 class="recruit-title">一緒に働く仲間を募集中！</h2>
+        <p class="recruit-text">
+          センチュリー21ホームマートは、<br>
+          お客様の幸せを一緒に創造する仲間を求めています。<br>
+          不動産・リフォームの経験は問いません。
+        </p>
+        <a href="/recruit.html" class="recruit-btn">採用情報を見る</a>
+      </div>
+    </section>
+  </main>
+  
+  <!-- フッター -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>センチュリー21ホームマート</h4>
+          <p style="font-size:14px;line-height:1.8;color:#999">
+            〒635-0821<br>
+            奈良県北葛城郡広陵町笠287-1<br>
+            TEL: 0120-43-8639<br>
+            FAX: 050-3183-9576
+          </p>
+        </div>
+        
+        <div class="footer-section">
+          <h4>サービス</h4>
+          <ul>
+            <li><a href="/search.html">物件検索</a></li>
+            <li><a href="/assessment.html">売却査定</a></li>
+            <li><a href="/voluntary-sale.html">任意売却相談</a></li>
+            <li><a href="/reform-water.html">リフォーム</a></li>
+            <li><a href="/recruit.html">採用情報</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h4>会社情報</h4>
+          <ul>
+            <li><a href="/company/about.html">会社概要</a></li>
+            <li><a href="/company/message.html">代表挨拶</a></li>
+            <li><a href="/company/philosophy.html">企業理念</a></li>
+            <li><a href="/company/access.html">アクセス</a></li>
+            <li><a href="/privacy.html">プライバシーポリシー</a></li>
+            <li><a href="/sitemap.html">サイトマップ</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>© 2025 Century21 HomeMart. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
