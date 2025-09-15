@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>不動産売却実績 | センチュリー21ホームマート</title>
+    <meta name="description" content="奈良県での不動産売却実績多数。お客様の大切な資産を最適な価格で売却。地域密着の経験と実績でサポートします。">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #A19276;
+            --gold2: #B8A082;
+            --black: #383635;
+            --cream: #F8F6F3;
+            --white: #FFFFFF;
+            --gray: #F8F8F8;
+            --text-gray: #666666;
+            --shadow: 0 8px 24px rgba(0,0,0,0.08);
+            --shadow-hover: 0 12px 32px rgba(0,0,0,0.12);
+            --max-width: 1200px;
+            --success: #22c55e;
+            --danger: #ef4444;
+            --blue: #3b82f6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.6;
+            color: var(--black);
+            background: var(--white);
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        /* ヘッダー */
+        header {
+            background: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 2px solid var(--gold);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: var(--black);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: var(--gold);
+        }
+
+        /* ヒーローセクション */
+        .hero {
+            background: linear-gradient(135deg, var(--cream) 0%, var(--white) 100%);
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(161,146,118,0.05), transparent);
+            animation: rotate 30s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--white);
+            padding: 6px 16px;
+            border-radius: 999px;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .hero h1 {
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 900;
+            margin: 16px 0;
+            line-height: 1.3;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            color: var(--text-gray);
+            margin-bottom: 32px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+
+        /* 実績スライダー */
+        .achievements-slider {
+            background: var(--gray);
+            padding: 80px 0;
+            overflow: hidden;
+        }
+
+        .slider-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            height: 500px;
+        }
+
+        .slider-wrapper {
+            display: flex;
+            transition: transform 0.5s ease;
+            height: 100%;
+        }
+
+        .slide {
+            min-width: 100%;
+            display: flex;
+            gap: 40px;
+            padding: 0 20px;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        .slide:hover {
+            opacity: 0.95;
+        }
+
+        .slide-image {
+            flex: 1;
+            position: relative;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .slide-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .sold-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--danger);
+            color: var(--white);
+            padding: 8px 20px;
+            border-radius: 999px;
+            font-weight: 700;
+            font-size: 14px;
+            box-shadow: 0 4px 12px rgba(239,68,68,0.3);
+        }
+
+        .slide-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .property-type {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--white);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            width: fit-content;
+        }
+
+        .property-title {
+            font-size: 28px;
+            font-weight: 900;
+            color: var(--black);
+            margin-bottom: 16px;
+        }
+
+        .property-info {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-gray);
+            font-size: 14px;
+        }
+
+        .info-icon {
+            color: var(--gold);
+            font-size: 18px;
+        }
+
+        .success-point {
+            background: linear-gradient(135deg, var(--cream), var(--white));
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid var(--gold);
+        }
+
+        .success-point h3 {
+            color: var(--gold);
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .success-point p {
+            color: var(--black);
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        /* スライダーコントロール */
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 32px;
+        }
+
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ddd;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .slider-dot.active {
+            background: var(--gold);
+            transform: scale(1.3);
+        }
+
+        .slider-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--white);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+            z-index: 10;
+        }
+
+        .slider-nav:hover {
+            background: var(--cream);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .slider-nav.prev {
+            left: 20px;
+        }
+
+        .slider-nav.next {
+            right: 20px;
+        }
+
+        /* 詳細モーダル */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .modal.active {
+            display: block;
+        }
+
+        .modal-content {
+            background: var(--white);
+            max-width: 900px;
+            margin: 40px auto;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, var(--gold), var(--gold2));
+            color: var(--white);
+            padding: 32px;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .close-modal:hover {
+            background: rgba(255,255,255,0.3);
+            transform: scale(1.1);
+        }
+
+        .modal-body {
+            padding: 40px;
+        }
+
+        .agent-profile {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            margin-bottom: 40px;
+            padding: 24px;
+            background: var(--gray);
+            border-radius: 12px;
+        }
+
+        .agent-photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .agent-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .agent-info h3 {
+            color: var(--gold);
+            font-size: 20px;
+            margin-bottom: 4px;
+        }
+
+        .agent-info p {
+            color: var(--text-gray);
+            font-size: 14px;
+        }
+
+        .detail-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+            margin-bottom: 40px;
+        }
+
+        .detail-item {
+            padding: 20px;
+            background: var(--gray);
+            border-radius: 10px;
+        }
+
+        .detail-label {
+            color: var(--text-gray);
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+
+        .detail-value {
+            color: var(--black);
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .story-section {
+            background: linear-gradient(135deg, var(--cream), var(--white));
+            padding: 32px;
+            border-radius: 12px;
+            margin-top: 40px;
+        }
+
+        .story-title {
+            color: var(--gold);
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .story-content {
+            color: var(--black);
+            line-height: 2;
+        }
+
+        /* 実績一覧 */
+        .achievements-grid {
+            padding: 80px 0;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 32px;
+            margin-top: 48px;
+        }
+
+        .achievement-card {
+            background: var(--white);
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .card-image {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 24px;
+        }
+
+        .card-badge {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--white);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 12px;
+        }
+
+        .card-details {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .card-detail {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-gray);
+            font-size: 14px;
+        }
+
+        /* CTA */
+        .cta-section {
+            background: linear-gradient(135deg, var(--gold), var(--gold2));
+            color: var(--white);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .cta-primary {
+            display: inline-block;
+            background: var(--white);
+            color: var(--gold);
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        /* フッター */
+        footer {
+            background: var(--black);
+            color: var(--white);
+            padding: 48px 0 24px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 32px;
+            margin-bottom: 32px;
+        }
+
+        .footer-section h3 {
+            color: var(--gold);
+            margin-bottom: 16px;
+            font-size: 18px;
+        }
+
+        .footer-section p,
+        .footer-section li {
+            margin-bottom: 8px;
+            color: #ccc;
+            font-size: 14px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 24px;
+            border-top: 1px solid #444;
+            color: #999;
+            font-size: 14px;
+        }
+
+        /* レスポンシブ */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .slide {
+                flex-direction: column;
+            }
+
+            .slider-container {
+                height: auto;
+            }
+
+            .detail-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                margin: 0;
+                border-radius: 0;
+                height: 100vh;
+                overflow-y: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ヘッダー -->
+    <header>
+        <nav class="container">
+            <div class="logo">センチュリー21ホームマート</div>
+            <ul class="nav-menu">
+                <li><a href="/">ホーム</a></li>
+                <li><a href="/company/about.html">会社案内</a></li>
+                <li><a href="/properties/list.html">物件情報</a></li>
+                <li><a href="/reform/services.html">リフォーム</a></li>
+                <li><a href="/contact/form.html">お問い合わせ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ヒーローセクション -->
+    <section class="hero">
+        <div class="container hero-content">
+            <span class="hero-badge">🏆 奈良県売却実績No.1</span>
+            <h1>お客様の大切な不動産を<br><span style="color: var(--gold);">最高の条件で売却します</span></h1>
+            <p class="hero-subtitle">
+                地域密着10年以上の実績と信頼<br>
+                売主様の想いに寄り添い、最適な売却をサポート<br>
+                平均2ヶ月以内のスピード成約を実現
+            </p>
+        </div>
+    </section>
+
+    <!-- 実績スライダー -->
+    <section class="achievements-slider">
+        <div class="container">
+            <h2 style="text-align: center; font-size: 36px; font-weight: 900; margin-bottom: 48px;">
+                最新の<span style="color: var(--gold);">売却成功事例</span>
+            </h2>
+            
+            <div class="slider-container">
+                <div class="slider-wrapper" id="sliderWrapper">
+                    <!-- スライド1 -->
+                    <div class="slide" onclick="openModal(0)">
+                        <div class="slide-image">
+                            <img src="property1.jpg" alt="奈良市青山 戸建て">
+                            <span class="sold-badge">SOLD 成約済</span>
+                        </div>
+                        <div class="slide-content">
+                            <span class="property-type">中古戸建</span>
+                            <h2 class="property-title">奈良市青山 4LDK戸建て</h2>
+                            <div class="property-info">
+                                <div class="info-item">
+                                    <span class="info-icon">📅</span>
+                                    <span>2003年3月建築</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-icon">⏱️</span>
+                                    <span>成約期間：約2ヶ月</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-icon">💰</span>
+                                    <span>査定額より320万円UP</span>
+                                </div>
+                            </div>
+                            <div class="success-point">
+                                <h3>成約に至ったポイント</h3>
+                                <p>築20年を感じさせない管理状態の良さを前面に押し出し、近隣相場を徹底分析。3Dバーチャル内覧を導入し、遠方の購入希望者にもアプローチ。結果、東京からの移住希望者が即決購入。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- スライド2 -->
+                    <div class="slide" onclick="openModal(1)">
+                        <div class="slide-image">
+                            <img src="property2.jpg" alt="生駒市 マンション">
+                            <span class="sold-badge">SOLD 成約済</span>
+                        </div>
+                        <div class="slide-content">
+                            <span class="property-type">分譲マンション</span>
+                            <h2 class="property-title">生駒市東生駒 3LDKマンション</h2>
+                            <div class="property-info">
+                                <div class="info-item">
+                                    <span class="info-icon">📅</span>
+                                    <span>2008年11月建築</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-icon">⏱️</span>
+                                    <span>成約期間：約3週間</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-icon">💰</span>
+                                    <span>満額成約達成</span>
+                                </div>
+                            </div>
+                            <div class="success-point">
+                                <h3>成約に至ったポイント</h3>
+                                <p>駅徒歩5分の好立地と南向きバルコニーの明るさを最大限アピール。プロカメラマンによる撮影で物件の魅力を引き出し、SNS広告も活用。子育て世代に的確にリーチし、内覧3組で成約。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- スライド3 -->
+                    <div class="slide" onclick="openModal(2)">
+                        <div class="slide-image">
+                            <img src="property3.jpg" alt="橿原市 土地">
+                            <span class="sold-badge">SOLD 成約済</span>
+                        </div>
+                        <div class="slide-content">
+                            <span class="property-type">売地</span>
+                            <h2 class="property-title">橿原市今井町 建築条件なし土地</h2>
+                            <div class="property-info">
+                                <div class="info-item">
+                                    <span class="info-icon">📐</span>
+                                    <span>敷地面積：165㎡（約50坪）</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-icon">⏱️</span>
+                                    <span>成約期間：約1.5ヶ月</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-icon">💰</span>
+                                    <span>複数申込で価格競争</span>
+                                </div>
+                            </div>
+                            <div class="success-point">
+                                <h3>成約に至ったポイント</h3>
+                                <p>歴史的町並み保存地区の希少性を強調。建築プランの参考例を3パターン作成し、購入後のイメージを具体化。地元工務店とも連携し、建築サポートまで提案することで差別化に成功。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- スライド4 -->
+                    <div class="slide" onclick="openModal(3)">
+                        <div class="slide-image">
+                            <img src="property4.jpg" alt="広陵町 戸建て">
+                            <span class="sold-badge">SOLD 成約済</span>
+                        </div>
+                        <div class="slide-content">
+                            <span class="property-type">中古戸建</span>
+                            <h2 class="property-title">広陵町みささぎ台 5LDK戸建て</h2>
+                            <div class="property-info">
+                                <div class="info-item">
+                                    <span class="info-icon">📅</span>
+                                    <span>1998年7月建築</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-icon">⏱️</span>
+                                    <span>成約期間：約2.5ヶ月</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-icon">💰</span>
+                                    <span>リフォーム提案で付加価値UP</span>
+                                </div>
+                            </div>
+                            <div class="success-point">
+                                <h3>成約に至ったポイント</h3>
+                                <p>築25年の物件を「リフォーム済み」として販売。水回り4点を事前にリフォームし、新築同様の快適性をアピール。ビフォーアフター写真を効果的に使用し、購入者の不安を解消。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- スライド5 -->
+                    <div class="slide" onclick="openModal(4)">
+                        <div class="slide-image">
+                            <img src="property5.jpg" alt="大和高田市 マンション">
+                            <span class="sold-badge">SOLD 成約済</span>
+                        </div>
+                        <div class="slide-content">
+                            <span class="property-type">分譲マンション</span>
+                            <h2 class="property-title">大和高田市 2LDKマンション</h2>
+                            <div class="property-info">
+                                <div class="info-item">
+                                    <span class="info-icon">📅</span>
+                                    <span>2012年2月建築</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-icon">⏱️</span>
+                                    <span>成約期間：約1ヶ月</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-icon">💰</span>
+                                    <span>投資用として高利回り実現</span>
+                                </div>
+                            </div>
+                            <div class="success-point">
+                                <h3>成約に至ったポイント</h3>
+                                <p>賃貸需要の高いエリアであることをデータで証明。想定利回り7.2%という投資物件としての魅力を訴求。管理組合の健全性や修繕積立金の状況も詳細に開示し、投資家の信頼を獲得。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ナビゲーション -->
+                <div class="slider-nav prev" onclick="changeSlide(-1)">‹</div>
+                <div class="slider-nav next" onclick="changeSlide(1)">›</div>
+            </div>
+
+            <!-- ドットインジケーター -->
+            <div class="slider-controls">
+                <span class="slider-dot active" onclick="goToSlide(0)"></span>
+                <span class="slider-dot" onclick="goToSlide(1)"></span>
+                <span class="slider-dot" onclick="goToSlide(2)"></span>
+                <span class="slider-dot" onclick="goToSlide(3)"></span>
+                <span class="slider-dot" onclick="goToSlide(4)"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 詳細モーダル -->
+    <div class="modal" id="detailModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">物件詳細</h2>
+                <div class="close-modal" onclick="closeModal()">✕</div>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- 動的に内容が挿入されます -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 実績一覧グリッド -->
+    <section class="achievements-grid">
+        <div class="container">
+            <h2 style="text-align: center; font-size: 36px; font-weight: 900; margin-bottom: 16px;">
+                その他の<span style="color: var(--gold);">売却実績</span>
+            </h2>
+            <p style="text-align: center; color: var(--text-gray); margin-bottom: 48px;">
+                クリックして詳細をご覧いただけます
+            </p>
+
+            <div class="grid-container">
+                <!-- カード1 -->
+                <div class="achievement-card" onclick="openModal(5)">
+                    <div class="card-image">
+                        <img src="property6.jpg" alt="天理市 戸建て">
+                        <span class="sold-badge" style="position: absolute; top: 12px; right: 12px;">SOLD</span>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-badge">中古戸建</span>
+                        <h3 class="card-title">天理市柳本町 4LDK戸建て</h3>
+                        <div class="card-details">
+                            <div class="card-detail">
+                                <span>📅</span>
+                                <span>2005年10月建築</span>
+                            </div>
+                            <div class="card-detail">
+                                <span>⏱️</span>
+                                <span>成約期間：約6週間</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- カード2 -->
+                <div class="achievement-card" onclick="openModal(6)">
+                    <div class="card-image">
+                        <img src="property7.jpg" alt="香芝市 マンション">
+                        <span class="sold-badge" style="position: absolute; top: 12px; right: 12px;">SOLD</span>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-badge">分譲マンション</span>
+                        <h3 class="card-title">香芝市真美ヶ丘 3LDKマンション</h3>
+                        <div class="card-details">
+                            <div class="card-detail">
+                                <span>📅</span>
+                                <span>2010年4月建築</span>
+                            </div>
+                            <div class="card-detail">
+                                <span>⏱️</span>
+                                <span>成約期間：約2ヶ月</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- カード3 -->
+                <div class="achievement-card" onclick="openModal(7)">
+                    <div class="card-image">
+                        <img src="property8.jpg" alt="王寺町 土地">
+                        <span class="sold-badge" style="position: absolute; top: 12px; right: 12px;">SOLD</span>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-badge">売地</span>
+                        <h3 class="card-title">王寺町王寺 建築条件なし土地</h3>
+                        <div class="card-details">
+                            <div class="card-detail">
+                                <span>📐</span>
+                                <span>敷地面積：200㎡</span>
+                            </div>
+                            <div class="card-detail">
+                                <span>⏱️</span>
+                                <span>成約期間：約3週間</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- カード4 -->
+                <div class="achievement-card" onclick="openModal(8)">
+                    <div class="card-image">
+                        <img src="property9.jpg" alt="大和郡山市 戸建て">
+                        <span class="sold-badge" style="position: absolute; top: 12px; right: 12px;">SOLD</span>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-badge">中古戸建</span>
+                        <h3 class="card-title">大和郡山市 5LDK戸建て</h3>
+                        <div class="card-details">
+                            <div class="card-detail">
+                                <span>📅</span>
+                                <span>2000年8月建築</span>
+                            </div>
+                            <div class="card-detail">
+                                <span>⏱️</span>
+                                <span>成約期間：約2.5ヶ月</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- カード5 -->
+                <div class="achievement-card" onclick="openModal(9)">
+                    <div class="card-image">
+                        <img src="property10.jpg" alt="桜井市 マンション">
+                        <span class="sold-badge" style="position: absolute; top: 12px; right: 12px;">SOLD</span>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-badge">分譲マンション</span>
+                        <h3 class="card-title">桜井市 2LDKマンション</h3>
+                        <div class="card-details">
+                            <div class="card-detail">
+                                <span>📅</span>
+                                <span>2015年6月建築</span>
+                            </div>
+                            <div class="card-detail">
+                                <span>⏱️</span>
+                                <span>成約期間：約1ヶ月</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- カード6 -->
+                <div class="achievement-card" onclick="openModal(10)">
+                    <div class="card-image">
+                        <img src="property11.jpg" alt="斑鳩町 戸建て">
+                        <span class="sold-badge" style="position: absolute; top: 12px; right: 12px;">SOLD</span>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-badge">中古戸建</span>
+                        <h3 class="card-title">斑鳩町法隆寺 4LDK戸建て</h3>
+                        <div class="card-details">
+                            <div class="card-detail">
+                                <span>📅</span>
+                                <span>2002年12月建築</span>
+                            </div>
+                            <div class="card-detail">
+                                <span>⏱️</span>
+                                <span>成約期間：約2ヶ月</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 style="font-size: 36px; margin-bottom: 24px;">あなたの不動産も<br>最高の条件で売却しませんか？</h2>
+            <p style="font-size: 18px; margin-bottom: 40px; opacity: 0.95;">
+                無料査定・相談受付中<br>
+                売却のプロが最適な売却プランをご提案します
+            </p>
+            <a href="/assessment.html" class="cta-primary">無料査定を申し込む</a>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>会社情報</h3>
+                    <p><strong>センチュリー21ホームマート</strong></p>
+                    <p>〒635-0821<br>奈良県北葛城郡広陵町笠287-1</p>
+                    <p>TEL: 0120-43-8639</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>サービス</h3>
+                    <ul>
+                        <li><a href="/properties/list.html">物件一覧</a></li>
+                        <li><a href="/assessment.html">無料査定</a></li>
+                        <li><a href="/sell/flow.html">売却の流れ</a></li>
+                        <li><a href="/reform/services.html">リフォーム</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>お問い合わせ</h3>
+                    <p>電話: <a href="tel:0120438639">0120-43-8639</a></p>
+                    <p>メール: info@century21-homemart.jp</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 センチュリー21ホームマート. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 物件データ
+        const properties = [
+            {
+                title: "奈良市青山 4LDK戸建て",
+                type: "中古戸建",
+                built: "2003年3月",
+                period: "約2ヶ月",
+                point: "築20年を感じさせない管理状態の良さを前面に押し出し、近隣相場を徹底分析。3Dバーチャル内覧を導入し、遠方の購入希望者にもアプローチ。結果、東京からの移住希望者が即決購入。",
+                agent: "乾 佑企",
+                story: "売主様は転勤が決まり、愛着のある自宅を手放すことに。「できるだけ高く、でも早く売りたい」という難しい要望でした。私は売主様の気持ちに寄り添い、物件の魅力を最大限に引き出す戦略を立案。プロカメラマンによる撮影、3D内覧システムの導入、そしてSNSを活用した広告展開を実施。結果、わずか2ヶ月で査定額を大幅に上回る価格での成約を実現。売主様からは「乾さんに任せて本当に良かった」と感謝の言葉をいただきました。"
+            },
+            {
+                title: "生駒市東生駒 3LDKマンション",
+                type: "分譲マンション",
+                built: "2008年11月",
+                period: "約3週間",
+                point: "駅徒歩5分の好立地と南向きバルコニーの明るさを最大限アピール。プロカメラマンによる撮影で物件の魅力を引き出し、SNS広告も活用。子育て世代に的確にリーチし、内覧3組で成約。",
+                agent: "乾 佑企",
+                story: "相続で取得されたマンションの売却相談でした。売主様は遠方にお住まいで、なかなか奈良に来られない状況。私がすべての手続きを代行し、定期的にLINEで進捗報告。オンラインでの打ち合わせも活用し、売主様の負担を最小限に。スピード重視の販売戦略が功を奏し、わずか3週間で満額成約。「まさかこんなに早く、しかも希望通りの価格で売れるとは」と驚きと喜びの声をいただきました。"
+            },
+            {
+                title: "橿原市今井町 建築条件なし土地",
+                type: "売地",
+                built: "敷地面積：165㎡",
+                period: "約1.5ヶ月",
+                point: "歴史的町並み保存地区の希少性を強調。建築プランの参考例を3パターン作成し、購入後のイメージを具体化。地元工務店とも連携し、建築サポートまで提案することで差別化に成功。",
+                agent: "乾 佑企",
+                story: "長年空き地になっていた土地の売却相談。売主様は「もう売れないかも」と諦めかけていました。しかし私は、この土地の持つポテンシャルを見抜き、建築プランまで含めた総合提案を実施。地元の優良工務店とも連携し、購入後の建築サポートまで約束。この付加価値が決め手となり、複数の購入希望者から申し込みが。最終的に最も良い条件を提示された方に売却。売主様の笑顔が忘れられません。"
+            },
+            {
+                title: "広陵町みささぎ台 5LDK戸建て",
+                type: "中古戸建",
+                built: "1998年7月",
+                period: "約2.5ヶ月",
+                point: "築25年の物件を「リフォーム済み」として販売。水回り4点を事前にリフォームし、新築同様の快適性をアピール。ビフォーアフター写真を効果的に使用し、購入者の不安を解消。",
+                agent: "乾 佑企",
+                story: "築25年で設備の老朽化が目立つ物件。通常なら売却は困難でしたが、私は逆転の発想を提案。「売却前にリフォームして付加価値を」という戦略です。初期投資は必要でしたが、リフォーム後は見違えるような物件に。結果、リフォーム費用を上回る価格アップを実現し、売主様の手取りも大幅増。「乾さんの提案を信じて良かった」と、売主様も大満足の結果となりました。"
+            },
+            {
+                title: "大和高田市 2LDKマンション",
+                type: "分譲マンション",
+                built: "2012年2月",
+                period: "約1ヶ月",
+                point: "賃貸需要の高いエリアであることをデータで証明。想定利回り7.2%という投資物件としての魅力を訴求。管理組合の健全性や修繕積立金の状況も詳細に開示し、投資家の信頼を獲得。",
+                agent: "乾 佑企",
+                story: "住み替えのための売却でしたが、新居の購入期限が迫っており、時間との勝負でした。私は投資物件としての魅力に着目し、収益物件として販売戦略を転換。詳細な収支シミュレーションを作成し、投資家向けにアプローチ。わずか1ヶ月で複数の投資家から申し込みが入り、最良の条件で成約。売主様は無事に新居購入も実現し、「乾さんのおかげで夢が叶った」と喜んでいただけました。"
+            },
+            {
+                title: "天理市柳本町 4LDK戸建て",
+                type: "中古戸建",
+                built: "2005年10月",
+                period: "約6週間",
+                point: "大型商業施設へのアクセスの良さと、充実した教育環境をアピール。オープンハウスを週末に3回開催し、ファミリー層に直接訴求。子育て世代のニーズに合致した提案で早期成約。",
+                agent: "乾 佑企",
+                story: "離婚による財産分与での売却。デリケートな状況でしたが、私は売主様の心情に配慮しながら、迅速かつ確実な売却を進めました。プライバシーに最大限配慮し、限定的な広告展開で購入者を探索。結果、ご近所に知られることなく売却完了。「辛い時期に乾さんが支えてくれた」と、新しい人生のスタートを応援させていただきました。"
+            },
+            {
+                title: "香芝市真美ヶ丘 3LDKマンション",
+                type: "分譲マンション",
+                built: "2010年4月",
+                period: "約2ヶ月",
+                point: "人気の学区であることを強調し、子育て世代をターゲットに。管理状態の良さと充実した共用施設をアピール。内覧時には周辺の教育施設や公園情報も詳しく説明し、生活イメージを具体化。",
+                agent: "乾 佑企",
+                story: "高齢のご両親の施設入居に伴う売却でした。思い出の詰まった家を手放す寂しさと、早く売却したいという焦りの中でのご相談。私は売主様家族の気持ちに寄り添い、丁寧に売却活動を実施。物件の良さを最大限に引き出し、適正価格での売却を実現。「両親も安心して新生活を始められる」と、ご家族全員から感謝の言葉をいただきました。"
+            },
+            {
+                title: "王寺町王寺 建築条件なし土地",
+                type: "売地",
+                built: "敷地面積：200㎡",
+                period: "約3週間",
+                point: "駅近の希少な土地であることを強調。建築制限が少ないメリットを活かし、自由設計の魅力を訴求。ハウスメーカー各社にも情報提供し、幅広い購入層にアプローチして早期成約を実現。",
+                agent: "乾 佑企",
+                story: "相続した土地の売却でしたが、複数の相続人がいて意見がまとまらない状況。私は各相続人と個別に面談し、全員が納得できる売却条件を調整。法的な手続きもサポートし、スムーズな売却を実現。「乾さんが間に入ってくれたおかげで、家族関係も良好なまま売却できた」と、相続人全員から感謝されました。"
+            },
+            {
+                title: "大和郡山市 5LDK戸建て",
+                type: "中古戸建",
+                built: "2000年8月",
+                period: "約2.5ヶ月",
+                point: "二世帯住宅としても使える間取りの柔軟性をアピール。大規模修繕履歴を詳細に開示し、メンテナンスの良さを強調。価格設定を戦略的に行い、競合物件との差別化に成功。",
+                agent: "乾 佑企",
+                story: "転職による急な転居で、時間的余裕がない中での売却。新しい職場への通勤開始まで3ヶ月という厳しい条件でした。私は即座に販売戦略を立案し、積極的な広告展開を実施。同時に引っ越し業者の手配や、新居探しのサポートまで実施。売主様の負担を最小限に抑えながら、期限内に売却完了。「乾さんがいなければ、この転職は諦めていたかも」と言っていただけました。"
+            },
+            {
+                title: "桜井市 2LDKマンション",
+                type: "分譲マンション",
+                built: "2015年6月",
+                period: "約1ヶ月",
+                point: "築浅物件の魅力を最大限に活用。最新設備と省エネ性能の高さをアピール。単身者や新婚カップルをターゲットに、コンパクトで機能的な間取りの利便性を訴求して早期成約。",
+                agent: "乾 佑企",
+                story: "結婚を機に売却を決意されたお客様。新生活の資金にしたいという希望がありました。私は売却と同時に、新居探しもお手伝い。売却価格を最大化しつつ、理想の新居も見つけるという二つの目標を達成。「売却も購入も乾さんに任せて本当に良かった。おかげで理想の新婚生活がスタートできた」と、幸せそうな笑顔が印象的でした。"
+            },
+            {
+                title: "斑鳩町法隆寺 4LDK戸建て",
+                type: "中古戸建",
+                built: "2002年12月",
+                period: "約2ヶ月",
+                point: "世界遺産・法隆寺への近さという唯一無二の立地をアピール。観光地としての魅力と、落ち着いた住環境の両立を強調。歴史好きな購入者層にターゲットを絞り、効果的な訴求を実現。",
+                agent: "乾 佑企",
+                story: "定年退職後の住み替えでの売却。長年住み慣れた家への愛着が強く、なかなか売却に踏み切れずにいました。私は売主様の思い出話に耳を傾け、この家の歴史を大切にしながら売却活動を実施。購入者にも家の歴史を伝え、大切に住んでくれる方を見つけました。「家の思い出も一緒に引き継いでもらえて嬉しい」と、売主様も納得の売却となりました。"
+            }
+        ];
+
+        // スライダー制御
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.slider-dot');
+        const sliderWrapper = document.getElementById('sliderWrapper');
+
+        // 自動スライド
+        setInterval(() => {
+            changeSlide(1);
+        }, 4000);
+
+        function changeSlide(direction) {
+            currentSlide += direction;
+            if (currentSlide >= slides.length) currentSlide = 0;
+            if (currentSlide < 0) currentSlide = slides.length - 1;
+            updateSlider();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateSlider();
+        }
+
+        function updateSlider() {
+            sliderWrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        // モーダル制御
+        function openModal(index) {
+            const modal = document.getElementById('detailModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalBody = document.getElementById('modalBody');
+            const property = properties[index];
+
+            modalTitle.textContent = property.title;
+            modalBody.innerHTML = `
+                <div class="agent-profile">
+                    <div class="agent-photo">
+                        <img src="agent-inui.jpg" alt="${property.agent}">
+                    </div>
+                    <div class="agent-info">
+                        <h3>担当：${property.agent}</h3>
+                        <p>代表取締役・宅地建物取引士</p>
+                        <p>売却のプロフェッショナル</p>
+                    </div>
+                </div>
+
+                <div class="detail-grid">
+                    <div class="detail-item">
+                        <div class="detail-label">物件名</div>
+                        <div class="detail-value">${property.title}</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">種別</div>
+                        <div class="detail-value">${property.type}</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">建築年月日</div>
+                        <div class="detail-value">${property.built}建築</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">成約までの期間</div>
+                        <div class="detail-value">${property.period}</div>
+                    </div>
+                </div>
+
+                <div style="background: linear-gradient(135deg, #e8f5e9, #fff); padding: 24px; border-radius: 12px; margin: 32px 0;">
+                    <h3 style="color: var(--success); margin-bottom: 12px;">✨ 成約に至ったポイント</h3>
+                    <p style="line-height: 1.8;">${property.point}</p>
+                </div>
+
+                <div class="story-section">
+                    <h3 class="story-title">📖 担当者からのメッセージ</h3>
+                    <div class="story-content">
+                        ${property.story}
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 40px;">
+                    <a href="/assessment.html" class="cta-primary">
+                        あなたの不動産も無料査定
+                    </a>
+                </div>
+            `;
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('detailModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // モーダル外クリックで閉じる
+        document.getElementById('detailModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
