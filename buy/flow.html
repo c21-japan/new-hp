@@ -1,0 +1,1233 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>購入の流れ - はじめてでも最短・安心｜センチュリー21ホームマート</title>
+  <meta name="description" content="不動産購入の流れを分かりやすく解説。ワンストップ対応・自社施工・リフォーム一体型ローン相談可・LINE対応で最短48時間で初回提案。センチュリー21ホームマートが全力サポート。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700;900&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --gold: #A19276;
+      --gold2: #B8A082;
+      --black: #383635;
+      --ink: #222;
+      --cream: #F8F6F3;
+      --bg: #fff;
+      --max: 1200px;
+      --shadow: 0 8px 24px rgba(0,0,0,.08);
+    }
+    
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { 
+      font-family: 'Noto Sans JP', sans-serif; 
+      line-height: 1.6; 
+      color: var(--ink);
+      background: var(--bg);
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; height: auto; display: block; }
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 16px; }
+    
+    /* Header */
+    .site-header {
+      background: #fff;
+      border-bottom: 2px solid var(--gold);
+      padding: 16px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,.08);
+    }
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 18px;
+    }
+    .nav-menu {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+    .nav-menu a {
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+    .nav-menu a:hover { color: var(--gold); }
+    .tel-btn {
+      background: linear-gradient(135deg, var(--gold), var(--gold2));
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, var(--cream), #fff);
+      padding: 60px 0 40px;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 900;
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+    .hero-subtitle {
+      font-size: 18px;
+      color: #666;
+      margin-bottom: 32px;
+    }
+    .gold-accent {
+      background: linear-gradient(135deg, var(--gold), var(--gold2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    /* USP Badges */
+    .usp-badges {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+    .usp-badge {
+      background: #fff;
+      border: 2px solid var(--gold);
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    /* CTA Buttons */
+    .cta-group {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+    .cta-primary {
+      background: linear-gradient(135deg, var(--gold), var(--gold2));
+      color: #fff;
+      padding: 14px 28px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 16px;
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: none;
+      cursor: pointer;
+    }
+    .cta-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(161,146,118,0.3);
+    }
+    .cta-secondary {
+      background: #fff;
+      color: var(--gold);
+      border: 2px solid var(--gold);
+      padding: 12px 24px;
+      border-radius: 999px;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+    .cta-secondary:hover {
+      background: var(--cream);
+    }
+    
+    /* Strengths Section */
+    .strengths {
+      padding: 60px 0;
+      background: #fff;
+    }
+    .strengths-grid {
+      display: grid;
+      gap: 24px;
+      margin-top: 32px;
+    }
+    @media(min-width: 768px) {
+      .strengths-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    .strength-card {
+      background: var(--cream);
+      padding: 24px;
+      border-radius: 12px;
+      text-align: center;
+    }
+    .strength-icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+    .strength-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+    .strength-text {
+      color: #666;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+    
+    /* Flow Section */
+    .flow-section {
+      padding: 60px 0;
+      background: #f8f8f8;
+    }
+    .section-title {
+      text-align: center;
+      font-size: clamp(28px, 4vw, 36px);
+      font-weight: 900;
+      margin-bottom: 16px;
+    }
+    .section-subtitle {
+      text-align: center;
+      color: #666;
+      margin-bottom: 48px;
+    }
+    
+    /* Two-column Flow */
+    .flow-comparison {
+      display: grid;
+      gap: 32px;
+      margin-bottom: 48px;
+    }
+    @media(min-width: 768px) {
+      .flow-comparison { grid-template-columns: 1fr 1fr; }
+    }
+    .flow-column {
+      background: #fff;
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: var(--shadow);
+    }
+    .flow-column-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .flow-general { border-top: 4px solid #ccc; }
+    .flow-homemart { 
+      border-top: 4px solid var(--gold);
+      position: relative;
+    }
+    .flow-homemart::before {
+      content: 'おすすめ';
+      position: absolute;
+      top: -12px;
+      right: 24px;
+      background: var(--gold);
+      color: #fff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    
+    /* Flow Steps */
+    .flow-step {
+      padding: 16px 0;
+      border-bottom: 1px solid #e5e5e5;
+    }
+    .flow-step:last-child { border-bottom: none; }
+    .flow-step-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+    .flow-step-number {
+      background: var(--gold);
+      color: #fff;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .flow-step-title {
+      font-weight: 600;
+      font-size: 16px;
+    }
+    .flow-step-content {
+      margin-left: 44px;
+      color: #666;
+      font-size: 14px;
+    }
+    .flow-acceleration {
+      background: linear-gradient(135deg, #fff5e5, #ffeedc);
+      padding: 8px 12px;
+      border-radius: 8px;
+      margin-top: 8px;
+      font-size: 13px;
+      color: #b8860b;
+      font-weight: 600;
+    }
+    
+    /* Calculator Section */
+    .calculator-section {
+      padding: 60px 0;
+      background: #fff;
+    }
+    .calculator-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: var(--cream);
+      border-radius: 16px;
+      padding: 32px;
+    }
+    .calc-grid {
+      display: grid;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+    @media(min-width: 768px) {
+      .calc-grid { grid-template-columns: 1fr 1fr; }
+    }
+    .calc-group label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .calc-group input {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid #e5e5e5;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+    .calc-group input:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+    .calc-result {
+      background: #fff;
+      border-radius: 12px;
+      padding: 24px;
+      margin-top: 24px;
+    }
+    .calc-result-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px solid #e5e5e5;
+    }
+    .calc-result-item:last-child { border-bottom: none; }
+    .calc-result-label { font-weight: 600; }
+    .calc-result-value {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--gold);
+    }
+    .calc-disclaimer {
+      margin-top: 16px;
+      padding: 12px;
+      background: #fff5f5;
+      border-radius: 8px;
+      font-size: 12px;
+      color: #666;
+    }
+    
+    /* Negotiation Section */
+    .negotiation-section {
+      padding: 60px 0;
+      background: #f8f8f8;
+    }
+    .negotiation-grid {
+      display: grid;
+      gap: 16px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .negotiation-item {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .negotiation-icon {
+      font-size: 32px;
+      flex-shrink: 0;
+    }
+    .negotiation-content h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 4px;
+      color: var(--gold);
+    }
+    .negotiation-content p {
+      font-size: 14px;
+      color: #666;
+    }
+    
+    /* After Service */
+    .after-section {
+      padding: 60px 0;
+      background: #fff;
+    }
+    .after-flow {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 32px;
+      max-width: 900px;
+      margin: 48px auto;
+    }
+    .after-step {
+      text-align: center;
+      flex: 1;
+      min-width: 150px;
+    }
+    .after-step-icon {
+      font-size: 48px;
+      margin-bottom: 12px;
+    }
+    .after-step-title {
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .after-step-text {
+      font-size: 14px;
+      color: #666;
+    }
+    .after-arrow {
+      font-size: 24px;
+      color: var(--gold);
+    }
+    
+    /* FAQ */
+    .faq-section {
+      padding: 60px 0;
+      background: var(--cream);
+    }
+    .faq-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .faq-item {
+      background: #fff;
+      border-radius: 12px;
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
+    .faq-question {
+      padding: 20px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.3s;
+    }
+    .faq-question:hover { background: var(--cream); }
+    .faq-toggle {
+      font-size: 24px;
+      color: var(--gold);
+      transition: transform 0.3s;
+    }
+    .faq-item.open .faq-toggle { transform: rotate(45deg); }
+    .faq-answer {
+      padding: 0 20px;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s;
+    }
+    .faq-item.open .faq-answer {
+      padding: 0 20px 20px;
+      max-height: 500px;
+    }
+    
+    /* Final CTA */
+    .final-cta {
+      padding: 60px 0;
+      background: linear-gradient(135deg, var(--gold), var(--gold2));
+      text-align: center;
+      color: #fff;
+    }
+    .final-cta h2 {
+      font-size: clamp(28px, 4vw, 36px);
+      font-weight: 900;
+      margin-bottom: 16px;
+    }
+    .final-cta p {
+      font-size: 18px;
+      margin-bottom: 32px;
+      opacity: 0.95;
+    }
+    
+    /* Sticky Footer CTA (Mobile) */
+    .sticky-cta {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #fff;
+      box-shadow: 0 -4px 12px rgba(0,0,0,0.1);
+      padding: 8px;
+      z-index: 90;
+    }
+    @media(max-width: 768px) {
+      .sticky-cta { display: block; }
+      .nav-menu { display: none; }
+    }
+    .sticky-cta-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+    .sticky-btn {
+      background: linear-gradient(135deg, var(--gold), var(--gold2));
+      color: #fff;
+      padding: 12px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 14px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+    
+    /* Footer */
+    .site-footer {
+      background: #111;
+      color: #eee;
+      padding: 48px 0 24px;
+    }
+    .footer-content {
+      display: grid;
+      gap: 32px;
+      margin-bottom: 32px;
+    }
+    @media(min-width: 768px) {
+      .footer-content { grid-template-columns: repeat(3, 1fr); }
+    }
+    .footer-section h4 {
+      color: var(--gold);
+      margin-bottom: 16px;
+      font-size: 18px;
+    }
+    .footer-section ul {
+      list-style: none;
+    }
+    .footer-section li {
+      margin-bottom: 8px;
+    }
+    .footer-section a {
+      color: #eee;
+      transition: color 0.3s;
+    }
+    .footer-section a:hover { color: var(--gold); }
+    .footer-bottom {
+      text-align: center;
+      padding-top: 24px;
+      border-top: 1px solid #333;
+      font-size: 14px;
+      color: #999;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container">
+      <div class="header-content">
+        <a href="/" class="logo">
+          <span>CENTURY21</span>
+          <span>ホームマート</span>
+        </a>
+        <nav class="nav-menu">
+          <a href="/search.html">物件検索</a>
+          <a href="/assessment.html">売却査定</a>
+          <a href="/reform-water.html">リフォーム</a>
+          <a href="/company/about.html">会社案内</a>
+          <a href="tel:0120438639" class="tel-btn" data-analytics="cta:call-header">
+            📞 0120-43-8639
+          </a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <h1>購入の流れ ― はじめてでも<span class="gold-accent">"最短・安心"</span>で</h1>
+        <p class="hero-subtitle">物件探し・リフォーム・資金計画まで"全部お任せ"のワンストップ</p>
+        
+        <div class="usp-badges">
+          <div class="usp-badge">✨ 自社施工でコスト最適化</div>
+          <div class="usp-badge">💬 LINEで即見積・即相談</div>
+          <div class="usp-badge">🏦 リフォーム一体型ローン相談可</div>
+        </div>
+        
+        <div class="cta-group">
+          <a href="/search.html" class="cta-primary" data-analytics="cta:search-hero">
+            🔍 物件を探す
+          </a>
+          <a href="tel:0120438639" class="cta-primary" data-analytics="cta:call-hero">
+            📞 電話で相談
+          </a>
+          <a href="#" class="cta-primary" data-analytics="cta:line-hero">
+            💬 LINEで相談
+          </a>
+        </div>
+        
+        <p style="font-size:14px;color:#666;margin-top:16px">
+          営業時間：9:00〜19:00（水曜定休）※時間外もLINEで対応可能な場合があります
+        </p>
+      </div>
+    </section>
+    
+    <!-- Strengths Section -->
+    <section class="strengths">
+      <div class="container">
+        <h2 class="section-title">ホームマートが選ばれる<span class="gold-accent">5つの理由</span></h2>
+        
+        <div class="strengths-grid">
+          <div class="strength-card">
+            <div class="strength-icon">🏠</div>
+            <h3 class="strength-title">ワンストップ対応</h3>
+            <p class="strength-text">
+              購入・リフォーム・ローンまで<br>
+              窓口ひとつで完結。<br>
+              手間と時間を大幅削減
+            </p>
+          </div>
+          
+          <div class="strength-card">
+            <div class="strength-icon">🔧</div>
+            <h3 class="strength-title">自社施工で安心</h3>
+            <p class="strength-text">
+              中間マージンなし。<br>
+              自社職人による高品質施工で<br>
+              コストを最適化
+            </p>
+          </div>
+          
+          <div class="strength-card">
+            <div class="strength-icon">⚡</div>
+            <h3 class="strength-title">最短48時間で提案</h3>
+            <p class="strength-text">
+              物件選定・資金計画・<br>
+              リフォーム概算を<br>
+              スピード提案（目安）
+            </p>
+          </div>
+          
+          <div class="strength-card">
+            <div class="strength-icon">💬</div>
+            <h3 class="strength-title">LINE対応</h3>
+            <p class="strength-text">
+              写真・動画で即見積。<br>
+              夜間の相談も可能な範囲で<br>
+              柔軟に対応
+            </p>
+          </div>
+          
+          <div class="strength-card">
+            <div class="strength-icon">🏆</div>
+            <h3 class="strength-title">センチュリー21</h3>
+            <p class="strength-text">
+              全国ネットワークの信頼と<br>
+              地域密着の強みを<br>
+              両立
+            </p>
+          </div>
+          
+          <div class="strength-card">
+            <div class="strength-icon">🎯</div>
+            <h3 class="strength-title">URICO制度</h3>
+            <p class="strength-text">
+              売却時の独自制度で<br>
+              良質な中古物件を<br>
+              安心供給
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Flow Section -->
+    <section class="flow-section">
+      <div class="container">
+        <h2 class="section-title">購入ステップ比較</h2>
+        <p class="section-subtitle">一般的な流れと、ホームマートならではのショートカット</p>
+        
+        <div class="flow-comparison">
+          <!-- General Flow -->
+          <div class="flow-column flow-general">
+            <h3 class="flow-column-title">
+              ⏱️ 一般的な流れ（3〜6ヶ月）
+            </h3>
+            
+            <div class="flow-step">
+              <div class="flow-step-header">
+                <div class="flow-step-number">1</div>
+                <div class="flow-step-title">物件探し</div>
+              </div>
+              <div class="flow-step-content">
+                複数の不動産会社を回って情報収集<br>
+                期間：1〜3ヶ月
+              </div>
+            </div>
+            
+            <div class="flow-step">
+              <div class="flow-step-header">
+                <div class="flow-step-number">2</div>
+                <div class="flow-step-title">資金計画</div>
+              </div>
+              <div class="flow-step-content">
+                銀行回りでローン相談<br>
+                期間：2〜3週間
+              </div>
+            </div>
+            
+            <div class="flow-step">
+              <div class="flow-step-header">
+                <div class="flow-step-number">3</div>
+                <div class="flow-step-title">内覧</div>
+              </div>
+              <div class="flow-step-content">
+                現地訪問を繰り返し<br>
+                期間：2〜4週間
+              </div>
+            </div>
+            
+            <div class="flow-step">
+              <div class="flow-step-header">
+                <div class="flow-step-number">4</div>
+                <div class="flow-step-title">申込・契約</div>
+              </div>
+              <div class="flow-step-content">
+                価格交渉・契約準備<br>
+                期間：1〜2週間
+              </div>
+            </div>
+            
+            <div class="flow-step">
+              <div class="flow-step-header">
+                <div class="flow-step-number">5</div>
+                <div class="flow-step-title">ローン本審査</div>
+              </div>
+              <div class="flow-step-content">
+                書類準備・審査待ち<br>
+                期間：2〜3週間
+              </div>
+            </div>
+            
+            <div class="flow-step">
+              <div class="flow-step-header">
+                <div class="flow-step-number">6</div>
+                <div class="flow-step-title">決済・引渡し</div>
+              </div>
+              <div class="flow-step-content">
+                残金決済・登記手続き<br>
+                期間：1日
+              </div>
+            </div>
+            
+            <div class="flow-step">
+              <div class="flow-step-header">
+                <div class="flow-step-number">7</div>
+                <div class="flow-step-title">リフォーム</div>
+              </div>
+              <div class="flow-step-content">
+                別途業者探し・見積・施工<br>
+                期間：1〜3ヶ月
+              </div>
+            </div>
+          </div>
+          
+          <!-- HomeMart Flow -->
+          <div class="flow-column flow-homemart">
+            <h3 class="flow-column-title">
+              🚀 ホームマートなら（最短1.5ヶ月〜）
+            </h3>
+            
+            <div class="flow-step">
+              <div class="flow-step-header">
+                <div class="flow-step-number">1</div>
+                <div class="flow-step-title">初回ヒアリング</div>
+              </div>
+              <div class="flow-step-content">
+                LINE/電話で希望条件確認
+                <div class="flow-acceleration">
+                  ⚡ 48時間以内に物件リスト＋資金計画＋リフォーム概算を同時提案
+                </div>
+              </div>
+            </div>
+            
+            <div class="flow-step">
+              <div class="flow-step-header">
+                <div class="flow-step-number">2</div>
+                <div class="flow-step-title">VR/360度内覧</div>
+              </div>
+              <div class="flow-step-content">
+                自宅から複数物件を効率確認
+                <div class="flow-acceleration">
+                  ⚡ 現地は最終確認のみ。移動時間を90%削減
+                </div>
+              </div>
+            </div>
+            
+            <div class="flow-step">
+              <div class="flow-step-header">
+                <div class="flow-step-number">3</div>
+                <div class="flow-step-title">ローン事前審査</div>
+              </div>
+              <div class="flow-step-content">
+                提携金融機関で即日〜3日で結果
+                <div class="flow-acceleration">
+                  ⚡ リフォーム一体型ローンも同時審査可能
+                </div>
+              </div>
+            </div>
+            
+            <div class="flow-step">
+              <div class="flow-step-header">
+                <div class="flow-step-number">4</div>
+                <div class="flow-step-title">価格・条件交渉</div>
+              </div>
+              <div class="flow-step-content">
+                プロが総費用を抑える交渉
+                <div class="flow-acceleration">
+                  ⚡ 引渡時期・付帯設備・残置物まで総合調整
+                </div>
+              </div>
+            </div>
+            
+            <div class="flow-step">
+              <div class="flow-step-header">
+                <div class="flow-step-number">5</div>
+                <div class="flow-step-title">契約〜決済</div>
+              </div>
+              <div class="flow-step-content">
+                書類作成サポートで手続き簡略化
+                <div class="flow-acceleration">
+                  ⚡ テンプレ活用で準備期間を50%短縮
+                </div>
+              </div>
+            </div>
+            
+            <div class="flow-step">
+              <div class="flow-step-header">
+                <div class="flow-step-number">6</div>
+                <div class="flow-step-title">リフォーム即着工</div>
+              </div>
+              <div class="flow-step-content">
+                引渡し同日から自社施工開始
+                <div class="flow-acceleration">
+                  ⚡ 事前打合せ済みで入居までの期間を最短化
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Calculator Section -->
+    <section class="calculator-section">
+      <div class="container">
+        <h2 class="section-title">リフォーム一体型<span class="gold-accent">簡易シミュレーター</span></h2>
+        
+        <div class="calculator-container">
+          <div class="calc-grid">
+            <div class="calc-group">
+              <label for="propertyPrice">物件価格（万円）</label>
+              <input type="number" id="propertyPrice" placeholder="例：2500" value="2500">
+            </div>
+            <div class="calc-group">
+              <label for="reformPrice">リフォーム概算（万円）</label>
+              <input type="number" id="reformPrice" placeholder="例：300" value="300">
+            </div>
+            <div class="calc-group">
+              <label for="downPayment">頭金（万円）</label>
+              <input type="number" id="downPayment" placeholder="例：300" value="300">
+            </div>
+            <div class="calc-group">
+              <label for="loanYears">返済年数</label>
+              <input type="number" id="loanYears" placeholder="例：35" value="35">
+            </div>
+          </div>
+          
+          <button class="cta-primary" onclick="calculate()" style="width:100%">
+            計算する
+          </button>
+          
+          <div class="calc-result" id="calcResult">
+            <div class="calc-result-item">
+              <span class="calc-result-label">総費用（概算）</span>
+              <span class="calc-result-value" id="totalCost">2,800万円</span>
+            </div>
+            <div class="calc-result-item">
+              <span class="calc-result-label">諸費用（7〜10%目安）</span>
+              <span class="calc-result-value" id="otherCost">196〜280万円</span>
+            </div>
+            <div class="calc-result-item">
+              <span class="calc-result-label">借入額</span>
+              <span class="calc-result-value" id="loanAmount">2,500万円</span>
+            </div>
+            <div class="calc-result-item">
+              <span class="calc-result-label">月々返済目安（金利0.5%想定）</span>
+              <span class="calc-result-value" id="monthlyPayment">約65,000円</span>
+            </div>
+          </div>
+          
+          <div class="calc-disclaimer">
+            ※本シミュレーションは概算です。実際の返済額は金融機関の審査・金利により異なります。<br>
+            ※諸費用には仲介手数料、登記費用、ローン諸費用等が含まれます。<br>
+            ※金利は変動する可能性があります。詳細は各金融機関にご確認ください。
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Negotiation Section -->
+    <section class="negotiation-section">
+      <div class="container">
+        <h2 class="section-title">価格だけで終わらせない<br><span class="gold-accent">"条件設計"で総支払を抑える</span></h2>
+        
+        <div class="negotiation-grid">
+          <div class="negotiation-item">
+            <div class="negotiation-icon">📅</div>
+            <div class="negotiation-content">
+              <h3>引渡時期の調整</h3>
+              <p>売主の都合に合わせることで価格交渉の余地を創出</p>
+            </div>
+          </div>
+          
+          <div class="negotiation-item">
+            <div class="negotiation-icon">🔧</div>
+            <div class="negotiation-content">
+              <h3>付帯設備の範囲</h3>
+              <p>エアコン・照明・カーテンレール等の残置交渉で初期費用削減</p>
+            </div>
+          </div>
+          
+          <div class="negotiation-item">
+            <div class="negotiation-icon">🏠</div>
+            <div class="negotiation-content">
+              <h3>軽微な修繕</h3>
+              <p>引渡し前の補修範囲を調整し、自社施工でコスト最適化</p>
+            </div>
+          </div>
+          
+          <div class="negotiation-item">
+            <div class="negotiation-icon">📦</div>
+            <div class="negotiation-content">
+              <h3>残置物の処理</h3>
+              <p>不要品の処分費用を売主負担にする交渉でコスト削減</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- After Service Section -->
+    <section class="after-section">
+      <div class="container">
+        <h2 class="section-title">入居後の"困った"は<br><span class="gold-accent">動画をLINEで送付</span></h2>
+        <p class="section-subtitle">初動判断→手配まで最短化</p>
+        
+        <div class="after-flow">
+          <div class="after-step">
+            <div class="after-step-icon">📱</div>
+            <h3 class="after-step-title">STEP1</h3>
+            <p class="after-step-text">不具合を動画撮影<br>LINEで送信</p>
+          </div>
+          
+          <div class="after-arrow">→</div>
+          
+          <div class="after-step">
+            <div class="after-step-icon">🔍</div>
+            <h3 class="after-step-title">STEP2</h3>
+            <p class="after-step-text">プロが即座に<br>初動判断</p>
+          </div>
+          
+          <div class="after-arrow">→</div>
+          
+          <div class="after-step">
+            <div class="after-step-icon">🔧</div>
+            <h3 class="after-step-title">STEP3</h3>
+            <p class="after-step-text">自社職人を<br>最短手配</p>
+          </div>
+        </div>
+        
+        <p style="text-align:center;color:#666">
+          小さな不具合から大規模改修まで窓口一本化。<br>
+          購入後も末永くサポートいたします。
+        </p>
+      </div>
+    </section>
+    
+    <!-- FAQ Section -->
+    <section class="faq-section">
+      <div class="container">
+        <h2 class="section-title">よくある<span class="gold-accent">ご質問</span></h2>
+        
+        <div class="faq-container">
+          <div class="faq-item">
+            <div class="faq-question">
+              頭金0円での購入は可能ですか？
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              はい、可能です。フルローンに対応した金融機関もご紹介できます。ただし、頭金があることで月々の返済額が軽減され、ローン審査も通りやすくなるメリットがあります。お客様の状況に応じて最適なプランをご提案いたします。
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <div class="faq-question">
+              中古物件×リフォームの注意点は？
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              配管・断熱・耐震性など見えない部分の確認が重要です。当社では購入前の建物診断から、リフォーム一体型ローンのご提案、自社施工による適正価格でのリフォームまでワンストップ対応。購入とリフォームを別々に進めるより、トータルコストを抑えられます。
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <div class="faq-question">
+              ローン審査が不安です
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              提携金融機関が複数あるため、お客様の状況に応じた最適な金融機関をご紹介します。事前審査は最短即日〜3営業日で結果が出ます。必要書類もテンプレート化しており、準備の負担を最小限に抑えます。
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <div class="faq-question">
+              購入後の追加費用はどの程度？
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              固定資産税・都市計画税（年額）、管理費・修繕積立金（マンションの場合）、火災保険料などが主な費用です。購入前に年間維持費をシミュレーションし、無理のない資金計画をサポートします。
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <div class="faq-question">
+              夜間やオンラインでの内見は可能ですか？
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              はい、可能な範囲で対応いたします。360度カメラやVR技術を活用したオンライン内見、LINEビデオ通話での現地案内など、お客様のご都合に合わせて柔軟に対応。夜間のご相談もLINEで承ります。
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Final CTA -->
+    <section class="final-cta">
+      <div class="container">
+        <h2>最短で次の一歩へ</h2>
+        <p>まずは気軽にご相談ください。48時間以内に初回提案をお届けします（目安）</p>
+        
+        <div class="cta-group">
+          <a href="/search.html" class="cta-primary" style="background:#fff;color:var(--gold)" data-analytics="cta:search-final">
+            🔍 物件を探す
+          </a>
+          <a href="tel:0120438639" class="cta-primary" style="background:#fff;color:var(--gold)" data-analytics="cta:call-final">
+            📞 0120-43-8639
+          </a>
+          <a href="#" class="cta-primary" style="background:#fff;color:var(--gold)" data-analytics="cta:line-final">
+            💬 LINEで相談
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <!-- Sticky CTA (Mobile) -->
+  <div class="sticky-cta">
+    <div class="sticky-cta-grid">
+      <a href="/search.html" class="sticky-btn" data-analytics="cta:search-sticky">
+        <span>🔍</span>
+        <span>検索</span>
+      </a>
+      <a href="tel:0120438639" class="sticky-btn" data-analytics="cta:call-sticky">
+        <span>📞</span>
+        <span>電話</span>
+      </a>
+      <a href="#" class="sticky-btn" data-analytics="cta:line-sticky">
+        <span>💬</span>
+        <span>LINE</span>
+      </a>
+    </div>
+  </div>
+  
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>センチュリー21ホームマート</h4>
+          <p style="font-size:14px;line-height:1.8;color:#999">
+            〒635-0821<br>
+            奈良県北葛城郡広陵町笠287-1<br>
+            TEL: 0120-43-8639<br>
+            FAX: 050-3183-9576
+          </p>
+        </div>
+        
+        <div class="footer-section">
+          <h4>サービス</h4>
+          <ul>
+            <li><a href="/search.html">物件検索</a></li>
+            <li><a href="/assessment.html">売却査定</a></li>
+            <li><a href="/voluntary-sale.html">任意売却相談</a></li>
+            <li><a href="/reform-water.html">リフォーム</a></li>
+            <li><a href="/recruit.html">採用情報</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h4>会社情報</h4>
+          <ul>
+            <li><a href="/company/about.html">会社概要</a></li>
+            <li><a href="/company/message.html">代表挨拶</a></li>
+            <li><a href="/company/philosophy.html">企業理念</a></li>
+            <li><a href="/company/access.html">アクセス</a></li>
+            <li><a href="/privacy.html">プライバシーポリシー</a></li>
+            <li><a href="/sitemap.html">サイトマップ</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>© 2025 Century21 HomeMart. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- JavaScript -->
+  <script>
+    // FAQ Toggle
+    document.querySelectorAll('.faq-question').forEach(question => {
+      question.addEventListener('click', function() {
+        const item = this.parentElement;
+        item.classList.toggle('open');
+      });
+    });
+    
+    // Calculator
+    function calculate() {
+      const propertyPrice = parseFloat(document.getElementById('propertyPrice').value) || 0;
+      const reformPrice = parseFloat(document.getElementById('reformPrice').value) || 0;
+      const downPayment = parseFloat(document.getElementById('downPayment').value) || 0;
+      const loanYears = parseFloat(document.getElementById('loanYears').value) || 35;
+      
+      const totalCost = propertyPrice + reformPrice;
+      const otherCostMin = Math.round(totalCost * 0.07);
+      const otherCostMax = Math.round(totalCost * 0.10);
+      const loanAmount = totalCost - downPayment;
+      
+      // Simple monthly payment calculation (0.5% annual rate)
+      const monthlyRate = 0.005 / 12;
+      const numPayments = loanYears * 12;
+      const monthlyPayment = loanAmount * 10000 * (monthlyRate * Math.pow(1 + monthlyRate, numPayments)) / (Math.pow(1 + monthlyRate, numPayments) - 1);
+      
+      document.getElementById('totalCost').textContent = `${totalCost.toLocaleString()}万円`;
+      document.getElementById('otherCost').textContent = `${otherCostMin}〜${otherCostMax}万円`;
+      document.getElementById('loanAmount').textContent = `${loanAmount.toLocaleString()}万円`;
+      document.getElementById('monthlyPayment').textContent = `約${Math.round(monthlyPayment).toLocaleString()}円`;
+    }
+    
+    // Initial calculation
+    calculate();
+  </script>
+  
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "頭金0円での購入は可能ですか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "はい、可能です。フルローンに対応した金融機関もご紹介できます。ただし、頭金があることで月々の返済額が軽減され、ローン審査も通りやすくなるメリットがあります。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "中古物件×リフォームの注意点は？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "配管・断熱・耐震性など見えない部分の確認が重要です。当社では購入前の建物診断から、リフォーム一体型ローンのご提案、自社施工による適正価格でのリフォームまでワンストップ対応。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "ローン審査が不安です",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "提携金融機関が複数あるため、お客様の状況に応じた最適な金融機関をご紹介します。事前審査は最短即日〜3営業日で結果が出ます。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "購入後の追加費用はどの程度？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "固定資産税・都市計画税（年額）、管理費・修繕積立金（マンションの場合）、火災保険料などが主な費用です。購入前に年間維持費をシミュレーションし、無理のない資金計画をサポートします。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "夜間やオンラインでの内見は可能ですか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "はい、可能な範囲で対応いたします。360度カメラやVR技術を活用したオンライン内見、LINEビデオ通話での現地案内など、お客様のご都合に合わせて柔軟に対応。"
+        }
+      }
+    ]
+  }
+  </script>
+</body>
+</html>
