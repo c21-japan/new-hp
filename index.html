@@ -275,6 +275,67 @@
       box-shadow:0 12px 32px rgba(255,182,193,.5);
     }
 
+    /* カテゴリセクション */
+    .category-section{
+      background:linear-gradient(135deg,#F8F6F3,#FFF);
+      padding:60px 0;
+    }
+    .category-grid{
+      display:grid;
+      gap:32px;
+      margin-top:40px;
+    }
+    @media(min-width: 900px){
+      .category-grid{grid-template-columns:repeat(2,1fr)}
+    }
+    .category-block{
+      background:#fff;
+      border-radius:16px;
+      padding:32px;
+      box-shadow:0 8px 24px rgba(0,0,0,.08);
+    }
+    .category-block h3{
+      font-size:24px;
+      margin:0 0 20px;
+      color:var(--gold);
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+    .category-links{
+      display:grid;
+      gap:12px;
+    }
+    .category-link{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      padding:12px 16px;
+      background:#F8F6F3;
+      border-radius:8px;
+      transition:all 0.3s;
+      font-size:14px;
+    }
+    .category-link:hover{
+      background:var(--gold);
+      color:#fff;
+      transform:translateX(8px);
+    }
+    .category-link-new{
+      position:relative;
+    }
+    .category-link-new::after{
+      content:'NEW';
+      position:absolute;
+      right:16px;
+      background:var(--accent-pink);
+      color:#fff;
+      padding:2px 8px;
+      border-radius:999px;
+      font-size:10px;
+      font-weight:700;
+    }
+
     .section-title{text-align:center;margin-bottom:10px}
     .cards{display:grid;gap:14px}
     @media(min-width: 800px){.cards{grid-template-columns:repeat(3,1fr)}}
@@ -340,7 +401,7 @@
           <p class="lead">中古マンションの買取再販、売買仲介、リフォームまで一気通貫。地域に根ざしたスピード対応で、お客様の意思決定を支えます。</p>
           <div class="cta">
             <a class="btn btn--gold" href="assessment.html">📩 売却査定を依頼</a>
-            <a class="btn btn--ghost" href="search.html">🏠 物件を探す</a>
+            <a class="btn btn--ghost" href="properties/search.html">🏠 物件を探す</a>
             <a class="btn btn--green" href="reform-water.html">🚿 リフォーム相談</a>
             <a class="btn btn--pink" href="urico.html">🏢 マンション売却</a>
             <a class="btn btn--ghost" href="recruit.html">💼 採用情報</a>
@@ -351,8 +412,8 @@
           <ul style="margin:10px 0 0 18px; color:#555;">
             <li><span style="color:var(--accent-green);font-weight:600;">【人気】</span> 水回り4点リフォームキャンペーン実施中</li>
             <li><span style="color:var(--accent-pink);font-weight:600;">【NEW】</span> マンション売却専用サービス「URICO」開始</li>
-            <li>新着物件を公開しました（物件情報 → 新着物件）</li>
-            <li>採用サイトを更新しました（採用情報）</li>
+            <li>新着物件を公開しました（<a href="properties/new.html" style="color:var(--gold);text-decoration:underline;">物件情報 → 新着物件</a>）</li>
+            <li>採用サイトを更新しました（<a href="recruit.html" style="color:var(--gold);text-decoration:underline;">採用情報</a>）</li>
           </ul>
         </div>
       </div>
@@ -441,6 +502,112 @@
       </div>
     </section>
 
+    <!-- カテゴリ別ページリンク -->
+    <section class="category-section">
+      <div class="container">
+        <h2 class="section-title">サービス・情報一覧</h2>
+        
+        <div class="category-grid">
+          <!-- 会社案内 -->
+          <div class="category-block">
+            <h3><span>🏢</span>会社案内</h3>
+            <div class="category-links">
+              <a class="category-link" href="company/about.html">
+                <span>📋</span>会社概要
+              </a>
+              <a class="category-link" href="company/message.html">
+                <span>💬</span>代表挨拶
+              </a>
+              <a class="category-link category-link-new" href="company/philosophy.html">
+                <span>🎯</span>企業理念
+              </a>
+              <a class="category-link category-link-new" href="company/staff.html">
+                <span>👥</span>スタッフ紹介
+              </a>
+              <a class="category-link" href="company/access.html">
+                <span>📍</span>アクセスマップ
+              </a>
+            </div>
+          </div>
+
+          <!-- 不動産売買仲介 -->
+          <div class="category-block">
+            <h3><span>🏠</span>不動産売買仲介</h3>
+            <div class="category-links">
+              <a class="category-link" href="properties/list.html">
+                <span>📋</span>売買仲介物件一覧
+              </a>
+              <a class="category-link" href="buy/flow.html">
+                <span>🛒</span>購入の流れ
+              </a>
+              <a class="category-link category-link-new" href="buy/loan-simulation.html">
+                <span>💰</span>ローンシミュレーション
+              </a>
+              <a class="category-link" href="sell/flow.html">
+                <span>🏷️</span>売却の流れ
+              </a>
+              <a class="category-link" href="assessment.html">
+                <span>📊</span>査定依頼
+              </a>
+              <a class="category-link" href="voluntary-sale.html">
+                <span>🤝</span>任意売却相談
+              </a>
+            </div>
+          </div>
+
+          <!-- リフォーム事業 -->
+          <div class="category-block">
+            <h3><span>🔧</span>リフォーム事業</h3>
+            <div class="category-links">
+              <a class="category-link" href="reform-water.html">
+                <span>🚿</span>水回り4点リフォーム
+              </a>
+              <a class="category-link" href="reform/services.html">
+                <span>🏗️</span>サービス内容
+              </a>
+              <a class="category-link" href="reform/cases.html">
+                <span>📸</span>リフォーム事例
+              </a>
+              <a class="category-link" href="reform/flow.html">
+                <span>📝</span>見積もり・施工の流れ
+              </a>
+              <a class="category-link" href="reform/voices.html">
+                <span>💭</span>お客様の声
+              </a>
+              <a class="category-link category-link-new" href="reform/column.html">
+                <span>📰</span>リフォームコラム
+              </a>
+            </div>
+          </div>
+
+          <!-- その他情報 -->
+          <div class="category-block">
+            <h3><span>📢</span>その他情報</h3>
+            <div class="category-links">
+              <a class="category-link" href="properties/new.html">
+                <span>🆕</span>新着物件
+              </a>
+              <a class="category-link" href="news/latest.html">
+                <span>📰</span>最新情報
+              </a>
+              <a class="category-link" href="news/events.html">
+                <span>🎉</span>イベント・キャンペーン
+              </a>
+              <a class="category-link" href="recruit.html">
+                <span>💼</span>採用情報
+              </a>
+              <a class="category-link" href="contact/form.html">
+                <span>✉️</span>お問い合わせ
+              </a>
+              <a class="category-link" href="sitemap.html">
+                <span>🗺️</span>サイトマップ
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Quick Links -->
     <section>
       <div class="container">
@@ -471,8 +638,12 @@
             <p>一緒に働く仲間を募集中。未経験者も大歓迎です。</p>
           </a>
           <a class="card" href="voluntary-sale.html">
-          <h3>🏠 任意売却相談</h3>
-          <p>住宅ローンでお困りの方へ。秘密厳守で無料相談。</p>
+            <h3>🏠 任意売却相談</h3>
+            <p>住宅ローンでお困りの方へ。秘密厳守で無料相談。</p>
+          </a>
+          <a class="card" href="business/overview.html">
+            <h3>📊 売買事業</h3>
+            <p>買取再販・URICO制度など当社独自の事業内容をご紹介。</p>
           </a>
         </div>
       </div>
