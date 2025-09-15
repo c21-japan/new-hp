@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>物件登録 | センチュリー21ホームマート 管理画面</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #A19276;
+            --gold2: #B8A082;
+            --black: #383635;
+            --cream: #F8F6F3;
+            --white: #FFFFFF;
+            --gray: #F8F8F8;
+            --text-gray: #666666;
+            --shadow: 0 8px 24px rgba(0,0,0,0.08);
+            --shadow-hover: 0 12px 32px rgba(0,0,0,0.12);
+            --max-width: 1200px;
+            --success: #22c55e;
+            --danger: #ef4444;
+            --blue: #3b82f6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.6;
+            color: var(--black);
+            background: var(--gray);
+        }
+
+        /* 管理画面ヘッダー */
+        .admin-header {
+            background: var(--black);
+            color: var(--white);
+            padding: 16px 0;
+        }
+
+        .admin-nav {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .admin-logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .admin-user {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        /* メインコンテンツ */
+        .admin-container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 16px;
+        }
+
+        .page-header {
+            background: var(--white);
+            padding: 24px;
+            border-radius: 12px;
+            margin-bottom: 32px;
+            box-shadow: var(--shadow);
+        }
+
+        .page-title {
+            font-size: 28px;
+            font-weight: 900;
+            color: var(--black);
+            margin-bottom: 8px;
+        }
+
+        .page-subtitle {
+            color: var(--text-gray);
+        }
+
+        /* フォームセクション */
+        .form-section {
+            background: var(--white);
+            padding: 32px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow);
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--cream);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-label {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--black);
+        }
+
+        .required {
+            color: var(--danger);
+            margin-left: 4px;
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: all 0.3s;
+            font-family: inherit;
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-hint {
+            font-size: 12px;
+            color: var(--text-gray);
+        }
+
+        /* 画像アップロード */
+        .image-upload-area {
+            border: 2px dashed #e0e0e0;
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+            transition: all 0.3s;
+            cursor: pointer;
+            background: var(--gray);
+        }
+
+        .image-upload-area:hover {
+            border-color: var(--gold);
+            background: var(--cream);
+        }
+
+        .image-upload-area.dragover {
+            border-color: var(--gold);
+            background: var(--cream);
+        }
+
+        .upload-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+            color: var(--gold);
+        }
+
+        .upload-text {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .upload-subtext {
+            font-size: 14px;
+            color: var(--text-gray);
+        }
+
+        .image-preview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .image-preview {
+            position: relative;
+            aspect-ratio: 4/3;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #f0f0f0;
+        }
+
+        .image-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .image-remove {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            width: 28px;
+            height: 28px;
+            background: var(--danger);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+
+        .image-remove:hover {
+            transform: scale(1.1);
+        }
+
+        /* チェックボックスグループ */
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 12px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .checkbox-item label {
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        /* アクションボタン */
+        .form-actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            padding: 32px;
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+        }
+
+        .btn {
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gold), var(--gold2));
+            color: var(--white);
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--gold);
+            border: 2px solid var(--gold);
+        }
+
+        .btn-success {
+            background: var(--success);
+            color: var(--white);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+        }
+
+        /* 成功メッセージ */
+        .success-message {
+            display: none;
+            background: #e8f5e9;
+            border: 2px solid var(--success);
+            color: var(--success);
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 24px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        /* レスポンシブ */
+        @media (max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-actions {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 管理画面ヘッダー -->
+    <header class="admin-header">
+        <nav class="admin-nav">
+            <div class="admin-logo">センチュリー21ホームマート 管理画面</div>
+            <div class="admin-user">
+                <span>👤 乾 佑企</span>
+                <a href="/" style="color: white; text-decoration: none;">サイトを見る</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- メインコンテンツ -->
+    <div class="admin-container">
+        <!-- ページヘッダー -->
+        <div class="page-header">
+            <h1 class="page-title">新規物件登録</h1>
+            <p class="page-subtitle">物件情報を入力して、サイトに公開しましょう</p>
+        </div>
+
+        <!-- 成功メッセージ -->
+        <div class="success-message" id="successMessage">
+            ✅ 物件を登録しました！物件一覧ページに反映されています。
+        </div>
+
+        <!-- 基本情報 -->
+        <form id="propertyForm">
+            <div class="form-section">
+                <h2 class="section-title">基本情報</h2>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label">物件種別<span class="required">*</span></label>
+                        <select class="form-select" id="propertyType" required>
+                            <option value="">選択してください</option>
+                            <option value="マンション">マンション</option>
+                            <option value="戸建て">戸建て</option>
+                            <option value="土地">土地</option>
+                            <option value="店舗・事務所">店舗・事務所</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">取引種別<span class="required">*</span></label>
+                        <select class="form-select" id="transactionType" required>
+                            <option value="">選択してください</option>
+                            <option value="売買">売買</option>
+                            <option value="賃貸">賃貸</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">物件名<span class="required">*</span></label>
+                        <input type="text" class="form-input" id="propertyName" placeholder="例：奈良市西大寺 3LDKマンション" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">価格<span class="required">*</span></label>
+                        <input type="text" class="form-input" id="price" placeholder="例：2480（万円）" required>
+                        <span class="form-hint">万円単位で入力</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 所在地情報 -->
+            <div class="form-section">
+                <h2 class="section-title">所在地情報</h2>
+                <div class="form-grid">
+                    <div class="form-group full-width">
+                        <label class="form-label">住所<span class="required">*</span></label>
+                        <input type="text" class="form-input" id="address" placeholder="例：奈良県奈良市西大寺町1-2-3" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">最寄り駅<span class="required">*</span></label>
+                        <input type="text" class="form-input" id="station" placeholder="例：近鉄大和西大寺駅" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">駅からの距離</label>
+                        <select class="form-select" id="stationDistance">
+                            <option value="">選択してください</option>
+                            <option value="徒歩1分">徒歩1分</option>
+                            <option value="徒歩3分">徒歩3分</option>
+                            <option value="徒歩5分">徒歩5分</option>
+                            <option value="徒歩8分">徒歩8分</option>
+                            <option value="徒歩10分">徒歩10分</option>
+                            <option value="徒歩15分">徒歩15分</option>
+                            <option value="バス10分">バス10分</option>
+                            <option value="バス15分">バス15分</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 物件詳細 -->
+            <div class="form-section">
+                <h2 class="section-title">物件詳細</h2>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label">間取り</label>
+                        <select class="form-select" id="layout">
+                            <option value="">選択してください</option>
+                            <option value="1R">1R</option>
+                            <option value="1K">1K</option>
+                            <option value="1DK">1DK</option>
+                            <option value="1LDK">1LDK</option>
+                            <option value="2K">2K</option>
+                            <option value="2DK">2DK</option>
+                            <option value="2LDK">2LDK</option>
+                            <option value="3K">3K</option>
+                            <option value="3DK">3DK</option>
+                            <option value="3LDK">3LDK</option>
+                            <option value="4LDK">4LDK</option>
+                            <option value="5LDK以上">5LDK以上</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">専有面積</label>
+                        <input type="text" class="form-input" id="area" placeholder="例：75.23">
+                        <span class="form-hint">㎡単位で入力</span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">土地面積</label>
+                        <input type="text" class="form-input" id="landArea" placeholder="例：120.5">
+                        <span class="form-hint">㎡単位で入力</span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">建物面積</label>
+                        <input type="text" class="form-input" id="buildingArea" placeholder="例：95.8">
+                        <span class="form-hint">㎡単位で入力</span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">築年月</label>
+                        <input type="month" class="form-input" id="buildDate">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">階数</label>
+                        <input type="text" class="form-input" id="floor" placeholder="例：5階 / 10階建">
+                    </div>
+                </div>
+            </div>
+
+            <!-- 物件説明 -->
+            <div class="form-section">
+                <h2 class="section-title">物件説明</h2>
+                <div class="form-group">
+                    <label class="form-label">セールスポイント<span class="required">*</span></label>
+                    <textarea class="form-textarea" id="description" placeholder="物件の魅力や特徴を入力してください" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">設備・特徴</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="feature1" value="駐車場あり">
+                            <label for="feature1">駐車場あり</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="feature2" value="南向き">
+                            <label for="feature2">南向き</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="feature3" value="リフォーム済">
+                            <label for="feature3">リフォーム済</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="feature4" value="ペット可">
+                            <label for="feature4">ペット可</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="feature5" value="オートロック">
+                            <label for="feature5">オートロック</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="feature6" value="エレベーター">
+                            <label for="feature6">エレベーター</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="feature7" value="バルコニー">
+                            <label for="feature7">バルコニー</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="feature8" value="追い焚き">
+                            <label for="feature8">追い焚き</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 画像アップロード -->
+            <div class="form-section">
+                <h2 class="section-title">物件画像</h2>
+                <div class="image-upload-area" id="uploadArea">
+                    <input type="file" id="imageInput" multiple accept="image/*" style="display: none;">
+                    <div class="upload-icon">📷</div>
+                    <div class="upload-text">画像をドラッグ＆ドロップ</div>
+                    <div class="upload-subtext">または クリックして選択</div>
+                </div>
+                <div class="image-preview-grid" id="imagePreview"></div>
+            </div>
+
+            <!-- アクションボタン -->
+            <div class="form-actions">
+                <button type="button" class="btn btn-secondary" onclick="saveDraft()">下書き保存</button>
+                <button type="button" class="btn btn-primary" onclick="previewProperty()">プレビュー</button>
+                <button type="submit" class="btn btn-success">物件を公開</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // 画像アップロード処理
+        const uploadArea = document.getElementById('uploadArea');
+        const imageInput = document.getElementById('imageInput');
+        const imagePreview = document.getElementById('imagePreview');
+        let uploadedImages = [];
+
+        uploadArea.addEventListener('click', () => imageInput.click());
+
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.classList.add('dragover');
+        });
+
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.classList.remove('dragover');
+        });
+
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.classList.remove('dragover');
+            handleFiles(e.dataTransfer.files);
+        });
+
+        imageInput.addEventListener('change', (e) => {
+            handleFiles(e.target.files);
+        });
+
+        function handleFiles(files) {
+            Array.from(files).forEach(file => {
+                if (file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        uploadedImages.push(e.target.result);
+                        displayImages();
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
+
+        function displayImages() {
+            imagePreview.innerHTML = uploadedImages.map((img, index) => `
+                <div class="image-preview">
+                    <img src="${img}" alt="物件画像${index + 1}">
+                    <button class="image-remove" onclick="removeImage(${index})">×</button>
+                </div>
+            `).join('');
+        }
+
+        function removeImage(index) {
+            uploadedImages.splice(index, 1);
+            displayImages();
+        }
+
+        // フォーム送信処理
+        document.getElementById('propertyForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // フォームデータを収集
+            const propertyData = {
+                id: 'prop_' + Date.now(),
+                type: document.getElementById('propertyType').value,
+                transactionType: document.getElementById('transactionType').value,
+                title: document.getElementById('propertyName').value,
+                price: document.getElementById('price').value + '万円',
+                address: document.getElementById('address').value,
+                station: document.getElementById('station').value + ' ' + document.getElementById('stationDistance').value,
+                layout: document.getElementById('layout').value,
+                area: document.getElementById('area').value + '㎡',
+                landArea: document.getElementById('landArea').value + '㎡',
+                buildingArea: document.getElementById('buildingArea').value + '㎡',
+                buildDate: document.getElementById('buildDate').value,
+                floor: document.getElementById('floor').value,
+                description: document.getElementById('description').value,
+                features: getSelectedFeatures(),
+                images: uploadedImages,
+                createdAt: new Date().toISOString()
+            };
+            
+            // ローカルストレージに保存
+            saveProperty(propertyData);
+            
+            // 成功メッセージを表示
+            document.getElementById('successMessage').classList.add('show');
+            
+            // フォームをリセット
+            this.reset();
+            uploadedImages = [];
+            imagePreview.innerHTML = '';
+            
+            // 3秒後にメッセージを非表示
+            setTimeout(() => {
+                document.getElementById('successMessage').classList.remove('show');
+            }, 3000);
+        });
+
+        function getSelectedFeatures() {
+            const features = [];
+            for (let i = 1; i <= 8; i++) {
+                const checkbox = document.getElementById('feature' + i);
+                if (checkbox.checked) {
+                    features.push(checkbox.value);
+                }
+            }
+            return features;
+        }
+
+        function saveProperty(propertyData) {
+            // 既存の物件データを取得
+            let properties = JSON.parse(localStorage.getItem('properties') || '[]');
+            
+            // 新しい物件を追加
+            properties.unshift(propertyData);
+            
+            // ローカルストレージに保存
+            localStorage.setItem('properties', JSON.stringify(properties));
+        }
+
+        function saveDraft() {
+            alert('下書きを保存しました');
+        }
+
+        function previewProperty() {
+            // プレビュー用の仮データを作成
+            const previewData = {
+                id: 'preview',
+                type: document.getElementById('propertyType').value,
+                title: document.getElementById('propertyName').value,
+                price: document.getElementById('price').value + '万円',
+                address: document.getElementById('address').value,
+                // ... その他のデータ
+            };
+            
+            // セッションストレージに保存してプレビューページへ
+            sessionStorage.setItem('previewProperty', JSON.stringify(previewData));
+            window.open('/property/detail.html?preview=true', '_blank');
+        }
+    </script>
+</body>
+</html>
