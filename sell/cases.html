@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>不動産売却実績 | センチュリー21ホームマート</title>
-    <meta name="description" content="奈良県・南大阪での不動産売却実績多数。お客様の大切な資産を最適な価格で売却。地域密着の経験と実績でサポートします。">
+    <meta name="description" content="奈良県・南大阪での不動産売却実績8500件以上。お客様の大切な資産を最適な価格で売却。地域密着の経験と実績でサポートします。">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -174,6 +174,13 @@
         .stat-label {
             font-size: 14px;
             color: var(--text-gray);
+        }
+
+        .stat-sublabel {
+            font-size: 12px;
+            color: var(--text-gray);
+            opacity: 0.8;
+            margin-top: 4px;
         }
 
         /* 実績スライダー */
@@ -779,7 +786,7 @@
             <p class="hero-subtitle">
                 地域密着10年以上の実績と信頼<br>
                 売主様の想いに寄り添い、最適な売却をサポート<br>
-                平均2ヶ月以内のスピード成約を実現
+                平均27日のスピード成約を実現
             </p>
         </div>
     </section>
@@ -789,20 +796,24 @@
         <div class="container">
             <div class="stats-grid">
                 <div class="stat-item">
-                    <div class="stat-number">1,847</div>
-                    <div class="stat-label">累計売却実績</div>
+                    <div class="stat-number">1,000件超</div>
+                    <div class="stat-label">累計売却相談実績</div>
+                    <div class="stat-sublabel">（直近1年）</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number">98.6%</div>
+                    <div class="stat-number">100%</div>
                     <div class="stat-label">お客様満足度</div>
+                    <div class="stat-sublabel">（直近10件）</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number">45日</div>
+                    <div class="stat-number">27日</div>
                     <div class="stat-label">平均成約日数</div>
+                    <div class="stat-sublabel">（直近10件）</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number">108%</div>
-                    <div class="stat-label">査定額達成率</div>
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">相場以上の査定率</div>
+                    <div class="stat-sublabel">（直近10件）</div>
                 </div>
             </div>
         </div>
@@ -859,19 +870,19 @@
             <div class="filter-tabs">
                 <div class="filter-tab active" onclick="filterProperties('all')">
                     すべて
-                    <span class="filter-count">300+</span>
+                    <span class="filter-count">8500+</span>
                 </div>
                 <div class="filter-tab" onclick="filterProperties('mansion')">
                     マンション
-                    <span class="filter-count">100+</span>
+                    <span class="filter-count">5500+</span>
                 </div>
                 <div class="filter-tab" onclick="filterProperties('house')">
                     戸建て
-                    <span class="filter-count">100+</span>
+                    <span class="filter-count">1500+</span>
                 </div>
                 <div class="filter-tab" onclick="filterProperties('land')">
                     土地
-                    <span class="filter-count">100+</span>
+                    <span class="filter-count">1500+</span>
                 </div>
             </div>
 
@@ -1087,26 +1098,27 @@
             allProperties.push(generateProperty(i));
         }
 
-        // マンション100件
+        // マンション5500件
         let mansionProperties = [];
-        for (let i = 0; i < 100; i++) {
+        for (let i = 0; i < 5500; i++) {
             mansionProperties.push(generateProperty(i + 50, 'mansion'));
         }
 
-        // 戸建て100件
+        // 戸建て1500件
         let houseProperties = [];
-        for (let i = 0; i < 100; i++) {
-            houseProperties.push(generateProperty(i + 150, 'house'));
+        for (let i = 0; i < 1500; i++) {
+            houseProperties.push(generateProperty(i + 5550, 'house'));
         }
 
-        // 土地100件
+        // 土地1500件
         let landProperties = [];
-        for (let i = 0; i < 100; i++) {
-            landProperties.push(generateProperty(i + 250, 'land'));
+        for (let i = 0; i < 1500; i++) {
+            landProperties.push(generateProperty(i + 7050, 'land'));
         }
 
         // スライダー初期化
         let currentSlide = 0;
+        let autoSlideInterval;
         const sliderWrapper = document.getElementById('sliderWrapper');
         const sliderControls = document.getElementById('sliderControls');
 
@@ -1158,11 +1170,13 @@
             if (currentSlide >= slides.length) currentSlide = 0;
             if (currentSlide < 0) currentSlide = slides.length - 1;
             updateSlider();
+            resetAutoSlide();
         }
 
         function goToSlide(index) {
             currentSlide = index;
             updateSlider();
+            resetAutoSlide();
         }
 
         function updateSlider() {
@@ -1175,10 +1189,17 @@
             });
         }
 
-        // 自動スライド
-        setInterval(() => {
+        function resetAutoSlide() {
+            clearInterval(autoSlideInterval);
+            autoSlideInterval = setInterval(() => {
+                changeSlide(1);
+            }, 4000);
+        }
+
+        // 自動スライド（4秒ごと）
+        autoSlideInterval = setInterval(() => {
             changeSlide(1);
-        }, 2000);
+        }, 4000);
 
         // グリッド表示
         let currentFilter = 'all';
@@ -1212,10 +1233,18 @@
                     properties = landProperties;
                     break;
                 default:
-                    properties = [...mansionProperties.slice(0, 34), ...houseProperties.slice(0, 33), ...landProperties.slice(0, 33)];
+                    // すべての場合は各タイプから比例配分
+                    const mansionCount = Math.floor(displayCount * 0.65); // 65%
+                    const houseCount = Math.floor(displayCount * 0.175); // 17.5%
+                    const landCount = Math.floor(displayCount * 0.175); // 17.5%
+                    properties = [
+                        ...mansionProperties.slice(0, mansionCount),
+                        ...houseProperties.slice(0, houseCount),
+                        ...landProperties.slice(0, landCount)
+                    ];
             }
             
-            const displayProperties = properties.slice(0, displayCount);
+            const displayProperties = currentFilter === 'all' ? properties : properties.slice(0, displayCount);
             
             gridContainer.innerHTML = displayProperties.map(property => `
                 <div class="achievement-card" onclick="openModal(${property.id})">
@@ -1246,6 +1275,9 @@
             
             // もっと見るボタンの表示/非表示
             const loadMoreBtn = document.querySelector('.load-more-btn');
+            if (currentFilter === 'all') {
+                displayCount = 12;
+            }
             if (displayCount >= properties.length) {
                 loadMoreBtn.style.display = 'none';
             } else {
@@ -1254,8 +1286,52 @@
         }
 
         function loadMore() {
-            displayCount += 12;
-            renderGrid();
+            if (currentFilter === 'all') {
+                displayCount += 12;
+                const mansionCount = Math.floor(displayCount * 0.65);
+                const houseCount = Math.floor(displayCount * 0.175);
+                const landCount = Math.floor(displayCount * 0.175);
+                const properties = [
+                    ...mansionProperties.slice(0, mansionCount),
+                    ...houseProperties.slice(0, houseCount),
+                    ...landProperties.slice(0, landCount)
+                ];
+                
+                const gridContainer = document.getElementById('gridContainer');
+                gridContainer.innerHTML = properties.map(property => `
+                    <div class="achievement-card" onclick="openModal(${property.id})">
+                        <div class="card-image">
+                            <img src="urico_milk.jpg" alt="${property.title}">
+                            <span class="sold-badge" style="position: absolute; top: 12px; right: 12px;">SOLD</span>
+                        </div>
+                        <div class="card-content">
+                            <span class="card-badge">${property.typeName}</span>
+                            <h3 class="card-title">${property.title}</h3>
+                            <div class="card-details">
+                                <div class="card-detail">
+                                    <span>📅</span>
+                                    <span>${property.built}${property.type !== 'land' ? '建築' : ''}</span>
+                                </div>
+                                <div class="card-detail">
+                                    <span>⏱️</span>
+                                    <span>成約期間：${property.period}</span>
+                                </div>
+                                <div class="card-detail">
+                                    <span>💰</span>
+                                    <span>${property.price}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+                
+                if (displayCount >= 100) {
+                    document.querySelector('.load-more-btn').style.display = 'none';
+                }
+            } else {
+                displayCount += 12;
+                renderGrid();
+            }
         }
 
         // モーダル制御
