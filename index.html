@@ -22,6 +22,8 @@
       --c21-red: #DC143C;
       --c21-green: #22C55E;
       --c21-blue: #0066CC;
+      --c21-success: #10B981;
+      --c21-pink: #FFB6C1;
       
       --max-width: 1280px;
       --header-height: 80px;
@@ -232,7 +234,9 @@
     }
     
     .dropdown-link {
-      display: block;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       padding: 10px 20px;
       color: var(--c21-gray);
       font-size: 14px;
@@ -243,6 +247,15 @@
       background: var(--c21-gray-light);
       color: var(--c21-gold);
       padding-left: 24px;
+    }
+    
+    .dropdown-badge {
+      background: var(--c21-success);
+      color: var(--c21-white);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 10px;
+      font-weight: 600;
     }
     
     /* ヘッダーCTA */
@@ -434,84 +447,367 @@
       transform: translateY(-2px);
     }
     
-    /* ヒーローカード */
+    /* ヒーローカード（インタラクティブ化） */
     .hero-card {
+      background: var(--c21-white);
+      border-radius: 16px;
+      padding: 0;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero-card-tabs {
+      display: flex;
+      background: var(--c21-gray-light);
+      border-radius: 16px 16px 0 0;
+    }
+    
+    .hero-card-tab {
+      flex: 1;
+      padding: 12px;
+      background: transparent;
+      border: none;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      transition: var(--transition);
+      color: var(--c21-gray);
+    }
+    
+    .hero-card-tab.active {
+      background: var(--c21-white);
+      color: var(--c21-gold);
+    }
+    
+    .hero-card-content {
+      padding: 24px;
+      min-height: 300px;
+    }
+    
+    .tab-panel {
+      display: none;
+    }
+    
+    .tab-panel.active {
+      display: block;
+      animation: fadeIn 0.3s;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    /* ==== インタラクティブシミュレーター ==== */
+    .simulator-widget {
+      background: linear-gradient(135deg, #FFF5F0, #FFF);
+      border-radius: 12px;
+      padding: 20px;
+    }
+    
+    .simulator-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--c21-black);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .simulator-control {
+      margin-bottom: 20px;
+    }
+    
+    .simulator-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--c21-gray);
+      margin-bottom: 8px;
+      display: block;
+    }
+    
+    .simulator-slider {
+      width: 100%;
+      height: 8px;
+      background: #E5E5E5;
+      border-radius: 4px;
+      outline: none;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    
+    .simulator-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 24px;
+      height: 24px;
+      background: var(--c21-gold);
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: var(--shadow-md);
+    }
+    
+    .simulator-slider::-moz-range-thumb {
+      width: 24px;
+      height: 24px;
+      background: var(--c21-gold);
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: var(--shadow-md);
+    }
+    
+    .simulator-value {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--c21-gold);
+      text-align: center;
+      margin: 12px 0;
+    }
+    
+    .simulator-result {
+      background: var(--c21-gold);
+      color: var(--c21-white);
+      padding: 16px;
+      border-radius: 8px;
+      text-align: center;
+      margin-top: 20px;
+    }
+    
+    .simulator-result-label {
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+    
+    .simulator-result-value {
+      font-size: 32px;
+      font-weight: 900;
+    }
+    
+    .simulator-buttons {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    
+    .simulator-btn {
+      padding: 10px;
+      background: var(--c21-white);
+      border: 2px solid #E5E5E5;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    
+    .simulator-btn.active {
+      background: var(--c21-gold);
+      color: var(--c21-white);
+      border-color: var(--c21-gold);
+    }
+    
+    /* ==== マッチング診断 ==== */
+    .matching-widget {
+      text-align: center;
+    }
+    
+    .matching-icon {
+      font-size: 64px;
+      margin-bottom: 16px;
+      animation: bounce 2s infinite;
+    }
+    
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    .matching-count {
+      font-size: 48px;
+      font-weight: 900;
+      color: var(--c21-pink);
+      margin-bottom: 8px;
+    }
+    
+    .matching-label {
+      font-size: 16px;
+      color: var(--c21-gray);
+      margin-bottom: 20px;
+    }
+    
+    .matching-progress {
+      background: #E5E5E5;
+      height: 8px;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+    
+    .matching-progress-bar {
+      background: linear-gradient(90deg, var(--c21-pink), var(--c21-gold));
+      height: 100%;
+      width: 0%;
+      transition: width 1s ease;
+      animation: progressPulse 2s infinite;
+    }
+    
+    @keyframes progressPulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.8; }
+    }
+    
+    /* ==== ゲーミフィケーション要素 ==== */
+    .game-section {
+      padding: 80px 0;
+      background: linear-gradient(135deg, #F0F8FF, #FFF);
+    }
+    
+    .game-container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    
+    .game-title {
+      text-align: center;
+      font-size: clamp(28px, 4vw, 36px);
+      font-weight: 900;
+      margin-bottom: 16px;
+      color: var(--c21-black);
+    }
+    
+    .game-subtitle {
+      text-align: center;
+      font-size: 16px;
+      color: var(--c21-gray);
+      margin-bottom: 48px;
+    }
+    
+    .game-cards {
+      display: grid;
+      gap: 32px;
+    }
+    
+    @media (min-width: 768px) {
+      .game-cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    .game-card {
       background: var(--c21-white);
       border-radius: 16px;
       padding: 32px;
       box-shadow: var(--shadow-lg);
+      transition: var(--transition);
+      cursor: pointer;
       position: relative;
+      overflow: hidden;
     }
     
-    .hero-card::before {
-      content: 'NEWS';
+    .game-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-xl);
+    }
+    
+    .game-card::before {
+      content: '🎮 体験する';
       position: absolute;
-      top: -12px;
-      left: 32px;
-      background: var(--c21-red);
-      color: var(--c21-white);
-      padding: 4px 16px;
-      border-radius: 999px;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 1px;
-    }
-    
-    .hero-card h3 {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--c21-black);
-      margin-bottom: 20px;
-    }
-    
-    .news-list {
-      list-style: none;
-    }
-    
-    .news-item {
-      padding: 12px 0;
-      border-bottom: 1px solid #E5E5E5;
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-    }
-    
-    .news-item:last-child {
-      border-bottom: none;
-    }
-    
-    .news-badge {
+      top: 16px;
+      right: 16px;
       background: var(--c21-gold);
       color: var(--c21-white);
-      padding: 2px 8px;
-      border-radius: 4px;
-      font-size: 11px;
-      font-weight: 600;
-      white-space: nowrap;
-      margin-top: 2px;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
     }
     
-    .news-badge.new {
-      background: var(--c21-red);
+    /* ==== 売却方法比較ツール ==== */
+    .comparison-tool {
+      background: var(--c21-white);
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: var(--shadow-lg);
     }
     
-    .news-badge.hot {
-      background: var(--c21-green);
+    .comparison-header {
+      text-align: center;
+      margin-bottom: 32px;
     }
     
-    .news-text {
-      flex: 1;
+    .comparison-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--c21-black);
+      margin-bottom: 8px;
+    }
+    
+    .comparison-options {
+      display: grid;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    
+    @media (min-width: 768px) {
+      .comparison-options {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    
+    .comparison-option {
+      background: var(--c21-gray-light);
+      border: 2px solid transparent;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    
+    .comparison-option:hover {
+      border-color: var(--c21-gold);
+    }
+    
+    .comparison-option.selected {
+      background: linear-gradient(135deg, var(--c21-gold-light), var(--c21-gold));
+      color: var(--c21-white);
+      border-color: var(--c21-gold);
+    }
+    
+    .comparison-icon {
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
+    
+    .comparison-name {
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    
+    .comparison-desc {
+      font-size: 12px;
+    }
+    
+    .comparison-result {
+      background: linear-gradient(135deg, #F0FFF0, #FFF);
+      border: 2px solid var(--c21-green);
+      border-radius: 12px;
+      padding: 24px;
+      text-align: center;
+    }
+    
+    .comparison-result-value {
+      font-size: 36px;
+      font-weight: 900;
+      color: var(--c21-green);
+      margin-bottom: 8px;
+    }
+    
+    .comparison-result-label {
       font-size: 14px;
-      line-height: 1.6;
-    }
-    
-    .news-link {
-      color: var(--c21-blue);
-      text-decoration: underline;
-    }
-    
-    .news-link:hover {
-      color: var(--c21-gold);
+      color: var(--c21-gray);
     }
     
     /* ==== 特徴セクション ==== */
@@ -650,12 +946,30 @@
       transition: var(--transition);
       cursor: pointer;
       border: 2px solid transparent;
+      position: relative;
     }
     
     .service-card:hover {
       border-color: var(--c21-gold);
       transform: translateY(-4px);
       box-shadow: var(--shadow-lg);
+    }
+    
+    .service-card.complete::after {
+      content: '✓';
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 24px;
+      height: 24px;
+      background: var(--c21-success);
+      color: var(--c21-white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
     }
     
     .service-header {
@@ -865,35 +1179,72 @@
               <li class="nav-item">
                 <a href="#" class="nav-link">会社案内</a>
                 <div class="nav-dropdown">
-                  <a href="/company/about.html" class="dropdown-link">会社概要</a>
-                  <a href="/company/message.html" class="dropdown-link">代表挨拶</a>
-                  <a href="/company/philosophy.html" class="dropdown-link">企業理念</a>
-                  <a href="/company/staff.html" class="dropdown-link">スタッフ紹介</a>
-                  <a href="/company/access.html" class="dropdown-link">アクセス</a>
+                  <a href="/company/about.html" class="dropdown-link">
+                    会社概要
+                    <span class="dropdown-badge">✓</span>
+                  </a>
+                  <a href="/company/message.html" class="dropdown-link">
+                    代表挨拶
+                    <span class="dropdown-badge">✓</span>
+                  </a>
+                  <a href="/company/philosophy.html" class="dropdown-link">
+                    企業理念
+                    <span class="dropdown-badge">✓</span>
+                  </a>
+                  <a href="/company/staff.html" class="dropdown-link">
+                    スタッフ紹介
+                    <span class="dropdown-badge">✓</span>
+                  </a>
+                  <a href="/company/access.html" class="dropdown-link">
+                    アクセス
+                    <span class="dropdown-badge">✓</span>
+                  </a>
                 </div>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">売買物件</a>
                 <div class="nav-dropdown">
-                  <a href="/properties/search.html" class="dropdown-link">物件を探す</a>
+                  <a href="/search.html" class="dropdown-link">
+                    物件を探す
+                    <span class="dropdown-badge">✓</span>
+                  </a>
                   <a href="/properties/new.html" class="dropdown-link">新着物件</a>
-                  <a href="/buy/flow.html" class="dropdown-link">購入の流れ</a>
+                  <a href="/buy/flow.html" class="dropdown-link">
+                    購入の流れ
+                    <span class="dropdown-badge">✓</span>
+                  </a>
                   <a href="/buy/loan-simulation.html" class="dropdown-link">ローンシミュレーション</a>
                 </div>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">売却相談</a>
                 <div class="nav-dropdown">
-                  <a href="/assessment.html" class="dropdown-link">無料査定</a>
-                  <a href="/sell/flow.html" class="dropdown-link">売却の流れ</a>
-                  <a href="/urico.html" class="dropdown-link">URICO（マンション売却）</a>
-                  <a href="/voluntary-sale.html" class="dropdown-link">任意売却</a>
+                  <a href="/assessment.html" class="dropdown-link">
+                    無料査定
+                    <span class="dropdown-badge">✓</span>
+                  </a>
+                  <a href="/sell/flow.html" class="dropdown-link">
+                    売却の流れ
+                    <span class="dropdown-badge">✓</span>
+                  </a>
+                  <a href="/sell/cases.html" class="dropdown-link">
+                    不動産売却実績
+                    <span class="dropdown-badge">✓</span>
+                  </a>
+                  <a href="/urico.html" class="dropdown-link">URICO（作成中）</a>
+                  <a href="/voluntary-sale.html" class="dropdown-link">
+                    任意売却
+                    <span class="dropdown-badge">✓</span>
+                  </a>
                 </div>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">リフォーム</a>
                 <div class="nav-dropdown">
-                  <a href="/reform-water.html" class="dropdown-link">水回り4点リフォーム</a>
+                  <a href="/reform-water.html" class="dropdown-link">
+                    水回り4点リフォーム
+                    <span class="dropdown-badge">✓</span>
+                  </a>
                   <a href="/reform/services.html" class="dropdown-link">サービス一覧</a>
                   <a href="/reform/cases.html" class="dropdown-link">施工事例</a>
                   <a href="/reform/flow.html" class="dropdown-link">施工の流れ</a>
@@ -924,7 +1275,7 @@
   
   <!-- メインコンテンツ -->
   <main>
-    <!-- ヒーローセクション -->
+    <!-- ヒーローセクション（インタラクティブ版） -->
     <section class="hero">
       <div class="container">
         <div class="hero-content">
@@ -944,44 +1295,199 @@
                 <span>📊</span>
                 <span>無料査定を申し込む</span>
               </a>
-              <a href="/properties/search.html" class="btn-secondary">
+              <a href="/search.html" class="btn-secondary">
                 <span>🏠</span>
                 <span>物件を探す</span>
               </a>
             </div>
           </div>
           
+          <!-- インタラクティブカード -->
           <div class="hero-card">
-            <h3>📢 最新のお知らせ</h3>
-            <ul class="news-list">
-              <li class="news-item">
-                <span class="news-badge hot">HOT</span>
-                <span class="news-text">
-                  水回り4点リフォームキャンペーン実施中！工事費20%OFF
-                  <a href="/reform-water.html" class="news-link">詳細はこちら</a>
-                </span>
-              </li>
-              <li class="news-item">
-                <span class="news-badge new">NEW</span>
-                <span class="news-text">
-                  マンション売却サービス「URICO」がスタートしました
-                  <a href="/urico.html" class="news-link">詳細はこちら</a>
-                </span>
-              </li>
-              <li class="news-item">
-                <span class="news-badge">更新</span>
-                <span class="news-text">
-                  2025年3月 センチュリー21広陵店オープン予定
-                </span>
-              </li>
-              <li class="news-item">
-                <span class="news-badge">採用</span>
-                <span class="news-text">
-                  営業スタッフ・リフォーム職人募集中
-                  <a href="/recruit.html" class="news-link">詳細はこちら</a>
-                </span>
-              </li>
-            </ul>
+            <div class="hero-card-tabs">
+              <button class="hero-card-tab active" onclick="switchTab('news')">📢 最新情報</button>
+              <button class="hero-card-tab" onclick="switchTab('simulator')">💰 査定計算</button>
+              <button class="hero-card-tab" onclick="switchTab('matching')">🏢 URICO診断</button>
+            </div>
+            
+            <div class="hero-card-content">
+              <!-- 最新情報タブ -->
+              <div class="tab-panel active" id="tab-news">
+                <ul style="list-style: none; padding: 0;">
+                  <li style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; display: flex; align-items: flex-start; gap: 12px;">
+                    <span style="background: var(--c21-green); color: white; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600;">HOT</span>
+                    <span style="flex: 1; font-size: 14px;">
+                      水回り4点リフォームキャンペーン実施中！工事費20%OFF
+                      <a href="/reform-water.html" style="color: var(--c21-blue); text-decoration: underline;">詳細</a>
+                    </span>
+                  </li>
+                  <li style="padding: 12px 0; border-bottom: 1px solid #E5E5E5; display: flex; align-items: flex-start; gap: 12px;">
+                    <span style="background: var(--c21-success); color: white; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600;">完成</span>
+                    <span style="flex: 1; font-size: 14px;">
+                      会社案内ページが全面リニューアル完了
+                      <a href="/company/about.html" style="color: var(--c21-blue); text-decoration: underline;">詳細</a>
+                    </span>
+                  </li>
+                  <li style="padding: 12px 0; display: flex; align-items: flex-start; gap: 12px;">
+                    <span style="background: var(--c21-gold); color: white; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600;">採用</span>
+                    <span style="flex: 1; font-size: 14px;">
+                      営業スタッフ・リフォーム職人募集中
+                      <a href="/recruit.html" style="color: var(--c21-blue); text-decoration: underline;">詳細</a>
+                    </span>
+                  </li>
+                </ul>
+              </div>
+              
+              <!-- 査定シミュレータータブ -->
+              <div class="tab-panel" id="tab-simulator">
+                <div class="simulator-widget">
+                  <h3 class="simulator-title">
+                    <span>🏠</span>
+                    <span>あなたの家、いくらで売れる？</span>
+                  </h3>
+                  
+                  <div class="simulator-control">
+                    <label class="simulator-label">物件種別</label>
+                    <div class="simulator-buttons">
+                      <button class="simulator-btn active" onclick="setPropertyType('mansion')">マンション</button>
+                      <button class="simulator-btn" onclick="setPropertyType('house')">一戸建て</button>
+                    </div>
+                  </div>
+                  
+                  <div class="simulator-control">
+                    <label class="simulator-label">築年数：<span id="age-value">15</span>年</label>
+                    <input type="range" class="simulator-slider" id="age-slider" min="0" max="50" value="15" oninput="updateAge()">
+                  </div>
+                  
+                  <div class="simulator-control">
+                    <label class="simulator-label">広さ：<span id="size-value">70</span>㎡</label>
+                    <input type="range" class="simulator-slider" id="size-slider" min="20" max="150" value="70" oninput="updateSize()">
+                  </div>
+                  
+                  <div class="simulator-result">
+                    <div class="simulator-result-label">予想売却価格</div>
+                    <div class="simulator-result-value" id="price-result">2,450万円</div>
+                  </div>
+                  
+                  <div style="text-align: center; margin-top: 16px;">
+                    <a href="/assessment.html" class="btn-primary" style="font-size: 14px; padding: 12px 24px;">
+                      正確な査定を依頼する
+                    </a>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- URICOマッチング診断タブ -->
+              <div class="tab-panel" id="tab-matching">
+                <div class="matching-widget">
+                  <div class="matching-icon">🏢</div>
+                  <div class="matching-count" id="matching-count">0</div>
+                  <div class="matching-label">人の購入希望者が<br>あなたのマンションを狙っています！</div>
+                  
+                  <div class="matching-progress">
+                    <div class="matching-progress-bar" id="matching-bar"></div>
+                  </div>
+                  
+                  <div style="margin-bottom: 20px;">
+                    <label style="font-size: 14px; font-weight: 600; display: block; margin-bottom: 8px;">エリアを選択</label>
+                    <select style="width: 100%; padding: 10px; border: 2px solid #E5E5E5; border-radius: 8px;" onchange="updateMatching()">
+                      <option>大阪市北区</option>
+                      <option>大阪市中央区</option>
+                      <option>奈良市</option>
+                      <option>生駒市</option>
+                      <option>橿原市</option>
+                    </select>
+                  </div>
+                  
+                  <a href="/urico.html" class="btn-primary" style="width: 100%; justify-content: center;">
+                    URICOで売却相談
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- ゲーミフィケーションセクション -->
+    <section class="game-section">
+      <div class="container">
+        <div class="game-container">
+          <h2 class="game-title">🎮 楽しく学ぶ不動産売却</h2>
+          <p class="game-subtitle">シミュレーターで最適な売却方法を見つけよう</p>
+          
+          <div class="game-cards">
+            <!-- 売却方法比較ツール -->
+            <div class="game-card">
+              <div class="comparison-tool">
+                <div class="comparison-header">
+                  <h3 class="comparison-title">売却方法で変わる手取り額</h3>
+                  <p style="font-size: 14px; color: var(--c21-gray);">2,000万円の物件を売却した場合</p>
+                </div>
+                
+                <div class="comparison-options">
+                  <div class="comparison-option selected" onclick="selectMethod('buyback')">
+                    <div class="comparison-icon">🏆</div>
+                    <div class="comparison-name">買取再販</div>
+                    <div class="comparison-desc">利益80%還元</div>
+                  </div>
+                  <div class="comparison-option" onclick="selectMethod('mediation')">
+                    <div class="comparison-icon">🤝</div>
+                    <div class="comparison-name">仲介売却</div>
+                    <div class="comparison-desc">市場価格</div>
+                  </div>
+                  <div class="comparison-option" onclick="selectMethod('instant')">
+                    <div class="comparison-icon">⚡</div>
+                    <div class="comparison-name">即時買取</div>
+                    <div class="comparison-desc">スピード重視</div>
+                  </div>
+                </div>
+                
+                <div class="comparison-result">
+                  <div class="comparison-result-value" id="method-result">2,100万円</div>
+                  <div class="comparison-result-label">最終手取り額（諸費用差引後）</div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- リフォーム費用計算 -->
+            <div class="game-card">
+              <div class="comparison-tool">
+                <div class="comparison-header">
+                  <h3 class="comparison-title">水回りリフォーム見積もり</h3>
+                  <p style="font-size: 14px; color: var(--c21-gray);">選択した設備の概算費用</p>
+                </div>
+                
+                <div style="display: grid; gap: 12px; margin-bottom: 24px;">
+                  <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                    <input type="checkbox" checked onchange="updateReform()" data-price="50" style="width: 20px; height: 20px;">
+                    <span>🍳 キッチン（50万円〜）</span>
+                  </label>
+                  <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                    <input type="checkbox" checked onchange="updateReform()" data-price="60" style="width: 20px; height: 20px;">
+                    <span>🛁 浴室（60万円〜）</span>
+                  </label>
+                  <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                    <input type="checkbox" checked onchange="updateReform()" data-price="30" style="width: 20px; height: 20px;">
+                    <span>🚿 洗面所（30万円〜）</span>
+                  </label>
+                  <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                    <input type="checkbox" checked onchange="updateReform()" data-price="18" style="width: 20px; height: 20px;">
+                    <span>🚽 トイレ（18万円〜）</span>
+                  </label>
+                </div>
+                
+                <div class="comparison-result" style="background: linear-gradient(135deg, #F0FFF0, #FFF); border-color: var(--c21-green);">
+                  <div class="comparison-result-value" id="reform-result" style="color: var(--c21-green);">158万円〜</div>
+                  <div class="comparison-result-label">概算費用（キャンペーン価格）</div>
+                  <div style="margin-top: 12px; padding: 8px; background: white; border-radius: 8px;">
+                    <span style="text-decoration: line-through; color: #999;">通常価格: 198万円</span>
+                    <span style="color: var(--c21-red); font-weight: 700; margin-left: 8px;">40万円OFF!</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -1032,7 +1538,7 @@
         </div>
         
         <div class="services-grid">
-          <a href="/properties/search.html" class="service-card">
+          <a href="/search.html" class="service-card complete">
             <div class="service-header">
               <div class="service-icon">🏠</div>
               <h3 class="service-title">物件購入</h3>
@@ -1043,7 +1549,7 @@
             <span class="service-link">詳しく見る →</span>
           </a>
           
-          <a href="/assessment.html" class="service-card">
+          <a href="/assessment.html" class="service-card complete">
             <div class="service-header">
               <div class="service-icon">📊</div>
               <h3 class="service-title">売却査定</h3>
@@ -1054,7 +1560,7 @@
             <span class="service-link">詳しく見る →</span>
           </a>
           
-          <a href="/reform-water.html" class="service-card">
+          <a href="/reform-water.html" class="service-card complete">
             <div class="service-header">
               <div class="service-icon">🚿</div>
               <h3 class="service-title">リフォーム</h3>
@@ -1071,12 +1577,12 @@
               <h3 class="service-title">URICO</h3>
             </div>
             <p class="service-desc">
-              マンション売却の新サービス。購入希望者と直接マッチング。
+              マンション売却の新サービス。購入希望者と直接マッチング。（準備中）
             </p>
             <span class="service-link">詳しく見る →</span>
           </a>
           
-          <a href="/voluntary-sale.html" class="service-card">
+          <a href="/voluntary-sale.html" class="service-card complete">
             <div class="service-header">
               <div class="service-icon">🤝</div>
               <h3 class="service-title">任意売却</h3>
@@ -1087,18 +1593,18 @@
             <span class="service-link">詳しく見る →</span>
           </a>
           
-          <a href="/business/overview.html" class="service-card">
+          <a href="/sell/cases.html" class="service-card complete">
             <div class="service-header">
-              <div class="service-icon">💼</div>
-              <h3 class="service-title">買取再販</h3>
+              <div class="service-icon">📈</div>
+              <h3 class="service-title">売却実績</h3>
             </div>
             <p class="service-desc">
-              独自の買取再販制度で、売却益の80%を還元。高額売却を実現。
+              豊富な売却実績と成功事例。お客様の声と共にご紹介。
             </p>
             <span class="service-link">詳しく見る →</span>
           </a>
           
-          <a href="/company/about.html" class="service-card">
+          <a href="/company/about.html" class="service-card complete">
             <div class="service-header">
               <div class="service-icon">🏆</div>
               <h3 class="service-title">会社案内</h3>
@@ -1109,7 +1615,7 @@
             <span class="service-link">詳しく見る →</span>
           </a>
           
-          <a href="/recruit.html" class="service-card">
+          <a href="/recruit.html" class="service-card complete">
             <div class="service-header">
               <div class="service-icon">👥</div>
               <h3 class="service-title">採用情報</h3>
@@ -1150,7 +1656,7 @@
         <div class="footer-section">
           <h4>物件情報</h4>
           <ul class="footer-links">
-            <li><a href="/properties/search.html">物件を探す</a></li>
+            <li><a href="/search.html">物件を探す</a></li>
             <li><a href="/properties/new.html">新着物件</a></li>
             <li><a href="/buy/flow.html">購入の流れ</a></li>
             <li><a href="/buy/loan-simulation.html">ローンシミュレーション</a></li>
@@ -1162,6 +1668,7 @@
           <ul class="footer-links">
             <li><a href="/assessment.html">無料査定</a></li>
             <li><a href="/sell/flow.html">売却の流れ</a></li>
+            <li><a href="/sell/cases.html">売却実績</a></li>
             <li><a href="/urico.html">URICO</a></li>
             <li><a href="/voluntary-sale.html">任意売却</a></li>
           </ul>
@@ -1172,6 +1679,7 @@
           <ul class="footer-links">
             <li><a href="/company/about.html">会社概要</a></li>
             <li><a href="/company/message.html">代表挨拶</a></li>
+            <li><a href="/company/philosophy.html">企業理念</a></li>
             <li><a href="/company/staff.html">スタッフ紹介</a></li>
             <li><a href="/company/access.html">アクセス</a></li>
             <li><a href="/privacy.html">プライバシーポリシー</a></li>
@@ -1184,5 +1692,114 @@
       </div>
     </div>
   </footer>
+  
+  <script>
+    // タブ切り替え
+    function switchTab(tabName) {
+      // タブボタンのアクティブ状態を更新
+      document.querySelectorAll('.hero-card-tab').forEach(tab => {
+        tab.classList.remove('active');
+      });
+      event.target.classList.add('active');
+      
+      // タブパネルの表示を更新
+      document.querySelectorAll('.tab-panel').forEach(panel => {
+        panel.classList.remove('active');
+      });
+      document.getElementById('tab-' + tabName).classList.add('active');
+      
+      // マッチング診断の初期化
+      if (tabName === 'matching') {
+        setTimeout(() => {
+          updateMatching();
+        }, 300);
+      }
+    }
+    
+    // 物件価格シミュレーター
+    let propertyType = 'mansion';
+    
+    function setPropertyType(type) {
+      propertyType = type;
+      document.querySelectorAll('.simulator-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      event.target.classList.add('active');
+      calculatePrice();
+    }
+    
+    function updateAge() {
+      document.getElementById('age-value').textContent = document.getElementById('age-slider').value;
+      calculatePrice();
+    }
+    
+    function updateSize() {
+      document.getElementById('size-value').textContent = document.getElementById('size-slider').value;
+      calculatePrice();
+    }
+    
+    function calculatePrice() {
+      const age = parseInt(document.getElementById('age-slider').value);
+      const size = parseInt(document.getElementById('size-slider').value);
+      
+      let basePrice = propertyType === 'mansion' ? 50 : 40;
+      let price = basePrice * size;
+      
+      // 築年数による減価
+      price = price * (1 - age * 0.015);
+      
+      // ランダム要素を追加（リアル感を出すため）
+      price = price * (0.9 + Math.random() * 0.2);
+      
+      document.getElementById('price-result').textContent = 
+        Math.round(price / 10) * 10 + '万円';
+    }
+    
+    // URICOマッチング診断
+    function updateMatching() {
+      const count = Math.floor(Math.random() * 20) + 5;
+      let current = 0;
+      
+      const interval = setInterval(() => {
+        current++;
+        document.getElementById('matching-count').textContent = current;
+        document.getElementById('matching-bar').style.width = (current / count * 100) + '%';
+        
+        if (current >= count) {
+          clearInterval(interval);
+        }
+      }, 50);
+    }
+    
+    // 売却方法比較
+    function selectMethod(method) {
+      document.querySelectorAll('.comparison-option').forEach(opt => {
+        opt.classList.remove('selected');
+      });
+      event.currentTarget.classList.add('selected');
+      
+      let result = '2,100万円';
+      if (method === 'mediation') {
+        result = '1,940万円';
+      } else if (method === 'instant') {
+        result = '1,700万円';
+      }
+      
+      document.getElementById('method-result').textContent = result;
+    }
+    
+    // リフォーム費用計算
+    function updateReform() {
+      let total = 0;
+      document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+        if (checkbox.checked) {
+          total += parseInt(checkbox.dataset.price);
+        }
+      });
+      
+      document.getElementById('reform-result').textContent = 
+        total + '万円〜';
+    }
+  </script>
 </body>
 </html>
