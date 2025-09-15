@@ -1,0 +1,726 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>会社概要｜センチュリー21ホームマート</title>
+  <meta name="description" content="センチュリー21ホームマート（株式会社ホームマート）の会社概要。奈良県北葛城郡広陵町を拠点に不動産売買仲介・リフォーム事業を展開。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700;900&display=swap" rel="stylesheet"/>
+  
+  <style>
+    :root{
+      --gold:#A19276; 
+      --gold2:#B8A082; 
+      --black:#383635; 
+      --ink:#222; 
+      --cream:#F8F6F3; 
+      --bg:#fff;
+      --max:1200px; 
+      --shadow:0 8px 24px rgba(0,0,0,.08);
+      --accent-pink: #FFB6C1;
+      --accent-blue: #4A90E2;
+      --accent-green: #90EE90;
+    }
+    
+    *{box-sizing:border-box}
+    html,body{margin:0;background:var(--bg);color:var(--ink);font-family:'Noto Sans JP',sans-serif;line-height:1.6}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block;height:auto}
+    .container{max-width:var(--max);margin:0 auto;padding:0 16px}
+    section{padding:60px 0}
+    
+    /* ヘッダー */
+    .site-header{
+      background:#fff;
+      border-bottom:2px solid var(--gold);
+      padding:16px 0;
+      position:sticky;
+      top:0;
+      z-index:100;
+      box-shadow:0 2px 8px rgba(0,0,0,.08);
+    }
+    .header-content{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      flex-wrap:wrap;
+      gap:16px;
+    }
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+    .logo img{
+      height:40px;
+    }
+    .nav-menu{
+      display:flex;
+      gap:24px;
+      align-items:center;
+    }
+    .nav-menu a{
+      font-weight:600;
+      transition:color 0.3s;
+    }
+    .nav-menu a:hover{
+      color:var(--gold);
+    }
+    .tel-btn{
+      background:linear-gradient(135deg,var(--gold),var(--gold2));
+      color:#fff;
+      padding:8px 16px;
+      border-radius:8px;
+      font-weight:700;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+    }
+    
+    /* ページヘッダー */
+    .page-header{
+      background:linear-gradient(135deg,var(--cream),#fff);
+      padding:80px 0 60px;
+      text-align:center;
+      position:relative;
+      overflow:hidden;
+    }
+    .page-header::before{
+      content:'';
+      position:absolute;
+      top:-50%;
+      right:-50%;
+      width:200%;
+      height:200%;
+      background:radial-gradient(circle,rgba(161,146,118,0.05),transparent);
+      animation:rotate 30s linear infinite;
+    }
+    @keyframes rotate{
+      from{transform:rotate(0deg)}
+      to{transform:rotate(360deg)}
+    }
+    .page-title{
+      font-size:clamp(32px,5vw,48px);
+      font-weight:900;
+      margin-bottom:16px;
+      position:relative;
+      z-index:1;
+    }
+    .gold-accent{
+      background:linear-gradient(135deg,var(--gold),var(--gold2));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+    }
+    .page-subtitle{
+      color:#666;
+      font-size:18px;
+      position:relative;
+      z-index:1;
+    }
+    
+    /* 会社情報テーブル */
+    .company-info{
+      background:#fff;
+      border-radius:16px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      margin:40px 0;
+    }
+    .info-table{
+      width:100%;
+      border-collapse:collapse;
+    }
+    .info-table tr{
+      border-bottom:1px solid #eee;
+    }
+    .info-table tr:last-child{
+      border-bottom:none;
+    }
+    .info-table th{
+      background:var(--cream);
+      padding:20px;
+      text-align:left;
+      font-weight:700;
+      width:30%;
+      color:var(--gold);
+    }
+    .info-table td{
+      padding:20px;
+      line-height:1.8;
+    }
+    @media(max-width:768px){
+      .info-table th{
+        width:100%;
+        display:block;
+        border-bottom:1px solid #eee;
+      }
+      .info-table td{
+        display:block;
+        width:100%;
+      }
+    }
+    
+    /* 沿革タイムライン */
+    .history-section{
+      background:var(--cream);
+      padding:80px 0;
+    }
+    .section-title{
+      text-align:center;
+      font-size:clamp(28px,4vw,40px);
+      font-weight:900;
+      margin-bottom:48px;
+    }
+    .timeline{
+      max-width:800px;
+      margin:0 auto;
+      position:relative;
+      padding-left:50px;
+    }
+    .timeline::before{
+      content:'';
+      position:absolute;
+      left:15px;
+      top:0;
+      bottom:0;
+      width:3px;
+      background:linear-gradient(180deg,var(--gold),var(--gold2));
+    }
+    .timeline-item{
+      position:relative;
+      margin-bottom:40px;
+      opacity:0;
+      animation:fadeInUp 0.6s forwards;
+    }
+    .timeline-item:nth-child(1){animation-delay:0.1s}
+    .timeline-item:nth-child(2){animation-delay:0.2s}
+    .timeline-item:nth-child(3){animation-delay:0.3s}
+    .timeline-item:nth-child(4){animation-delay:0.4s}
+    .timeline-item:nth-child(5){animation-delay:0.5s}
+    
+    @keyframes fadeInUp{
+      from{
+        opacity:0;
+        transform:translateY(20px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+    
+    .timeline-item::before{
+      content:'';
+      position:absolute;
+      left:-35px;
+      top:8px;
+      width:16px;
+      height:16px;
+      background:var(--gold);
+      border-radius:50%;
+      border:4px solid #fff;
+      box-shadow:0 0 0 4px var(--cream);
+    }
+    .timeline-year{
+      font-weight:700;
+      color:var(--gold);
+      margin-bottom:8px;
+      font-size:18px;
+    }
+    .timeline-content{
+      background:#fff;
+      padding:20px;
+      border-radius:12px;
+      box-shadow:0 4px 12px rgba(0,0,0,.08);
+    }
+    
+    /* チームセクション */
+    .team-section{
+      padding:80px 0;
+    }
+    .team-grid{
+      display:grid;
+      gap:32px;
+      margin-top:48px;
+    }
+    @media(min-width:768px){
+      .team-grid{grid-template-columns:repeat(2,1fr)}
+    }
+    @media(min-width:1024px){
+      .team-grid{grid-template-columns:repeat(3,1fr)}
+    }
+    .team-card{
+      background:#fff;
+      border-radius:16px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      transition:transform 0.3s, box-shadow 0.3s;
+    }
+    .team-card:hover{
+      transform:translateY(-5px);
+      box-shadow:0 12px 32px rgba(0,0,0,.12);
+    }
+    .team-img-wrapper{
+      position:relative;
+      height:280px;
+      background:linear-gradient(135deg,var(--cream),#f0f0f0);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .team-img{
+      width:150px;
+      height:150px;
+      border-radius:50%;
+      object-fit:cover;
+      border:5px solid #fff;
+      box-shadow:0 8px 24px rgba(0,0,0,.15);
+    }
+    .team-content{
+      padding:24px;
+      text-align:center;
+    }
+    .team-role{
+      background:var(--gold);
+      color:#fff;
+      padding:4px 12px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:700;
+      display:inline-block;
+      margin-bottom:12px;
+    }
+    .team-name{
+      font-size:20px;
+      font-weight:700;
+      margin-bottom:12px;
+    }
+    .team-desc{
+      color:#666;
+      font-size:14px;
+      line-height:1.6;
+    }
+    
+    /* ビジョンセクション */
+    .vision-section{
+      background:linear-gradient(135deg,var(--gold),var(--gold2));
+      color:#fff;
+      padding:80px 0;
+      text-align:center;
+    }
+    .vision-title{
+      font-size:clamp(28px,4vw,40px);
+      font-weight:900;
+      margin-bottom:32px;
+    }
+    .vision-content{
+      max-width:800px;
+      margin:0 auto;
+      font-size:18px;
+      line-height:1.8;
+    }
+    .vision-goals{
+      display:grid;
+      gap:24px;
+      margin-top:48px;
+      max-width:900px;
+      margin-left:auto;
+      margin-right:auto;
+    }
+    @media(min-width:768px){
+      .vision-goals{grid-template-columns:repeat(3,1fr)}
+    }
+    .vision-card{
+      background:rgba(255,255,255,0.1);
+      backdrop-filter:blur(10px);
+      padding:32px 24px;
+      border-radius:16px;
+      border:2px solid rgba(255,255,255,0.2);
+    }
+    .vision-icon{
+      font-size:48px;
+      margin-bottom:16px;
+    }
+    .vision-number{
+      font-size:32px;
+      font-weight:900;
+      margin-bottom:8px;
+    }
+    
+    /* フッター */
+    .site-footer{
+      background:#111;
+      color:#eee;
+      padding:48px 0 24px;
+    }
+    .footer-content{
+      display:grid;
+      gap:32px;
+      margin-bottom:32px;
+    }
+    @media(min-width:768px){
+      .footer-content{grid-template-columns:repeat(3,1fr)}
+    }
+    .footer-section h4{
+      color:var(--gold);
+      margin-bottom:16px;
+      font-size:18px;
+    }
+    .footer-section ul{
+      list-style:none;
+      padding:0;
+    }
+    .footer-section li{
+      margin-bottom:8px;
+    }
+    .footer-section a{
+      color:#eee;
+      transition:color 0.3s;
+    }
+    .footer-section a:hover{
+      color:var(--gold);
+    }
+    .footer-bottom{
+      text-align:center;
+      padding-top:24px;
+      border-top:1px solid #333;
+      font-size:14px;
+      color:#999;
+    }
+    
+    /* レスポンシブ */
+    @media(max-width:768px){
+      .nav-menu{
+        display:none;
+      }
+      .timeline{
+        padding-left:30px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- ヘッダー -->
+  <header class="site-header">
+    <div class="container">
+      <div class="header-content">
+        <a href="/" class="logo">
+          <img src="/images/century21logo_gold.png" alt="CENTURY21">
+          <span style="font-weight:700;font-size:18px">ホームマート</span>
+        </a>
+        <nav class="nav-menu">
+          <a href="/search.html">物件検索</a>
+          <a href="/assessment.html">売却査定</a>
+          <a href="/reform-water.html">リフォーム</a>
+          <a href="/company/about.html">会社案内</a>
+          <a href="tel:0120438639" class="tel-btn">
+            📞 0120-43-8639
+          </a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ページヘッダー -->
+    <section class="page-header">
+      <div class="container">
+        <h1 class="page-title">会社<span class="gold-accent">概要</span></h1>
+        <p class="page-subtitle">お客様の悩みや不安を解決し、人生の転機を支える存在でありたい</p>
+      </div>
+    </section>
+    
+    <!-- 会社情報 -->
+    <section>
+      <div class="container">
+        <div class="company-info">
+          <table class="info-table">
+            <tr>
+              <th>会社名</th>
+              <td>株式会社ホームマート</td>
+            </tr>
+            <tr>
+              <th>店舗名</th>
+              <td>センチュリー21ホームマート</td>
+            </tr>
+            <tr>
+              <th>代表者</th>
+              <td>代表取締役 乾 佑企（いぬい ゆうき）</td>
+            </tr>
+            <tr>
+              <th>設立</th>
+              <td>2024年5月7日（創業：2013年9月）</td>
+            </tr>
+            <tr>
+              <th>所在地</th>
+              <td>
+                〒635-0821<br>
+                奈良県北葛城郡広陵町笠287-1
+              </td>
+            </tr>
+            <tr>
+              <th>電話番号</th>
+              <td>
+                お客様専用：0120-43-8639<br>
+                代表番号：050-7117-7107
+              </td>
+            </tr>
+            <tr>
+              <th>FAX番号</th>
+              <td>050-3183-9576</td>
+            </tr>
+            <tr>
+              <th>事業内容</th>
+              <td>
+                ・不動産売買仲介業<br>
+                ・不動産売買業<br>
+                ・リフォーム設計・施工<br>
+                ・戸建住宅事業
+                ・スマートホーム提案・施工（ルンバ・アレクサ等IoT機器連携）
+              </td>
+            </tr>
+            <tr>
+              <th>所属団体</th>
+              <td>公益社団法人 全日本不動産協会</td>
+              <td>公益社団法人 不動産保証協会</td>
+              <td>公益社団法人 近畿地区不動産取引協議会</td>
+              <td>センチュリー21ジャパン</td>
+            </tr>
+            <tr>
+              <th>所属団体</th>
+              <td>
+                (公社)全日本不動産協会<br>
+                (公社)不動産保証協会
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </section>
+    
+    <!-- 沿革 -->
+    <section class="history-section">
+      <div class="container">
+        <h2 class="section-title">沿<span class="gold-accent">革</span></h2>
+        
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-year">2013年9月</div>
+            <div class="timeline-content">
+              <strong>個人事業として創業</strong><br>
+              代表の乾佑企が20歳で不動産事業を開始。地域密着型の営業スタイルで着実に実績を積み重ねる。
+            </div>
+          </div>
+          
+          <div class="timeline-item">
+            <div class="timeline-year">2014年6月</div>
+            <div class="timeline-content">
+              <strong>リフォーム事業拡大</strong><br>
+              大工・内装・設備・電気・水道・ガス等、様々な職人に依頼すると高くなるので、自分たちで全て自社施工を
+            </div>
+          </div>
+          
+          <div class="timeline-item">
+            <div class="timeline-year">2024年5月</div>
+            <div class="timeline-content">
+              <strong>株式会社ホームマート設立</strong><br>
+              10年間の個人事業での経験を活かし、株式会社として新たなスタート。
+            </div>
+          </div>
+          
+          <div class="timeline-item">
+            <div class="timeline-year">2025年3月</div>
+            <div class="timeline-content">
+              <strong>センチュリー21ホームマートオープン</strong><br>
+              全国No.1の店舗数を誇るセンチュリー21に加盟。より充実したサービス提供へ。
+            </div>
+          </div>
+          
+          <div class="timeline-item">
+            <div class="timeline-year">2026年目標</div>
+            <div class="timeline-content">
+              <strong>マンション買取件数100件を目指して</strong><br>
+              お客様に喜ばれる売買取引で、持続的な成長を追求。
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- チーム紹介 -->
+    <section class="team-section">
+      <div class="container">
+        <h2 class="section-title">主要<span class="gold-accent">メンバー</span></h2>
+        
+        <div class="team-grid">
+          <div class="team-card">
+            <div class="team-img-wrapper">
+              <img src="inui.jpeg" alt="代表 乾佑企" class="team-img" onerror="this.style.display='none'">
+            </div>
+            <div class="team-content">
+              <span class="team-role">代表取締役</span>
+              <h3 class="team-name">乾 佑企</h3>
+              <p class="team-desc">
+                20歳で創業し、現在32歳。お客様の人生の転機を全力でサポート。
+                「お客様の悩みや不安を解決し、人生の転機を支える存在でありたい」という理念のもと、
+                日々お客様と向き合っています。
+              </p>
+            </div>
+          </div>
+          
+          <div class="team-card">
+            <div class="team-img-wrapper">
+              <img src="mika.jpeg" alt="安田" class="team-img" onerror="this.style.display='none'">
+            </div>
+            <div class="team-content">
+              <span class="team-role">管理部門責任者</span>
+              <h3 class="team-name">安田</h3>
+              <p class="team-desc">
+                全社管理・経理・人事を統括。会社の基盤を支える重要な存在として、
+                スムーズな業務運営と働きやすい環境づくりに尽力しています。
+              </p>
+            </div>
+          </div>
+          
+          <div class="team-card">
+            <div class="team-img-wrapper">
+              <img src="takuma.jpeg" alt="豊田" class="team-img" onerror="this.style.display='none'">
+            </div>
+            <div class="team-content">
+              <span class="team-role">リフォーム部門</span>
+              <h3 class="team-name">豊田</h3>
+              <p class="team-desc">
+                現場作業のエキスパート。確かな技術力と丁寧な仕事で、
+                お客様の理想の住まいづくりを実現します。
+              </p>
+            </div>
+          </div>
+          
+          <div class="team-card">
+            <div class="team-img-wrapper">
+              <img src="imadu.JPG" alt="今津" class="team-img" onerror="this.style.display='none'">
+            </div>
+            <div class="team-content">
+              <span class="team-role">広報サポート</span>
+              <h3 class="team-name">今津</h3>
+              <p class="team-desc">
+                広告を担当。地域への情報発信を通じて、
+                多くのお客様との出会いを創出しています。
+              </p>
+            </div>
+          </div>
+          
+          <div class="team-card">
+            <div class="team-img-wrapper">
+              <img src="daikoku.JPG" alt="大黒" class="team-img" onerror="this.style.display='none'">
+            </div>
+            <div class="team-content">
+              <span class="team-role">リフォームアドバイザー</span>
+              <h3 class="team-name">大黒</h3>
+              <p class="team-desc">
+                リフォームアドバイザーとしてスペシャリスト。長年の経験を活かし、
+                最適な住宅のリフォームをご提案します。
+              </p>
+            </div>
+          </div>
+          
+          <div class="team-card">
+            <div class="team-img-wrapper">
+              <img src="hina.jpeg" alt="山尾" class="team-img" onerror="this.style.display='none'">
+            </div>
+            <div class="team-content">
+              <span class="team-role">事務・広報</span>
+              <h3 class="team-name">ひなちゃん</h3>
+              <p class="team-desc">
+                パンフレット印刷・現場清掃を担当。細やかな気配りで、
+                快適な環境づくりをサポートしています。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- ビジョン -->
+    <section class="vision-section">
+      <div class="container">
+        <h2 class="vision-title">私たちのビジョン</h2>
+        <div class="vision-content">
+          <p>
+            センチュリー21の全国ネットワークと<br>
+            地域密着の温かいサービスを融合し、<br>
+            奈良・大阪エリア販売件数No.1の不動産会社を目指します。
+          </p>
+        </div>
+        
+        <div class="vision-goals">
+          <div class="vision-card">
+            <div class="vision-icon">🎯</div>
+            <div class="vision-number">2025年</div>
+            <p>センチュリー21<br>ホームマートオープン</p>
+          </div>
+          
+          <div class="vision-card">
+            <div class="vision-icon">📈</div>
+            <div class="vision-number">2026年</div>
+            <p>マンション買取件数100件<br>達成目標</p>
+          </div>
+          
+          <div class="vision-card">
+            <div class="vision-icon">🏆</div>
+            <div class="vision-number">No.1</div>
+            <p>地域満足度<br>No.1を目指して</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <!-- フッター -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>センチュリー21ホームマート</h4>
+          <p style="font-size:14px;line-height:1.8;color:#999">
+            〒635-0821<br>
+            奈良県北葛城郡広陵町笠287-1<br>
+            TEL: 0120-43-8639<br>
+            FAX: 050-3183-9576
+          </p>
+        </div>
+        
+        <div class="footer-section">
+          <h4>サービス</h4>
+          <ul>
+            <li><a href="/search.html">物件検索</a></li>
+            <li><a href="/assessment.html">売却査定</a></li>
+            <li><a href="/voluntary-sale.html">任意売却相談</a></li>
+            <li><a href="/reform-water.html">リフォーム</a></li>
+            <li><a href="/recruit.html">採用情報</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h4>会社情報</h4>
+          <ul>
+            <li><a href="/company/about.html">会社概要</a></li>
+            <li><a href="/company/message.html">代表挨拶</a></li>
+            <li><a href="/company/philosophy.html">企業理念</a></li>
+            <li><a href="/company/access.html">アクセス</a></li>
+            <li><a href="/privacy.html">プライバシーポリシー</a></li>
+            <li><a href="/sitemap.html">サイトマップ</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>© 2025 Century21 HomeMart. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
