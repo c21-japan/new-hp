@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>売買仲介物件一覧 | センチュリー21ホームマート</title>
+    <meta name="description" content="奈良県・南大阪の不動産売買物件を多数掲載。マンション・戸建て・土地など、あなたの理想の物件がきっと見つかります。">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #A19276;
+            --gold2: #B8A082;
+            --black: #383635;
+            --cream: #F8F6F3;
+            --white: #FFFFFF;
+            --gray: #F8F8F8;
+            --text-gray: #666666;
+            --shadow: 0 8px 24px rgba(0,0,0,0.08);
+            --shadow-hover: 0 12px 32px rgba(0,0,0,0.12);
+            --max-width: 1200px;
+            --success: #22c55e;
+            --danger: #ef4444;
+            --blue: #3b82f6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.6;
+            color: var(--black);
+            background: var(--white);
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        /* ヘッダー */
+        header {
+            background: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 2px solid var(--gold);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: var(--black);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: var(--gold);
+        }
+
+        /* ヒーローセクション */
+        .hero {
+            background: linear-gradient(135deg, var(--cream) 0%, var(--white) 100%);
+            padding: 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(161,146,118,0.05), transparent);
+            animation: rotate 30s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(28px, 4vw, 40px);
+            font-weight: 900;
+            margin-bottom: 16px;
+        }
+
+        .hero-subtitle {
+            font-size: 16px;
+            color: var(--text-gray);
+            margin-bottom: 32px;
+        }
+
+        /* 検索バー */
+        .search-bar {
+            background: var(--white);
+            padding: 24px;
+            border-radius: 14px;
+            box-shadow: var(--shadow);
+            margin: -40px auto 40px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .search-filters {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .filter-label {
+            font-size: 12px;
+            color: var(--text-gray);
+            font-weight: 700;
+        }
+
+        .filter-select {
+            padding: 10px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: all 0.3s;
+            background: var(--white);
+            cursor: pointer;
+        }
+
+        .filter-select:hover,
+        .filter-select:focus {
+            border-color: var(--gold);
+            outline: none;
+        }
+
+        .search-button {
+            grid-column: span 2;
+            padding: 14px;
+            background: linear-gradient(135deg, var(--gold), var(--gold2));
+            color: var(--white);
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .search-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(161,146,118,0.3);
+        }
+
+        /* 物件統計 */
+        .property-stats {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 32px;
+        }
+
+        .stats-info {
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .stats-info span {
+            color: var(--gold);
+            font-size: 24px;
+        }
+
+        .view-options {
+            display: flex;
+            gap: 12px;
+        }
+
+        .view-btn {
+            padding: 8px 16px;
+            background: var(--white);
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .view-btn.active {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--white);
+        }
+
+        .sort-select {
+            padding: 8px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            background: var(--white);
+            cursor: pointer;
+        }
+
+        /* 物件カテゴリータブ */
+        .category-tabs {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 32px;
+            border-bottom: 2px solid #e0e0e0;
+            overflow-x: auto;
+        }
+
+        .category-tab {
+            padding: 12px 24px;
+            background: transparent;
+            border: none;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-gray);
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            white-space: nowrap;
+        }
+
+        .category-tab:hover {
+            color: var(--gold);
+        }
+
+        .category-tab.active {
+            color: var(--gold);
+        }
+
+        .category-tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gold);
+        }
+
+        .tab-count {
+            display: inline-block;
+            background: var(--danger);
+            color: var(--white);
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            margin-left: 8px;
+        }
+
+        /* 物件グリッド */
+        .properties-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 24px;
+            margin-bottom: 48px;
+        }
+
+        .property-card {
+            background: var(--white);
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .property-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .property-image {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .property-image img {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            opacity: 0.6;
+        }
+
+        .property-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: var(--gold);
+            color: var(--white);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .property-status {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .status-new {
+            background: var(--danger);
+            color: var(--white);
+        }
+
+        .status-reduced {
+            background: var(--blue);
+            color: var(--white);
+        }
+
+        .status-reserved {
+            background: #ff9800;
+            color: var(--white);
+        }
+
+        .property-content {
+            padding: 20px;
+        }
+
+        .property-price {
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--gold);
+            margin-bottom: 12px;
+        }
+
+        .property-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--black);
+        }
+
+        .property-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 13px;
+            color: var(--text-gray);
+        }
+
+        .property-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .feature-tag {
+            padding: 4px 8px;
+            background: var(--cream);
+            border-radius: 4px;
+            font-size: 11px;
+            color: var(--black);
+        }
+
+        .property-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .action-btn {
+            flex: 1;
+            padding: 10px;
+            border: 2px solid var(--gold);
+            background: transparent;
+            color: var(--gold);
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .action-btn:hover {
+            background: var(--gold);
+            color: var(--white);
+        }
+
+        .action-btn.primary {
+            background: var(--gold);
+            color: var(--white);
+        }
+
+        .action-btn.primary:hover {
+            background: var(--gold2);
+        }
+
+        /* リスト表示 */
+        .properties-list {
+            display: none;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .properties-list.active {
+            display: flex;
+        }
+
+        .properties-grid.list-view {
+            display: none;
+        }
+
+        .property-list-item {
+            display: flex;
+            background: var(--white);
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+        }
+
+        .property-list-item:hover {
+            box-shadow: var(--shadow-hover);
+        }
+
+        .list-image {
+            width: 300px;
+            height: 200px;
+            background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .list-image img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            opacity: 0.6;
+        }
+
+        .list-content {
+            flex: 1;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* ページネーション */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            margin: 48px 0;
+        }
+
+        .page-btn {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--white);
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .page-btn:hover {
+            border-color: var(--gold);
+        }
+
+        .page-btn.active {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--white);
+        }
+
+        .page-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* おすすめ物件 */
+        .featured-section {
+            background: var(--gray);
+            padding: 60px 0;
+            margin-top: 60px;
+        }
+
+        .featured-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .featured-title {
+            font-size: 32px;
+            font-weight: 900;
+            margin-bottom: 12px;
+        }
+
+        .featured-subtitle {
+            color: var(--text-gray);
+        }
+
+        /* CTA */
+        .cta-section {
+            background: linear-gradient(135deg, var(--gold), var(--gold2));
+            color: var(--white);
+            padding: 60px 0;
+            text-align: center;
+            border-radius: 14px;
+            margin: 60px 0;
+        }
+
+        .cta-title {
+            font-size: 32px;
+            font-weight: 900;
+            margin-bottom: 16px;
+        }
+
+        .cta-text {
+            font-size: 18px;
+            margin-bottom: 32px;
+            opacity: 0.95;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            padding: 16px 32px;
+            background: var(--white);
+            color: var(--gold);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+        }
+
+        /* フッター */
+        footer {
+            background: var(--black);
+            color: var(--white);
+            padding: 48px 0 24px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 32px;
+            margin-bottom: 32px;
+        }
+
+        .footer-section h3 {
+            color: var(--gold);
+            margin-bottom: 16px;
+            font-size: 18px;
+        }
+
+        .footer-section p,
+        .footer-section li {
+            margin-bottom: 8px;
+            color: #ccc;
+            font-size: 14px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--gold);
+        }
+
+        /* レスポンシブ */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .search-filters {
+                grid-template-columns: 1fr;
+            }
+
+            .search-button {
+                grid-column: span 1;
+            }
+
+            .property-stats {
+                flex-direction: column;
+                gap: 16px;
+                align-items: flex-start;
+            }
+
+            .properties-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .property-list-item {
+                flex-direction: column;
+            }
+
+            .list-image {
+                width: 100%;
+            }
+
+            .category-tabs {
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ヘッダー -->
+    <header>
+        <nav class="container">
+            <div class="logo">センチュリー21ホームマート</div>
+            <ul class="nav-menu">
+                <li><a href="/">ホーム</a></li>
+                <li><a href="/company/about.html">会社案内</a></li>
+                <li><a href="/properties/list.html">物件情報</a></li>
+                <li><a href="/reform/services.html">リフォーム</a></li>
+                <li><a href="/contact/form.html">お問い合わせ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ヒーローセクション -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>奈良県・南大阪の<span style="color: var(--gold);">不動産物件情報</span></h1>
+            <p class="hero-subtitle">マンション・戸建て・土地など、豊富な物件情報から理想の住まいを見つけよう</p>
+        </div>
+    </section>
+
+    <!-- メインコンテンツ -->
+    <main class="container">
+        <!-- 検索バー -->
+        <div class="search-bar">
+            <div class="search-filters">
+                <div class="filter-group">
+                    <label class="filter-label">エリア</label>
+                    <select class="filter-select" id="areaFilter">
+                        <option value="">すべてのエリア</option>
+                        <optgroup label="奈良県">
+                            <option value="奈良市">奈良市</option>
+                            <option value="生駒市">生駒市</option>
+                            <option value="香芝市">香芝市</option>
+                            <option value="橿原市">橿原市</option>
+                            <option value="大和郡山市">大和郡山市</option>
+                            <option value="天理市">天理市</option>
+                            <option value="桜井市">桜井市</option>
+                            <option value="北葛城郡">北葛城郡</option>
+                        </optgroup>
+                        <optgroup label="大阪府">
+                            <option value="堺市">堺市</option>
+                            <option value="松原市">松原市</option>
+                            <option value="羽曳野市">羽曳野市</option>
+                            <option value="藤井寺市">藤井寺市</option>
+                            <option value="富田林市">富田林市</option>
+                        </optgroup>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label class="filter-label">物件種別</label>
+                    <select class="filter-select" id="typeFilter">
+                        <option value="">すべて</option>
+                        <option value="mansion">マンション</option>
+                        <option value="house">戸建て</option>
+                        <option value="land">土地</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label class="filter-label">価格帯</label>
+                    <select class="filter-select" id="priceFilter">
+                        <option value="">指定なし</option>
+                        <option value="0-1000">〜1,000万円</option>
+                        <option value="1000-2000">1,000〜2,000万円</option>
+                        <option value="2000-3000">2,000〜3,000万円</option>
+                        <option value="3000-4000">3,000〜4,000万円</option>
+                        <option value="4000-">4,000万円〜</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label class="filter-label">間取り</label>
+                    <select class="filter-select" id="layoutFilter">
+                        <option value="">すべて</option>
+                        <option value="1">1R・1K・1DK・1LDK</option>
+                        <option value="2">2K・2DK・2LDK</option>
+                        <option value="3">3K・3DK・3LDK</option>
+                        <option value="4">4K・4DK・4LDK</option>
+                        <option value="5">5K以上</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label class="filter-label">築年数</label>
+                    <select class="filter-select" id="ageFilter">
+                        <option value="">指定なし</option>
+                        <option value="new">新築</option>
+                        <option value="0-5">築5年以内</option>
+                        <option value="5-10">築5〜10年</option>
+                        <option value="10-20">築10〜20年</option>
+                        <option value="20-">築20年以上</option>
+                    </select>
+                </div>
+                <button class="search-button" onclick="searchProperties()">
+                    🔍 この条件で検索
+                </button>
+            </div>
+        </div>
+
+        <!-- 物件統計 -->
+        <div class="property-stats">
+            <div class="stats-info">
+                検索結果：<span id="resultCount">248</span>件
+            </div>
+            <div class="view-options">
+                <select class="sort-select" onchange="sortProperties(this.value)">
+                    <option value="new">新着順</option>
+                    <option value="price-low">価格が安い順</option>
+                    <option value="price-high">価格が高い順</option>
+                    <option value="area">面積が広い順</option>
+                </select>
+                <button class="view-btn active" onclick="setViewMode('grid')">
+                    <span>⊞</span> グリッド
+                </button>
+                <button class="view-btn" onclick="setViewMode('list')">
+                    <span>☰</span> リスト
+                </button>
+            </div>
+        </div>
+
+        <!-- カテゴリータブ -->
+        <div class="category-tabs">
+            <button class="category-tab active" onclick="filterByCategory('all')">
+                すべて<span class="tab-count">248</span>
+            </button>
+            <button class="category-tab" onclick="filterByCategory('new')">
+                新着物件<span class="tab-count">32</span>
+            </button>
+            <button class="category-tab" onclick="filterByCategory('reduced')">
+                価格改定<span class="tab-count">15</span>
+            </button>
+            <button class="category-tab" onclick="filterByCategory('recommended')">
+                おすすめ<span class="tab-count">28</span>
+            </button>
+            <button class="category-tab" onclick="filterByCategory('urgent')">
+                急募<span class="tab-count">12</span>
+            </button>
+        </div>
+
+        <!-- 物件グリッド -->
+        <div class="properties-grid" id="propertiesGrid">
+            <!-- 物件カードが動的に生成されます -->
+        </div>
+
+        <!-- 物件リスト（リスト表示用） -->
+        <div class="properties-list" id="propertiesList">
+            <!-- リストアイテムが動的に生成されます -->
+        </div>
+
+        <!-- ページネーション -->
+        <div class="pagination">
+            <button class="page-btn" onclick="changePage('prev')">‹</button>
+            <button class="page-btn active" onclick="goToPage(1)">1</button>
+            <button class="page-btn" onclick="goToPage(2)">2</button>
+            <button class="page-btn" onclick="goToPage(3)">3</button>
+            <button class="page-btn" onclick="goToPage(4)">4</button>
+            <button class="page-btn" onclick="goToPage(5)">5</button>
+            <button class="page-btn" onclick="changePage('next')">›</button>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-section">
+            <h2 class="cta-title">理想の物件が見つからない？</h2>
+            <p class="cta-text">
+                ご希望条件を教えていただければ、<br>
+                非公開物件も含めてお探しします
+            </p>
+            <div class="cta-buttons">
+                <a href="/contact/form.html" class="cta-btn">物件リクエスト</a>
+                <a href="tel:0120438639" class="cta-btn">📞 電話で相談</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- おすすめ物件 -->
+    <section class="featured-section">
+        <div class="container">
+            <div class="featured-header">
+                <h2 class="featured-title">スタッフ<span style="color: var(--gold);">おすすめ物件</span></h2>
+                <p class="featured-subtitle">プロが選ぶ、今が買い時の優良物件</p>
+            </div>
+            <div class="properties-grid" id="featuredProperties">
+                <!-- おすすめ物件が表示されます -->
+            </div>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>会社情報</h3>
+                    <p><strong>センチュリー21ホームマート</strong></p>
+                    <p>〒635-0821<br>奈良県北葛城郡広陵町笠287-1</p>
+                    <p>TEL: 0120-43-8639</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>物件を探す</h3>
+                    <ul>
+                        <li><a href="#mansion">マンション</a></li>
+                        <li><a href="#house">一戸建て</a></li>
+                        <li><a href="#land">土地</a></li>
+                        <li><a href="/properties/new.html">新着物件</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>サービス</h3>
+                    <ul>
+                        <li><a href="/buy/flow.html">購入の流れ</a></li>
+                        <li><a href="/sell/flow.html">売却の流れ</a></li>
+                        <li><a href="/assessment.html">無料査定</a></li>
+                        <li><a href="/reform/services.html">リフォーム</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>お問い合わせ</h3>
+                    <p>電話: <a href="tel:0120438639">0120-43-8639</a></p>
+                    <p>メール: info@century21-homemart.jp</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // エリアデータ
+        const areas = [
+            '奈良市', '生駒市', '香芝市', '橿原市', '大和郡山市', '天理市', '桜井市',
+            '北葛城郡広陵町', '北葛城郡王寺町', '堺市', '松原市', '羽曳野市', '藤井寺市'
+        ];
+
+        // 物件データ生成
+        function generateProperty(id) {
+            const types = ['マンション', '戸建て', '土地'];
+            const type = types[Math.floor(Math.random() * types.length)];
+            const area = areas[Math.floor(Math.random() * areas.length)];
+            const price = Math.floor(Math.random() * 40 + 10) * 100; // 1000-5000万円
+            const statuses = ['NEW', '価格改定', '商談中', ''];
+            const status = statuses[Math.floor(Math.random() * statuses.length)];
+            
+            let details = {};
+            if (type === 'マンション') {
+                details = {
+                    layout: ['2LDK', '3LDK', '4LDK'][Math.floor(Math.random() * 3)],
+                    area: Math.floor(Math.random() * 50 + 50) + '㎡',
+                    age: Math.floor(Math.random() * 30) + '年',
+                    floor: Math.floor(Math.random() * 10 + 1) + '階'
+                };
+            } else if (type === '戸建て') {
+                details = {
+                    layout: ['3LDK', '4LDK', '5LDK'][Math.floor(Math.random() * 3)],
+                    landArea: Math.floor(Math.random() * 100 + 100) + '㎡',
+                    buildingArea: Math.floor(Math.random() * 50 + 80) + '㎡',
+                    age: Math.floor(Math.random() * 30) + '年'
+                };
+            } else {
+                details = {
+                    landArea: Math.floor(Math.random() * 200 + 100) + '㎡',
+                    buildingCoverage: '60%',
+                    floorAreaRatio: '200%'
+                };
+            }
+            
+            return {
+                id: id,
+                type: type,
+                area: area,
+                price: price,
+                status: status,
+                details: details,
+                features: ['駅近', '南向き', 'リフォーム済', '駐車場あり', 'ペット可'].slice(0, Math.floor(Math.random() * 3 + 2))
+            };
+        }
+
+        // 物件リスト生成
+        const properties = [];
+        for (let i = 1; i <= 248; i++) {
+            properties.push(generateProperty(i));
+        }
+
+        // 物件表示
+        function displayProperties(props = properties.slice(0, 12)) {
+            const grid = document.getElementById('propertiesGrid');
+            const list = document.getElementById('propertiesList');
+            
+            // グリッド表示
+            grid.innerHTML = props.map(property => `
+                <div class="property-card" onclick="viewProperty(${property.id})">
+                    <div class="property-image">
+                        <img src="urico_milk.jpg" alt="${property.type}">
+                        <span class="property-badge">${property.type}</span>
+                        ${property.status ? `<span class="property-status status-${property.status === 'NEW' ? 'new' : property.status === '価格改定' ? 'reduced' : 'reserved'}">${property.status}</span>` : ''}
+                    </div>
+                    <div class="property-content">
+                        <div class="property-price">${property.price.toLocaleString()}万円</div>
+                        <div class="property-title">${property.area} ${property.type === 'マンション' ? property.details.layout : property.type === '戸建て' ? property.details.layout + '戸建て' : '売地'}</div>
+                        <div class="property-details">
+                            ${property.type === 'マンション' ? `
+                                <span class="detail-item">🏢 ${property.details.floor}</span>
+                                <span class="detail-item">📐 ${property.details.area}</span>
+                                <span class="detail-item">🕐 築${property.details.age}</span>
+                            ` : property.type === '戸建て' ? `
+                                <span class="detail-item">🏠 ${property.details.buildingArea}</span>
+                                <span class="detail-item">📐 土地${property.details.landArea}</span>
+                                <span class="detail-item">🕐 築${property.details.age}</span>
+                            ` : `
+                                <span class="detail-item">📐 ${property.details.landArea}</span>
+                                <span class="detail-item">建ぺい率 ${property.details.buildingCoverage}</span>
+                                <span class="detail-item">容積率 ${property.details.floorAreaRatio}</span>
+                            `}
+                        </div>
+                        <div class="property-features">
+                            ${property.features.map(f => `<span class="feature-tag">${f}</span>`).join('')}
+                        </div>
+                        <div class="property-actions">
+                            <button class="action-btn" onclick="event.stopPropagation(); addFavorite(${property.id})">
+                                ♡ お気に入り
+                            </button>
+                            <button class="action-btn primary" onclick="event.stopPropagation(); inquireProperty(${property.id})">
+                                詳細を見る
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+            
+            // リスト表示
+            list.innerHTML = props.map(property => `
+                <div class="property-list-item" onclick="viewProperty(${property.id})">
+                    <div class="list-image">
+                        <img src="urico_milk.jpg" alt="${property.type}">
+                        <span class="property-badge">${property.type}</span>
+                        ${property.status ? `<span class="property-status status-${property.status === 'NEW' ? 'new' : property.status === '価格改定' ? 'reduced' : 'reserved'}">${property.status}</span>` : ''}
+                    </div>
+                    <div class="list-content">
+                        <div>
+                            <div class="property-price">${property.price.toLocaleString()}万円</div>
+                            <div class="property-title">${property.area} ${property.type === 'マンション' ? property.details.layout : property.type === '戸建て' ? property.details.layout + '戸建て' : '売地'}</div>
+                            <div class="property-details">
+                                ${property.type === 'マンション' ? `
+                                    <span class="detail-item">🏢 ${property.details.floor}</span>
+                                    <span class="detail-item">📐 ${property.details.area}</span>
+                                    <span class="detail-item">🕐 築${property.details.age}</span>
+                                ` : property.type === '戸建て' ? `
+                                    <span class="detail-item">🏠 ${property.details.buildingArea}</span>
+                                    <span class="detail-item">📐 土地${property.details.landArea}</span>
+                                    <span class="detail-item">🕐 築${property.details.age}</span>
+                                ` : `
+                                    <span class="detail-item">📐 ${property.details.landArea}</span>
+                                    <span class="detail-item">建ぺい率 ${property.details.buildingCoverage}</span>
+                                    <span class="detail-item">容積率 ${property.details.floorAreaRatio}</span>
+                                `}
+                            </div>
+                            <div class="property-features">
+                                ${property.features.map(f => `<span class="feature-tag">${f}</span>`).join('')}
+                            </div>
+                        </div>
+                        <div class="property-actions">
+                            <button class="action-btn" onclick="event.stopPropagation(); addFavorite(${property.id})">
+                                ♡ お気に入り
+                            </button>
+                            <button class="action-btn primary" onclick="event.stopPropagation(); inquireProperty(${property.id})">
+                                詳細を見る
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // おすすめ物件表示
+        function displayFeaturedProperties() {
+            const featured = document.getElementById('featuredProperties');
+            const featuredProps = properties.slice(0, 3);
+            
+            featured.innerHTML = featuredProps.map(property => `
+                <div class="property-card" onclick="viewProperty(${property.id})">
+                    <div class="property-image">
+                        <img src="urico_milk.jpg" alt="${property.type}">
+                        <span class="property-badge">${property.type}</span>
+                        <span class="property-status status-new">おすすめ</span>
+                    </div>
+                    <div class="property-content">
+                        <div class="property-price">${property.price.toLocaleString()}万円</div>
+                        <div class="property-title">${property.area} ${property.type === 'マンション' ? property.details.layout : property.type === '戸建て' ? property.details.layout + '戸建て' : '売地'}</div>
+                        <div class="property-features">
+                            ${property.features.map(f => `<span class="feature-tag">${f}</span>`).join('')}
+                        </div>
+                        <div class="property-actions">
+                            <button class="action-btn primary" onclick="event.stopPropagation(); inquireProperty(${property.id})">
+                                詳細を見る
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 表示モード切替
+        function setViewMode(mode) {
+            const grid = document.getElementById('propertiesGrid');
+            const list = document.getElementById('propertiesList');
+            const buttons = document.querySelectorAll('.view-btn');
+            
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            if (mode === 'grid') {
+                grid.classList.remove('list-view');
+                list.classList.remove('active');
+            } else {
+                grid.classList.add('list-view');
+                list.classList.add('active');
+            }
+        }
+
+        // カテゴリーフィルター
+        function filterByCategory(category) {
+            const tabs = document.querySelectorAll('.category-tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // フィルタリング処理（簡略化）
+            displayProperties(properties.slice(0, 12));
+        }
+
+        // 検索処理
+        function searchProperties() {
+            // 検索処理（簡略化）
+            alert('検索条件に合う物件を表示します');
+            displayProperties(properties.slice(0, 12));
+        }
+
+        // ソート処理
+        function sortProperties(sortType) {
+            // ソート処理（簡略化）
+            displayProperties(properties.slice(0, 12));
+        }
+
+        // ページ切替
+        function changePage(direction) {
+            // ページ切替処理
+        }
+
+        function goToPage(page) {
+            const buttons = document.querySelectorAll('.page-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            const start = (page - 1) * 12;
+            displayProperties(properties.slice(start, start + 12));
+        }
+
+        // 物件詳細表示
+        function viewProperty(id) {
+            window.location.href = `/property/${id}`;
+        }
+
+        // お気に入り追加
+        function addFavorite(id) {
+            alert(`物件ID:${id}をお気に入りに追加しました`);
+        }
+
+        // 問い合わせ
+        function inquireProperty(id) {
+            window.location.href = `/contact/form.html?property=${id}`;
+        }
+
+        // 初期表示
+        displayProperties();
+        displayFeaturedProperties();
+    </script>
+</body>
+</html>
