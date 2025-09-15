@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>水回り4点リフォーム | センチュリー21ホームマート</title>
-    <meta name="description" content="奈良県専門の水回り4点リフォーム。キッチン・浴室・洗面所・トイレをまとめて改修。地域密着で安心のサポート。">
+    <meta name="description" content="奈良県専門の水回り4点リフォーム。キッチン・浴室・洗面所・トイレをまとめて改修。自社施工で最大86%OFF。地域密着で安心のサポート。">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -18,6 +18,9 @@
             --shadow: 0 8px 24px rgba(0,0,0,0.08);
             --shadow-hover: 0 12px 32px rgba(0,0,0,0.12);
             --max-width: 1200px;
+            --success: #22c55e;
+            --danger: #ef4444;
+            --blue: #3b82f6;
         }
 
         * {
@@ -99,6 +102,11 @@
         @keyframes rotate {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
         }
 
         .hero-content {
@@ -789,7 +797,7 @@
             <div class="hero-features">
                 <div class="hero-feature">📍 奈良県内施工実績1,000件以上</div>
                 <div class="hero-feature">⭐ お客様満足度98%</div>
-                <div class="hero-feature">🎁 今なら工事費20%OFF</div>
+                <div class="hero-feature">🎁 今なら最大86%OFF</div>
                 <div class="hero-feature">📅 最短2週間で完了</div>
             </div>
             <div>
@@ -905,6 +913,127 @@
         </div>
     </section>
 
+    <!-- 自社施工の強み -->
+    <section class="in-house-construction" style="background: linear-gradient(135deg, #fff5e5, #fff); padding: 80px 0;">
+        <div class="container">
+            <h2 class="section-title">なぜ<span>他社より30%安い</span>のか？</h2>
+            <p class="section-subtitle">自社施工だから実現できる圧倒的なコスト削減</p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 48px; margin-top: 48px;">
+                <!-- 他社の場合 -->
+                <div style="background: #fff; border-radius: 14px; padding: 32px; box-shadow: var(--shadow); border: 2px solid #e0e0e0;">
+                    <h3 style="text-align: center; color: #666; margin-bottom: 24px;">❌ 一般的なリフォーム会社</h3>
+                    <div style="display: flex; flex-direction: column; gap: 16px;">
+                        <div style="display: flex; align-items: center; gap: 16px; padding: 16px; background: #f8f8f8; border-radius: 8px;">
+                            <span style="font-size: 32px;">🏢</span>
+                            <div>
+                                <strong>営業会社が受注</strong>
+                                <p style="font-size: 14px; color: #666;">営業マージン 20%</p>
+                            </div>
+                        </div>
+                        <div style="text-align: center; font-size: 24px; color: #999;">↓</div>
+                        <div style="display: flex; align-items: center; gap: 16px; padding: 16px; background: #f8f8f8; border-radius: 8px;">
+                            <span style="font-size: 32px;">🔨</span>
+                            <div>
+                                <strong>下請け業者に外注</strong>
+                                <p style="font-size: 14px; color: #666;">中間マージン 30%</p>
+                            </div>
+                        </div>
+                        <div style="text-align: center; font-size: 24px; color: #999;">↓</div>
+                        <div style="display: flex; align-items: center; gap: 16px; padding: 16px; background: #f8f8f8; border-radius: 8px;">
+                            <span style="font-size: 32px;">👷</span>
+                            <div>
+                                <strong>実際の職人が施工</strong>
+                                <p style="font-size: 14px; color: #666;">実際の工事費 50%</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin-top: 24px; padding: 16px; background: #ffebee; border-radius: 8px; text-align: center;">
+                        <p style="color: #c62828; font-weight: 700; font-size: 20px;">お客様負担 100%</p>
+                        <p style="color: #666; font-size: 14px;">中間マージンが50%も！</p>
+                    </div>
+                </div>
+                
+                <!-- ホームマートの場合 -->
+                <div style="background: linear-gradient(135deg, #fff5e5, #fff); border-radius: 14px; padding: 32px; box-shadow: var(--shadow); border: 3px solid var(--gold); position: relative;">
+                    <div style="position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--gold); color: white; padding: 4px 20px; border-radius: 20px; font-size: 14px; font-weight: 700;">当社の強み</div>
+                    <h3 style="text-align: center; color: var(--gold); margin-bottom: 24px;">✅ ホームマート</h3>
+                    <div style="display: flex; flex-direction: column; gap: 16px;">
+                        <div style="display: flex; align-items: center; gap: 16px; padding: 16px; background: linear-gradient(135deg, #e8f5e9, #f1f8e9); border-radius: 8px;">
+                            <span style="font-size: 32px;">🏆</span>
+                            <div>
+                                <strong>自社で直接受注</strong>
+                                <p style="font-size: 14px; color: #2e7d32;">営業マージン 0%</p>
+                            </div>
+                        </div>
+                        <div style="text-align: center; font-size: 24px; color: var(--gold);">↓</div>
+                        <div style="display: flex; align-items: center; gap: 16px; padding: 16px; background: linear-gradient(135deg, #e8f5e9, #f1f8e9); border-radius: 8px;">
+                            <span style="font-size: 32px;">👨‍🔧</span>
+                            <div>
+                                <strong>自社職人が施工</strong>
+                                <p style="font-size: 14px; color: #2e7d32;">中間マージン 0%</p>
+                            </div>
+                        </div>
+                        <div style="text-align: center; font-size: 24px; color: var(--gold);">↓</div>
+                        <div style="display: flex; align-items: center; gap: 16px; padding: 16px; background: linear-gradient(135deg, #e8f5e9, #f1f8e9); border-radius: 8px;">
+                            <span style="font-size: 32px;">✨</span>
+                            <div>
+                                <strong>高品質施工</strong>
+                                <p style="font-size: 14px; color: #2e7d32;">実際の工事費のみ</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin-top: 24px; padding: 16px; background: linear-gradient(135deg, #e8f5e9, #f1f8e9); border-radius: 8px; text-align: center;">
+                        <p style="color: #2e7d32; font-weight: 700; font-size: 20px;">お客様負担 70%</p>
+                        <p style="color: #666; font-size: 14px;">他社より30%以上お得！</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 具体的な工事内容 -->
+            <div style="margin-top: 64px;">
+                <h3 style="text-align: center; font-size: 24px; margin-bottom: 32px;">すべて自社職人が施工する工事内容</h3>
+                <div class="cards-grid">
+                    <div class="card" style="text-align: center;">
+                        <div class="card-icon">🚿</div>
+                        <h4 style="color: var(--gold); margin-bottom: 12px;">水回り専門工事</h4>
+                        <ul style="list-style: none; font-size: 14px; text-align: left;">
+                            <li>✓ キッチン交換・配管工事</li>
+                            <li>✓ ユニットバス設置</li>
+                            <li>✓ トイレ・洗面台交換</li>
+                            <li>✓ 給排水管更新</li>
+                            <li>✓ 防水処理</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="card" style="text-align: center;">
+                        <div class="card-icon">🏠</div>
+                        <h4 style="color: var(--gold); margin-bottom: 12px;">内装工事</h4>
+                        <ul style="list-style: none; font-size: 14px; text-align: left;">
+                            <li>✓ クロス張替え</li>
+                            <li>✓ フローリング施工</li>
+                            <li>✓ 建具交換・調整</li>
+                            <li>✓ 畳表替え・襖張替え</li>
+                            <li>✓ 塗装工事</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="card" style="text-align: center;">
+                        <div class="card-icon">⚡</div>
+                        <h4 style="color: var(--gold); margin-bottom: 12px;">設備・電気工事</h4>
+                        <ul style="list-style: none; font-size: 14px; text-align: left;">
+                            <li>✓ 電気配線・照明交換</li>
+                            <li>✓ エアコン設置・交換</li>
+                            <li>✓ 換気扇・レンジフード交換</li>
+                            <li>✓ IHコンロ設置</li>
+                            <li>✓ 食洗機設置</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- 特徴セクション -->
     <section class="features" id="features">
         <div class="container">
@@ -927,7 +1056,7 @@
                 <div class="feature-card">
                     <div class="card-icon">👷</div>
                     <h3>自社施工で安心</h3>
-                    <p>下請けに丸投げせず、経験豊富な自社職人が責任施工。品質管理から アフターフォローまで一貫対応。</p>
+                    <p>下請けに丸投げせず、経験豊富な自社職人が責任施工。品質管理からアフターフォローまで一貫対応。</p>
                 </div>
                 
                 <div class="feature-card">
@@ -944,8 +1073,8 @@
                 
                 <div class="feature-card">
                     <div class="card-icon">🛡️</div>
-                    <h3>10年保証付き</h3>
-                    <p>施工後も安心の10年保証。定期点検とアフターサポートで、長く快適にお使いいただけます。</p>
+                    <h3>メーカー保証付き</h3>
+                    <p>TOTO・LIXIL等の正規認定施工士が施工。メーカー保証で長く快適にお使いいただけます。</p>
                 </div>
             </div>
         </div>
@@ -1019,7 +1148,7 @@
                     <ul class="pricing-features">
                         <li>キッチン、浴室、トイレ、洗面所から選択</li>
                         <li>標準工事費込み</li>
-                        <li>5年保証付き</li>
+                        <li>メーカー保証付き</li>
                         <li>現地調査・見積もり無料</li>
                         <li>部分的なリフォームに最適</li>
                     </ul>
@@ -1030,15 +1159,15 @@
                     <div class="pricing-badge">人気No.1</div>
                     <div class="pricing-title">水回り4点セット</div>
                     <div class="pricing-price">
-                        118万円〜
+                        98万円〜
                         <span>/セット</span>
                     </div>
                     <ul class="pricing-features">
                         <li>キッチン＋浴室＋トイレ＋洗面所</li>
                         <li>標準工事費込み</li>
-                        <li>10年保証付き</li>
-                        <li>今なら工事費20%OFF</li>
-                        <li>分割払い対応（月々1.8万円〜）</li>
+                        <li>メーカー保証付き</li>
+                        <li>今なら最大86%OFF</li>
+                        <li>分割払い対応（月々1.6万円〜）</li>
                         <li>奈良県限定特別価格</li>
                     </ul>
                     <a href="#contact" class="cta-primary" style="width: 100%;">見積もりを依頼</a>
@@ -1053,11 +1182,124 @@
                     <ul class="pricing-features">
                         <li>高級メーカー設備を選択可能</li>
                         <li>オーダーメイド対応</li>
-                        <li>15年保証付き</li>
+                        <li>メーカー保証＋延長保証</li>
                         <li>インテリアコーディネート付き</li>
                         <li>最上級の設備で贅沢な空間を実現</li>
                     </ul>
                     <a href="#contact" class="cta-primary" style="width: 100%;">見積もりを依頼</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- キャンペーン -->
+    <section class="campaign" style="background: linear-gradient(135deg, #fff5e5, #ffeedc); padding: 60px 0;">
+        <div class="container" style="text-align: center;">
+            <div style="display: inline-block; background: #ff6b6b; color: white; padding: 8px 24px; border-radius: 999px; font-weight: 700; margin-bottom: 24px;">
+                🎉 期間限定キャンペーン
+            </div>
+            <h2 style="font-size: 36px; margin-bottom: 24px;">水回りまるごとリニューアル祭</h2>
+            <p style="font-size: 18px; color: #666; margin-bottom: 48px;">
+                驚異の最大86%OFF実現！<br>
+                自社施工だからできる破格の特別価格
+            </p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; margin: 48px 0;">
+                <div style="background: white; padding: 24px; border-radius: 14px; box-shadow: var(--shadow); border: 3px solid #ff6b6b; position: relative;">
+                    <div style="position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: #ff6b6b; color: white; padding: 4px 16px; border-radius: 999px; font-size: 12px; font-weight: 700;">衝撃価格</div>
+                    <div style="font-size: 48px; margin-bottom: 12px;">💰</div>
+                    <h3 style="color: var(--gold); margin-bottom: 8px;">最大86%OFF</h3>
+                    <p style="font-weight: 700; font-size: 20px; color: #ff6b6b;">工事費大幅割引</p>
+                    <p style="font-size: 14px; color: #666;">
+                        通常価格 700万円相当→<br>
+                        <span style="font-size: 28px; font-weight: 900; color: #ff6b6b;">98万円〜</span><br>
+                        <span style="font-size: 12px;">※条件により変動</span>
+                    </p>
+                </div>
+                
+                <div style="background: white; padding: 24px; border-radius: 14px; box-shadow: var(--shadow); border: 2px solid #4CAF50;">
+                    <div style="font-size: 48px; margin-bottom: 12px;">🎁</div>
+                    <h3 style="color: var(--gold); margin-bottom: 8px;">無料グレードアップ</h3>
+                    <p style="font-weight: 700; font-size: 20px; color: #4CAF50;">人気オプション無料</p>
+                    <p style="font-size: 14px; color: #666;">
+                        ・浴室暖房乾燥機（15万円相当）<br>
+                        ・タッチレス水栓（8万円相当）<br>
+                        ・節水型シャワーヘッド（3万円相当）<br>
+                        ・食洗機（10万円相当）
+                    </p>
+                </div>
+                
+                <div style="background: white; padding: 24px; border-radius: 14px; box-shadow: var(--shadow); border: 2px solid #2196F3;">
+                    <div style="font-size: 48px; margin-bottom: 12px;">🏠</div>
+                    <h3 style="color: var(--gold); margin-bottom: 8px;">まとめて割</h3>
+                    <p style="font-weight: 700; font-size: 20px; color: #2196F3;">4点セット特別価格</p>
+                    <p style="font-size: 14px; color: #666;">
+                        単品合計より<br>
+                        <span style="font-size: 24px; font-weight: 700; color: #2196F3;">50万円以上</span><br>
+                        お得に！
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LINE友達限定特典 -->
+    <div style="background: linear-gradient(135deg, #00C300, #00E000); color: white; padding: 32px; margin: 48px auto; max-width: 900px; border-radius: 14px;">
+        <h3 style="font-size: 28px; margin-bottom: 24px; text-align: center;">
+            💬 LINE友達限定｜代表の乾に直接相談できます
+        </h3>
+        
+        <div style="background: rgba(255,255,255,0.95); color: #333; padding: 24px; border-radius: 12px; margin-bottom: 24px;">
+            <div style="text-align: center; margin-bottom: 20px;">
+                <div style="width: 80px; height: 80px; background: linear-gradient(135deg, var(--gold), var(--gold2)); border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 40px; margin-bottom: 16px;">
+                    😊
+                </div>
+                <h4 style="font-size: 24px; color: var(--gold); margin-bottom: 12px;">
+                    こんにちは！代表の乾です
+                </h4>
+            </div>
+            <p style="font-size: 16px; line-height: 1.8; color: #666;">
+                リフォームって大きな買い物だから、不安なことも多いですよね。<br>
+                私も自宅をリフォームした時、色々悩みました。<br><br>
+                
+                <strong style="color: var(--gold);">「プロの友達に気軽に相談できたらいいのに...」</strong><br><br>
+                
+                そんな存在になれたらと思い、LINE相談を始めました。<br>
+                堅苦しい商談じゃなく、友達に相談する感覚で何でも聞いてください！
+            </p>
+        </div>
+        
+        <div style="text-align: center;">
+            <a href="https://line.me/ti/p/xxxxx" style="display: inline-block; background: white; color: #00C300; padding: 20px 48px; border-radius: 50px; font-size: 18px; font-weight: 700; text-decoration: none; box-shadow: 0 4px 12px rgba(0,0,0,0.2);">
+                LINEで気軽に相談してみる<br>
+                <span style="font-size: 14px; font-weight: normal;">売り込みなし・相談だけでもOK</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- 保証・アフターサービス -->
+    <section class="warranty" style="padding: 80px 0;">
+        <div class="container">
+            <h2 class="section-title">安心の<span>保証制度</span></h2>
+            <p class="section-subtitle">メーカー認定施工士による確かな技術と保証</p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; margin-top: 48px;">
+                <div style="background: linear-gradient(135deg, #e3f2fd, #fff); padding: 32px; border-radius: 14px; text-align: center;">
+                    <div style="font-size: 48px; margin-bottom: 16px;">🏆</div>
+                    <h3 style="color: var(--gold); margin-bottom: 12px;">メーカー保証</h3>
+                    <p>TOTO・LIXIL・Panasonic等の正規認定施工士が施工。メーカー保証で安心の品質をお約束します。</p>
+                </div>
+                
+                <div style="background: linear-gradient(135deg, #fce4ec, #fff); padding: 32px; border-radius: 14px; text-align: center;">
+                    <div style="font-size: 48px; margin-bottom: 16px;">⚡</div>
+                    <h3 style="color: var(--gold); margin-bottom: 12px;">即日対応</h3>
+                    <p>緊急トラブルは即日対応。LINEで24時間受付、最短30分で駆けつけます。</p>
+                </div>
+                
+                <div style="background: linear-gradient(135deg, #e8f5e9, #fff); padding: 32px; border-radius: 14px; text-align: center;">
+                    <div style="font-size: 48px; margin-bottom: 16px;">🔧</div>
+                    <h3 style="color: var(--gold); margin-bottom: 12px;">定期点検サービス</h3>
+                    <p>1年・3年・5年・10年の定期点検を実施。不具合の早期発見で安心です。</p>
                 </div>
             </div>
         </div>
@@ -1119,7 +1361,7 @@
             <h2>今こそ水回りリフォームの時</h2>
             <p class="final-cta-subtitle">
                 奈良県限定キャンペーン実施中！<br>
-                工事費20%OFF + LINE登録で即見積もり
+                最大86%OFF + LINE登録で即見積もり
             </p>
             
             <div class="contact-methods">
@@ -1192,7 +1434,7 @@
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2024 センチュリー21ホームマート. All rights reserved.</p>
+                <p>&copy; 2025 センチュリー21ホームマート. All rights reserved.</p>
             </div>
         </div>
     </footer>
