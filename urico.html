@@ -9,7 +9,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700;900&display=swap" rel="stylesheet"/>
     
     <style>
-        /* 他ページと統一したカラー設定 */
         :root{
             --gold:#A19276; 
             --gold2:#B8A082; 
@@ -32,7 +31,6 @@
         .container{max-width:var(--max);margin:0 auto;padding:0 16px}
         section{padding:60px 0}
         
-        /* 統一ヘッダー（他ページと同じ） */
         .site-header{
             background:#fff;
             border-bottom:2px solid var(--gold);
@@ -80,7 +78,6 @@
             gap:8px;
         }
         
-        /* ページヘッダー（他ページと統一） */
         .page-header{
             background:linear-gradient(135deg,var(--cream),#fff);
             padding:80px 0 60px;
@@ -122,7 +119,6 @@
             z-index:1;
         }
         
-        /* 統計セクション */
         .stats-section{
             margin-top:-40px;
             position:relative;
@@ -158,7 +154,6 @@
             font-weight:600;
         }
         
-        /* 検索セクション */
         .search-section{
             padding:80px 0;
             background:var(--cream);
@@ -178,6 +173,7 @@
             display:flex;
             gap:12px;
             margin-bottom:24px;
+            position:relative;
         }
         .search-input{
             flex:1;
@@ -208,7 +204,49 @@
             box-shadow:0 8px 20px rgba(161,146,118,0.3);
         }
         
-        /* クイックボタン */
+        .search-suggestions{
+            position:absolute;
+            top:100%;
+            left:0;
+            right:0;
+            background:#fff;
+            border:2px solid var(--gold);
+            border-radius:10px;
+            margin-top:5px;
+            max-height:300px;
+            overflow-y:auto;
+            display:none;
+            z-index:100;
+            box-shadow:var(--shadow);
+        }
+        .search-suggestions.active{
+            display:block;
+        }
+        .suggestion-item{
+            padding:12px 20px;
+            cursor:pointer;
+            transition:background 0.2s;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            border-bottom:1px solid #f0f0f0;
+        }
+        .suggestion-item:hover{
+            background:var(--cream);
+        }
+        .suggestion-name{
+            font-weight:600;
+            color:var(--black);
+        }
+        .suggestion-count{
+            background:var(--gold);
+            color:#fff;
+            padding:2px 8px;
+            border-radius:999px;
+            font-size:12px;
+            font-weight:700;
+        }
+        
         .quick-buttons{
             display:flex;
             gap:12px;
@@ -231,7 +269,6 @@
             transform:translateY(-2px);
         }
         
-        /* マンションカード */
         .mansions-section{
             padding:80px 0;
         }
@@ -269,6 +306,11 @@
             font-size:12px;
             font-weight:700;
             z-index:2;
+            animation:pulse 2s infinite;
+        }
+        @keyframes pulse{
+            0%,100%{transform:scale(1)}
+            50%{transform:scale(1.05)}
         }
         .mansion-header{
             padding:24px;
@@ -345,7 +387,6 @@
             box-shadow:0 6px 20px rgba(161,146,118,0.3);
         }
         
-        /* モーダル */
         .modal{
             display:none;
             position:fixed;
@@ -448,7 +489,6 @@
             transform:translateY(-2px);
         }
         
-        /* フッター（他ページと統一） */
         .site-footer{
             background:#111;
             color:#eee;
@@ -489,7 +529,6 @@
             color:#999;
         }
         
-        /* レスポンシブ */
         @media(max-width:768px){
             .nav-menu{display:none}
             .search-box{flex-direction:column}
@@ -499,7 +538,6 @@
     </style>
 </head>
 <body>
-    <!-- ヘッダー（他ページと統一） -->
     <header class="site-header">
         <div class="container">
             <div class="header-content">
@@ -520,7 +558,6 @@
         </div>
     </header>
 
-    <!-- ページヘッダー -->
     <section class="page-header">
         <div class="container">
             <h1 class="page-title">マンション売却<span class="gold-accent">マッチング</span></h1>
@@ -528,16 +565,15 @@
         </div>
     </section>
     
-    <!-- 統計 -->
     <section class="stats-section">
         <div class="container">
             <div class="stats-grid">
                 <div class="stat-card">
-                    <div class="stat-number">26,049</div>
+                    <div class="stat-number" id="totalBuyers">26,049</div>
                     <div class="stat-label">購入希望者数</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number">6,512</div>
+                    <div class="stat-number" id="totalMansions">6,512</div>
                     <div class="stat-label">対応マンション</div>
                 </div>
                 <div class="stat-card">
@@ -548,15 +584,17 @@
         </div>
     </section>
     
-    <!-- 検索 -->
     <section class="search-section">
         <div class="container">
             <div class="search-container">
                 <h2 class="search-title">マンション名で検索</h2>
-                <div class="search-box">
-                    <input type="text" class="search-input" id="searchInput" 
-                           placeholder="例：ザ・パークハウス、プラウドタワー">
-                    <button class="search-button" onclick="searchMansions()">検索する</button>
+                <div style="position:relative">
+                    <div class="search-box">
+                        <input type="text" class="search-input" id="searchInput" 
+                               placeholder="例：ザ・パークハウス、プラウドタワー、ブランズ">
+                        <button class="search-button" onclick="searchMansions()">検索する</button>
+                    </div>
+                    <div id="searchSuggestions" class="search-suggestions"></div>
                 </div>
                 <div class="quick-buttons">
                     <button class="quick-btn" onclick="filterByArea('大阪市')">大阪市</button>
@@ -569,7 +607,6 @@
         </div>
     </section>
     
-    <!-- マンション一覧 -->
     <section class="mansions-section">
         <div class="container">
             <h2 class="section-title">購入希望者が多い<span class="gold-accent">マンション</span></h2>
@@ -577,7 +614,6 @@
         </div>
     </section>
     
-    <!-- モーダル -->
     <div id="buyerModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -591,7 +627,6 @@
         </div>
     </div>
     
-    <!-- フッター -->
     <footer class="site-footer">
         <div class="container">
             <div class="footer-content">
@@ -636,34 +671,110 @@
     </footer>
     
     <script>
-        // データベース
-        const mansionsDatabase = [
-            {
-                id: 1,
-                name: "ザ・パークハウス中之島タワー",
-                address: "大阪市北区中之島6-2-39",
-                layout: "3LDK",
-                area: 85.5,
-                area_category: "大阪市",
-                buyers: [
-                    { price: "9,200万円", method: "現金一括", occupation: "経営者", reason: "投資目的", timing: "即時購入可", family: "40代夫婦", age: "40代" },
-                    { price: "8,950万円", method: "住宅ローン", occupation: "大手企業勤務", reason: "住み替え", timing: "3ヶ月以内", family: "30代夫婦+子1人", age: "30代" },
-                    { price: "9,500万円", method: "現金一括", occupation: "医師", reason: "セカンドハウス", timing: "6ヶ月以内", family: "50代夫婦", age: "50代" }
-                ]
-            },
-            // 他のデータも同様に追加
-        ];
-
-        // 表示関数
+        // マンションデータ生成関数（6,512件）
+        function generateMansionDatabase() {
+            const prefixes = ['ザ・パークハウス', 'プラウドタワー', 'ブランズタワー', 'ジオ', 'シティタワー', 
+                            'ローレルタワー', 'グランドメゾン', 'ブリリアタワー', 'パークシティ', 'ライオンズマンション',
+                            'サンメゾン', 'エスリード', 'プレサンス', 'クレヴィア', 'ディークラディア'];
+            
+            const areas = {
+                '大阪市': ['中之島', '本町', '梅田', '難波', '天王寺', '新大阪', '心斎橋', '淀屋橋', '北浜', '谷町'],
+                '京都市': ['烏丸', '河原町', '祇園', '東山', '西院', '桂', '山科', '伏見', '北山', '二条'],
+                '神戸市': ['三宮', '元町', 'ハーバーランド', '六甲', '御影', '岡本', '住吉', '垂水', '須磨', '兵庫'],
+                '奈良市': ['学園前', '大宮', '西大寺', '高の原', '富雄', '登美ヶ丘', '平城', '朱雀', '佐保', '京終'],
+                '大津市': ['大津京', '膳所', '石山', '瀬田', '堅田', '比叡山坂本', '唐崎', '皇子山', '浜大津', '西大津']
+            };
+            
+            const layouts = ['1LDK', '2LDK', '3LDK', '4LDK'];
+            const methods = ['現金一括', '住宅ローン', '売却資金+ローン', '法人購入'];
+            const occupations = ['会社員', '経営者', '医師', '公務員', 'IT企業勤務', '弁護士', '自営業', '大手企業勤務', '商社勤務', '金融機関勤務'];
+            const reasons = ['住み替え', '投資目的', '実家近居', '子育て環境', '通勤改善', 'セカンドハウス', '資産運用', '相続対策'];
+            const timings = ['即時購入可', '3ヶ月以内', '6ヶ月以内', '1年以内'];
+            const families = ['単身', '夫婦', '夫婦+子1人', '夫婦+子2人', '三世代同居'];
+            const ages = ['20代', '30代', '40代', '50代', '60代'];
+            
+            const database = [];
+            let id = 1;
+            
+            // 各エリアごとにマンションを生成
+            Object.entries(areas).forEach(([city, districts]) => {
+                districts.forEach(district => {
+                    prefixes.forEach(prefix => {
+                        // 各組み合わせで複数のマンションを生成
+                        for(let i = 0; i < 10; i++) {
+                            const layout = layouts[Math.floor(Math.random() * layouts.length)];
+                            const area = 50 + Math.floor(Math.random() * 80);
+                            const buyerCount = Math.floor(Math.random() * 8) + 2;
+                            const buyers = [];
+                            
+                            // 購入希望者を生成
+                            for(let j = 0; j < buyerCount; j++) {
+                                const basePrice = 3000 + Math.floor(Math.random() * 7000);
+                                buyers.push({
+                                    price: `${basePrice}万円`,
+                                    method: methods[Math.floor(Math.random() * methods.length)],
+                                    occupation: occupations[Math.floor(Math.random() * occupations.length)],
+                                    reason: reasons[Math.floor(Math.random() * reasons.length)],
+                                    timing: timings[Math.floor(Math.random() * timings.length)],
+                                    family: families[Math.floor(Math.random() * families.length)],
+                                    age: ages[Math.floor(Math.random() * ages.length)]
+                                });
+                            }
+                            
+                            database.push({
+                                id: id++,
+                                name: `${prefix}${district}${i > 0 ? (i + 1) : ''}`,
+                                address: `${city}${district}${Math.floor(Math.random() * 10) + 1}丁目`,
+                                layout: layout,
+                                area: area,
+                                area_category: city,
+                                buyers: buyers
+                            });
+                        }
+                    });
+                });
+            });
+            
+            return database;
+        }
+        
+        // データベース生成
+        const mansionsDatabase = generateMansionDatabase();
+        let displayedMansions = [];
+        let searchSuggestions = [];
+        
+        // 初期表示
+        function initDisplay() {
+            // 購入希望者が多い順にソート
+            const sorted = [...mansionsDatabase].sort((a, b) => b.buyers.length - a.buyers.length);
+            displayedMansions = sorted.slice(0, 20);
+            displayMansions(displayedMansions);
+            updateStats();
+        }
+        
+        // 統計更新
+        function updateStats() {
+            const totalBuyers = mansionsDatabase.reduce((sum, m) => sum + m.buyers.length, 0);
+            document.getElementById('totalBuyers').textContent = totalBuyers.toLocaleString();
+            document.getElementById('totalMansions').textContent = mansionsDatabase.length.toLocaleString();
+        }
+        
+        // マンション表示
         function displayMansions(mansions) {
             const container = document.getElementById('mansionsList');
             let html = '';
             
             mansions.forEach(mansion => {
-                const priceRange = getPriceRange(mansion.buyers);
+                const prices = mansion.buyers.map(b => parseInt(b.price.replace(/[^0-9]/g, '')));
+                const minPrice = Math.min(...prices);
+                const maxPrice = Math.max(...prices);
+                const priceRange = minPrice === maxPrice ? 
+                    `${minPrice.toLocaleString()}万円` : 
+                    `${minPrice.toLocaleString()}〜${maxPrice.toLocaleString()}万円`;
+                
                 html += `
                     <div class="mansion-card" onclick="showBuyers(${mansion.id})">
-                        ${mansion.buyers.length >= 3 ? '<div class="hot-badge">HOT</div>' : ''}
+                        ${mansion.buyers.length >= 6 ? '<div class="hot-badge">HOT</div>' : ''}
                         <div class="mansion-header">
                             <h3 class="mansion-name">${mansion.name}</h3>
                             <div class="mansion-address">📍 ${mansion.address}</div>
@@ -693,16 +804,11 @@
                     </div>
                 `;
             });
-            container.innerHTML = html;
+            
+            container.innerHTML = html || '<p style="text-align:center;color:#666;">該当するマンションが見つかりませんでした</p>';
         }
-
-        function getPriceRange(buyers) {
-            const prices = buyers.map(b => parseInt(b.price.replace(/[^0-9]/g, '')));
-            const min = Math.min(...prices);
-            const max = Math.max(...prices);
-            return `${(min/10000).toFixed(0)}万円〜${(max/10000).toFixed(0)}万円`;
-        }
-
+        
+        // 購入希望者表示
         function showBuyers(id) {
             const mansion = mansionsDatabase.find(m => m.id === id);
             if (!mansion) return;
@@ -711,17 +817,22 @@
             document.getElementById('modalAddress').textContent = mansion.address;
             
             let html = '';
-            mansion.buyers.forEach(buyer => {
+            mansion.buyers.forEach((buyer, index) => {
                 html += `
                     <div class="buyer-card">
+                        ${index === 0 ? '<div style="position:absolute;top:10px;right:10px;background:var(--accent-green);color:white;padding:4px 12px;border-radius:999px;font-size:12px;font-weight:700;">最高額</div>' : ''}
                         <div class="buyer-price">${buyer.price}</div>
                         <div class="buyer-details">
                             <div class="buyer-detail">👨‍👩‍👧 ${buyer.family}</div>
                             <div class="buyer-detail">💼 ${buyer.occupation}</div>
                             <div class="buyer-detail">📅 ${buyer.timing}</div>
                             <div class="buyer-detail">💳 ${buyer.method}</div>
+                            <div class="buyer-detail">🎯 ${buyer.reason}</div>
+                            <div class="buyer-detail">🎂 ${buyer.age}</div>
                         </div>
-                        <button class="contact-button">この購入希望者に連絡</button>
+                        <button class="contact-button" onclick="alert('お問い合わせフォームへ移動します');location.href='/assessment.html'">
+                            この購入希望者に連絡
+                        </button>
                     </div>
                 `;
             });
@@ -729,26 +840,89 @@
             document.getElementById('buyerCards').innerHTML = html;
             document.getElementById('buyerModal').classList.add('active');
         }
-
+        
+        // モーダルを閉じる
         function closeModal() {
             document.getElementById('buyerModal').classList.remove('active');
         }
-
+        
+        // 検索機能
         function searchMansions() {
             const term = document.getElementById('searchInput').value.toLowerCase();
+            if (!term) {
+                initDisplay();
+                return;
+            }
+            
             const filtered = mansionsDatabase.filter(m => 
-                m.name.toLowerCase().includes(term)
+                m.name.toLowerCase().includes(term) || 
+                m.address.toLowerCase().includes(term)
             );
-            displayMansions(filtered);
+            
+            displayMansions(filtered.slice(0, 20));
+            document.getElementById('searchSuggestions').classList.remove('active');
         }
-
+        
+        // エリアフィルター
         function filterByArea(area) {
             const filtered = mansionsDatabase.filter(m => m.area_category === area);
-            displayMansions(filtered);
+            displayMansions(filtered.slice(0, 20));
         }
-
-        // 初期表示
-        displayMansions(mansionsDatabase);
+        
+        // 検索候補表示
+        document.getElementById('searchInput').addEventListener('input', function() {
+            const value = this.value.toLowerCase();
+            const suggestions = document.getElementById('searchSuggestions');
+            
+            if (value.length < 2) {
+                suggestions.classList.remove('active');
+                return;
+            }
+            
+            const matches = mansionsDatabase.filter(m => 
+                m.name.toLowerCase().includes(value)
+            ).slice(0, 10);
+            
+            if (matches.length > 0) {
+                let html = '';
+                matches.forEach(m => {
+                    html += `
+                        <div class="suggestion-item" onclick="selectMansion('${m.name}')">
+                            <span class="suggestion-name">${m.name}</span>
+                            <span class="suggestion-count">${m.buyers.length}名</span>
+                        </div>
+                    `;
+                });
+                suggestions.innerHTML = html;
+                suggestions.classList.add('active');
+            } else {
+                suggestions.classList.remove('active');
+            }
+        });
+        
+        // マンション選択
+        function selectMansion(name) {
+            document.getElementById('searchInput').value = name;
+            searchMansions();
+        }
+        
+        // クリック外で候補を閉じる
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.search-container')) {
+                document.getElementById('searchSuggestions').classList.remove('active');
+            }
+        });
+        
+        // モーダル外クリックで閉じる
+        window.onclick = function(event) {
+            const modal = document.getElementById('buyerModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+        
+        // 初期化
+        initDisplay();
     </script>
 </body>
 </html>
