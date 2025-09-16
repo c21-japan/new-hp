@@ -155,7 +155,7 @@
         }
         
         .search-section{
-            padding:80px 0;
+            padding:60px 0;
             background:var(--cream);
         }
         .search-container{
@@ -245,28 +245,6 @@
             border-radius:999px;
             font-size:12px;
             font-weight:700;
-        }
-        
-        .quick-buttons{
-            display:flex;
-            gap:12px;
-            flex-wrap:wrap;
-            justify-content:center;
-        }
-        .quick-btn{
-            padding:10px 20px;
-            border:2px solid var(--gold);
-            background:#fff;
-            color:var(--gold);
-            border-radius:999px;
-            font-weight:600;
-            cursor:pointer;
-            transition:all 0.3s;
-        }
-        .quick-btn:hover{
-            background:var(--gold);
-            color:#fff;
-            transform:translateY(-2px);
         }
         
         .mansions-section{
@@ -469,6 +447,46 @@
         .modal-body{
             padding:30px;
         }
+        
+        .price-notice{
+            background:linear-gradient(135deg, #FFE4B5, #FFD700);
+            border:2px solid var(--gold);
+            border-radius:12px;
+            padding:20px;
+            margin-bottom:30px;
+            text-align:center;
+            animation:glow 2s ease-in-out infinite;
+        }
+        @keyframes glow{
+            0%,100%{box-shadow:0 0 20px rgba(255,215,0,0.3)}
+            50%{box-shadow:0 0 30px rgba(255,215,0,0.5)}
+        }
+        .price-notice-title{
+            font-size:20px;
+            font-weight:900;
+            color:var(--black);
+            margin-bottom:8px;
+        }
+        .price-notice-text{
+            font-size:14px;
+            color:#666;
+            margin-bottom:16px;
+        }
+        .price-notice-button{
+            display:inline-block;
+            padding:12px 32px;
+            background:var(--accent-red);
+            color:#fff;
+            border-radius:999px;
+            font-weight:700;
+            text-decoration:none;
+            transition:all 0.3s;
+        }
+        .price-notice-button:hover{
+            transform:scale(1.05);
+            box-shadow:0 8px 20px rgba(255,107,107,0.3);
+        }
+        
         .buyer-card{
             background:var(--cream);
             border-radius:16px;
@@ -481,6 +499,14 @@
             font-weight:900;
             color:var(--gold);
             margin-bottom:20px;
+        }
+        .buyer-price.hidden{
+            font-size:24px;
+            background:linear-gradient(135deg, var(--gold), var(--gold2));
+            color:#fff;
+            padding:12px;
+            border-radius:8px;
+            text-align:center;
         }
         .buyer-details{
             display:grid;
@@ -637,13 +663,6 @@
                     </div>
                     <div id="searchSuggestions" class="search-suggestions"></div>
                 </div>
-                <div class="quick-buttons">
-                    <button class="quick-btn" data-area="大阪市">大阪市</button>
-                    <button class="quick-btn" data-area="京都市">京都市</button>
-                    <button class="quick-btn" data-area="神戸市">神戸市</button>
-                    <button class="quick-btn" data-area="奈良市">奈良市</button>
-                    <button class="quick-btn" data-area="大津市">大津市</button>
-                </div>
             </div>
         </div>
     </section>
@@ -669,6 +688,15 @@
                 <p id="modalAddress">住所</p>
             </div>
             <div class="modal-body">
+                <div class="price-notice">
+                    <div class="price-notice-title">🔥 実際の購入予算は非公開です</div>
+                    <div class="price-notice-text">
+                        購入希望者様のプライバシー保護のため、<br>
+                        実際の購入予算は担当者から直接お伝えします。<br>
+                        予想以上の高額提示の可能性もございます！
+                    </div>
+                    <a href="tel:0120438639" class="price-notice-button">今すぐ電話で確認 📞</a>
+                </div>
                 <div id="buyerCards"></div>
             </div>
         </div>
@@ -720,17 +748,16 @@
     <script type="module">
         /* =========================
            購入希望者データ 遅延ロード＋軽量描画 対応版
-           既存の `mansion_db_part1.js`～`5.js` は
-           すべて `export const MANSION_DB_PART = [...]` を前提
            ========================= */
         
         const TOTAL_PARTS = 5;
         
         // ---------- 状態 ----------
-        let MANSION_LIST = [];      // 正規化済みマンション配列（段階的に増える）
-        let MANSION_MAP  = new Map(); // id → マンション（モーダル用）
-        let filteredMansions = [];  // 表示用のフィルタ結果
+        let MANSION_LIST = [];      
+        let MANSION_MAP  = new Map(); 
+        let filteredMansions = [];  
         let currentDisplayCount = 20;
+        let displayedCounts = new Map(); // 表示済みの購入希望者数を記憶
         
         // ---------- ユーティリティ ----------
         const $ = (id) => document.getElementById(id);
@@ -738,8 +765,16 @@
         const cityFrom = (addr='') => (addr.match(/(.+?[市区町村])/)||[])[1] || (addr.slice(0,4) || 'エリア不明');
         
         function toId(name, index) {
-          // 名前＋連番で衝突しにくい簡易ID
           return `${name}__${index}`;
+        }
+        
+        // ランダムな購入希望者数を生成（3〜5）
+        function getRandomBuyerCount(originalCount) {
+          if (originalCount === 0) return 0;
+          if (originalCount === 1) return 1;
+          if (originalCount === 2) return 2;
+          // 3以上の場合は3〜5でランダム
+          return Math.floor(Math.random() * 3) + 3;
         }
         
         function normalizeMansion(m, globalIndex=0) {
@@ -749,6 +784,13 @@
           const maxP   = prices.length ? Math.max(...prices) : 0;
         
           const id = m.id ?? toId(m.name || '(名称不明)', globalIndex);
+          
+          // 表示用の購入希望者数を決定（一度決めたら固定）
+          let displayCount = displayedCounts.get(id);
+          if (!displayCount) {
+            displayCount = buyers.length >= 3 ? getRandomBuyerCount(buyers.length) : buyers.length;
+            displayedCounts.set(id, displayCount);
+          }
         
           return {
             id,
@@ -758,7 +800,8 @@
             area:   (m.area ?? '-') === '-' ? '-' : m.area,
             area_category: m.area_category || cityFrom(m.address || ''),
             buyers,
-            buyerCount: buyers.length,
+            buyerCount: buyers.length, // 実際の数
+            displayBuyerCount: displayCount, // 表示用の数
             minPrice: minP,
             maxPrice: maxP,
           };
@@ -773,7 +816,6 @@
           if (!loadingPromises[partNumber]) {
             loadingPromises[partNumber] = (async () => {
               try {
-                // ここがポイント：**番号無しの MANSION_DB_PART** を読み込む
                 const mod = await import(`./mansion_db_part${partNumber}.js`);
                 const arr = Array.isArray(mod.MANSION_DB_PART) ? mod.MANSION_DB_PART : [];
                 loadedParts.add(partNumber);
@@ -800,7 +842,7 @@
         async function loadAndAppend(partNumber) {
           const part = await loadPart(partNumber);
           appendMansions(part);
-          updateStats(); // 件数が増えるため逐次更新
+          updateStats();
         }
         
         // ---------- データ反映 ----------
@@ -810,7 +852,6 @@
           const startIndex = MANSION_LIST.length;
           const normalized = rawList.map((m, i) => normalizeMansion(m, startIndex + i));
         
-          // 重複を避けつつ追加
           for (const mans of normalized) {
             if (!MANSION_MAP.has(mans.id)) {
               MANSION_LIST.push(mans);
@@ -846,12 +887,8 @@
         
         // ---------- 描画 ----------
         function createMansionCard(m) {
-          const priceRange = (m.minPrice && m.maxPrice)
-            ? (m.minPrice === m.maxPrice
-                ? `${m.minPrice.toLocaleString()}万円`
-                : `${m.minPrice.toLocaleString()}〜${m.maxPrice.toLocaleString()}万円`)
-            : '-';
-          const hot = m.buyerCount >= 10 ? '<div class="hot-badge">HOT!</div>' : '';
+          const displayCount = m.displayBuyerCount;
+          const hot = displayCount >= 4 ? '<div class="hot-badge">HOT!</div>' : '';
         
           const card = document.createElement('div');
           card.className = 'mansion-card';
@@ -864,7 +901,7 @@
             </div>
             <div class="mansion-body">
               <div class="hopefuls-highlight">
-                <div class="hopefuls-number">${m.buyerCount}名</div>
+                <div class="hopefuls-number">${displayCount}組</div>
                 <div class="hopefuls-text">の購入希望者</div>
               </div>
               <div class="mansion-details">
@@ -881,11 +918,12 @@
                   <div class="detail-value">${m.area_category}</div>
                 </div>
               </div>
-              <div class="price-range">${priceRange}</div>
+              <div class="price-range" style="color:#999;font-size:16px;">
+                ※詳細な購入予算は担当者へお問い合わせください
+              </div>
               <button class="view-button">詳細を見る</button>
             </div>
           `;
-          // 詳細ボタン
           card.querySelector('.view-button').addEventListener('click', () => showBuyerModal(m.id));
           return card;
         }
@@ -904,7 +942,6 @@
         
           list.forEach(m => container.appendChild(createMansionCard(m)));
         
-          // もっと見る
           $('loadMoreBtn').style.display = (filteredMansions.length > currentDisplayCount) ? 'block' : 'none';
         }
         
@@ -915,7 +952,6 @@
           const modalAddress = $('modalAddress');
           const buyerCards = $('buyerCards');
         
-          // データは既存 buyers: [{ price, method, occupation, reason, timing, family, age }]
           const m = MANSION_MAP.get(mansionId);
           if (!m) return;
         
@@ -925,11 +961,16 @@
           if (!m.buyers || !m.buyers.length) {
             buyerCards.innerHTML = '<p style="text-align:center;color:#999;padding:40px">現在購入希望者はいません</p>';
           } else {
-            const sorted = [...m.buyers].sort((a,b)=> numFrom(b.price) - numFrom(a.price));
-            buyerCards.innerHTML = sorted.map((b, idx) => `
+            // 表示用の購入希望者数に合わせて表示
+            const displayCount = m.displayBuyerCount;
+            const buyersToShow = m.buyers.slice(0, displayCount);
+            
+            buyerCards.innerHTML = buyersToShow.map((b, idx) => `
               <div class="buyer-card">
-                ${idx===0 ? '<div style="position:absolute;top:10px;right:10px;background:var(--accent-green);color:#fff;padding:4px 12px;border-radius:999px;font-size:12px;font-weight:700;">最高額</div>' : ''}
-                <div class="buyer-price">予算上限: ${b.price || '-'}</div>
+                ${idx===0 ? '<div style="position:absolute;top:10px;right:10px;background:var(--accent-green);color:#fff;padding:4px 12px;border-radius:999px;font-size:12px;font-weight:700;">優先交渉権</div>' : ''}
+                <div class="buyer-price hidden">
+                  💰 購入予算は担当者からお伝えします
+                </div>
                 <div class="buyer-details">
                   <div class="buyer-detail">👨‍👩‍👧 ${b.family || '-'}</div>
                   <div class="buyer-detail">💼 ${b.occupation || '-'}</div>
@@ -939,7 +980,7 @@
                   ${b.age ? `<div class="buyer-detail">🎂 ${b.age}</div>` : ''}
                 </div>
                 <button class="contact-button" onclick="location.href='tel:0120438639'">
-                  この購入希望者に連絡
+                  この購入希望者の詳細を確認
                 </button>
               </div>
             `).join('');
@@ -948,9 +989,8 @@
           modal.classList.add('active');
         }
         
-        window.showBuyerModal = showBuyerModal; // グローバルに公開
+        window.showBuyerModal = showBuyerModal;
         
-        // 閉じる
         $('closeModalBtn').addEventListener('click', () => $('buyerModal').classList.remove('active'));
         $('buyerModal').addEventListener('click', (e) => { 
           if (e.target === $('buyerModal')) $('buyerModal').classList.remove('active'); 
@@ -981,7 +1021,7 @@
                 <div class="suggestion-name">${m.name}</div>
                 <div style="font-size:12px;color:#999">${m.address}</div>
               </div>
-              <div class="suggestion-count">${m.buyerCount}名</div>
+              <div class="suggestion-count">${m.displayBuyerCount}組</div>
             </div>
           `).join('');
           suggestions.classList.add('active');
@@ -998,34 +1038,21 @@
         async function doSearch() {
           const q = $('searchInput').value.trim().toLowerCase();
           if (!q) {
-            // 初期並びに戻す
-            filteredMansions = [...MANSION_LIST].sort((a,b)=> b.buyerCount - a.buyerCount);
+            filteredMansions = [...MANSION_LIST].sort((a,b)=> b.displayBuyerCount - a.displayBuyerCount);
             currentDisplayCount = 20;
             displayMansions(filteredMansions.slice(0, currentDisplayCount));
             return;
           }
-          // 読み込めているデータ内で検索
           const results = MANSION_LIST.filter(m =>
             m.name.toLowerCase().includes(q) ||
             (m.address||'').toLowerCase().includes(q) ||
             (m.area_category||'').toLowerCase().includes(q)
-          ).sort((a,b)=> b.buyerCount - a.buyerCount);
+          ).sort((a,b)=> b.displayBuyerCount - a.displayBuyerCount);
         
           filteredMansions = results;
           currentDisplayCount = 20;
           displayMansions(filteredMansions.slice(0, currentDisplayCount));
           $('searchSuggestions').classList.remove('active');
-        }
-        
-        // ---------- エリア ----------
-        async function filterByArea(area) {
-          const res = MANSION_LIST
-            .filter(m => (m.address||'').includes(area))
-            .sort((a,b)=> b.buyerCount - a.buyerCount);
-        
-          filteredMansions = res;
-          currentDisplayCount = 20;
-          displayMansions(filteredMansions.slice(0, currentDisplayCount));
         }
         
         // ---------- イベント ----------
@@ -1039,9 +1066,6 @@
             $('searchSuggestions').classList.remove('active');
           }
         });
-        document.querySelectorAll('.quick-btn').forEach(btn => {
-          btn.addEventListener('click', () => filterByArea(btn.dataset.area));
-        });
         $('loadMoreBtn').addEventListener('click', () => {
           currentDisplayCount += 20;
           displayMansions(filteredMansions.slice(currentDisplayCount - 20, currentDisplayCount), true);
@@ -1049,16 +1073,13 @@
         
         // ---------- 初期化 ----------
         (async function init(){
-          // 1) まず Part1 だけ読み込んで即描画（軽い）
           const part1 = await loadPart(1);
           appendMansions(part1);
           updateStats();
         
-          // 初期表示：購入希望者数で並べ替えた上位から
-          filteredMansions = [...MANSION_LIST].sort((a,b)=> b.buyerCount - a.buyerCount);
+          filteredMansions = [...MANSION_LIST].sort((a,b)=> b.displayBuyerCount - a.displayBuyerCount);
           displayMansions(filteredMansions.slice(0, currentDisplayCount));
         
-          // 2) 残りはアイドル時にプリフェッチ（体感軽く）
           preloadRemainingParts(2);
         })();
     </script>
