@@ -530,24 +530,6 @@
             100%{transform:rotate(360deg)}
         }
         
-        .data-loading-indicator{
-            position:fixed;
-            bottom:20px;
-            right:20px;
-            background:var(--gold);
-            color:#fff;
-            padding:12px 20px;
-            border-radius:999px;
-            font-size:14px;
-            font-weight:600;
-            box-shadow:var(--shadow);
-            z-index:1000;
-            display:none;
-        }
-        .data-loading-indicator.active{
-            display:block;
-        }
-        
         .site-footer{
             background:#111;
             color:#eee;
@@ -692,10 +674,6 @@
         </div>
     </div>
     
-    <div id="dataLoadingIndicator" class="data-loading-indicator">
-        データ読み込み中...
-    </div>
-    
     <footer class="site-footer">
         <div class="container">
             <div class="footer-content">
@@ -740,410 +718,349 @@
     </footer>
     
     <script type="module">
-        // グローバル変数
-        let MANSION_DB = {};
-        let loadedParts = new Set();
-        let currentDisplayCount = 20;
-        let filteredMansions = [];
-        let currentFilter = '';
+        /* =========================
+           購入希望者データ 遅延ロード＋軽量描画 対応版
+           既存の `mansion_db_part1.js`～`5.js` は
+           すべて `export const MANSION_DB_PART = [...]` を前提
+           ========================= */
         
-        // データローダー
-        class MansionDataLoader {
-            constructor() {
-                this.totalParts = 5;
-                this.loadingPromises = {};
-            }
-            
-            async loadPart(partNumber) {
-                if (loadedParts.has(partNumber)) {
-                    return;
-                }
-                
-                if (!this.loadingPromises[partNumber]) {
-                    this.loadingPromises[partNumber] = this._loadPartImpl(partNumber);
-                }
-                
-                return this.loadingPromises[partNumber];
-            }
-            
-            async _loadPartImpl(partNumber) {
-                try {
-                    const module = await import(`./mansion_db_part${partNumber}.js`);
-                    const partData = module[`MANSION_DB_PART${partNumber}`];
-                    
-                    Object.assign(MANSION_DB, partData);
-                    loadedParts.add(partNumber);
-                    
-                    // 統計を更新
-                    updateStats();
-                    
-                    console.log(`Part ${partNumber} loaded: ${Object.keys(partData).length} mansions`);
-                    return partData;
-                } catch (error) {
-                    console.error(`Failed to load part ${partNumber}:`, error);
-                    return {};
-                }
-            }
-            
-            async loadAllParts() {
-                const promises = [];
-                for (let i = 1; i <= this.totalParts; i++) {
-                    promises.push(this.loadPart(i));
-                }
-                await Promise.all(promises);
-            }
-            
-            async preloadRemainingParts() {
-                // requestIdleCallbackを使って残りのパートをバックグラウンドで読み込む
-                for (let i = 2; i <= this.totalParts; i++) {
-                    if (!loadedParts.has(i)) {
-                        if ('requestIdleCallback' in window) {
-                            requestIdleCallback(() => this.loadPart(i), { timeout: 5000 });
-                        } else {
-                            setTimeout(() => this.loadPart(i), 100 * i);
-                        }
-                    }
-                }
-            }
+        const TOTAL_PARTS = 5;
+        
+        // ---------- 状態 ----------
+        let MANSION_LIST = [];      // 正規化済みマンション配列（段階的に増える）
+        let MANSION_MAP  = new Map(); // id → マンション（モーダル用）
+        let filteredMansions = [];  // 表示用のフィルタ結果
+        let currentDisplayCount = 20;
+        
+        // ---------- ユーティリティ ----------
+        const $ = (id) => document.getElementById(id);
+        const numFrom = (s='') => parseInt(String(s).replace(/[^\d]/g,''), 10) || 0;
+        const cityFrom = (addr='') => (addr.match(/(.+?[市区町村])/)||[])[1] || (addr.slice(0,4) || 'エリア不明');
+        
+        function toId(name, index) {
+          // 名前＋連番で衝突しにくい簡易ID
+          return `${name}__${index}`;
         }
         
-        const dataLoader = new MansionDataLoader();
+        function normalizeMansion(m, globalIndex=0) {
+          const buyers = Array.isArray(m.buyers) ? m.buyers : [];
+          const prices = buyers.map(b => numFrom(b.price));
+          const minP   = prices.length ? Math.min(...prices) : 0;
+          const maxP   = prices.length ? Math.max(...prices) : 0;
         
-        // 統計更新
+          const id = m.id ?? toId(m.name || '(名称不明)', globalIndex);
+        
+          return {
+            id,
+            name: m.name || '(名称不明)',
+            address: m.address || '',
+            layout: m.layout || '-',
+            area:   (m.area ?? '-') === '-' ? '-' : m.area,
+            area_category: m.area_category || cityFrom(m.address || ''),
+            buyers,
+            buyerCount: buyers.length,
+            minPrice: minP,
+            maxPrice: maxP,
+          };
+        }
+        
+        // ---------- パーツローダ ----------
+        const loadedParts = new Set();
+        const loadingPromises = {};
+        
+        async function loadPart(partNumber) {
+          if (loadedParts.has(partNumber)) return [];
+          if (!loadingPromises[partNumber]) {
+            loadingPromises[partNumber] = (async () => {
+              try {
+                // ここがポイント：**番号無しの MANSION_DB_PART** を読み込む
+                const mod = await import(`./mansion_db_part${partNumber}.js`);
+                const arr = Array.isArray(mod.MANSION_DB_PART) ? mod.MANSION_DB_PART : [];
+                loadedParts.add(partNumber);
+                console.log(`Part ${partNumber} loaded: ${arr.length} mansions`);
+                return arr;
+              } catch (error) {
+                console.error(`Failed to load part ${partNumber}:`, error);
+                return [];
+              }
+            })();
+          }
+          return loadingPromises[partNumber];
+        }
+        
+        function preloadRemainingParts(start = 2) {
+          const schedule = (cb) => (window.requestIdleCallback ? requestIdleCallback(cb) : setTimeout(cb, 100));
+          for (let i = start; i <= TOTAL_PARTS; i++) {
+            if (!loadedParts.has(i)) {
+              schedule(() => loadAndAppend(i));
+            }
+          }
+        }
+        
+        async function loadAndAppend(partNumber) {
+          const part = await loadPart(partNumber);
+          appendMansions(part);
+          updateStats(); // 件数が増えるため逐次更新
+        }
+        
+        // ---------- データ反映 ----------
+        function appendMansions(rawList) {
+          if (!Array.isArray(rawList) || rawList.length === 0) return;
+        
+          const startIndex = MANSION_LIST.length;
+          const normalized = rawList.map((m, i) => normalizeMansion(m, startIndex + i));
+        
+          // 重複を避けつつ追加
+          for (const mans of normalized) {
+            if (!MANSION_MAP.has(mans.id)) {
+              MANSION_LIST.push(mans);
+              MANSION_MAP.set(mans.id, mans);
+            }
+          }
+        }
+        
+        // ---------- 統計 ----------
         function updateStats() {
-            const totalBuyers = Object.values(MANSION_DB).reduce((sum, m) => 
-                sum + (m.buyers?.length || 0), 0
-            );
-            const totalMansions = Object.keys(MANSION_DB).length;
-            
-            // アニメーション付きで数値を更新
-            animateNumber('totalBuyers', totalBuyers);
-            animateNumber('totalMansions', totalMansions);
+          const totalBuyers = MANSION_LIST.reduce((s,m)=> s + m.buyerCount, 0);
+          const totalMansions = MANSION_LIST.length;
+          animateNumber('totalBuyers', totalBuyers);
+          animateNumber('totalMansions', totalMansions);
         }
         
         function animateNumber(elementId, targetNumber) {
-            const element = document.getElementById(elementId);
-            if (!element) return;
-            
-            const currentNumber = parseInt(element.textContent.replace(/,/g, '')) || 0;
-            const increment = Math.ceil((targetNumber - currentNumber) / 20);
-            let current = currentNumber;
-            
-            const timer = setInterval(() => {
-                current += increment;
-                if (current >= targetNumber) {
-                    current = targetNumber;
-                    clearInterval(timer);
-                }
-                element.textContent = current.toLocaleString();
-            }, 50);
+          const el = $(elementId);
+          if (!el) return;
+          const current = parseInt(el.textContent.replace(/,/g,''), 10) || 0;
+          const steps = 20;
+          const inc = Math.max(1, Math.ceil((targetNumber - current)/steps));
+          let val = current;
+          const timer = setInterval(() => {
+            val += inc;
+            if (val >= targetNumber) { 
+              val = targetNumber; 
+              clearInterval(timer); 
+            }
+            el.textContent = val.toLocaleString();
+          }, 40);
         }
         
-        // マンション表示
-        function displayMansions(mansions, append = false) {
-            const container = document.getElementById('mansionsList');
-            if (!append) {
-                container.innerHTML = '';
-            }
-            
-            if (mansions.length === 0) {
-                container.innerHTML = '<p style="text-align:center;padding:40px;color:#666">該当するマンションが見つかりませんでした</p>';
-                return;
-            }
-            
-            mansions.forEach(mansion => {
-                const card = createMansionCard(mansion);
-                container.appendChild(card);
-            });
-            
-            // もっと見るボタンの表示/非表示
-            const loadMoreBtn = document.getElementById('loadMoreBtn');
-            if (filteredMansions.length > currentDisplayCount) {
-                loadMoreBtn.style.display = 'block';
-            } else {
-                loadMoreBtn.style.display = 'none';
-            }
-        }
+        // ---------- 描画 ----------
+        function createMansionCard(m) {
+          const priceRange = (m.minPrice && m.maxPrice)
+            ? (m.minPrice === m.maxPrice
+                ? `${m.minPrice.toLocaleString()}万円`
+                : `${m.minPrice.toLocaleString()}〜${m.maxPrice.toLocaleString()}万円`)
+            : '-';
+          const hot = m.buyerCount >= 10 ? '<div class="hot-badge">HOT!</div>' : '';
         
-        function createMansionCard(mansion) {
-            const card = document.createElement('div');
-            card.className = 'mansion-card';
-            card.dataset.mansionId = mansion.id;
-            
-            const buyerCount = mansion.buyers?.length || 0;
-            const isHot = buyerCount >= 10;
-            
-            const avgPrice = mansion.buyers && mansion.buyers.length > 0
-                ? Math.round(mansion.buyers.reduce((sum, b) => sum + b.maxPrice, 0) / mansion.buyers.length)
-                : 0;
-            
-            const minPrice = mansion.buyers && mansion.buyers.length > 0
-                ? Math.min(...mansion.buyers.map(b => b.maxPrice))
-                : 0;
-            
-            const maxPrice = mansion.buyers && mansion.buyers.length > 0
-                ? Math.max(...mansion.buyers.map(b => b.maxPrice))
-                : 0;
-            
-            card.innerHTML = `
-                ${isHot ? '<div class="hot-badge">HOT!</div>' : ''}
-                <div class="mansion-header">
-                    <div class="mansion-name">${mansion.name}</div>
-                    <div class="mansion-address">${mansion.address}</div>
+          const card = document.createElement('div');
+          card.className = 'mansion-card';
+          card.dataset.mansionId = m.id;
+          card.innerHTML = `
+            ${hot}
+            <div class="mansion-header">
+              <div class="mansion-name">${m.name}</div>
+              <div class="mansion-address">📍 ${m.address}</div>
+            </div>
+            <div class="mansion-body">
+              <div class="hopefuls-highlight">
+                <div class="hopefuls-number">${m.buyerCount}名</div>
+                <div class="hopefuls-text">の購入希望者</div>
+              </div>
+              <div class="mansion-details">
+                <div class="detail-item">
+                  <div class="detail-label">間取り</div>
+                  <div class="detail-value">${m.layout}</div>
                 </div>
-                <div class="mansion-body">
-                    <div class="hopefuls-highlight">
-                        <div class="hopefuls-number">${buyerCount}名</div>
-                        <div class="hopefuls-text">購入希望者</div>
-                    </div>
-                    ${buyerCount > 0 ? `
-                        <div class="mansion-details">
-                            <div class="detail-item">
-                                <div class="detail-label">平均予算</div>
-                                <div class="detail-value">${(avgPrice / 10000).toFixed(0)}万円</div>
-                            </div>
-                            <div class="detail-item">
-                                <div class="detail-label">築年数</div>
-                                <div class="detail-value">${mansion.age}年</div>
-                            </div>
-                            <div class="detail-item">
-                                <div class="detail-label">総戸数</div>
-                                <div class="detail-value">${mansion.units}戸</div>
-                            </div>
-                        </div>
-                        <div class="price-range">
-                            ${(minPrice / 10000).toFixed(0)}万円 〜 ${(maxPrice / 10000).toFixed(0)}万円
-                        </div>
-                    ` : '<p style="text-align:center;color:#999;padding:20px">現在購入希望者はいません</p>'}
-                    <button class="view-button" onclick="window.showBuyerModal('${mansion.id}')">
-                        詳細を見る
-                    </button>
+                <div class="detail-item">
+                  <div class="detail-label">専有面積</div>
+                  <div class="detail-value">${m.area}${m.area==='-'?'':'㎡'}</div>
                 </div>
-            `;
-            
-            return card;
+                <div class="detail-item">
+                  <div class="detail-label">エリア</div>
+                  <div class="detail-value">${m.area_category}</div>
+                </div>
+              </div>
+              <div class="price-range">${priceRange}</div>
+              <button class="view-button">詳細を見る</button>
+            </div>
+          `;
+          // 詳細ボタン
+          card.querySelector('.view-button').addEventListener('click', () => showBuyerModal(m.id));
+          return card;
         }
         
-        // モーダル表示
-        window.showBuyerModal = async function(mansionId) {
-            // 全データを読み込む
-            const indicator = document.getElementById('dataLoadingIndicator');
-            if (loadedParts.size < 5) {
-                indicator.classList.add('active');
-                await dataLoader.loadAllParts();
-                indicator.classList.remove('active');
-            }
-            
-            const mansion = MANSION_DB[mansionId];
-            if (!mansion) return;
-            
-            const modal = document.getElementById('buyerModal');
-            const modalTitle = document.getElementById('modalTitle');
-            const modalAddress = document.getElementById('modalAddress');
-            const buyerCards = document.getElementById('buyerCards');
-            
-            modalTitle.textContent = mansion.name;
-            modalAddress.textContent = mansion.address;
-            
-            if (mansion.buyers && mansion.buyers.length > 0) {
-                buyerCards.innerHTML = mansion.buyers
-                    .sort((a, b) => b.maxPrice - a.maxPrice)
-                    .map((buyer, index) => `
-                        <div class="buyer-card">
-                            <div class="buyer-price">
-                                予算上限: ${(buyer.maxPrice / 10000).toFixed(0)}万円
-                            </div>
-                            <div class="buyer-details">
-                                <div class="buyer-detail">
-                                    <span>👤</span>
-                                    <span>${buyer.age}歳 ${buyer.gender === 'M' ? '男性' : '女性'}</span>
-                                </div>
-                                <div class="buyer-detail">
-                                    <span>👨‍👩‍👧‍👦</span>
-                                    <span>${buyer.family}</span>
-                                </div>
-                                <div class="buyer-detail">
-                                    <span>💼</span>
-                                    <span>${buyer.job}</span>
-                                </div>
-                                <div class="buyer-detail">
-                                    <span>🏠</span>
-                                    <span>${buyer.area || '希望なし'}</span>
-                                </div>
-                            </div>
-                            ${buyer.notes ? `<p style="color:#666;font-size:14px;margin:16px 0">📝 ${buyer.notes}</p>` : ''}
-                            <button class="contact-button" onclick="window.location.href='tel:0120438639'">
-                                この購入希望者に提案する
-                            </button>
-                        </div>
-                    `).join('');
-            } else {
-                buyerCards.innerHTML = '<p style="text-align:center;color:#999;padding:40px">現在購入希望者はいません</p>';
-            }
-            
-            modal.classList.add('active');
-        };
+        function displayMansions(list, append=false) {
+          const container = $('mansionsList');
+          if (!container) return;
         
-        // 検索機能
-        async function searchMansions(query) {
-            // 検索時は全データを読み込む
-            if (loadedParts.size < 5) {
-                const indicator = document.getElementById('dataLoadingIndicator');
-                indicator.classList.add('active');
-                await dataLoader.loadAllParts();
-                indicator.classList.remove('active');
-            }
-            
-            const searchTerm = query.toLowerCase();
-            return Object.values(MANSION_DB).filter(mansion => 
-                mansion.name.toLowerCase().includes(searchTerm) ||
-                mansion.address.toLowerCase().includes(searchTerm)
-            );
+          if (!append) container.innerHTML = '';
+        
+          if (!list.length && !append) {
+            container.innerHTML = '<p style="text-align:center;padding:40px;color:#666">該当するマンションが見つかりませんでした</p>';
+            $('loadMoreBtn').style.display = 'none';
+            return;
+          }
+        
+          list.forEach(m => container.appendChild(createMansionCard(m)));
+        
+          // もっと見る
+          $('loadMoreBtn').style.display = (filteredMansions.length > currentDisplayCount) ? 'block' : 'none';
         }
         
-        // サジェスト機能
+        // ---------- モーダル ----------
+        async function showBuyerModal(mansionId) {
+          const modal = $('buyerModal');
+          const modalTitle = $('modalTitle');
+          const modalAddress = $('modalAddress');
+          const buyerCards = $('buyerCards');
+        
+          // データは既存 buyers: [{ price, method, occupation, reason, timing, family, age }]
+          const m = MANSION_MAP.get(mansionId);
+          if (!m) return;
+        
+          modalTitle.textContent = m.name;
+          modalAddress.textContent = m.address;
+        
+          if (!m.buyers || !m.buyers.length) {
+            buyerCards.innerHTML = '<p style="text-align:center;color:#999;padding:40px">現在購入希望者はいません</p>';
+          } else {
+            const sorted = [...m.buyers].sort((a,b)=> numFrom(b.price) - numFrom(a.price));
+            buyerCards.innerHTML = sorted.map((b, idx) => `
+              <div class="buyer-card">
+                ${idx===0 ? '<div style="position:absolute;top:10px;right:10px;background:var(--accent-green);color:#fff;padding:4px 12px;border-radius:999px;font-size:12px;font-weight:700;">最高額</div>' : ''}
+                <div class="buyer-price">予算上限: ${b.price || '-'}</div>
+                <div class="buyer-details">
+                  <div class="buyer-detail">👨‍👩‍👧 ${b.family || '-'}</div>
+                  <div class="buyer-detail">💼 ${b.occupation || '-'}</div>
+                  <div class="buyer-detail">📅 ${b.timing || '-'}</div>
+                  <div class="buyer-detail">💳 ${b.method || '-'}</div>
+                  <div class="buyer-detail">🎯 ${b.reason || '-'}</div>
+                  ${b.age ? `<div class="buyer-detail">🎂 ${b.age}</div>` : ''}
+                </div>
+                <button class="contact-button" onclick="location.href='tel:0120438639'">
+                  この購入希望者に連絡
+                </button>
+              </div>
+            `).join('');
+          }
+        
+          modal.classList.add('active');
+        }
+        
+        window.showBuyerModal = showBuyerModal; // グローバルに公開
+        
+        // 閉じる
+        $('closeModalBtn').addEventListener('click', () => $('buyerModal').classList.remove('active'));
+        $('buyerModal').addEventListener('click', (e) => { 
+          if (e.target === $('buyerModal')) $('buyerModal').classList.remove('active'); 
+        });
+        
+        // ---------- 検索・サジェスト ----------
         function showSuggestions(query) {
-            const suggestions = document.getElementById('searchSuggestions');
-            if (!query) {
-                suggestions.classList.remove('active');
-                return;
-            }
-            
-            const matches = Object.values(MANSION_DB)
-                .filter(m => 
-                    m.name.toLowerCase().includes(query.toLowerCase()) ||
-                    m.address.toLowerCase().includes(query.toLowerCase())
-                )
-                .slice(0, 10);
-            
-            if (matches.length > 0) {
-                suggestions.innerHTML = matches.map(m => `
-                    <div class="suggestion-item" data-mansion-id="${m.id}">
-                        <div>
-                            <div class="suggestion-name">${m.name}</div>
-                            <div style="font-size:12px;color:#999">${m.address}</div>
-                        </div>
-                        <div class="suggestion-count">${m.buyers?.length || 0}名</div>
-                    </div>
-                `).join('');
-                suggestions.classList.add('active');
-                
-                // サジェストアイテムのクリックイベント
-                suggestions.querySelectorAll('.suggestion-item').forEach(item => {
-                    item.addEventListener('click', () => {
-                        const mansionId = item.dataset.mansionId;
-                        window.showBuyerModal(mansionId);
-                        suggestions.classList.remove('active');
-                        document.getElementById('searchInput').value = '';
-                    });
-                });
-            } else {
-                suggestions.classList.remove('active');
-            }
+          const suggestions = $('searchSuggestions');
+          if (!query) {
+            suggestions.classList.remove('active');
+            return;
+          }
+        
+          const term = query.toLowerCase();
+          const matches = MANSION_LIST.filter(m =>
+            m.name.toLowerCase().includes(term) ||
+            (m.address||'').toLowerCase().includes(term)
+          ).slice(0, 10);
+        
+          if (!matches.length) {
+            suggestions.classList.remove('active');
+            return;
+          }
+        
+          suggestions.innerHTML = matches.map(m => `
+            <div class="suggestion-item" data-id="${m.id}">
+              <div>
+                <div class="suggestion-name">${m.name}</div>
+                <div style="font-size:12px;color:#999">${m.address}</div>
+              </div>
+              <div class="suggestion-count">${m.buyerCount}名</div>
+            </div>
+          `).join('');
+          suggestions.classList.add('active');
+        
+          Array.from(suggestions.querySelectorAll('.suggestion-item')).forEach(it => {
+            it.addEventListener('click', () => {
+              showBuyerModal(it.dataset.id);
+              suggestions.classList.remove('active');
+              $('searchInput').value = '';
+            });
+          });
         }
         
-        // エリアフィルター
-        async function filterByArea(area) {
-            // フィルター時は全データを読み込む
-            if (loadedParts.size < 5) {
-                const indicator = document.getElementById('dataLoadingIndicator');
-                indicator.classList.add('active');
-                await dataLoader.loadAllParts();
-                indicator.classList.remove('active');
-            }
-            
-            currentFilter = area;
-            filteredMansions = Object.values(MANSION_DB)
-                .filter(m => m.address.includes(area))
-                .sort((a, b) => (b.buyers?.length || 0) - (a.buyers?.length || 0));
-            
+        async function doSearch() {
+          const q = $('searchInput').value.trim().toLowerCase();
+          if (!q) {
+            // 初期並びに戻す
+            filteredMansions = [...MANSION_LIST].sort((a,b)=> b.buyerCount - a.buyerCount);
             currentDisplayCount = 20;
             displayMansions(filteredMansions.slice(0, currentDisplayCount));
+            return;
+          }
+          // 読み込めているデータ内で検索
+          const results = MANSION_LIST.filter(m =>
+            m.name.toLowerCase().includes(q) ||
+            (m.address||'').toLowerCase().includes(q) ||
+            (m.area_category||'').toLowerCase().includes(q)
+          ).sort((a,b)=> b.buyerCount - a.buyerCount);
+        
+          filteredMansions = results;
+          currentDisplayCount = 20;
+          displayMansions(filteredMansions.slice(0, currentDisplayCount));
+          $('searchSuggestions').classList.remove('active');
         }
         
-        // 初期化
-        async function init() {
-            // Part1を最初に読み込む
-            await dataLoader.loadPart(1);
-            
-            // 初期表示（購入希望者数でソート）
-            filteredMansions = Object.values(MANSION_DB)
-                .sort((a, b) => (b.buyers?.length || 0) - (a.buyers?.length || 0));
-            displayMansions(filteredMansions.slice(0, currentDisplayCount));
-            
-            // 残りのパートをバックグラウンドで読み込む
-            dataLoader.preloadRemainingParts();
-            
-            // イベントリスナー設定
-            const searchInput = document.getElementById('searchInput');
-            const searchButton = document.getElementById('searchButton');
-            const loadMoreBtn = document.getElementById('loadMoreBtn');
-            const closeModalBtn = document.getElementById('closeModalBtn');
-            const modal = document.getElementById('buyerModal');
-            
-            // 検索
-            searchInput.addEventListener('input', (e) => {
-                showSuggestions(e.target.value);
-            });
-            
-            searchButton.addEventListener('click', async () => {
-                const query = searchInput.value;
-                if (query) {
-                    const results = await searchMansions(query);
-                    currentFilter = query;
-                    filteredMansions = results.sort((a, b) => 
-                        (b.buyers?.length || 0) - (a.buyers?.length || 0)
-                    );
-                    currentDisplayCount = 20;
-                    displayMansions(filteredMansions.slice(0, currentDisplayCount));
-                }
-            });
-            
-            searchInput.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') {
-                    searchButton.click();
-                }
-            });
-            
-            // エリアボタン
-            document.querySelectorAll('.quick-btn').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const area = btn.dataset.area;
-                    filterByArea(area);
-                });
-            });
-            
-            // もっと見る
-            loadMoreBtn.addEventListener('click', () => {
-                currentDisplayCount += 20;
-                const newMansions = filteredMansions.slice(
-                    currentDisplayCount - 20,
-                    currentDisplayCount
-                );
-                displayMansions(newMansions, true);
-            });
-            
-            // モーダル閉じる
-            closeModalBtn.addEventListener('click', () => {
-                modal.classList.remove('active');
-            });
-            
-            modal.addEventListener('click', (e) => {
-                if (e.target === modal) {
-                    modal.classList.remove('active');
-                }
-            });
-            
-            // サジェスト外クリックで閉じる
-            document.addEventListener('click', (e) => {
-                if (!e.target.closest('.search-box')) {
-                    document.getElementById('searchSuggestions').classList.remove('active');
-                }
-            });
+        // ---------- エリア ----------
+        async function filterByArea(area) {
+          const res = MANSION_LIST
+            .filter(m => (m.address||'').includes(area))
+            .sort((a,b)=> b.buyerCount - a.buyerCount);
+        
+          filteredMansions = res;
+          currentDisplayCount = 20;
+          displayMansions(filteredMansions.slice(0, currentDisplayCount));
         }
         
-        // ページ読み込み時に初期化
-        init();
+        // ---------- イベント ----------
+        $('searchInput').addEventListener('input', (e)=> showSuggestions(e.target.value));
+        $('searchButton').addEventListener('click', doSearch);
+        $('searchInput').addEventListener('keypress', (e)=> { 
+          if (e.key === 'Enter') doSearch(); 
+        });
+        document.addEventListener('click', (e) => {
+          if (!e.target.closest('.search-box')) {
+            $('searchSuggestions').classList.remove('active');
+          }
+        });
+        document.querySelectorAll('.quick-btn').forEach(btn => {
+          btn.addEventListener('click', () => filterByArea(btn.dataset.area));
+        });
+        $('loadMoreBtn').addEventListener('click', () => {
+          currentDisplayCount += 20;
+          displayMansions(filteredMansions.slice(currentDisplayCount - 20, currentDisplayCount), true);
+        });
+        
+        // ---------- 初期化 ----------
+        (async function init(){
+          // 1) まず Part1 だけ読み込んで即描画（軽い）
+          const part1 = await loadPart(1);
+          appendMansions(part1);
+          updateStats();
+        
+          // 初期表示：購入希望者数で並べ替えた上位から
+          filteredMansions = [...MANSION_LIST].sort((a,b)=> b.buyerCount - a.buyerCount);
+          displayMansions(filteredMansions.slice(0, currentDisplayCount));
+        
+          // 2) 残りはアイドル時にプリフェッチ（体感軽く）
+          preloadRemainingParts(2);
+        })();
     </script>
 </body>
 </html>
