@@ -482,7 +482,7 @@
     
     .hero-card-content {
       padding: 24px;
-      min-height: 300px;
+      min-height: 400px;
     }
     
     .tab-panel {
@@ -499,116 +499,7 @@
       to { opacity: 1; transform: translateY(0); }
     }
     
-    /* ==== インタラクティブシミュレーター ==== */
-    .simulator-widget {
-      background: linear-gradient(135deg, #FFF5F0, #FFF);
-      border-radius: 12px;
-      padding: 20px;
-    }
-    
-    .simulator-title {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--c21-black);
-      margin-bottom: 16px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    
-    .simulator-control {
-      margin-bottom: 20px;
-    }
-    
-    .simulator-label {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--c21-gray);
-      margin-bottom: 8px;
-      display: block;
-    }
-    
-    .simulator-slider {
-      width: 100%;
-      height: 8px;
-      background: #E5E5E5;
-      border-radius: 4px;
-      outline: none;
-      -webkit-appearance: none;
-      appearance: none;
-    }
-    
-    .simulator-slider::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      width: 24px;
-      height: 24px;
-      background: var(--c21-gold);
-      border-radius: 50%;
-      cursor: pointer;
-      box-shadow: var(--shadow-md);
-    }
-    
-    .simulator-slider::-moz-range-thumb {
-      width: 24px;
-      height: 24px;
-      background: var(--c21-gold);
-      border-radius: 50%;
-      cursor: pointer;
-      box-shadow: var(--shadow-md);
-    }
-    
-    .simulator-value {
-      font-size: 24px;
-      font-weight: 700;
-      color: var(--c21-gold);
-      text-align: center;
-      margin: 12px 0;
-    }
-    
-    .simulator-result {
-      background: var(--c21-gold);
-      color: var(--c21-white);
-      padding: 16px;
-      border-radius: 8px;
-      text-align: center;
-      margin-top: 20px;
-    }
-    
-    .simulator-result-label {
-      font-size: 14px;
-      margin-bottom: 4px;
-    }
-    
-    .simulator-result-value {
-      font-size: 32px;
-      font-weight: 900;
-    }
-    
-    .simulator-buttons {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 8px;
-      margin-bottom: 16px;
-    }
-    
-    .simulator-btn {
-      padding: 10px;
-      background: var(--c21-white);
-      border: 2px solid #E5E5E5;
-      border-radius: 8px;
-      font-weight: 600;
-      font-size: 14px;
-      cursor: pointer;
-      transition: var(--transition);
-    }
-    
-    .simulator-btn.active {
-      background: var(--c21-gold);
-      color: var(--c21-white);
-      border-color: var(--c21-gold);
-    }
-    
-    /* ==== マッチング診断 ==== */
+    /* ==== URICOマッチング診断 ==== */
     .matching-widget {
       text-align: center;
     }
@@ -622,6 +513,57 @@
     @keyframes bounce {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-10px); }
+    }
+    
+    .matching-search {
+      margin-bottom: 24px;
+    }
+    
+    .matching-search-box {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    
+    .matching-input {
+      flex: 1;
+      padding: 12px 16px;
+      border: 2px solid #E5E5E5;
+      border-radius: 8px;
+      font-size: 14px;
+      transition: var(--transition);
+    }
+    
+    .matching-input:focus {
+      outline: none;
+      border-color: var(--c21-gold);
+      box-shadow: 0 0 0 3px rgba(184,162,101,0.1);
+    }
+    
+    .matching-search-btn {
+      padding: 12px 24px;
+      background: var(--c21-gold);
+      color: var(--c21-white);
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    
+    .matching-search-btn:hover {
+      background: var(--c21-gold-dark);
+      transform: translateY(-2px);
+    }
+    
+    .matching-result {
+      display: none;
+      animation: slideUp 0.5s;
+    }
+    
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     
     .matching-count {
@@ -656,6 +598,163 @@
     @keyframes progressPulse {
       0%, 100% { opacity: 1; }
       50% { opacity: 0.8; }
+    }
+    
+    /* ==== リフォーム見積もりツール ==== */
+    .reform-tool {
+      background: linear-gradient(135deg, #F0FFF0, #FFF);
+      border-radius: 12px;
+      padding: 24px;
+    }
+    
+    .reform-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--c21-black);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .reform-section {
+      margin-bottom: 24px;
+      padding: 16px;
+      background: var(--c21-white);
+      border-radius: 8px;
+      border: 2px solid #E5E5E5;
+      transition: var(--transition);
+    }
+    
+    .reform-section.active {
+      border-color: var(--c21-gold);
+      box-shadow: 0 0 0 3px rgba(184,162,101,0.1);
+    }
+    
+    .reform-section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      cursor: pointer;
+    }
+    
+    .reform-section-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+    }
+    
+    .reform-section-price {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--c21-gold);
+    }
+    
+    .reform-options {
+      display: none;
+      padding-top: 12px;
+      border-top: 1px solid #E5E5E5;
+      margin-top: 12px;
+    }
+    
+    .reform-section.active .reform-options {
+      display: block;
+    }
+    
+    .reform-option {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 0;
+    }
+    
+    .reform-option-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex: 1;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    
+    .reform-option-price {
+      font-weight: 600;
+      font-size: 14px;
+      margin-left: auto;
+      margin-right: 12px;
+    }
+    
+    .reform-option-price.plus {
+      color: var(--c21-red);
+    }
+    
+    .reform-option-price.minus {
+      color: var(--c21-green);
+    }
+    
+    .reform-checkbox {
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+    }
+    
+    .reform-select {
+      padding: 6px 12px;
+      border: 2px solid #E5E5E5;
+      border-radius: 6px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    
+    .reform-select:focus {
+      outline: none;
+      border-color: var(--c21-gold);
+    }
+    
+    .reform-total {
+      background: var(--c21-gold);
+      color: var(--c21-white);
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      margin-top: 24px;
+    }
+    
+    .reform-total-label {
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+    
+    .reform-total-price {
+      font-size: 36px;
+      font-weight: 900;
+      margin-bottom: 8px;
+    }
+    
+    .reform-total-original {
+      text-decoration: line-through;
+      opacity: 0.8;
+      font-size: 14px;
+      margin-right: 8px;
+    }
+    
+    .reform-total-discount {
+      color: #FFE4B5;
+      font-weight: 700;
+    }
+    
+    .reform-badge {
+      display: inline-block;
+      background: var(--c21-red);
+      color: var(--c21-white);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 700;
+      margin-left: 8px;
     }
     
     /* ==== ゲーミフィケーション要素 ==== */
@@ -1306,8 +1405,8 @@
           <div class="hero-card">
             <div class="hero-card-tabs">
               <button class="hero-card-tab active" onclick="switchTab('news')">📢 最新情報</button>
-              <button class="hero-card-tab" onclick="switchTab('simulator')">💰 査定計算</button>
               <button class="hero-card-tab" onclick="switchTab('matching')">🏢 URICO診断</button>
+              <button class="hero-card-tab" onclick="switchTab('reform')">🔧 リフォーム見積</button>
             </div>
             
             <div class="hero-card-content">
@@ -1338,70 +1437,192 @@
                 </ul>
               </div>
               
-              <!-- 査定シミュレータータブ -->
-              <div class="tab-panel" id="tab-simulator">
-                <div class="simulator-widget">
-                  <h3 class="simulator-title">
-                    <span>🏠</span>
-                    <span>あなたの家、いくらで売れる？</span>
-                  </h3>
+              <!-- URICOマッチング診断タブ -->
+              <div class="tab-panel" id="tab-matching">
+                <div class="matching-widget">
+                  <div class="matching-icon">🏢</div>
                   
-                  <div class="simulator-control">
-                    <label class="simulator-label">物件種別</label>
-                    <div class="simulator-buttons">
-                      <button class="simulator-btn active" onclick="setPropertyType('mansion')">マンション</button>
-                      <button class="simulator-btn" onclick="setPropertyType('house')">一戸建て</button>
+                  <div class="matching-search">
+                    <label style="font-size: 14px; font-weight: 600; display: block; margin-bottom: 8px;">マンション名を入力</label>
+                    <div class="matching-search-box">
+                      <input type="text" class="matching-input" id="mansionName" placeholder="例：ザ・パークハウス、プラウド、ブランズ">
+                      <button class="matching-search-btn" onclick="searchMansion()">検索</button>
                     </div>
                   </div>
                   
-                  <div class="simulator-control">
-                    <label class="simulator-label">築年数：<span id="age-value">15</span>年</label>
-                    <input type="range" class="simulator-slider" id="age-slider" min="0" max="50" value="15" oninput="updateAge()">
-                  </div>
-                  
-                  <div class="simulator-control">
-                    <label class="simulator-label">広さ：<span id="size-value">70</span>㎡</label>
-                    <input type="range" class="simulator-slider" id="size-slider" min="20" max="150" value="70" oninput="updateSize()">
-                  </div>
-                  
-                  <div class="simulator-result">
-                    <div class="simulator-result-label">予想売却価格</div>
-                    <div class="simulator-result-value" id="price-result">2,450万円</div>
-                  </div>
-                  
-                  <div style="text-align: center; margin-top: 16px;">
-                    <a href="/assessment.html" class="btn-primary" style="font-size: 14px; padding: 12px 24px;">
-                      正確な査定を依頼する
+                  <div class="matching-result" id="matchingResult">
+                    <div class="matching-count" id="matching-count">0</div>
+                    <div class="matching-label">人の購入希望者が<br><span id="mansion-display"></span>を狙っています！</div>
+                    
+                    <div class="matching-progress">
+                      <div class="matching-progress-bar" id="matching-bar"></div>
+                    </div>
+                    
+                    <a href="/urico.html" class="btn-primary" style="width: 100%; justify-content: center; margin-top: 20px;">
+                      詳細を確認する
                     </a>
                   </div>
                 </div>
               </div>
               
-              <!-- URICOマッチング診断タブ -->
-              <div class="tab-panel" id="tab-matching">
-                <div class="matching-widget">
-                  <div class="matching-icon">🏢</div>
-                  <div class="matching-count" id="matching-count">0</div>
-                  <div class="matching-label">人の購入希望者が<br>あなたのマンションを狙っています！</div>
+              <!-- リフォーム見積もりタブ -->
+              <div class="tab-panel" id="tab-reform">
+                <div class="reform-tool">
+                  <h3 class="reform-title">
+                    <span>🏠</span>
+                    <span>水回りリフォーム見積もり</span>
+                  </h3>
                   
-                  <div class="matching-progress">
-                    <div class="matching-progress-bar" id="matching-bar"></div>
+                  <!-- キッチン -->
+                  <div class="reform-section" id="kitchen-section">
+                    <div class="reform-section-header" onclick="toggleSection('kitchen')">
+                      <div class="reform-section-title">
+                        <input type="checkbox" class="reform-checkbox" id="kitchen-check" checked onchange="updateReform()">
+                        <span>🍳 キッチン</span>
+                      </div>
+                      <div class="reform-section-price" id="kitchen-price">50万円〜</div>
+                    </div>
+                    <div class="reform-options">
+                      <div class="reform-option">
+                        <label class="reform-option-label">
+                          <span>標準仕様（IHコンロ・食洗機付き）</span>
+                        </label>
+                        <select class="reform-select" onchange="updateKitchen()">
+                          <option value="50">標準仕様</option>
+                          <option value="45">ガスコンロ仕様（-5万円）</option>
+                          <option value="40">シンプル仕様（-10万円）</option>
+                          <option value="65">ハイグレード仕様（+15万円）</option>
+                        </select>
+                      </div>
+                      <div class="reform-option">
+                        <label class="reform-option-label">
+                          <input type="checkbox" checked onchange="updateReform()" data-price="-3">
+                          <span>レンジフード</span>
+                        </label>
+                        <span class="reform-option-price minus">標準装備</span>
+                      </div>
+                      <div class="reform-option">
+                        <label class="reform-option-label">
+                          <input type="checkbox" onchange="updateReform()" data-price="8">
+                          <span>カップボード追加</span>
+                        </label>
+                        <span class="reform-option-price plus">+8万円</span>
+                      </div>
+                    </div>
                   </div>
                   
-                  <div style="margin-bottom: 20px;">
-                    <label style="font-size: 14px; font-weight: 600; display: block; margin-bottom: 8px;">エリアを選択</label>
-                    <select style="width: 100%; padding: 10px; border: 2px solid #E5E5E5; border-radius: 8px;" onchange="updateMatching()">
-                      <option>大阪市北区</option>
-                      <option>大阪市中央区</option>
-                      <option>奈良市</option>
-                      <option>生駒市</option>
-                      <option>橿原市</option>
-                    </select>
+                  <!-- 浴室 -->
+                  <div class="reform-section" id="bath-section">
+                    <div class="reform-section-header" onclick="toggleSection('bath')">
+                      <div class="reform-section-title">
+                        <input type="checkbox" class="reform-checkbox" id="bath-check" checked onchange="updateReform()">
+                        <span>🛁 浴室</span>
+                      </div>
+                      <div class="reform-section-price" id="bath-price">60万円〜</div>
+                    </div>
+                    <div class="reform-options">
+                      <div class="reform-option">
+                        <label class="reform-option-label">
+                          <span>サイズ</span>
+                        </label>
+                        <select class="reform-select" onchange="updateBath()">
+                          <option value="60">1616サイズ（標準）</option>
+                          <option value="55">1216サイズ（-5万円）</option>
+                          <option value="70">1620サイズ（+10万円）</option>
+                        </select>
+                      </div>
+                      <div class="reform-option">
+                        <label class="reform-option-label">
+                          <input type="checkbox" checked onchange="updateReform()" data-price="0">
+                          <span>浴室暖房乾燥機</span>
+                        </label>
+                        <span class="reform-option-price minus">標準装備</span>
+                      </div>
+                      <div class="reform-option">
+                        <label class="reform-option-label">
+                          <input type="checkbox" onchange="updateReform()" data-price="12">
+                          <span>ジェットバス機能</span>
+                        </label>
+                        <span class="reform-option-price plus">+12万円</span>
+                      </div>
+                    </div>
                   </div>
                   
-                  <a href="/urico.html" class="btn-primary" style="width: 100%; justify-content: center;">
-                    URICOで売却相談
-                  </a>
+                  <!-- 洗面台 -->
+                  <div class="reform-section" id="wash-section">
+                    <div class="reform-section-header" onclick="toggleSection('wash')">
+                      <div class="reform-section-title">
+                        <input type="checkbox" class="reform-checkbox" id="wash-check" checked onchange="updateReform()">
+                        <span>🚿 洗面台</span>
+                      </div>
+                      <div class="reform-section-price" id="wash-price">15万円〜</div>
+                    </div>
+                    <div class="reform-options">
+                      <div class="reform-option">
+                        <label class="reform-option-label">
+                          <span>幅サイズ</span>
+                        </label>
+                        <select class="reform-select" onchange="updateWash()">
+                          <option value="15">75cm（標準）</option>
+                          <option value="12">60cm（-3万円）</option>
+                          <option value="20">90cm（+5万円）</option>
+                        </select>
+                      </div>
+                      <div class="reform-option">
+                        <label class="reform-option-label">
+                          <input type="checkbox" onchange="updateReform()" data-price="3">
+                          <span>三面鏡（LED照明付き）</span>
+                        </label>
+                        <span class="reform-option-price plus">+3万円</span>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- トイレ -->
+                  <div class="reform-section" id="toilet-section">
+                    <div class="reform-section-header" onclick="toggleSection('toilet')">
+                      <div class="reform-section-title">
+                        <input type="checkbox" class="reform-checkbox" id="toilet-check" checked onchange="updateReform()">
+                        <span>🚽 トイレ</span>
+                      </div>
+                      <div class="reform-section-price" id="toilet-price">15万円〜</div>
+                    </div>
+                    <div class="reform-options">
+                      <div class="reform-option">
+                        <label class="reform-option-label">
+                          <span>グレード</span>
+                        </label>
+                        <select class="reform-select" onchange="updateToilet()">
+                          <option value="15">ウォシュレット付き（標準）</option>
+                          <option value="10">シンプル仕様（-5万円）</option>
+                          <option value="25">タンクレス仕様（+10万円）</option>
+                        </select>
+                      </div>
+                      <div class="reform-option">
+                        <label class="reform-option-label">
+                          <input type="checkbox" onchange="updateReform()" data-price="2">
+                          <span>手洗いカウンター</span>
+                        </label>
+                        <span class="reform-option-price plus">+2万円</span>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="reform-total">
+                    <div class="reform-total-label">お見積り金額（キャンペーン価格）</div>
+                    <div class="reform-total-price" id="reform-total">140万円〜</div>
+                    <div>
+                      <span class="reform-total-original">通常価格: 175万円</span>
+                      <span class="reform-total-discount">35万円OFF!</span>
+                      <span class="reform-badge">期間限定</span>
+                    </div>
+                  </div>
+                  
+                  <div style="text-align: center; margin-top: 16px;">
+                    <a href="/reform-water.html" class="btn-primary" style="font-size: 14px; padding: 12px 24px;">
+                      詳細見積もりを依頼
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1451,40 +1672,23 @@
               </div>
             </div>
             
-            <!-- リフォーム費用計算 -->
+            <!-- 空き物件 -->
             <div class="game-card">
               <div class="comparison-tool">
                 <div class="comparison-header">
-                  <h3 class="comparison-title">水回りリフォーム見積もり</h3>
-                  <p style="font-size: 14px; color: var(--c21-gray);">選択した設備の概算費用</p>
+                  <h3 class="comparison-title">🏠 あなたの街の不動産価値</h3>
+                  <p style="font-size: 14px; color: var(--c21-gray);">エリア別の相場情報をチェック</p>
                 </div>
                 
-                <div style="display: grid; gap: 12px; margin-bottom: 24px;">
-                  <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
-                    <input type="checkbox" checked onchange="updateReform()" data-price="50" style="width: 20px; height: 20px;">
-                    <span>🍳 キッチン（50万円〜）</span>
-                  </label>
-                  <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
-                    <input type="checkbox" checked onchange="updateReform()" data-price="60" style="width: 20px; height: 20px;">
-                    <span>🛁 浴室（60万円〜）</span>
-                  </label>
-                  <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
-                    <input type="checkbox" checked onchange="updateReform()" data-price="30" style="width: 20px; height: 20px;">
-                    <span>🚿 洗面所（30万円〜）</span>
-                  </label>
-                  <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
-                    <input type="checkbox" checked onchange="updateReform()" data-price="18" style="width: 20px; height: 20px;">
-                    <span>🚽 トイレ（18万円〜）</span>
-                  </label>
-                </div>
-                
-                <div class="comparison-result" style="background: linear-gradient(135deg, #F0FFF0, #FFF); border-color: var(--c21-green);">
-                  <div class="comparison-result-value" id="reform-result" style="color: var(--c21-green);">158万円〜</div>
-                  <div class="comparison-result-label">概算費用（キャンペーン価格）</div>
-                  <div style="margin-top: 12px; padding: 8px; background: white; border-radius: 8px;">
-                    <span style="text-decoration: line-through; color: #999;">通常価格: 198万円</span>
-                    <span style="color: var(--c21-red); font-weight: 700; margin-left: 8px;">40万円OFF!</span>
-                  </div>
+                <div style="text-align: center; padding: 40px 0;">
+                  <div style="font-size: 48px; margin-bottom: 16px;">📊</div>
+                  <p style="font-size: 16px; color: var(--c21-gray); margin-bottom: 24px;">
+                    お住まいのエリアの<br>
+                    最新相場情報を無料でお調べします
+                  </p>
+                  <a href="/assessment.html" class="btn-primary" style="padding: 12px 32px;">
+                    無料相場診断
+                  </a>
                 </div>
               </div>
             </div>
@@ -1707,59 +1911,23 @@
         panel.classList.remove('active');
       });
       document.getElementById('tab-' + tabName).classList.add('active');
-      
-      // マッチング診断の初期化
-      if (tabName === 'matching') {
-        setTimeout(() => {
-          updateMatching();
-        }, 300);
+    }
+    
+    // URICOマンション検索
+    function searchMansion() {
+      const mansionName = document.getElementById('mansionName').value;
+      if (!mansionName) {
+        alert('マンション名を入力してください');
+        return;
       }
-    }
-    
-    // 物件価格シミュレーター
-    let propertyType = 'mansion';
-    
-    function setPropertyType(type) {
-      propertyType = type;
-      document.querySelectorAll('.simulator-btn').forEach(btn => {
-        btn.classList.remove('active');
-      });
-      event.target.classList.add('active');
-      calculatePrice();
-    }
-    
-    function updateAge() {
-      document.getElementById('age-value').textContent = document.getElementById('age-slider').value;
-      calculatePrice();
-    }
-    
-    function updateSize() {
-      document.getElementById('size-value').textContent = document.getElementById('size-slider').value;
-      calculatePrice();
-    }
-    
-    function calculatePrice() {
-      const age = parseInt(document.getElementById('age-slider').value);
-      const size = parseInt(document.getElementById('size-slider').value);
       
-      let basePrice = propertyType === 'mansion' ? 50 : 40;
-      let price = basePrice * size;
+      // 検索結果を表示（ダミーデータ）
+      const count = Math.floor(Math.random() * 15) + 3;
+      document.getElementById('mansion-display').textContent = mansionName;
+      document.getElementById('matchingResult').style.display = 'block';
       
-      // 築年数による減価
-      price = price * (1 - age * 0.015);
-      
-      // ランダム要素を追加（リアル感を出すため）
-      price = price * (0.9 + Math.random() * 0.2);
-      
-      document.getElementById('price-result').textContent = 
-        Math.round(price / 10) * 10 + '万円';
-    }
-    
-    // URICOマッチング診断
-    function updateMatching() {
-      const count = Math.floor(Math.random() * 20) + 5;
+      // カウントアップアニメーション
       let current = 0;
-      
       const interval = setInterval(() => {
         current++;
         document.getElementById('matching-count').textContent = current;
@@ -1769,6 +1937,105 @@
           clearInterval(interval);
         }
       }, 50);
+    }
+    
+    // リフォーム見積もり
+    let reformPrices = {
+      kitchen: 50,
+      bath: 60,
+      wash: 15,
+      toilet: 15
+    };
+    
+    function toggleSection(section) {
+      const sectionEl = document.getElementById(section + '-section');
+      sectionEl.classList.toggle('active');
+    }
+    
+    function updateKitchen() {
+      const select = event.target;
+      reformPrices.kitchen = parseInt(select.value);
+      document.getElementById('kitchen-price').textContent = reformPrices.kitchen + '万円〜';
+      calculateTotal();
+    }
+    
+    function updateBath() {
+      const select = event.target;
+      reformPrices.bath = parseInt(select.value);
+      document.getElementById('bath-price').textContent = reformPrices.bath + '万円〜';
+      calculateTotal();
+    }
+    
+    function updateWash() {
+      const select = event.target;
+      reformPrices.wash = parseInt(select.value);
+      document.getElementById('wash-price').textContent = reformPrices.wash + '万円〜';
+      calculateTotal();
+    }
+    
+    function updateToilet() {
+      const select = event.target;
+      reformPrices.toilet = parseInt(select.value);
+      document.getElementById('toilet-price').textContent = reformPrices.toilet + '万円〜';
+      calculateTotal();
+    }
+    
+    function updateReform() {
+      calculateTotal();
+    }
+    
+    function calculateTotal() {
+      let total = 0;
+      
+      // 各セクションのチェック状態を確認
+      if (document.getElementById('kitchen-check').checked) {
+        total += reformPrices.kitchen;
+        
+        // オプション計算
+        document.querySelectorAll('#kitchen-section input[type="checkbox"]:not(.reform-checkbox)').forEach(cb => {
+          if (cb.checked && cb.dataset.price) {
+            total += parseInt(cb.dataset.price);
+          }
+        });
+      }
+      
+      if (document.getElementById('bath-check').checked) {
+        total += reformPrices.bath;
+        
+        document.querySelectorAll('#bath-section input[type="checkbox"]:not(.reform-checkbox)').forEach(cb => {
+          if (cb.checked && cb.dataset.price) {
+            total += parseInt(cb.dataset.price);
+          }
+        });
+      }
+      
+      if (document.getElementById('wash-check').checked) {
+        total += reformPrices.wash;
+        
+        document.querySelectorAll('#wash-section input[type="checkbox"]:not(.reform-checkbox)').forEach(cb => {
+          if (cb.checked && cb.dataset.price) {
+            total += parseInt(cb.dataset.price);
+          }
+        });
+      }
+      
+      if (document.getElementById('toilet-check').checked) {
+        total += reformPrices.toilet;
+        
+        document.querySelectorAll('#toilet-section input[type="checkbox"]:not(.reform-checkbox)').forEach(cb => {
+          if (cb.checked && cb.dataset.price) {
+            total += parseInt(cb.dataset.price);
+          }
+        });
+      }
+      
+      // 合計表示
+      document.getElementById('reform-total').textContent = total + '万円〜';
+      
+      // 通常価格（20%増し）
+      const originalPrice = Math.round(total * 1.25);
+      document.querySelector('.reform-total-original').textContent = '通常価格: ' + originalPrice + '万円';
+      document.querySelector('.reform-total-discount').textContent = (originalPrice - total) + '万円OFF!';
     }
     
     // 売却方法比較
@@ -1788,18 +2055,10 @@
       document.getElementById('method-result').textContent = result;
     }
     
-    // リフォーム費用計算
-    function updateReform() {
-      let total = 0;
-      document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
-        if (checkbox.checked) {
-          total += parseInt(checkbox.dataset.price);
-        }
-      });
-      
-      document.getElementById('reform-result').textContent = 
-        total + '万円〜';
-    }
+    // 初期化
+    document.addEventListener('DOMContentLoaded', function() {
+      calculateTotal();
+    });
   </script>
 </body>
 </html>
